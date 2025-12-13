@@ -73,19 +73,14 @@
                     <div>
                         <label id="lbl-reason" class="block text-sm font-medium text-gray-700 mb-1">Reason</label>
                         <select id="sel-reason" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option value="cost">Financial Hardship (Inflation)</option>
-                            <option value="productivity">Productivity & Focus</option>
-                            <option value="care">Child/Elder Care</option>
-                            <option value="health">Health & Safety</option>
+                           <!-- Injected via JS -->
                         </select>
                     </div>
                     <!-- Tone Select -->
                     <div>
                         <label id="lbl-tone" class="block text-sm font-medium text-gray-700 mb-1">Tone</label>
                         <select id="sel-tone" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
-                            <option value="polite">Polite & Professional</option>
-                            <option value="firm">Firm & Direct</option>
-                            <option value="passive">Passive Aggressive</option>
+                             <!-- Injected via JS -->
                         </select>
                     </div>
                 </div>
@@ -142,10 +137,17 @@
                     lblTone: "Tone",
                     btnText: "Generate Email",
                     reasons: [
-                        {val: 'cost', text: 'Financial Hardship'},
-                        {val: 'productivity', text: 'Productivity & Focus'},
-                        {val: 'care', text: 'Child/Elder Care'},
-                        {val: 'health', text: 'Health & Safety'}
+                        {val: 'arrangement', text: '1. Pre-Existing Arrangement'},
+                        {val: 'goals', text: '2. Organizational Goals'},
+                        {val: 'efficiency', text: '3. Economic/Time Efficiency'},
+                        {val: 'wellbeing', text: '4. Health & Well-being'},
+                        {val: 'fairness', text: '5. Fairness & Workload'},
+                        {val: 'learning', text: '6. Learning & Development'},
+                        {val: 'focus', text: '7. Focus & Distractions'},
+                        {val: 'collab', text: '8. Digital Collaboration'},
+                        {val: 'continuity', text: '9. Business Continuity'},
+                        {val: 'retention', text: '10. Talent Retention'},
+                        {val: 'care', text: 'Family & Care (Child/Elder)'}
                     ],
                     tones: [
                         {val: 'polite', text: 'Polite & Professional'},
@@ -213,10 +215,17 @@
                     lblTone: "语气",
                     btnText: "生成邮件",
                     reasons: [
-                        {val: 'cost', text: '经济压力 (穷)'},
-                        {val: 'productivity', text: '工作效率 (吵)'},
-                        {val: 'care', text: '家庭照顾 (忙)'},
-                        {val: 'health', text: '健康安全 (怕)'}
+                        {val: 'arrangement', text: '1. 既定安排 (契约精神)'},
+                        {val: 'goals', text: '2. 组织目标 (结果导向)'},
+                        {val: 'efficiency', text: '3. 经济/时间效率 (太贵)'},
+                        {val: 'wellbeing', text: '4. 身心健康 (太累)'},
+                        {val: 'fairness', text: '5. 公平与工作量 (没钱)'},
+                        {val: 'learning', text: '6. 学习与发展 (没空)'},
+                        {val: 'focus', text: '7. 专注与干扰 (太吵)'},
+                        {val: 'collab', text: '8. 数字化协作 (更顺)'},
+                        {val: 'continuity', text: '9. 业务连续性 (维稳)'},
+                        {val: 'retention', text: '10. 人才留存 (要跑)'},
+                        {val: 'care', text: '家庭照顾 (顾家)'}
                     ],
                     tones: [
                         {val: 'polite', text: '礼貌职场风'},
@@ -273,50 +282,120 @@
             }
         };
 
-        // --- Templates ---
+        // --- Templates (Comprehensive) ---
         const TEMPLATES = {
             en: {
-                cost: {
-                    polite: "Subject: Discussion regarding work arrangement\n\nHi [Manager Name],\n\nI'm writing to request a continuation of my remote work arrangement. With current inflation, the additional costs of commuting would place a significant strain on my finances, effectively acting as a pay reduction. I am confident I can continue delivering excellent results from home.",
-                    firm: "Subject: Remote Work Requirement\n\nHi [Manager Name],\n\nGiven the rising costs of commuting, returning to the office is not financially viable for me at my current compensation level. To maintain my current standard of living and work output, I need to remain remote.",
-                    passive: "Subject: Office Attendance\n\nHi [Manager Name],\n\nI'd love to come in, provided the company plans to adjust my salary to match the 15% inflation in gas and parking prices. Until then, my home office is much more 'economically sustainable' for me."
+                arrangement: {
+                    polite: "Subject: Work Arrangement Continuity\n\nHi [Manager],\n\nI’m writing to discuss continuing our established remote arrangement. It has consistently allowed me to deliver reliable results and maintain seamless communication. Maintaining this rhythm will ensure I can continue supporting the team efficiently.",
+                    firm: "Subject: Adherence to Established Setup\n\nHi [Manager],\n\nMy productivity relies on the pre-established remote setup we agreed upon. Altering this arrangement now would disrupt my workflow and output. I intend to maintain our current successful rhythm.",
+                    passive: "Subject: Re: Changing what works\n\nHi [Manager],\n\nI was under the impression we cared about 'what works'. Since my current setup has delivered 100% of my KPIs, I assume we aren't trying to fix what isn't broken just for the sake of optics."
                 },
-                productivity: {
-                    polite: "Subject: maximizing my output\n\nHi [Manager Name],\n\nI've analyzed my productivity metrics and found I deliver 20% more code/work when working from home due to the quiet environment. I would like to prioritize project delivery over physical presence.",
-                    firm: "Subject: Work Environment\n\nHi [Manager Name],\n\nThe office environment is too distracting for the deep work my role requires. To meet our Q4 targets, I need to work from home where I can focus without interruptions.",
-                    passive: "Subject: Commute vs Work\n\nHi [Manager Name],\n\nI can spend 2 hours driving to the office to sit on Zoom calls with noise-canceling headphones, or I can spend those 2 hours actually working. Let me know which one you prefer for the project timeline."
+                goals: {
+                    polite: "Subject: Aligning with Objectives\n\nHi [Manager],\n\nTo ensure I fully meet our Q4 organizational goals, I need an environment that supports digital-first outcomes. Remote work is the most effective model for my role's requirements.",
+                    firm: "Subject: Operational Efficiency\n\nHi [Manager],\n\nRTO does not contribute to my specific position's goals. My work is digital and outcome-based. To maintain the accuracy and timeliness you expect, I need to remain remote.",
+                    passive: "Subject: Goals vs Location\n\nHi [Manager],\n\nIf the goal is to hit targets, I stay home. If the goal is to warm a seat while missing deadlines due to office distractions, let me know. I'd hate to misalign with 'company priorities'."
+                },
+                efficiency: {
+                    polite: "Subject: Discussion regarding work arrangement\n\nHi [Manager],\n\nWith current inflation, the costs of commuting (3-4 hours daily + gas) act as a significant strain. I request to remain remote to reinvest that time/money into high-quality work output.",
+                    firm: "Subject: Cost of Work\n\nHi [Manager],\n\nGiven the rising costs of commuting, returning to the office is not financially viable for me at my current compensation level. I need to remain remote to maintain my output.",
+                    passive: "Subject: Commute Inflation\n\nHi [Manager],\n\nI'd love to come in, provided the company plans to adjust my salary to match the 15% inflation in gas and parking. Until then, my home office is the only 'economically sustainable' option."
+                },
+                wellbeing: {
+                    polite: "Subject: Health & Balance\n\nHi [Manager],\n\nRemote work has allowed me to manage my well-being sustainably, resulting in consistent attendance and energy. I’d like to maintain this to ensure long-term performance.",
+                    firm: "Subject: Health Requirement\n\nHi [Manager],\n\nTo manage my health effectively and avoid unnecessary burnout, I require a remote work arrangement. This is essential for maintaining my consistency.",
+                    passive: "Subject: Sick Days\n\nHi [Manager],\n\nI can come into the office and likely take 10+ sick days this winter due to stress/exposure, or I can work from home and take zero. I assume you prefer the option where the work actually gets done."
+                },
+                fairness: {
+                    polite: "Subject: Workload & Flexibility\n\nHi [Manager],\n\nGiven the current heavy workload, remote work helps me manage the pressure effectively. Continuing this flexibility would go a long way in sustaining my morale and engagement.",
+                    firm: "Subject: Compensation & Conditions\n\nHi [Manager],\n\nWith no significant compensation adjustments this year, remote flexibility is a key part of my retention. Removing it would significantly alter the fairness of my employment terms.",
+                    passive: "Subject: Non-monetary compensation\n\nHi [Manager],\n\nSince raises aren't on the table this year, I assumed retaining my remote setup was the 'non-monetary' compensation we were settling for. Was I mistaken?"
+                },
+                learning: {
+                    polite: "Subject: Professional Development\n\nHi [Manager],\n\nI currently use my commute time for professional development courses that directly benefit our team. I request to stay remote to continue this upskilling.",
+                    firm: "Subject: Value of Time\n\nHi [Manager],\n\nMy ability to keep up with industry trends depends on the time saved by not commuting. Losing this time to traffic will directly impact my value to the organization.",
+                    passive: "Subject: Traffic vs Training\n\nHi [Manager],\n\nI can spend 2 hours staring at a bumper or 2 hours learning the new analytics stack you asked for. Let me know which use of my time you value more."
+                },
+                focus: {
+                    polite: "Subject: maximizing my output\n\nHi [Manager],\n\nI've found I deliver significantly better work from home due to the quiet environment. I would like to prioritize project delivery over physical presence.",
+                    firm: "Subject: Work Environment\n\nHi [Manager],\n\nThe office environment is too distracting for the deep work my role requires. To meet our targets, I need to work from home where I can focus without interruptions.",
+                    passive: "Subject: Noise vs Work\n\nHi [Manager],\n\nI can drive to the office to put on noise-canceling headphones for 8 hours, or I can stay home and actually focus. Seems inefficient to commute just to isolate myself anyway."
+                },
+                collab: {
+                    polite: "Subject: Digital Workflow\n\nHi [Manager],\n\nOur collaboration tools (Teams/SharePoint) function best when everyone is digital. Remote work ensures structured, inclusive communication for the whole team.",
+                    firm: "Subject: Collaboration Efficiency\n\nHi [Manager],\n\nIn-person interruptions actually hinder our established digital workflows. Remote collaboration is more documented and transparent, which I intend to maintain.",
+                    passive: "Subject: 'Collaboration'\n\nHi [Manager],\n\nI didn't realize shouting over open-plan office noise was considered 'collaboration' these days. I'll stick to Teams where we can actually hear each other."
+                },
+                continuity: {
+                    polite: "Subject: Operational Resilience\n\nHi [Manager],\n\nMy home setup ensures I'm available regardless of weather or transit issues. Keeping this arrangement guarantees my reliability and business continuity.",
+                    firm: "Subject: Risk Management\n\nHi [Manager],\n\nReliance on a daily commute introduces unnecessary risks (delays, weather). A remote-first approach allows me to guarantee deliverables regardless of external conditions.",
+                    passive: "Subject: Weather warning\n\nHi [Manager],\n\nWhen the next snowstorm hits, I'll be online working. Will the office folks? Remote work seems like the only smart business continuity plan here."
+                },
+                retention: {
+                    polite: "Subject: Future at the company\n\nHi [Manager],\n\nFlexibility is a key factor in my satisfaction and loyalty here. Continuing to support remote work aligns with my long-term goals of staying engaged with the organization.",
+                    firm: "Subject: Retention Condition\n\nHi [Manager],\n\nRemote work is a non-negotiable factor for my continued employment. It demonstrates the trust and adaptability I value in an employer.",
+                    passive: "Subject: Market Conditions\n\nHi [Manager],\n\nMy LinkedIn inbox is quite active with fully remote offers. I'd prefer to stay here, provided the working conditions remain competitive with the modern market."
                 },
                 care: {
-                    polite: "Subject: Flexible Work Arrangement\n\nHi [Manager Name],\n\nI am requesting to continue working remotely to better balance my family care responsibilities. This flexibility allows me to be fully present and productive during work hours without the stress of commute logistics impacting my schedule.",
-                    firm: "Subject: Schedule Adjustment\n\nHi [Manager Name],\n\nDue to immediate family care requirements, I cannot commit to a daily commute at this time. I will continue to maintain full productivity from my home office.",
-                    passive: "Subject: RTO Logistics\n\nHi [Manager Name],\n\nUnless the office plans to open an on-site daycare/eldercare facility by Monday, my current remote setup is the only way I can ensure I'm online and working during core hours."
-                },
-                health: {
-                    polite: "Subject: Health & Safety Consideration\n\nHi [Manager Name],\n\nFor personal health reasons, I am minimizing exposure to crowded environments. Working remotely has allowed me to maintain perfect attendance and high energy levels. I would like to maintain this arrangement to ensure consistent performance.",
-                    firm: "Subject: Medical Accommodation\n\nHi [Manager Name],\n\nTo manage my health effectively and avoid unnecessary risks/stress, I require a remote work arrangement. This is essential for maintaining my long-term productivity and well-being.",
-                    passive: "Subject: Sick Days vs Remote Work\n\nHi [Manager Name],\n\nI can come into the office and likely take 10+ sick days this winter due to exposure/stress, or I can work from home and take zero. I assume you prefer the option where the work actually gets done."
+                    polite: "Subject: Flexible Work Arrangement\n\nHi [Manager],\n\nI am requesting to continue working remotely to better balance my family care responsibilities. This flexibility allows me to be fully present during work hours.",
+                    firm: "Subject: Schedule Adjustment\n\nHi [Manager],\n\nDue to immediate family care requirements, I cannot commit to a daily commute. I will continue to maintain full productivity from my home office.",
+                    passive: "Subject: Logistics\n\nHi [Manager],\n\nUnless the office plans to open an on-site daycare/eldercare facility by Monday, my current remote setup is the only way I can ensure I'm online working."
                 }
             },
             cn: {
-                cost: {
-                    polite: "主题：关于工作安排的讨论\n\n嗨 [经理名]，\n\n希望能继续保持远程工作的安排。考虑到目前的通胀水平，通勤带来的额外开支对我来说是一笔沉重的负担，这实际上等同于降薪。我相信我在家能继续保持高效产出。",
-                    firm: "主题：远程工作需求\n\n嗨 [经理名]，\n\n考虑到通勤成本的飙升，以目前的薪资水平，回到办公室对我来说在经济上是不可行的。为了维持我的生活水准和工作产出，我需要保持远程办公。",
-                    passive: "主题：关于去办公室\n\n嗨 [经理名]，\n\n我很乐意去办公室，只要公司打算调整我的薪资来覆盖上涨了15%的油费和停车费。在那之前，我家的办公室对我来说显然更具“经济可持续性”。"
+                arrangement: {
+                    polite: "主题：关于维持工作安排\n\n[经理] 您好，\n\n希望能继续保持我们既定的远程工作安排。这一模式已被证明能让我保持高效产出和顺畅沟通。维持这一节奏将确保我能继续高效支持团队。",
+                    firm: "主题：既定工作模式\n\n[经理] 您好，\n\n我的工作效率依赖于我们之前达成一致的远程设置。现在改变这一安排会破坏我的工作流。我希望能维持目前这种成功的节奏。",
+                    passive: "主题：回复：关于改变现状\n\n[经理] 您好，\n\n我以为我们在乎的是“什么管用”。既然我目前的设置已经完成了100%的KPI，我假设我们不会为了做样子而修补一个没坏的东西。"
                 },
-                productivity: {
-                    polite: "主题：关于最大化产出\n\n嗨 [经理名]，\n\n分析了我的工作数据后，我发现在家工作的安静环境让我效率提升了20%。为了项目进度，我希望优先考虑产出结果，而不是肉身在场。",
-                    firm: "主题：工作环境问题\n\n嗨 [经理名]，\n\n办公室的环境过于嘈杂，无法进行我目前职位所需的深度工作。为了达成Q4目标，我需要在没有干扰的家里工作。",
-                    passive: "主题：通勤还是工作\n\n嗨 [经理名]，\n\n我可以花2小时开车去办公室戴着降噪耳机开Zoom会议，或者我可以把这2小时用来实际工作。关于项目进度，请告诉我你更倾向于哪种选择。"
+                goals: {
+                    polite: "主题：关于对齐组织目标\n\n[经理] 您好，\n\n为了确保全额完成Q4目标，我需要一个支持数字化产出的环境。远程工作是目前最符合我岗位要求的模式。",
+                    firm: "主题：运营效率\n\n[经理] 您好，\n\nRTO 对达成我的岗位目标没有帮助。我的工作是结果导向的。为了保持您期望的准确性和及时性，我需要保持远程。",
+                    passive: "主题：目标还是地点\n\n[经理] 您好，\n\n如果目标是达成业绩，我在家。如果目标是去暖座位同时因为办公室干扰而错过截止日期，请告诉我。我不想“在此地无银三百两”。"
+                },
+                efficiency: {
+                    polite: "主题：关于工作安排的讨论\n\n[经理] 您好，\n\n考虑到通胀，每天3-4小时的通勤加上油费对我来说负担很重。我申请保持远程，以便将这些时间和金钱重新投入到高质量的工作产出中。",
+                    firm: "主题：工作成本\n\n[经理] 您好，\n\n考虑到飙升的通勤成本，以目前的薪资回到办公室在经济上不可行。我需要保持远程以维持产出。",
+                    passive: "主题：通勤通胀\n\n[经理] 您好，\n\n我很乐意来，只要公司打算调整薪资来覆盖上涨了15%的油费。在那之前，我家办公室是唯一“经济可持续”的选项。"
+                },
+                wellbeing: {
+                    polite: "主题：健康与平衡\n\n[经理] 您好，\n\n远程工作让我能可持续地管理身心健康，从而保持了稳定的出勤率和精力。希望维持这一安排以确保长期绩效。",
+                    firm: "主题：健康需求\n\n[经理] 您好，\n\n为了有效管理健康并避免职业倦怠，我需要远程工作安排。这对维持我的稳定性至关重要。",
+                    passive: "主题：病假\n\n[经理] 您好，\n\n我可以来办公室，然后因为压力/病毒在这个冬天请10天病假；或者我在家工作，零缺勤。我假设您更倾向于工作能实际完成的那个选项。"
+                },
+                fairness: {
+                    polite: "主题：工作量与灵活性\n\n[经理] 您好，\n\n鉴于目前繁重的工作量，远程工作帮我有效缓解了压力。继续这种灵活性将对维持我的士气和投入度大有帮助。",
+                    firm: "主题：薪酬与条件\n\n[经理] 您好，\n\n今年没有显著的薪资调整，远程灵活性是我留任的关键。取消它将严重改变我的雇佣公平性。",
+                    passive: "主题：非金钱补偿\n\n[经理] 您好，\n\n既然今年不涨薪，我以为保留远程办公是我们达成的“非金钱”补偿。难道我理解错了？"
+                },
+                learning: {
+                    polite: "主题：职业发展\n\n[经理] 您好，\n\n我目前利用通勤时间学习对团队有益的专业课程。我申请保持远程以继续这种技能提升。",
+                    firm: "主题：时间的价值\n\n[经理] 您好，\n\n我紧跟行业趋势的能力取决于不通勤省下的时间。把时间浪费在堵车上将直接影响我对公司的价值。",
+                    passive: "主题：堵车还是培训\n\n[经理] 您好，\n\n我可以花2小时盯着前车的保险杠，或者花2小时学习新的分析技术。请告诉我您觉得哪种时间利用方式更有价值。"
+                },
+                focus: {
+                    polite: "主题：最大化产出\n\n[经理] 您好，\n\n我发现在家安静的环境下我的产出显著更高。我希望优先考虑项目交付，而不是肉身在场。",
+                    firm: "主题：工作环境\n\n[经理] 您好，\n\n办公室环境太嘈杂，无法进行我角色所需的深度工作。为了达标，我需要在无干扰的家中工作。",
+                    passive: "主题：噪音与工作\n\n[经理] 您好，\n\n我可以开车去办公室戴8小时降噪耳机，或者我可以直接在家专注工作。特意通勤去把自己隔离起来似乎效率很低。"
+                },
+                collab: {
+                    polite: "主题：数字化工作流\n\n[经理] 您好，\n\n我们的协作工具（Teams等）在全员数字化时效果最好。远程工作确保了团队沟通的结构化和包容性。",
+                    firm: "主题：协作效率\n\n[经理] 您好，\n\n面对面的打断实际上阻碍了我们既定的数字工作流。远程协作更透明、有记录，我打算维持这一点。",
+                    passive: "主题：所谓的“协作”\n\n[经理] 您好，\n\n我没意识到在开放式办公室的噪音中大喊大叫也叫“协作”。我还是坚持用 Teams 吧，至少能听清对方在说什么。"
+                },
+                continuity: {
+                    polite: "主题：运营弹性\n\n[经理] 您好，\n\n我的居家设置确保了无论天气或交通如何我都在线。保持这一安排能保证我的可靠性和业务连续性。",
+                    firm: "主题：风险管理\n\n[经理] 您好，\n\n依赖每日通勤引入了不必要的风险（延误、天气）。远程优先的方法让我能无视外部条件保证交付。",
+                    passive: "主题：天气预警\n\n[经理] 您好，\n\n下次暴风雪来袭时，我会在线工作。办公室的人会吗？远程工作看起来是这里唯一的业务连续性计划。"
+                },
+                retention: {
+                    polite: "主题：在公司的未来\n\n[经理] 您好，\n\n灵活性是我对公司满意度和忠诚度的关键因素。继续支持远程工作符合我与组织共同成长的长期目标。",
+                    firm: "主题：留任条件\n\n[经理] 您好，\n\n远程工作是我继续受雇的不可协商的因素。它体现了我所看重的雇主的信任和适应性。",
+                    passive: "主题：市场行情\n\n[经理] 您好，\n\n我的 LinkedIn 收件箱里塞满了全远程的 offer。我更想留在这里，前提是工作条件能保持与现代市场的竞争力。"
                 },
                 care: {
-                    polite: "主题：灵活工作申请\n\n嗨 [经理名]，\n\n我申请继续远程工作，以便更好地平衡家庭照顾责任。这种灵活性让我能在工作时间内全神贯注，而不用担心通勤物流带来的压力影响我的日程。",
-                    firm: "主题：日程调整通知\n\n嗨 [经理名]，\n\n由于紧迫的家庭照顾需求，我目前无法承诺每天通勤。我将继续在家庭办公室保持全负荷工作。",
-                    passive: "主题：关于RTO的后勤问题\n\n嗨 [经理名]，\n\n除非公司打算在周一前开设现场托儿所/养老设施，否则目前的远程设置是我能确保在核心工作时间在线工作的唯一方式。"
-                },
-                health: {
-                    polite: "主题：健康与安全考量\n\n嗨 [经理名]，\n\n出于个人健康原因，我正在尽量减少接触拥挤环境。远程工作让我保持了全勤和高精力水平。我希望维持这一安排以确保稳定的绩效。",
-                    firm: "主题：健康调整需求\n\n嗨 [经理名]，\n\n为了有效管理我的健康并避免不必要的风险/压力，我需要远程工作安排。这对于维持我长期的生产力和健康至关重要。",
-                    passive: "主题：病假 vs 远程工作\n\n嗨 [经理名]，\n\n我可以来办公室，然后因为接触病毒/压力在这个冬天请10多天病假；或者我可以在家工作，保持零缺勤。我假设你更倾向于工作能实际完成的那个选项。"
+                    polite: "主题：灵活工作申请\n\n[经理] 您好，\n\n我申请继续远程工作，以便更好地平衡家庭照顾责任。这种灵活性让我能在工作时间内全神贯注。",
+                    firm: "主题：日程调整\n\n[经理] 您好，\n\n由于紧迫的家庭照顾需求，我无法承诺每日通勤。我将继续在家庭办公室保持全负荷工作。",
+                    passive: "主题：后勤问题\n\n[经理] 您好，\n\n除非公司打算在周一前开设现场托儿所/养老设施，否则目前的远程设置是我能确保在线工作的唯一方式。"
                 }
             }
         };
