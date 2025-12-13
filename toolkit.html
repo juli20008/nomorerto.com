@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negotiation Toolkit - NoMoreRTO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate3d(0, 20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex flex-col items-center py-8 px-4 relative overflow-x-hidden">
+
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-50 via-white to-white pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-4xl flex flex-col items-center z-10 flex-grow">
+        
+        <!-- Header -->
+        <header class="w-full flex justify-between items-center mb-8">
+            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
+                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span><span class="text-gray-400 text-lg">.com</span>
+            </a>
+            <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                </svg>
+                <span id="lang-label">CN</span>
+            </button>
+        </header>
+
+        <!-- TOOLKIT CONTENT -->
+        <div class="w-full flex flex-col gap-10 animate-fade-in-up">
+            <div class="w-full mx-auto">
+                <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-black mb-4 font-medium transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
+                    <span id="tk-back">Back to Home</span>
+                </a>
+                <h1 id="tk-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900">Negotiation Toolkit</h1>
+                <p id="tk-subtitle" class="text-gray-600 text-lg md:text-xl">Arm yourself with data, arguments, and templates.</p>
+            </div>
+
+            <!-- 1. Email Generator -->
+            <div class="bg-white border-2 border-blue-100 rounded-xl shadow-lg p-6 md:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="p-2 bg-blue-600 rounded-lg text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div>
+                        <h2 id="gen-title" class="text-xl md:text-2xl font-bold text-gray-900">RTO Refusal Generator</h2>
+                        <p id="gen-desc" class="text-sm text-blue-600 font-semibold uppercase">AI-Powered / Copy & Paste</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <!-- Reason Select -->
+                    <div>
+                        <label id="lbl-reason" class="block text-sm font-medium text-gray-700 mb-1">Reason</label>
+                        <select id="sel-reason" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <option value="cost">Financial Hardship (Inflation)</option>
+                            <option value="productivity">Productivity & Focus</option>
+                            <option value="care">Child/Elder Care</option>
+                            <option value="health">Health & Safety</option>
+                        </select>
+                    </div>
+                    <!-- Tone Select -->
+                    <div>
+                        <label id="lbl-tone" class="block text-sm font-medium text-gray-700 mb-1">Tone</label>
+                        <select id="sel-tone" class="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            <option value="polite">Polite & Professional</option>
+                            <option value="firm">Firm & Direct</option>
+                            <option value="passive">Passive Aggressive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="btn-generate" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors mb-6 shadow-md flex justify-center items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span id="txt-generate">Generate Email</span>
+                </button>
+
+                <div class="relative">
+                    <textarea id="output-email" rows="8" class="font-mono text-sm w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-gray-800 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500" readonly>Select your options above and click generate...</textarea>
+                    <button id="btn-copy" class="absolute top-2 right-2 p-2 text-gray-400 hover:text-blue-600 transition-colors bg-white rounded-md border border-gray-200 hover:border-blue-500 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. The 'NO' Database -->
+            <div class="bg-white border-2 border-gray-100 rounded-xl shadow-sm p-6 md:p-8 mb-12">
+                <div class="mb-6">
+                    <h2 id="db-title" class="text-xl md:text-2xl font-bold text-gray-900">The 'No' Database</h2>
+                    <p id="db-subtitle" class="text-gray-600">Data-backed arguments to use in your next 1:1.</p>
+                </div>
+                
+                <div id="accordion-container" class="space-y-4">
+                    <!-- JS Injected Accordions -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto text-center pb-8">
+            <p id="footer-text" class="text-gray-400 text-xs uppercase tracking-widest">
+                <!-- Content injected via JS -->
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- Content & Translations ---
+        const CONTENT = {
+            en: {
+                langBtnLabel: "CN",
+                back: "Back to Home",
+                title: "Negotiation Toolkit",
+                subtitle: "Arm yourself with data, arguments, and templates.",
+                footer: "© 2024 NoMoreRTO. Built for the Resistance.",
+                generator: {
+                    title: "RTO Refusal Generator",
+                    desc: "AI-Powered / Copy & Paste",
+                    lblReason: "Reason",
+                    lblTone: "Tone",
+                    btnText: "Generate Email",
+                    reasons: [
+                        {val: 'cost', text: 'Financial Hardship'},
+                        {val: 'productivity', text: 'Productivity & Focus'},
+                        {val: 'care', text: 'Child/Elder Care'},
+                        {val: 'health', text: 'Health & Safety'}
+                    ],
+                    tones: [
+                        {val: 'polite', text: 'Polite & Professional'},
+                        {val: 'firm', text: 'Firm & Direct'},
+                        {val: 'passive', text: 'Passive Aggressive'}
+                    ]
+                },
+                database: {
+                    title: "The 'No' Database",
+                    subtitle: "Data-backed arguments to use in your next 1:1.",
+                    items: [
+                        {
+                            title: "Productivity Paradox",
+                            body: "Studies show remote workers are 13-24% more productive due to fewer interruptions and no commute fatigue. RTO forces me into a distracting environment where I accomplish less."
+                        },
+                        {
+                            title: "Real Wage Decrease",
+                            body: "With inflation at record highs, the cost of commuting (gas, parking, meals, attire) acts as a de facto 10-15% pay cut. My salary has effectively decreased by forcing RTO."
+                        },
+                        {
+                            title: "Environmental Hypocrisy",
+                            body: "The company claims to care about ESG and carbon footprints, yet forcing thousands of employees to drive daily directly contradicts these sustainability goals."
+                        }
+                    ]
+                }
+            },
+            cn: {
+                langBtnLabel: "EN",
+                back: "返回首页",
+                title: "谈判与话术工具箱",
+                subtitle: "用数据、逻辑和模板武装自己。",
+                footer: "© 2024 NoMoreRTO. 为反抗而生。",
+                generator: {
+                    title: "回怼邮件生成器",
+                    desc: "智能生成 / 复制即用",
+                    lblReason: "拒绝理由",
+                    lblTone: "语气",
+                    btnText: "生成邮件",
+                    reasons: [
+                        {val: 'cost', text: '经济压力 (穷)'},
+                        {val: 'productivity', text: '工作效率 (吵)'},
+                        {val: 'care', text: '家庭照顾 (忙)'},
+                        {val: 'health', text: '健康安全 (怕)'}
+                    ],
+                    tones: [
+                        {val: 'polite', text: '礼貌职场风'},
+                        {val: 'firm', text: '强硬直接风'},
+                        {val: 'passive', text: '阴阳怪气风'}
+                    ]
+                },
+                database: {
+                    title: "拒绝理由数据库",
+                    subtitle: "下次 1:1 面谈时可以直接甩出的数据和论点。",
+                    items: [
+                        {
+                            title: "效率悖论",
+                            body: "研究表明，由于减少了干扰和通勤疲劳，远程员工的效率高出 13-24%。强制 RTO 把我逼进一个嘈杂的环境，只会降低产出。"
+                        },
+                        {
+                            title: "变相降薪",
+                            body: "随着通胀创新高，通勤成本（油费、停车、午餐）实际上导致了 10-15% 的减薪。强制 RTO 等于让我的实际收入缩水。"
+                        },
+                        {
+                            title: "环保伪君子",
+                            body: "公司口口声声说重视 ESG 和碳排放，却强迫成千上万的员工每天开车上下班，这完全背离了可持续发展的目标。"
+                        }
+                    ]
+                }
+            }
+        };
+
+        // --- Templates ---
+        const TEMPLATES = {
+            en: {
+                cost: {
+                    polite: "Subject: Discussion regarding work arrangement\n\nHi [Manager Name],\n\nI'm writing to request a continuation of my remote work arrangement. With current inflation, the additional costs of commuting would place a significant strain on my finances, effectively acting as a pay reduction. I am confident I can continue delivering excellent results from home.",
+                    firm: "Subject: Remote Work Requirement\n\nHi [Manager Name],\n\nGiven the rising costs of commuting, returning to the office is not financially viable for me at my current compensation level. To maintain my current standard of living and work output, I need to remain remote.",
+                    passive: "Subject: Office Attendance\n\nHi [Manager Name],\n\nI'd love to come in, provided the company plans to adjust my salary to match the 15% inflation in gas and parking prices. Until then, my home office is much more 'economically sustainable' for me."
+                },
+                productivity: {
+                    polite: "Subject: maximizing my output\n\nHi [Manager Name],\n\nI've analyzed my productivity metrics and found I deliver 20% more code/work when working from home due to the quiet environment. I would like to prioritize project delivery over physical presence.",
+                    firm: "Subject: Work Environment\n\nHi [Manager Name],\n\nThe office environment is too distracting for the deep work my role requires. To meet our Q4 targets, I need to work from home where I can focus without interruptions.",
+                    passive: "Subject: Commute vs Work\n\nHi [Manager Name],\n\nI can spend 2 hours driving to the office to sit on Zoom calls with noise-canceling headphones, or I can spend those 2 hours actually working. Let me know which one you prefer for the project timeline."
+                }
+                // ... Simplified for demo, can expand indefinitely
+            },
+            cn: {
+                cost: {
+                    polite: "主题：关于工作安排的讨论\n\n嗨 [经理名]，\n\n希望能继续保持远程工作的安排。考虑到目前的通胀水平，通勤带来的额外开支对我来说是一笔沉重的负担，这实际上等同于降薪。我相信我在家能继续保持高效产出。",
+                    firm: "主题：远程工作需求\n\n嗨 [经理名]，\n\n考虑到通勤成本的飙升，以目前的薪资水平，回到办公室对我来说在经济上是不可行的。为了维持我的生活水准和工作产出，我需要保持远程办公。",
+                    passive: "主题：关于去办公室\n\n嗨 [经理名]，\n\n我很乐意去办公室，只要公司打算调整我的薪资来覆盖上涨了15%的油费和停车费。在那之前，我家的办公室对我来说显然更具“经济可持续性”。"
+                },
+                productivity: {
+                    polite: "主题：关于最大化产出\n\n嗨 [经理名]，\n\n分析了我的工作数据后，我发现在家工作的安静环境让我效率提升了20%。为了项目进度，我希望优先考虑产出结果，而不是肉身在场。",
+                    firm: "主题：工作环境问题\n\n嗨 [经理名]，\n\n办公室的环境过于嘈杂，无法进行我目前职位所需的深度工作。为了达成Q4目标，我需要在没有干扰的家里工作。",
+                    passive: "主题：通勤还是工作\n\n嗨 [经理名]，\n\n我可以花2小时开车去办公室戴着降噪耳机开Zoom会议，或者我可以把这2小时用来实际工作。关于项目进度，请告诉我你更倾向于哪种选择。"
+                }
+            }
+        };
+        // Fallback for missing templates
+        const FALLBACK = {
+            en: "Subject: RTO Exception Request\n\nHi [Manager],\n\nI am requesting an exemption from the RTO mandate due to personal circumstances. My output remains highest when working remotely.\n\nBest,\n[Name]",
+            cn: "主题：RTO 豁免申请\n\n[经理] 您好，\n\n由于个人原因，我申请豁免返回办公室。事实证明，我在远程办公时产出最高。\n\n祝好，\n[名字]"
+        };
+
+        // --- State ---
+        let currentLang = 'en';
+
+        // --- Logic ---
+        function render() {
+            const data = CONTENT[currentLang];
+            
+            // Labels & Static Text
+            document.getElementById('lang-label').innerText = data.langBtnLabel;
+            document.getElementById('footer-text').innerText = data.footer;
+            document.getElementById('tk-back').innerText = data.back;
+            document.getElementById('tk-title').innerText = data.title;
+            document.getElementById('tk-subtitle').innerText = data.subtitle;
+
+            // Generator UI
+            document.getElementById('gen-title').innerText = data.generator.title;
+            document.getElementById('gen-desc').innerText = data.generator.desc;
+            document.getElementById('lbl-reason').innerText = data.generator.lblReason;
+            document.getElementById('lbl-tone').innerText = data.generator.lblTone;
+            document.getElementById('txt-generate').innerText = data.generator.btnText;
+
+            // Populate Select Options
+            const reasonSel = document.getElementById('sel-reason');
+            const toneSel = document.getElementById('sel-tone');
+            
+            // Save current selection to restore after re-render
+            const currReason = reasonSel.value;
+            const currTone = toneSel.value;
+
+            reasonSel.innerHTML = '';
+            data.generator.reasons.forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r.val;
+                opt.innerText = r.text;
+                reasonSel.appendChild(opt);
+            });
+            if(currReason) reasonSel.value = currReason;
+
+            toneSel.innerHTML = '';
+            data.generator.tones.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.val;
+                opt.innerText = t.text;
+                toneSel.appendChild(opt);
+            });
+            if(currTone) toneSel.value = currTone;
+
+            // Database UI
+            document.getElementById('db-title').innerText = data.database.title;
+            document.getElementById('db-subtitle').innerText = data.database.subtitle;
+
+            // Render Accordions
+            const accContainer = document.getElementById('accordion-container');
+            accContainer.innerHTML = '';
+            data.database.items.forEach(item => {
+                const html = `
+                    <div class="border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="bg-gray-50 px-4 py-3 font-semibold text-gray-800 cursor-pointer hover:bg-gray-100 transition-colors flex justify-between items-center group" onclick="toggleAccordion(this)">
+                            <span>${item.title}</span>
+                            <svg class="w-4 h-4 text-gray-400 transform group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="p-4 bg-white text-gray-600 text-sm hidden">
+                            ${item.body}
+                        </div>
+                    </div>
+                `;
+                accContainer.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        // --- Functions ---
+        function toggleAccordion(header) {
+            const body = header.nextElementSibling;
+            body.classList.toggle('hidden');
+        }
+
+        function generateEmail() {
+            const reason = document.getElementById('sel-reason').value;
+            const tone = document.getElementById('sel-tone').value;
+            
+            let text = "";
+            try {
+                text = TEMPLATES[currentLang][reason][tone];
+            } catch(e) {
+                // If specific combo missing, use fallback or generic
+                text = FALLBACK[currentLang];
+            }
+            if(!text) text = FALLBACK[currentLang];
+
+            const output = document.getElementById('output-email');
+            output.value = text;
+        }
+
+        // --- Events ---
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'cn' : 'en';
+            render();
+            // Re-generate email if there's text in the box to switch language
+            const output = document.getElementById('output-email');
+            if (output.value && !output.value.startsWith("Select")) {
+                generateEmail();
+            }
+        });
+
+        document.getElementById('btn-generate').addEventListener('click', generateEmail);
+
+        document.getElementById('btn-copy').addEventListener('click', () => {
+            const output = document.getElementById('output-email');
+            output.select();
+            document.execCommand('copy');
+            // Visual feedback
+            const originalColor = document.getElementById('btn-copy').innerHTML;
+            document.getElementById('btn-copy').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+            setTimeout(() => {
+                 document.getElementById('btn-copy').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>`;
+            }, 1500);
+        });
+
+        // --- Init ---
+        render();
+
+    </script>
+</body>
+</html>
