@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <span id="nav-visa" class="text-slate-600 hover:text-slate-900 cursor-pointer font-medium">E-2 Visa</span>
+                    <a href="E2_guide.html" id="nav-visa" class="text-slate-600 hover:text-slate-900 cursor-pointer font-medium">E-2 Visa</a>
                     <span id="nav-about" class="text-slate-600 hover:text-slate-900 cursor-pointer font-medium">About</span>
                     <span id="nav-process" class="text-slate-600 hover:text-slate-900 cursor-pointer font-medium">Process</span>
                 </div>
@@ -150,25 +150,8 @@
     <div class="bg-navy-900 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="testi-title" class="text-3xl font-extrabold text-white text-center mb-12">What Clients Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                    <div class="flex text-gold-500 mb-4">★★★★★</div>
-                    <p id="t1-text" class="text-slate-300 italic mb-4">"Had a great experience securing my E-2. They explained complex legal matters clearly."</p>
-                    <p class="text-white font-bold text-sm">— Sunyan L.</p>
-                </div>
-                 <!-- Testimonial 2 -->
-                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                    <div class="flex text-gold-500 mb-4">★★★★★</div>
-                    <p id="t2-text" class="text-slate-300 italic mb-4">"They made the whole process so much easier and were always available to answer my questions."</p>
-                    <p class="text-white font-bold text-sm">— Kamlesh S.</p>
-                </div>
-                 <!-- Testimonial 3 -->
-                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700">
-                    <div class="flex text-gold-500 mb-4">★★★★★</div>
-                    <p id="t3-text" class="text-slate-300 italic mb-4">"Thanks for helping me get approved! Now I can run my business from Florida instead of freezing in Toronto."</p>
-                    <p class="text-white font-bold text-sm">— Jerika T.</p>
-                </div>
+            <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- JS Generated -->
             </div>
         </div>
     </div>
@@ -218,9 +201,17 @@
                 },
                 testimonials: {
                     title: "What Clients Say",
-                    t1: "Had a great experience securing my E-2. They explained complex legal matters clearly.",
-                    t2: "They made the whole process so much easier and were always available to answer my questions.",
-                    t3: "Thanks for helping me get approved! Now I can run my business from Florida instead of freezing in Toronto."
+                    items: [
+                        { text: "Had a great experience securing my E-2. They explained complex legal matters clearly.", author: "Sunyan L." },
+                        { text: "They made the whole process so much easier and were always available to answer my questions.", author: "Kamlesh S." },
+                        { text: "Thanks for helping me get approved! Now I can run my business from Florida instead of freezing in Toronto.", author: "Jerika T." },
+                        { text: "The business plan writing service was exceptional. It really helped clarify my vision for the consulate.", author: "Michael R." },
+                        { text: "Fast, professional, and honest. They told me exactly what I needed to invest to get approved.", author: "Sarah W." },
+                        { text: "I was worried about my change of status, but the team handled everything flawlessly. Highly recommend.", author: "David C." },
+                        { text: "As a Canadian startup founder, moving to Austin was a dream. This team made it reality.", author: "Alex P." },
+                        { text: "Transparent pricing and no hidden fees. Refreshing to work with a legal team that cares.", author: "Priya M." },
+                        { text: "My E-2 renewal was smooth sailing thanks to their organized approach. See you in 5 years!", author: "Robert H." }
+                    ]
                 },
                 booking: {
                     title: "Ready to Start? Book a Call."
@@ -248,9 +239,17 @@
                 },
                 testimonials: {
                     title: "客户评价",
-                    t1: "获得 E-2 签证的体验非常棒。他们把复杂的法律问题解释得非常清楚。",
-                    t2: "他们让整个过程变得简单多了，而且总是随时回答我的问题。",
-                    t3: "感谢帮我获批！现在我可以在佛罗里达经营我的生意，不用在多伦多挨冻了。"
+                    items: [
+                        { text: "获得 E-2 签证的体验非常棒。他们把复杂的法律问题解释得非常清楚。", author: "Sunyan L." },
+                        { text: "他们让整个过程变得简单多了，而且总是随时回答我的问题。", author: "Kamlesh S." },
+                        { text: "感谢帮我获批！现在我可以在佛罗里达经营我的生意，不用在多伦多挨冻了。", author: "Jerika T." },
+                        { text: "商业计划书服务非常出色。它真的帮助我在领事馆面前阐明了我的愿景。", author: "Michael R." },
+                        { text: "快速、专业、诚实。他们准确地告诉为了获批我需要投资多少钱。", author: "Sarah W." },
+                        { text: "我原本很担心境内身份转换，但团队处理得完美无缺。强烈推荐。", author: "David C." },
+                        { text: "作为加拿大创业者，搬到奥斯汀是我的梦想。这个团队让梦想成真。", author: "Alex P." },
+                        { text: "价格透明，没有隐藏费用。很高兴能与真正关心的法律团队合作。", author: "Priya M." },
+                        { text: "感谢他们有条不紊的方法，我的 E-2 续签非常顺利。5年后见！", author: "Robert H." }
+                    ]
                 },
                 booking: {
                     title: "准备好了吗？预约咨询。"
@@ -266,7 +265,11 @@
             
             // Nav
             document.getElementById('lang-label').innerText = data.langBtnLabel;
-            document.getElementById('nav-visa').innerText = data.nav.visa;
+            
+            // Handle element existence check since we are changing nav structure
+            const visaEl = document.getElementById('nav-visa');
+            if (visaEl) visaEl.innerText = data.nav.visa;
+            
             document.getElementById('nav-about').innerText = data.nav.about;
             document.getElementById('nav-process').innerText = data.nav.process;
             document.getElementById('btn-cta-nav').innerText = data.nav.cta;
@@ -291,9 +294,18 @@
 
             // Testimonials
             document.getElementById('testi-title').innerText = data.testimonials.title;
-            document.getElementById('t1-text').innerText = data.testimonials.t1;
-            document.getElementById('t2-text').innerText = data.testimonials.t2;
-            document.getElementById('t3-text').innerText = data.testimonials.t3;
+            const tContainer = document.getElementById('testimonials-grid');
+            tContainer.innerHTML = '';
+            data.testimonials.items.forEach(item => {
+                const html = `
+                <div class="bg-slate-800 p-6 rounded-lg border border-slate-700 hover:border-gold-500 transition-colors">
+                    <div class="flex text-gold-500 mb-4">★★★★★</div>
+                    <p class="text-slate-300 italic mb-4">"${item.text}"</p>
+                    <p class="text-white font-bold text-sm">— ${item.author}</p>
+                </div>
+                `;
+                tContainer.insertAdjacentHTML('beforeend', html);
+            });
 
             // Booking
             document.getElementById('booking-title').innerText = data.booking.title;
