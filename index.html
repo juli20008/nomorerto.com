@@ -47,7 +47,7 @@
         
         <!-- Header -->
         <header class="w-full flex justify-between items-center mb-12">
-            <a href="#" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
+            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
                 <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span><span class="text-gray-400 text-lg">.com</span>
             </a>
             <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
@@ -59,8 +59,8 @@
             </button>
         </header>
 
-        <!-- VIEW: HOME -->
-        <div id="view-home" class="w-full flex flex-col items-center transition-opacity duration-300">
+        <!-- HOME CONTENT -->
+        <div class="w-full flex flex-col items-center transition-opacity duration-300">
             <div class="text-center mb-12 animate-fade-in-up max-w-2xl">
                 <h1 id="hero-headline" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
                     <!-- Content injected via JS -->
@@ -133,107 +133,6 @@
             </div>
         </div>
 
-        <!-- VIEW: BLACKLIST -->
-        <div id="view-blacklist" class="hidden w-full flex flex-col gap-8 animate-fade-in-up">
-            <div class="w-full">
-                <a href="#" class="inline-flex items-center text-gray-500 hover:text-black mb-6 font-medium transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
-                    <span id="bl-back">Back to Home</span>
-                </a>
-                <h1 id="bl-title" class="text-4xl font-extrabold tracking-tight mb-2">Company Watchlist (Canada)</h1>
-                <p id="bl-subtitle" class="text-gray-600 text-lg">Tracking RTO mandates across major employers (>5000 employees).</p>
-            </div>
-
-            <!-- The Blacklist -->
-            <div class="bg-red-50 border border-red-100 rounded-xl overflow-hidden">
-                <div class="bg-red-600 p-4 text-white flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                    <h2 id="bl-section-bad" class="text-xl font-bold">The Blacklist (Strict RTO)</h2>
-                </div>
-                <div class="p-6">
-                    <ul class="space-y-4">
-                        <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-red-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">The Big 5 Banks (RBC, TD, BMO, CIBC, Scotiabank)</span>
-                                <span class="text-sm text-gray-600">Financial Services</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-bold uppercase rounded-full w-fit">3-4 Days Mandated</div>
-                        </li>
-                         <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-red-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Bell Canada</span>
-                                <span class="text-sm text-gray-600">Telecommunications</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-bold uppercase rounded-full w-fit">Strict RTO</div>
-                        </li>
-                        <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-red-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Amazon (Canada)</span>
-                                <span class="text-sm text-gray-600">Tech / E-commerce</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-bold uppercase rounded-full w-fit">5 Days (Effective 2025)</div>
-                        </li>
-                         <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-red-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Rogers</span>
-                                <span class="text-sm text-gray-600">Telecommunications</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-bold uppercase rounded-full w-fit">3 Days Mandated</div>
-                        </li>
-                         <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-red-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Google (Waterloo/Toronto)</span>
-                                <span class="text-sm text-gray-600">Tech</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-red-100 text-red-800 text-xs font-bold uppercase rounded-full w-fit">3 Days Mandated</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- The Whitelist -->
-            <div class="bg-emerald-50 border border-emerald-100 rounded-xl overflow-hidden mb-12">
-                <div class="bg-emerald-600 p-4 text-white flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    <h2 id="bl-section-good" class="text-xl font-bold">The Whitelist (Flexible/Remote)</h2>
-                </div>
-                <div class="p-6">
-                    <ul class="space-y-4">
-                        <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-emerald-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Shopify</span>
-                                <span class="text-sm text-gray-600">Tech</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase rounded-full w-fit">Digital by Design</div>
-                        </li>
-                        <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-emerald-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Telus</span>
-                                <span class="text-sm text-gray-600">Telecommunications</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase rounded-full w-fit">Historically Flexible</div>
-                        </li>
-                        <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-emerald-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Mozilla</span>
-                                <span class="text-sm text-gray-600">Tech</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase rounded-full w-fit">Remote First</div>
-                        </li>
-                         <li class="flex flex-col md:flex-row md:items-center justify-between border-b border-emerald-100 pb-3 last:border-0 last:pb-0">
-                            <div>
-                                <span class="font-bold text-gray-900 block text-lg">Pinterest (Canada)</span>
-                                <span class="text-sm text-gray-600">Tech</span>
-                            </div>
-                            <div class="mt-2 md:mt-0 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase rounded-full w-fit">PinFlex (Flexible)</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-             <p class="text-xs text-gray-400 text-center">*Disclaimer: Policies change rapidly. Verify with recruiters.</p>
-        </div>
-
-
         <!-- Footer -->
         <footer class="mt-16 text-center">
             <p id="footer-text" class="text-gray-400 text-xs uppercase tracking-widest">
@@ -275,7 +174,7 @@
                     {
                         title: "Company Black & White List",
                         subtitle: "Expose toxic RTO mandates. Find remote heroes.",
-                        link: "#blacklist",
+                        link: "blacklist.html",
                         theme: "red",
                         target: "_self"
                     },
@@ -300,14 +199,7 @@
                         theme: "gold",
                         target: "_self"
                     }
-                ],
-                blacklist: {
-                    back: "Back to Home",
-                    title: "Company Watchlist (Canada)",
-                    subtitle: "Tracking RTO mandates across major employers (>5000 employees).",
-                    badSection: "The Blacklist (Strict RTO)",
-                    goodSection: "The Whitelist (Flexible/Remote)"
-                }
+                ]
             },
             cn: {
                 headline: '<span class="text-red-600">RTO</span><span class="text-gray-900"> 就是偷窃。</span>',
@@ -338,7 +230,7 @@
                     {
                         title: "企业红黑榜 (吃瓜/避雷)",
                         subtitle: "曝光强制返岗的恶心公司，寻找神仙雇主。",
-                        link: "#blacklist",
+                        link: "blacklist.html",
                         theme: "red",
                         target: "_self"
                     },
@@ -363,14 +255,7 @@
                         theme: "gold",
                         target: "_self"
                     }
-                ],
-                blacklist: {
-                    back: "返回首页",
-                    title: "企业红黑榜 (加拿大)",
-                    subtitle: "各大主要雇主 RTO 政策追踪 (>5000人规模)。",
-                    badSection: "黑榜 (强制 RTO)",
-                    goodSection: "红榜 (灵活/远程)"
-                }
+                ]
             }
         };
 
@@ -420,22 +305,6 @@
 
         // --- State Management ---
         let currentLang = 'en';
-
-        // --- Router Logic ---
-        function handleHash() {
-            const hash = window.location.hash;
-            const homeView = document.getElementById('view-home');
-            const blView = document.getElementById('view-blacklist');
-
-            if (hash === '#blacklist') {
-                homeView.classList.add('hidden');
-                blView.classList.remove('hidden');
-                window.scrollTo(0,0);
-            } else {
-                homeView.classList.remove('hidden');
-                blView.classList.add('hidden');
-            }
-        }
 
         // --- Render Functions ---
         function render() {
@@ -505,13 +374,6 @@
                 `;
                 container.insertAdjacentHTML('beforeend', cardHTML);
             });
-
-            // --- Blacklist View ---
-            document.getElementById('bl-back').innerText = data.blacklist.back;
-            document.getElementById('bl-title').innerText = data.blacklist.title;
-            document.getElementById('bl-subtitle').innerText = data.blacklist.subtitle;
-            document.getElementById('bl-section-bad').innerText = data.blacklist.badSection;
-            document.getElementById('bl-section-good').innerText = data.blacklist.goodSection;
         }
 
         // --- Event Listeners ---
@@ -519,10 +381,6 @@
             currentLang = currentLang === 'en' ? 'cn' : 'en';
             render();
         });
-
-        // Router Listeners
-        window.addEventListener('hashchange', handleHash);
-        window.addEventListener('load', handleHash);
 
         // --- Initial Render ---
         render();

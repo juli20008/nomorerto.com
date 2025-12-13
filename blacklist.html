@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Watchlist - NoMoreRTO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate3d(0, 20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        /* Custom scrollbar for lists if they get too long */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex flex-col items-center py-8 px-4 relative overflow-x-hidden">
+
+    <!-- Background Gradient Effect -->
+    <div class="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-50 via-white to-white pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-6xl flex flex-col items-center z-10 flex-grow">
+        
+        <!-- Header -->
+        <header class="w-full flex justify-between items-center mb-8 max-w-4xl">
+            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
+                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span><span class="text-gray-400 text-lg">.com</span>
+            </a>
+            <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                </svg>
+                <span id="lang-label">CN</span>
+            </button>
+        </header>
+
+        <!-- BLACKLIST CONTENT -->
+        <div id="view-blacklist" class="w-full flex flex-col gap-6 animate-fade-in-up">
+            <div class="w-full max-w-4xl mx-auto">
+                <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-black mb-4 font-medium transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
+                    <span id="bl-back">Back to Home</span>
+                </a>
+                <h1 id="bl-title" class="text-3xl md:text-4xl font-extrabold tracking-tight mb-2">Company Watchlist (Canada)</h1>
+                <p id="bl-subtitle" class="text-gray-600 text-lg">Tracking RTO mandates across major employers (>5000 employees).</p>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                
+                <!-- BAD LIST -->
+                <div class="bg-white border border-red-200 rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
+                    <div class="bg-red-50 p-4 border-b border-red-100 flex items-center gap-3 sticky top-0 z-10">
+                        <div class="p-2 bg-red-600 rounded-lg text-white shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                        </div>
+                        <div>
+                            <h2 id="bl-section-bad" class="text-xl font-bold text-gray-900">The Blacklist</h2>
+                            <p id="bl-desc-bad" class="text-xs text-red-600 font-semibold uppercase tracking-wider">Strict RTO / Mandates</p>
+                        </div>
+                    </div>
+                    <div class="p-0 flex-grow bg-red-50/10">
+                        <ul id="list-bad" class="divide-y divide-red-100/50">
+                            <!-- JS Generated -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- GOOD LIST -->
+                <div class="bg-white border border-emerald-200 rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
+                    <div class="bg-emerald-50 p-4 border-b border-emerald-100 flex items-center gap-3 sticky top-0 z-10">
+                        <div class="p-2 bg-emerald-600 rounded-lg text-white shadow-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div>
+                            <h2 id="bl-section-good" class="text-xl font-bold text-gray-900">The Whitelist</h2>
+                            <p id="bl-desc-good" class="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Flexible / Remote First</p>
+                        </div>
+                    </div>
+                    <div class="p-0 flex-grow bg-emerald-50/10">
+                        <ul id="list-good" class="divide-y divide-emerald-100/50">
+                            <!-- JS Generated -->
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+             <p class="text-xs text-gray-400 text-center mt-8 max-w-2xl mx-auto pb-8">*Disclaimer: Policies change rapidly. Data aggregated from blind, glassdoor, and news reports. Verify with recruiters.</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-auto text-center pb-8">
+            <p id="footer-text" class="text-gray-400 text-xs uppercase tracking-widest">
+                <!-- Content injected via JS -->
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- Company Data (Ontario/Canada Focus) ---
+        const COMPANIES = {
+            bad: [
+                { name: "RBC (Royal Bank)", industry: "Finance", status: { en: "3-4 Days", cn: "强制 3-4 天" } },
+                { name: "TD Bank", industry: "Finance", status: { en: "3 Days Strict", cn: "强制 3 天" } },
+                { name: "CIBC", industry: "Finance", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "BMO", industry: "Finance", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "Scotiabank", industry: "Finance", status: { en: "3-4 Days", cn: "强制 3-4 天" } },
+                { name: "Bell Canada", industry: "Telco", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "Rogers", industry: "Telco", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "Amazon Canada", industry: "Tech", status: { en: "5 Days (2025)", cn: "明年起 5 天" } },
+                { name: "Gov of Canada (Federal)", industry: "Gov", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "Ontario Public Service", industry: "Gov", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "City of Toronto", industry: "Gov", status: { en: "Hybrid Strict", cn: "强制混合" } },
+                { name: "Loblaw / Shoppers", industry: "Retail", status: { en: "3-4 Days", cn: "强制 3-4 天" } },
+                { name: "Canadian Tire", industry: "Retail", status: { en: "Hybrid Strict", cn: "强制混合" } },
+                { name: "Google Canada", industry: "Tech", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "IBM Canada", industry: "Tech", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "General Motors", industry: "Auto", status: { en: "3 Days", cn: "强制 3 天" } },
+                { name: "Ford Canada", industry: "Auto", status: { en: "Hybrid Strict", cn: "强制混合" } },
+                { name: "Sun Life", industry: "Insurance", status: { en: "Hybrid Strict", cn: "强制混合" } },
+                { name: "OpenText", industry: "Tech", status: { en: "Hybrid Strict", cn: "强制混合" } },
+                { name: "TTC", industry: "Transport", status: { en: "Full Time", cn: "全员坐班" } },
+            ],
+            good: [
+                { name: "Shopify", industry: "Tech", status: { en: "Digital by Design", cn: "全面远程" } },
+                { name: "Telus", industry: "Telco", status: { en: "Flexible / Remote", cn: "灵活/远程" } },
+                { name: "Mozilla", industry: "Tech", status: { en: "Remote First", cn: "远程优先" } },
+                { name: "Wealthsimple", industry: "Fintech", status: { en: "Remote First", cn: "远程优先" } },
+                { name: "Pinterest Canada", industry: "Tech", status: { en: "PinFlex", cn: "灵活办公" } },
+                { name: "1Password", industry: "Tech", status: { en: "Remote First", cn: "远程优先" } },
+                { name: "Intuit Canada", industry: "Tech", status: { en: "Flexible", cn: "灵活办公" } },
+                { name: "Square / Block", industry: "Fintech", status: { en: "Flexible", cn: "灵活办公" } },
+                { name: "Reddit", industry: "Tech", status: { en: "Flexible", cn: "灵活办公" } },
+                { name: "Dropbox", industry: "Tech", status: { en: "Virtual First", cn: "虚拟优先" } },
+                { name: "Airbnb", industry: "Tech", status: { en: "Live & Work", cn: "随地办公" } },
+                { name: "Atlassian", industry: "Tech", status: { en: "Team Anywhere", cn: "随地办公" } },
+                { name: "Slack / Salesforce", industry: "Tech", status: { en: "Team Agile", cn: "团队决定" } },
+                { name: "Hootsuite", industry: "Tech", status: { en: "Remote Options", cn: "可选远程" } },
+                { name: "Thomson Reuters", industry: "Media", status: { en: "Flex Options", cn: "可选灵活" } },
+                { name: "FreshBooks", industry: "Tech", status: { en: "Remote Friendly", cn: "远程友好" } },
+                { name: "Zapier", industry: "Tech", status: { en: "100% Remote", cn: "100% 远程" } },
+                { name: "GitLab", industry: "Tech", status: { en: "100% Remote", cn: "100% 远程" } },
+                { name: "Elastic", industry: "Tech", status: { en: "Distributed", cn: "分布式办公" } },
+                { name: "Automattic", industry: "Tech", status: { en: "Distributed", cn: "分布式办公" } },
+            ]
+        };
+
+        // --- Data Configuration ---
+        const CONTENT = {
+            en: {
+                langBtnLabel: "CN",
+                footer: "© 2024 NoMoreRTO. Built for the Resistance.",
+                blacklist: {
+                    back: "Back to Home",
+                    title: "Company Watchlist (Canada)",
+                    subtitle: "Tracking RTO mandates across major employers (>5000 employees).",
+                    badSection: "The Blacklist",
+                    badDesc: "Strict RTO / Mandates",
+                    goodSection: "The Whitelist",
+                    goodDesc: "Flexible / Remote First"
+                }
+            },
+            cn: {
+                langBtnLabel: "EN",
+                footer: "© 2024 NoMoreRTO. 为反抗而生。",
+                blacklist: {
+                    back: "返回首页",
+                    title: "企业红黑榜 (加拿大)",
+                    subtitle: "各大主要雇主 RTO 政策追踪 (>5000人规模)。",
+                    badSection: "黑榜 (避雷)",
+                    badDesc: "强制返岗 / 高压管理",
+                    goodSection: "红榜 (神仙)",
+                    goodDesc: "灵活办公 / 远程优先"
+                }
+            }
+        };
+
+        // --- State Management ---
+        let currentLang = 'en';
+
+        // --- Render Functions ---
+        function render() {
+            const data = CONTENT[currentLang];
+            
+            // Update Header & Footer
+            document.getElementById('lang-label').innerText = data.langBtnLabel;
+            document.getElementById('footer-text').innerText = data.footer;
+
+            // --- Blacklist View Strings ---
+            document.getElementById('bl-back').innerText = data.blacklist.back;
+            document.getElementById('bl-title').innerText = data.blacklist.title;
+            document.getElementById('bl-subtitle').innerText = data.blacklist.subtitle;
+            document.getElementById('bl-section-bad').innerText = data.blacklist.badSection;
+            document.getElementById('bl-desc-bad').innerText = data.blacklist.badDesc;
+            document.getElementById('bl-section-good').innerText = data.blacklist.goodSection;
+            document.getElementById('bl-desc-good').innerText = data.blacklist.goodDesc;
+
+            // --- Render Lists ---
+            renderList('list-bad', COMPANIES.bad, 'bg-red-100 text-red-800');
+            renderList('list-good', COMPANIES.good, 'bg-emerald-100 text-emerald-800');
+        }
+
+        function renderList(elementId, companyList, badgeClass) {
+            const container = document.getElementById(elementId);
+            container.innerHTML = ''; // Clear
+
+            companyList.forEach(company => {
+                const statusText = company.status[currentLang];
+                const html = `
+                    <li class="px-5 py-3 hover:bg-white/50 transition-colors flex items-center justify-between group">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-gray-800 group-hover:text-black text-sm md:text-base">${company.name}</span>
+                            <span class="text-xs text-gray-500">${company.industry}</span>
+                        </div>
+                        <div class="ml-2 px-2.5 py-1 ${badgeClass} text-[10px] md:text-xs font-bold uppercase rounded-md whitespace-nowrap">
+                            ${statusText}
+                        </div>
+                    </li>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        // --- Event Listeners ---
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'cn' : 'en';
+            render();
+        });
+
+        // --- Initial Render ---
+        render();
+
+    </script>
+</body>
+</html>
