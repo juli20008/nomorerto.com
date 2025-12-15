@@ -8,74 +8,103 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        /* Global & Typography Settings */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: #334155; 
+            line-height: 1.75;
+        }
         .font-serif { font-family: 'Merriweather', serif; }
+        
+        /* Colors */
         .bg-navy-900 { background-color: #0f172a; }
         .text-navy-900 { color: #0f172a; }
         .text-gold-500 { color: #fbbf24; }
         .bg-gold-500 { background-color: #fbbf24; }
         .border-gold-500 { border-color: #fbbf24; }
         .hover\:bg-gold-600:hover { background-color: #f59e0b; }
-        
-        /* Typography Spacing Updates */
+
+        /* Headings Spacing & Alignment */
         h2 { 
+            font-family: 'Inter', sans-serif;
             font-weight: 800; 
-            font-size: 1.875rem; 
-            margin-top: 3.5rem; 
-            margin-bottom: 1.5rem; 
+            font-size: 2rem; 
             color: #0f172a; 
-            scroll-margin-top: 120px; 
-            border-bottom: 1px solid #e2e8f0; 
+            margin-top: 4rem; 
+            margin-bottom: 1.5rem; 
             padding-bottom: 0.75rem; 
+            border-bottom: 2px solid #e2e8f0; 
+            scroll-margin-top: 140px; 
+            line-height: 1.2;
         }
-        h2:first-of-type { margin-top: 0; } /* No margin for first header */
+        h2:first-of-type { margin-top: 0; }
 
         h3 { 
             font-weight: 700; 
-            font-size: 1.25rem; 
+            font-size: 1.4rem; 
+            color: #1e293b; 
             margin-top: 2.5rem; 
             margin-bottom: 1rem; 
-            color: #1e293b; 
+            line-height: 1.3;
         }
 
         h4 { 
             font-weight: 600; 
-            font-size: 1rem; 
+            font-size: 1.125rem; 
+            color: #0f172a; 
             margin-top: 1.5rem; 
             margin-bottom: 0.75rem; 
-            color: #334155; 
+            line-height: 1.4;
         }
         
+        /* Paragraphs */
         p { 
-            margin-bottom: 1.25rem; 
-            line-height: 1.8; 
-            color: #334155; 
+            margin-bottom: 1.5rem; 
             font-size: 1.05rem;
         }
         
+        /* Lists Standard */
         ul { 
             list-style-type: disc; 
-            margin-left: 1.5rem; 
             margin-bottom: 1.5rem; 
-            color: #334155; 
-            padding-left: 1rem;
+            padding-left: 1.5rem; /* Proper indentation */
         }
-
         ol { 
             list-style-type: decimal; 
-            margin-left: 1.5rem; 
             margin-bottom: 1.5rem; 
-            color: #334155; 
-            padding-left: 1rem;
+            padding-left: 1.5rem; /* Proper indentation */
+        }
+        li { 
+            margin-bottom: 0.5rem; 
+            padding-left: 0.5rem; /* Space between bullet and text */
         }
 
-        li { 
-            margin-bottom: 0.75rem; 
-            line-height: 1.6;
+        /* Bold Text */
+        strong { 
+            color: #0f172a; 
+            font-weight: 700; 
         }
-        
-        /* Strong emphasis color */
-        strong { color: #0f172a; }
+
+        /* Custom "Takeaways" Box Styles */
+        .takeaways-box ul {
+            list-style-type: none; /* Custom markers via Tailwind */
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .takeaways-box li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+        .takeaways-box li::before {
+            content: "•";
+            color: #fbbf24; /* Gold */
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -98,39 +127,42 @@
     </nav>
 
     <!-- Header -->
-    <header class="bg-navy-900 py-16">
+    <header class="bg-navy-900 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href="E2.html" class="text-gold-500 hover:text-white font-semibold text-sm mb-4 inline-block">&larr; Back to E2 Services</a>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">The Complete Guide to the E-2 Visa in the USA</h1>
-            <p class="text-slate-300 mt-6 text-lg max-w-3xl leading-relaxed">Comprehensive requirements, strategies, and evidence checklists for global entrepreneurs.</p>
+            <a href="E2.html" class="text-gold-500 hover:text-white font-semibold text-sm mb-6 inline-flex items-center transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                Back to E2 Services
+            </a>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">The Complete Guide to the E-2 Visa</h1>
+            <p class="text-slate-300 text-lg md:text-xl max-w-3xl leading-relaxed">Comprehensive requirements, strategies, and evidence checklists for global entrepreneurs launching in the USA.</p>
         </div>
     </header>
 
     <!-- Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex flex-col lg:flex-row gap-16">
             
             <!-- Sidebar Navigation -->
             <div class="lg:w-1/4 hidden lg:block">
                 <div class="sticky top-28 bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h4 class="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider !mt-0">On This Page</h4>
+                    <h4 class="font-bold text-slate-900 mb-4 uppercase text-xs tracking-widest !mt-0 border-b pb-2">Table of Contents</h4>
                     <nav class="flex flex-col space-y-3 text-sm">
-                        <a href="#intro" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Overview</a>
-                        <a href="#checklist" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Requirements Checklist</a>
-                        <a href="#treaty" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Treaty & Nationality</a>
-                        <a href="#investment" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Substantial Investment</a>
-                        <a href="#at-risk" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">At-Risk Funds</a>
-                        <a href="#real-operating" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Real & Operating</a>
-                        <a href="#marginality" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Marginality</a>
-                        <a href="#develop" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Develop & Direct</a>
-                        <a href="#funds" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Source of Funds</a>
-                        <a href="#intent" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Intent to Depart</a>
-                        <a href="#routes" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Consular vs. USCIS</a>
-                        <a href="#employees" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">E-2 Employees</a>
-                        <a href="#family" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Family Benefits</a>
-                        <a href="#validity" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Validity & Renewals</a>
-                        <a href="#evidence" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">Evidence Checklist</a>
-                        <a href="#faq" class="text-slate-600 hover:text-gold-500 hover:underline transition-colors">FAQs</a>
+                        <a href="#intro" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Overview</a>
+                        <a href="#checklist" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Requirements Checklist</a>
+                        <a href="#treaty" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Treaty & Nationality</a>
+                        <a href="#investment" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Substantial Investment</a>
+                        <a href="#at-risk" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">At-Risk Funds</a>
+                        <a href="#real-operating" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Real & Operating</a>
+                        <a href="#marginality" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Marginality</a>
+                        <a href="#develop" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Develop & Direct</a>
+                        <a href="#funds" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Source of Funds</a>
+                        <a href="#intent" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Intent to Depart</a>
+                        <a href="#routes" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Consular vs. USCIS</a>
+                        <a href="#employees" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">E-2 Employees</a>
+                        <a href="#family" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Family Benefits</a>
+                        <a href="#validity" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Validity & Renewals</a>
+                        <a href="#evidence" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">Evidence Checklist</a>
+                        <a href="#faq" class="text-slate-600 hover:text-gold-500 hover:translate-x-1 transition-all">FAQs</a>
                     </nav>
                 </div>
             </div>
@@ -139,12 +171,12 @@
             <div class="lg:w-3/4">
                 
                 <section id="intro">
-                    <p class="text-lg leading-relaxed mb-6">The E-2 visa allows entrepreneurs from treaty countries to invest in and actively manage a U.S. business. Unlike purely passive investments, this visa is designed to encourage genuine commercial activity and job creation. The rules are grounded in U.S. treaties with other nations and covered in the Foreign Affairs Manual.</p>
-                    <p class="text-lg leading-relaxed mb-6">If approved, an E-2 visa can be renewed indefinitely as long as the enterprise continues to operate and meet the requirements. Spouses can work, children can study, and the investor has the flexibility to build and grow their business in the United States.</p>
+                    <p>The E-2 visa allows entrepreneurs from treaty countries to invest in and actively manage a U.S. business. Unlike purely passive investments, this visa is designed to encourage genuine commercial activity and job creation. The rules are grounded in U.S. treaties with other nations and covered in the Foreign Affairs Manual.</p>
+                    <p>If approved, an E-2 visa can be renewed indefinitely as long as the enterprise continues to operate and meet the requirements. Spouses can work, children can study, and the investor has the flexibility to build and grow their business in the United States.</p>
                     
-                    <div class="bg-navy-900 text-white p-8 rounded-xl my-10 shadow-lg">
+                    <div class="bg-navy-900 text-white p-8 md:p-10 rounded-xl my-10 shadow-xl takeaways-box">
                         <h3 class="text-gold-500 !mt-0 mb-6 text-xl border-b border-white/20 pb-4">Key Takeaways</h3>
-                        <ul class="text-slate-200 marker:text-gold-500 !mb-0 !ml-0">
+                        <ul>
                             <li><strong>No set minimum:</strong> Your investment must be “substantial,” judged against the cost of the business and the proportionality test.</li>
                             <li><strong>Investment must be at risk:</strong> Unsecured loans or loans secured by your personal assets count. Loans secured only by business assets do not.</li>
                             <li><strong>Business must be real & operating:</strong> Paper companies and passive investments don’t qualify.</li>
@@ -159,7 +191,7 @@
                 <section id="checklist">
                     <h2>Requirements Checklist</h2>
                     <p>To qualify for the E-2 visa, you must meet the following baseline requirements:</p>
-                    <ul>
+                    <ul class="space-y-2">
                         <li><strong>Treaty nationality:</strong> At least 50% of the business must be owned by nationals of a treaty country.</li>
                         <li><strong>Substantial investment:</strong> The investment must be large enough to ensure the success of the enterprise and pass the proportionality test.</li>
                         <li><strong>At-risk funds:</strong> Capital must be committed and subject to loss. Unsecured personal loans or loans secured by personal assets qualify; loans secured only by business assets do not.</li>
@@ -179,17 +211,20 @@
 
                     <h3>Determining the Enterprise’s Nationality</h3>
                     <p>The nationality of the business is determined by the nationality of its owners. If at least 50% of the business is owned by nationals of a single treaty country, the enterprise can qualify. Ownership can be through individuals or through entities, but in layered structures, adjudicators will look through to the natural persons who ultimately own the shares.</p>
-                    <p class="bg-slate-50 p-6 rounded-lg border-l-4 border-gold-500 italic my-6">For example, if a U.S. LLC is owned 60% by a Canadian national and 40% by a British national, the company has Canadian nationality for E-2 purposes. But if the ownership is split evenly (50/50) between two different treaty countries, the company generally cannot qualify, since no single treaty nationality has majority ownership.</p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-gold-500 italic my-8">
+                        <p class="!mb-0 text-slate-700"><strong>Example:</strong> If a U.S. LLC is owned 60% by a Canadian national and 40% by a British national, the company has Canadian nationality for E-2 purposes. But if the ownership is split evenly (50/50) between two different treaty countries, the company generally cannot qualify, since no single treaty nationality has majority ownership.</p>
+                    </div>
 
                     <h3>Special Considerations</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li><strong>Dual Nationals:</strong> Applicants who hold more than one nationality must choose which passport and nationality to use. Only the qualifying treaty nationality counts for E-2 purposes.</li>
                         <li><strong>Lawful Permanent Residents (Green Card Holders):</strong> Even if someone is a permanent resident of the U.S., their shares do not count toward the 50% treaty nationality requirement.</li>
                         <li><strong>Corporate Chains:</strong> If a company is owned by another company, officers will look at the nationality of the individuals who ultimately own the parent company shares.</li>
                     </ul>
 
                     <h3>Evidence to Prepare</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li>Passports of all owners showing treaty nationality.</li>
                         <li>Corporate documents such as articles of incorporation, bylaws, and operating agreements.</li>
                         <li>Ownership charts or cap tables showing percentage breakdowns.</li>
@@ -204,21 +239,25 @@
 
                     <h3>The Proportionality Test</h3>
                     <p>Adjudicators compare two numbers:</p>
-                    <ol>
+                    <ol class="space-y-2">
                         <li>The amount you have already invested or irrevocably committed to the U.S. enterprise, and</li>
                         <li>The total cost of purchasing or creating the type of business you are pursuing.</li>
                     </ol>
                     <p>The closer your investment is to 100% of the required start-up costs, the stronger the case. For low-cost businesses, nearly all of the needed capital should be committed before applying. For high-cost businesses, a smaller percentage may be acceptable if the dollar figure is still significant.</p>
 
                     <h3>Examples</h3>
-                    <ul>
-                        <li><strong>Small café:</strong> If a coffee shop requires $120,000 to start, and you have already invested $110,000, you’ve committed over 90% of the necessary funds. This would likely be considered substantial.</li>
-                        <li><strong>Tech manufacturing facility:</strong> If a specialized plant requires $5 million in equipment and buildout, a $1.5 million investment may qualify. While only 30% of the total, it’s still a very significant sum in absolute terms.</li>
+                    <ul class="space-y-4 mt-6">
+                        <li class="bg-gray-50 p-4 rounded border border-gray-100">
+                            <strong>Small café:</strong> If a coffee shop requires $120,000 to start, and you have already invested $110,000, you’ve committed over 90% of the necessary funds. This would likely be considered substantial.
+                        </li>
+                        <li class="bg-gray-50 p-4 rounded border border-gray-100">
+                            <strong>Tech manufacturing facility:</strong> If a specialized plant requires $5 million in equipment and buildout, a $1.5 million investment may qualify. While only 30% of the total, it’s still a very significant sum in absolute terms.
+                        </li>
                     </ul>
 
                     <h3>Funds Must Be Irrevocably Committed</h3>
                     <p>It is not enough to show that you have the funds—you must show they are at risk and committed to the business. This means:</p>
-                    <ul>
+                    <ul class="space-y-2">
                         <li>Payments already made for fees, equipment, buildout, inventory, etc.</li>
                         <li>Lease agreements signed and deposits paid.</li>
                         <li>Contracts with vendors or franchise agreements.</li>
@@ -231,7 +270,7 @@
 
                     <h3>Loans and Financing</h3>
                     <p>Loans can be part of your investment, but not all loans qualify. The key issue is who bears the risk if the business fails.</p>
-                    <ul>
+                    <ul class="space-y-3">
                         <li><strong>Unsecured loans:</strong> Count as investment funds, since the investor is personally liable if the business fails.</li>
                         <li><strong>Loans secured by personal assets:</strong> (e.g., a mortgage on your home) Count, since you personally stand to lose assets unrelated to the E-2 business.</li>
                         <li><strong>Loans secured by the E-2 business's assets:</strong> (e.g., the business’s own equipment or inventory) Do not count, since the risk falls on the lender, not the investor.</li>
@@ -247,7 +286,7 @@
 
                     <h3>What Counts as Operating?</h3>
                     <p>An operating business is one that is active or imminently ready to operate. The standard is practical: the company should be doing business or demonstrating clear readiness to begin. Examples include:</p>
-                    <ul>
+                    <ul class="space-y-2">
                         <li>Signed lease agreements and site buildouts underway.</li>
                         <li>Vendor or supplier contracts.</li>
                         <li>Employees hired or payroll set up.</li>
@@ -262,7 +301,7 @@
                     <p>To qualify for an E-2 visa, the business cannot be marginal. In practice, this means the enterprise must have the present or future capacity, within five years, to generate enough income to provide more than a minimal living for the investor and their family.</p>
 
                     <h3>How Officers Evaluate Marginality</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li><strong>Revenue trajectory:</strong> Does the financial plan show meaningful revenue growth over five years?</li>
                         <li><strong>Job creation:</strong> Is there a credible plan to hire U.S. workers beyond the investor and immediate family?</li>
                         <li><strong>Operating footprint:</strong> Are leases, vendor contracts, or payroll systems in place to demonstrate that employees will be hired?</li>
@@ -276,7 +315,7 @@
                     <p>Beyond investing and owning, the treaty investor must be coming to the United States to develop and direct the enterprise. This means the investor plays an active role in guiding the company’s growth and day-to-day or strategic operations, rather than serving as a passive investor.</p>
                     
                     <h3>Evidence That Helps</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li>Corporate documents naming the investor as an officer, director, or manager.</li>
                         <li>Resumes or biographies showing relevant managerial or entrepreneurial experience.</li>
                         <li>Employment agreements outlining executive duties.</li>
@@ -290,7 +329,7 @@
                     <p>For an E-2 visa, the investor must show that the invested capital comes from a lawful source and that there is a clear, documented path of funds from origin to the U.S. enterprise. The goal is to ensure the investment is legitimate, transparent, and fully attributable to the investor.</p>
 
                     <h3>Lawful Sources of Funds</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li>Personal savings (documented with bank statements and tax returns).</li>
                         <li>Income from employment or business profits.</li>
                         <li>Inheritance or gifts (with supporting wills, gift letters, and transfer records).</li>
@@ -300,7 +339,9 @@
 
                     <h3>Tracing the Path of Funds</h3>
                     <p>The investor must clearly trace the flow of funds from the source into the U.S. business. This often means showing each step through financial records. For example:</p>
-                    <p class="font-mono text-sm bg-slate-100 p-4 rounded-lg border border-slate-200 mt-4">Original source &rarr; Personal bank account &rarr; U.S. business account &rarr; Business expenses</p>
+                    <div class="font-mono text-sm bg-slate-100 p-4 rounded-lg border border-slate-200 mt-4 text-center text-slate-700">
+                        Original source &rarr; Personal bank account &rarr; U.S. business account &rarr; Business expenses
+                    </div>
                 </section>
 
                 <section id="intent">
@@ -314,40 +355,40 @@
                     <h2>Consular vs. USCIS Routes</h2>
                     <p>There are two main ways to apply for E-2 status: through a U.S. consulate abroad or through USCIS inside the United States. Each has distinct procedures, benefits, and drawbacks.</p>
                     
-                    <div class="overflow-x-auto my-8">
-                        <table class="min-w-full bg-white border border-slate-200 shadow-sm rounded-lg overflow-hidden">
+                    <div class="overflow-x-auto my-8 border border-slate-200 shadow-sm rounded-lg">
+                        <table class="min-w-full bg-white">
                             <thead class="bg-navy-900 text-white">
                                 <tr>
-                                    <th class="py-4 px-6 text-left">Topic</th>
-                                    <th class="py-4 px-6 text-left">Consular Processing (Abroad)</th>
-                                    <th class="py-4 px-6 text-left">USCIS Change of Status (In US)</th>
+                                    <th class="py-4 px-6 text-left w-1/4">Topic</th>
+                                    <th class="py-4 px-6 text-left w-1/3">Consular Processing (Abroad)</th>
+                                    <th class="py-4 px-6 text-left w-1/3">USCIS Change of Status (In US)</th>
                                 </tr>
                             </thead>
                             <tbody class="text-sm">
                                 <tr class="border-b border-slate-100">
-                                    <td class="py-4 px-6 font-semibold">Forms</td>
-                                    <td class="py-4 px-6">DS-160 + DS-156E</td>
-                                    <td class="py-4 px-6">I-129 + Supplement E (principal)<br>I-539 (dependents)</td>
+                                    <td class="py-5 px-6 font-bold text-slate-800">Forms</td>
+                                    <td class="py-5 px-6">DS-160 + DS-156E</td>
+                                    <td class="py-5 px-6">I-129 + Supplement E (principal)<br>I-539 (dependents)</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 bg-slate-50">
+                                    <td class="py-5 px-6 font-bold text-slate-800">Travel</td>
+                                    <td class="py-5 px-6">Visa allows international travel</td>
+                                    <td class="py-5 px-6">Status only; travel requires consular visa to re-enter</td>
                                 </tr>
                                 <tr class="border-b border-slate-100">
-                                    <td class="py-4 px-6 font-semibold">Travel</td>
-                                    <td class="py-4 px-6">Visa allows international travel</td>
-                                    <td class="py-4 px-6">Status only; travel requires consular visa to re-enter</td>
+                                    <td class="py-5 px-6 font-bold text-slate-800">Speed</td>
+                                    <td class="py-5 px-6">Varies widely by consulate</td>
+                                    <td class="py-5 px-6">Premium processing (15 days) available for I-129</td>
                                 </tr>
-                                <tr class="border-b border-slate-100">
-                                    <td class="py-4 px-6 font-semibold">Speed</td>
-                                    <td class="py-4 px-6">Varies widely by consulate</td>
-                                    <td class="py-4 px-6">Premium processing (15 days) available for I-129</td>
-                                </tr>
-                                <tr class="border-b border-slate-100">
-                                    <td class="py-4 px-6 font-semibold">Interview</td>
-                                    <td class="py-4 px-6">Required</td>
-                                    <td class="py-4 px-6">No</td>
+                                <tr class="border-b border-slate-100 bg-slate-50">
+                                    <td class="py-5 px-6 font-bold text-slate-800">Interview</td>
+                                    <td class="py-5 px-6">Required</td>
+                                    <td class="py-5 px-6">No</td>
                                 </tr>
                                 <tr>
-                                    <td class="py-4 px-6 font-semibold">Validity</td>
-                                    <td class="py-4 px-6">Depends on reciprocity (up to 5y)</td>
-                                    <td class="py-4 px-6">2 years</td>
+                                    <td class="py-5 px-6 font-bold text-slate-800">Validity</td>
+                                    <td class="py-5 px-6">Depends on reciprocity (up to 5y)</td>
+                                    <td class="py-5 px-6">2 years</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -357,7 +398,7 @@
                 <section id="employees">
                     <h2>E-2 Employees</h2>
                     <p>In addition to the principal investor, certain employees of the E-2 enterprise may also qualify for E-2 status. This option helps growing businesses bring in trusted executives, managers, or workers with essential skills.</p>
-                    <ul>
+                    <ul class="space-y-2">
                         <li><strong>Executive or Supervisory Roles:</strong> These employees direct or oversee the enterprise. Think of roles like COO, general manager, or regional director.</li>
                         <li><strong>Essential Skills Employees:</strong> Workers with vital, specialized skills (e.g., a chef with unique expertise or a proprietary software developer).</li>
                     </ul>
@@ -379,7 +420,7 @@
                     <p>The E-2 can be renewed indefinitely as long as the underlying business continues to meet E-2 requirements.</p>
                     
                     <h3>Visa vs. Status Validity</h3>
-                    <ul>
+                    <ul class="space-y-2">
                         <li><strong>Visa Validity:</strong> The sticker in your passport. Length depends on reciprocity (e.g., 5 years for Canada/UK).</li>
                         <li><strong>Status Validity (I-94):</strong> The time you are allowed to stay in the U.S. CBP typically grants 2 years on each entry, regardless of visa expiration.</li>
                     </ul>
@@ -389,37 +430,53 @@
                 <section id="evidence">
                     <h2>Evidence Checklist</h2>
                     <p>While specific requirements vary by consulate, here is a core checklist of evidence typically required.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
-                        <div>
-                            <h4 class="font-bold text-navy-900 !mt-0 !mb-3 text-lg border-b pb-2">1. Personal & Nationality</h4>
-                            <ul class="text-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-10">
+                        <!-- Box 1 -->
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <h4 class="font-bold text-navy-900 !mt-0 !mb-4 text-lg border-b pb-2 flex items-center">
+                                <span class="bg-navy-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">1</span>
+                                Personal & Nationality
+                            </h4>
+                            <ul class="text-sm space-y-2 mb-0">
                                 <li>Passport biographic pages</li>
                                 <li>Proof of treaty nationality</li>
                                 <li>Proof of non-immigrant intent</li>
                                 <li>Resumes/CVs</li>
                             </ul>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-navy-900 !mt-0 !mb-3 text-lg border-b pb-2">2. Corporate Structure</h4>
-                            <ul class="text-sm">
+                        <!-- Box 2 -->
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <h4 class="font-bold text-navy-900 !mt-0 !mb-4 text-lg border-b pb-2 flex items-center">
+                                <span class="bg-navy-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">2</span>
+                                Corporate Structure
+                            </h4>
+                            <ul class="text-sm space-y-2 mb-0">
                                 <li>Articles of Incorporation</li>
                                 <li>EIN confirmation</li>
                                 <li>Operating agreement/Bylaws</li>
                                 <li>Stock certificates & ledger</li>
                             </ul>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-navy-900 !mt-0 !mb-3 text-lg border-b pb-2">3. Investment & Funds</h4>
-                            <ul class="text-sm">
+                        <!-- Box 3 -->
+                        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <h4 class="font-bold text-navy-900 !mt-0 !mb-4 text-lg border-b pb-2 flex items-center">
+                                <span class="bg-navy-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">3</span>
+                                Investment & Funds
+                            </h4>
+                            <ul class="text-sm space-y-2 mb-0">
                                 <li>Investment spreadsheet</li>
                                 <li>Bank statements (Source & Path)</li>
                                 <li>Invoices & Receipts</li>
                                 <li>Cancelled checks</li>
                             </ul>
                         </div>
-                         <div>
-                            <h4 class="font-bold text-navy-900 !mt-0 !mb-3 text-lg border-b pb-2">4. Real & Operating</h4>
-                            <ul class="text-sm">
+                         <!-- Box 4 -->
+                         <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                            <h4 class="font-bold text-navy-900 !mt-0 !mb-4 text-lg border-b pb-2 flex items-center">
+                                <span class="bg-navy-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-3">4</span>
+                                Real & Operating
+                            </h4>
+                            <ul class="text-sm space-y-2 mb-0">
                                 <li>Business licenses & permits</li>
                                 <li>Lease agreements</li>
                                 <li>Vendor/Client contracts</li>
@@ -429,27 +486,27 @@
                     </div>
                 </section>
 
-                <section id="faq" class="mt-16 mb-20">
+                <section id="faq" class="mt-20 mb-20 border-t border-slate-200 pt-16">
                     <h2>Frequently Asked Questions</h2>
-                    <div class="space-y-10">
+                    <div class="space-y-12">
                         <div>
-                            <h4 class="font-bold text-slate-900 text-lg">Is there a minimum investment for the E-2 visa?</h4>
-                            <p>No fixed minimum. It must be "substantial" relative to the business cost (Proportionality Test). Low-cost businesses need nearly 100% investment; high-cost ones can have a lower percentage.</p>
+                            <h4 class="font-bold text-slate-900 text-xl mb-2">Is there a minimum investment for the E-2 visa?</h4>
+                            <p class="text-slate-600">No fixed minimum. It must be "substantial" relative to the business cost (Proportionality Test). Low-cost businesses need nearly 100% investment; high-cost ones can have a lower percentage.</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-lg">Can my spouse work in the U.S.?</h4>
-                            <p>Yes. Spouses are employment-authorized incident to status (E-2S) and can work anywhere.</p>
+                            <h4 class="font-bold text-slate-900 text-xl mb-2">Can my spouse work in the U.S.?</h4>
+                            <p class="text-slate-600">Yes. Spouses are employment-authorized incident to status (E-2S) and can work anywhere.</p>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-lg">Can I eventually get a green card?</h4>
-                            <p>There is no direct path. However, some investors later transition to EB-5, EB-1, or EB-2 NIW visas.</p>
+                            <h4 class="font-bold text-slate-900 text-xl mb-2">Can I eventually get a green card?</h4>
+                            <p class="text-slate-600">There is no direct path. However, some investors later transition to EB-5, EB-1, or EB-2 NIW visas.</p>
                         </div>
                          <div>
-                            <h4 class="font-bold text-slate-900 text-lg">Do I need a physical office?</h4>
-                            <p>Not always, but strongly recommended. A lease helps prove the business is real and operating.</p>
+                            <h4 class="font-bold text-slate-900 text-xl mb-2">Do I need a physical office?</h4>
+                            <p class="text-slate-600">Not always, but strongly recommended. A lease helps prove the business is real and operating.</p>
                         </div>
                     </div>
-                    <p class="text-sm text-slate-500 mt-12 italic border-t pt-6">Disclaimer: This material is general information, not legal advice. Requirements and processing practices can change.</p>
+                    <p class="text-sm text-slate-400 mt-16 italic text-center">Disclaimer: This material is general information, not legal advice. Requirements and processing practices can change.</p>
                 </section>
 
             </div>
