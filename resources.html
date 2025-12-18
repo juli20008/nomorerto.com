@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV4TFZ6TRM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DV4TFZ6TRM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Job Boards Guide - NoMoreRTO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate3d(0, 20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .prose a {
+            color: #dc2626;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .prose a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="min-h-screen w-full flex flex-col items-center py-8 px-4 relative overflow-x-hidden">
+
+    <!-- Background Gradient -->
+    <div class="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-50 via-white to-white pointer-events-none"></div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-4xl flex flex-col items-center z-10 flex-grow">
+        
+        <!-- Header -->
+        <header class="w-full flex justify-between items-center mb-8 max-w-4xl">
+            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
+                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span>
+            </a>
+            <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+                </svg>
+                <span id="lang-label">CN</span>
+            </button>
+        </header>
+
+        <!-- CONTENT -->
+        <div class="w-full flex flex-col gap-6 animate-fade-in-up">
+            <div class="w-full max-w-4xl mx-auto">
+                <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-black mb-4 font-medium transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
+                    <span id="res-back">Back to Home</span>
+                </a>
+                <h1 id="res-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Remote Job Boards Guide 2024</h1>
+                <p id="res-subtitle" class="text-gray-600 text-lg md:text-xl border-l-4 border-red-600 pl-4">A curated list of platforms to escape the office grind and regain your freedom.</p>
+            </div>
+
+            <!-- Tiers Grid -->
+            <div id="tiers-container" class="grid grid-cols-1 gap-8 mt-6">
+                <!-- JS Injected Tiers -->
+            </div>
+
+            <div id="strategy-box" class="mt-12 p-8 bg-gray-900 text-white rounded-2xl shadow-2xl">
+                <!-- JS Injected Strategy -->
+            </div>
+
+             <p class="text-xs text-gray-400 text-center mt-8 pb-8">© 2024 NoMoreRTO. All links verified.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const TIERS = {
+            en: [
+                {
+                    title: "Tier 1: Global Powerhouses",
+                    subtitle: "High volume, diverse roles, and established remote cultures.",
+                    items: [
+                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "The world's largest remote community. High-quality Programming and Data roles." },
+                        { name: "FlexJobs (Paid)", link: "https://www.flexjobs.com/", desc: "Rigorous vetting. Best for avoiding scams in traditional fields (HR, Admin)." },
+                        { name: "Remote.co", link: "https://remote.co/", desc: "Focuses on established remote companies with real culture. Good for non-tech too." },
+                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "Curated high-quality roles in Tech, Marketing, and Customer Support." },
+                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "Specializes in US-based telecommute roles across all sectors." }
+                    ]
+                },
+                {
+                    title: "Tier 2: Tech, Data & Startups",
+                    subtitle: "Fast-moving companies, direct access to founders, and competitive pay.",
+                    items: [
+                        { name: "Wellfound (AngelList)", link: "https://wellfound.com/", desc: "The startup hub. Direct access to founders and transparent salary ranges." },
+                        { name: "Himalayas", link: "https://himalayas.app/", desc: "Superior filters. Search by timezone (e.g., GMT-5) and specific benefits." },
+                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "Heavy focus on Web3, Crypto, and high-paying engineering roles." },
+                        { name: "Arc.dev", link: "https://arc.dev/", desc: "Vertical hiring for developers and technical talent. Best for senior roles." },
+                        { name: "Dice", link: "https://www.dice.com/", desc: "Legacy IT platform. Use the 'Remote' filter for enterprise tech contracts." },
+                        { name: "Built In", link: "https://builtin.com/", desc: "Hyper-focused on major tech hubs (NYC, LA, SF) with massive remote listings." }
+                    ]
+                },
+                {
+                    title: "Tier 3: Creative, Design & Marketing",
+                    subtitle: "Where aesthetics meet flexibility.",
+                    items: [
+                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "The leading destination for designers. Great for inbound opportunities." },
+                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Adobe's creative platform with global remote design roles." },
+                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "Focused on web professionals, designers, and creative directors." },
+                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "Excellent Marketing and Management sections for the nomad lifestyle." }
+                    ]
+                },
+                {
+                    title: "Tier 4: Lifestyle & Values",
+                    subtitle: "Companies that prioritize balance, diversity, and impact.",
+                    items: [
+                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "Exclusively lists companies with 4-day work weeks. Most are remote." },
+                        { name: "Idealist", link: "https://www.idealist.org/", desc: "The hub for Non-profits and NGOs. Find data roles with a mission." },
+                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "Focused on diversity and female technical talent. High inclusion focus." },
+                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "Focused on family-friendly flexibility for all caregivers." }
+                    ]
+                }
+            ],
+            cn: [
+                {
+                    title: "第一梯队：综合实力最强",
+                    subtitle: "流量大、职位多，远程办公领域的“门户网站”。",
+                    items: [
+                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "全球最大的远程社区。其编程和数据板块质量极硬。" },
+                        { name: "FlexJobs (付费)", link: "https://www.flexjobs.com/", desc: "审核最严。适合寻找传统行业（HR、行政）的真实远程岗。" },
+                        { name: "Remote.co", link: "https://remote.co/", desc: "FlexJobs 的免费姊妹站，涵盖大量中小型企业的客服与文案岗位。" },
+                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "精选科技、市场和客服职位的北美求职神器。" },
+                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "专注于美国本土企业的远程岗位，包括医疗、教育等传统行业。" }
+                    ]
+                },
+                {
+                    title: "第二梯队：科技、初创与数据",
+                    subtitle: "高薪、年轻化，支持全远程且流程简洁。",
+                    items: [
+                        { name: "Wellfound (原 AngelList)", link: "https://wellfound.com/", desc: "初创公司聚集地。直接对接创始人，薪资透明且无繁琐 HR 流程。" },
+                        { name: "Himalayas", link: "https://himalayas.app/", desc: "筛选功能最强。可按“时区”筛选，适合找不需搬家的协同岗位。" },
+                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "程序员的最爱。包含大量 Web3、Crypto 和高薪 Tech 职位。" },
+                        { name: "Arc.dev", link: "https://arc.dev/", desc: "开发者垂直招聘。通过验证后会有公司主动邀请面试。" },
+                        { name: "Dice", link: "https://www.dice.com/", desc: "北美老牌 IT 招聘。找银行、咨询等大厂合同工的神器。" },
+                        { name: "Built In", link: "https://builtin.com/", desc: "集合了各大科技枢纽城市的远程选项，都是有名有姓的好公司。" }
+                    ]
+                },
+                {
+                    title: "第三梯队：创意、设计与营销",
+                    subtitle: "视觉至上，适合拥有优秀作品集的自由职业者。",
+                    items: [
+                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "设计师社区。只要作品集在线，机会就会主动找上门。" },
+                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Adobe 旗下平台，汇集全球大牌广告公司的远程设计岗。" },
+                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "老牌网站，主要针对 Web 设计、前端及 UI/UX 领域。" },
+                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "数字游民的最爱，其“运营”和“管理”板块非常活跃。" }
+                    ]
+                },
+                {
+                    title: "第四梯队：特殊文化与生活方式",
+                    subtitle: "关注价值观匹配，追求极致的工作生活平衡。",
+                    items: [
+                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "只列出实行“四天工作制”的公司，绝大多数支持远程。" },
+                        { name: "Idealist", link: "https://www.idealist.org/", desc: "非营利组织和 NGO 的大本营，适合想去慈善机构做数据的人。" },
+                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "关注多元化。企业文化极其包容，对灵活办公支持度极高。" },
+                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "主打“妈妈友好”，对所有有家庭照顾需求的人都非常友善。" }
+                    ]
+                }
+            ]
+        };
+
+        const STRATEGY = {
+            en: {
+                title: "💡 Usage Strategy",
+                body: `<ul class="space-y-4 text-gray-300">
+                    <li><strong class="text-white">Daily Grind:</strong> Check <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> and <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a> every morning for high-volume updates.</li>
+                    <li><strong class="text-white">Precision Strike:</strong> Use <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> for startups where you can talk to the CTO directly.</li>
+                    <li><strong class="text-white">Timezone Sync:</strong> Use <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> to filter for GMT-5 or GMT-8 to ensure you don't end up in meetings at 3 AM.</li>
+                    <li><strong class="text-white">Newsletter:</strong> Subscribe to <a href="https://remotive.com/" class="text-red-400">Remotive</a> for bi-weekly curated summaries of the best hidden gems.</li>
+                </ul>`
+            },
+            cn: {
+                title: "💡 投递建议",
+                body: `<ul class="space-y-4 text-gray-300">
+                    <li><strong class="text-white">海投策略：</strong> 每天刷新 <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> 和 <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a>，这些平台职位更新最快。</li>
+                    <li><strong class="text-white">精准突击：</strong> 使用 <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> 找初创公司，绕过冗长的 HR 筛选，直接对话创始人。</li>
+                    <li><strong class="text-white">时区对齐：</strong> 利用 <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> 筛选特定时区（如北美东部/西部），避免昼夜颠倒。</li>
+                    <li><strong class="text-white">订阅精选：</strong> 关注 <a href="https://remotive.com/" class="text-red-400">Remotive</a> 的周报，他们会自动过滤掉那些假远程职位。</li>
+                </ul>`
+            }
+        };
+
+        const CONTENT = {
+            en: {
+                back: "Back to Home",
+                title: "Remote Job Boards Guide 2024",
+                subtitle: "A curated list of platforms to escape the office grind and regain your freedom.",
+                langBtnLabel: "CN"
+            },
+            cn: {
+                back: "返回首页",
+                title: "2024 远程求职全攻略",
+                subtitle: "精选全球优质远程招聘平台，助你逃离办公室，重获自由。",
+                langBtnLabel: "EN"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function render() {
+            const strings = CONTENT[currentLang];
+            document.getElementById('res-back').innerText = strings.back;
+            document.getElementById('res-title').innerText = strings.title;
+            document.getElementById('res-subtitle').innerText = strings.subtitle;
+            document.getElementById('lang-label').innerText = strings.langBtnLabel;
+
+            // Render Tiers
+            const tiersContainer = document.getElementById('tiers-container');
+            tiersContainer.innerHTML = '';
+            TIERS[currentLang].forEach(tier => {
+                const tierHTML = `
+                    <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-sm">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">${tier.title}</h2>
+                        <p class="text-gray-500 mb-6 font-medium">${tier.subtitle}</p>
+                        <div class="space-y-6">
+                            ${tier.items.map(item => `
+                                <div class="group border-l-4 border-gray-100 hover:border-red-600 pl-4 transition-all">
+                                    <a href="${item.link}" target="_blank" class="text-lg font-bold text-gray-900 hover:text-red-600 flex items-center gap-2">
+                                        ${item.name}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transition-opacity"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+                                    </a>
+                                    <p class="text-gray-600 text-sm mt-1">${item.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                tiersContainer.insertAdjacentHTML('beforeend', tierHTML);
+            });
+
+            // Render Strategy
+            const strat = STRATEGY[currentLang];
+            const stratBox = document.getElementById('strategy-box');
+            stratBox.innerHTML = `
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+                    ${strat.title}
+                </h3>
+                <div class="prose max-w-none">
+                    ${strat.body}
+                </div>
+            `;
+        }
+
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'cn' : 'en';
+            render();
+        });
+
+        render();
+    </script>
+</body>
+</html>

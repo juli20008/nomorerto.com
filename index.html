@@ -194,12 +194,28 @@
                         target: "_self"
                     },
                     {
+                        title: "Remote Job Boards Guide",
+                        subtitle: "Top 20+ platforms to find your next escape.",
+                        link: "resources.html",
+                        theme: "gold",
+                        target: "_self"
+                    },
+                    {
                         title: "Upskill: Learn Data Analysis",
                         subtitle: "Become irreplaceable. Get paid to work remotely.",
                         link: "https://www.breakintodata.ca/",
                         theme: "green",
                         target: "_blank"
                     }
+                    /* HIDDEN:
+                    {
+                        title: "US E-2 Visa Services",
+                        subtitle: "Relocate your business to the US market.",
+                        link: "E2.html",
+                        theme: "blue",
+                        target: "_self"
+                    }
+                    */
                 ]
             },
             cn: {
@@ -243,12 +259,28 @@
                         target: "_self"
                     },
                     {
+                        title: "远程求职全攻略",
+                        subtitle: "20+个最强远程招聘平台，助你重获自由。",
+                        link: "resources.html",
+                        theme: "gold",
+                        target: "_self"
+                    },
+                    {
                         title: "技能升级：转行数据分析",
                         subtitle: "掌握核心技能，拿回远程工作的议价权。",
                         link: "https://www.breakintodata.ca/",
                         theme: "green",
                         target: "_blank"
                     }
+                    /* HIDDEN:
+                    {
+                        title: "美国 E-2 创业签证服务",
+                        subtitle: "将您的业务扩展至广阔的美国市场。",
+                        link: "E2.html",
+                        theme: "blue",
+                        target: "_self"
+                    }
+                    */
                 ]
             }
         };
@@ -291,6 +323,8 @@
             `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>`,
             // Shield
             `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>`,
+            // Compass/Map
+            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
             // Laptop
             `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 3.45H3.62a1 1 0 0 1-.9-3.45L4 16"/></svg>`,
             // Bird/Eagle
@@ -335,7 +369,7 @@
 
             data.cards.forEach((card, index) => {
                 const styles = THEMES[card.theme];
-                const iconSvg = ICONS[index];
+                const iconSvg = ICONS[index % ICONS.length];
                 
                 const cardHTML = `
                 <a href="${card.link}" target="${card.target}" rel="${card.target === '_blank' ? 'noopener noreferrer' : ''}"
