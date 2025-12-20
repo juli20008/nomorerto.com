@@ -80,8 +80,8 @@
                     <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-all uppercase tracking-widest">
                         CN
                     </button>
-                    <a href="https://www.breakintodata.ca/" target="_blank" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition-all shadow-lg">
-                        Join the Resistance
+                    <a href="https://www.breakintodata.ca/" id="nav-cta" target="_blank" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition-all shadow-lg">
+                        Apply for Remote Career Mentorship
                     </a>
                 </div>
             </div>
@@ -294,6 +294,7 @@
         const CONTENT = {
             en: {
                 lang: "CN",
+                navCta: "Apply for Remote Career Mentorship",
                 hero: {
                     h1: "RTO IS <span class='text-red-600'>THEFT.</span>",
                     p: "Your commute is unpaid labor. Take back your time and money. NoMoreRTO is the hub for remote transparency. We expose the lies, arm your negotiations, and help you land a career that respects your freedom.",
@@ -330,6 +331,7 @@
             },
             cn: {
                 lang: "EN",
+                navCta: "申请远程职业导师项目",
                 hero: {
                     h1: "RTO 就是 <span class='text-red-600'>偷窃。</span>",
                     p: "通勤是无偿劳动。夺回你的时间与金钱。NoMoreRTO 是远程办公透明化中心。我们揭穿谎言，武装你的谈判，助你开启尊重自由的职业生涯。",
@@ -386,6 +388,7 @@
         function render() {
             const data = CONTENT[currentLang];
             document.getElementById('lang-toggle').innerText = data.lang;
+            document.getElementById('nav-cta').innerText = data.navCta;
             document.getElementById('hero-h1').innerHTML = data.hero.h1;
             document.getElementById('hero-p').innerText = data.hero.p;
             document.getElementById('hero-cta-1').innerText = data.hero.cta1;
