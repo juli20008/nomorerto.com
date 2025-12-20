@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV4TFZ6TRM"></script>
@@ -11,265 +11,282 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remote Job Boards Guide - NoMoreRTO</title>
+    <title>The Escape Routes - NoMoreRTO Tactical Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate-900 */
+            color: #f8fafc;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .tactical-card {
             background-color: #ffffff;
-            color: #000000;
+            color: #0f172a;
+            border-left: 4px solid #dc2626; /* Red-600 */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translate3d(0, 20px, 0); }
-            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        .tactical-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.2);
         }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+
+        .btn-tactical {
+            background-color: #dc2626;
+            color: white;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
         }
-        .prose a {
-            color: #dc2626;
-            text-decoration: underline;
-            font-weight: 600;
-            transition: opacity 0.2s;
+        .btn-tactical:hover {
+            background-color: #b91c1c;
+            transform: scale(1.02);
         }
-        .prose a:hover {
-            opacity: 0.7;
+
+        .matrix-row {
+            background-color: rgba(30, 41, 59, 0.5); /* Slate-800 opacity */
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.2s;
+        }
+        .matrix-row:hover {
+            background-color: rgba(30, 41, 59, 0.8);
+            border-color: rgba(220, 38, 38, 0.4);
+        }
+
+        .tag-pill {
+            background-color: #334155;
+            color: #f8fafc;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
         }
     </style>
 </head>
-<body class="min-h-screen w-full flex flex-col items-center py-8 px-4 relative overflow-x-hidden">
+<body class="min-h-screen">
 
-    <!-- Background Gradient -->
-    <div class="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-50 via-white to-white pointer-events-none"></div>
-
-    <!-- Main Container -->
-    <div class="w-full max-w-4xl flex flex-col items-center z-10 flex-grow">
-        
-        <!-- Header -->
-        <header class="w-full flex justify-between items-center mb-8 max-w-4xl">
-            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
-                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span>
-            </a>
-            <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
-                </svg>
-                <span id="lang-label">CN</span>
-            </button>
-        </header>
-
-        <!-- CONTENT -->
-        <div class="w-full flex flex-col gap-6 animate-fade-in-up">
-            <div class="w-full max-w-4xl mx-auto">
-                <a href="index.html" class="inline-flex items-center text-gray-500 hover:text-black mb-4 font-medium transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
-                    <span id="res-back">Back to Home</span>
-                </a>
-                <h1 id="res-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Remote Job Boards Guide</h1>
-                <p id="res-subtitle" class="text-gray-600 text-lg md:text-xl border-l-4 border-red-600 pl-4">A curated list of platforms to escape the office grind and regain your freedom.</p>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-8">
+                    <a href="index.html" class="font-extrabold text-2xl tracking-tighter">
+                        NoMore<span class="text-red-600">RTO</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 transition-all uppercase tracking-widest text-slate-300">
+                        CN
+                    </button>
+                    <a href="index.html" class="text-slate-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                </div>
             </div>
-
-            <!-- Tiers Grid -->
-            <div id="tiers-container" class="grid grid-cols-1 gap-8 mt-6">
-                <!-- JS Injected Tiers -->
-            </div>
-
-            <div id="strategy-box" class="mt-12 p-8 bg-gray-900 text-white rounded-2xl shadow-2xl">
-                <!-- JS Injected Strategy -->
-            </div>
-
-             <p class="text-xs text-gray-400 text-center mt-8 pb-8">© 2024 NoMoreRTO. All links verified.</p>
         </div>
-    </div>
+    </nav>
 
-    <!-- JavaScript Logic -->
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                THE <span class="text-red-600">ESCAPE</span> ROUTES
+            </h1>
+            <p id="hero-subtitle" class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-mono">
+                We scraped the internet so you don't have to. Validated platforms for high-paying remote work.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 pb-24 space-y-24">
+        
+        <!-- Section 1: The Top Tier -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-slate-800 flex-grow"></div>
+                <h2 id="sec-1-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">Top Tier Assets</h2>
+                <div class="h-px bg-slate-800 flex-grow"></div>
+            </div>
+            
+            <div id="top-tier-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Otta -->
+                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <i class="fa-solid fa-bolt-lightning text-red-600 text-3xl"></i>
+                            <span class="tag-pill">Premium UI</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-2">Otta</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">Best UI/UX. Smart matching algorithm filters noise. Highly targeted for modern tech roles.</p>
+                    </div>
+                    <a href="https://otta.com/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
+                </div>
+
+                <!-- Wellfound -->
+                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <i class="fa-solid fa-seedling text-red-600 text-3xl"></i>
+                            <span class="tag-pill">Startup Core</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-2">Wellfound</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">Direct access to founders. Transparent salary & equity disclosure. No recruitment middlemen.</p>
+                    </div>
+                    <a href="https://wellfound.com/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
+                </div>
+
+                <!-- Himalayas -->
+                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <i class="fa-solid fa-mountain text-red-600 text-3xl"></i>
+                            <span class="tag-pill">Global Filter</span>
+                        </div>
+                        <h3 class="text-2xl font-black mb-2">Himalayas</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed">Granular filters for Timezone and Visa Sponsorship. Essential for international professionals.</p>
+                    </div>
+                    <a href="https://himalayas.app/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Matrix -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-slate-800 flex-grow"></div>
+                <h2 id="sec-2-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">The Matrix (General)</h2>
+                <div class="h-px bg-slate-800 flex-grow"></div>
+            </div>
+
+            <div id="matrix-container" class="space-y-4">
+                <!-- WWR Row -->
+                <div class="matrix-row p-6 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-slate-900 rounded flex items-center justify-center text-red-600">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">We Work Remotely</h4>
+                            <p class="text-slate-500 text-sm">The OG board. High volume, reliable. Trusted by major remote players.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 w-full sm:w-auto">
+                        <span class="tag-pill">General</span>
+                        <a href="https://weworkremotely.com/" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded font-bold text-xs uppercase transition-all flex-grow sm:flex-grow-0 text-center">Access</a>
+                    </div>
+                </div>
+
+                <!-- RemoteOK Row -->
+                <div class="matrix-row p-6 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-slate-900 rounded flex items-center justify-center text-red-600">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg">RemoteOK</h4>
+                            <p class="text-slate-500 text-sm">Digital Nomad favorite. Good for pure tech/dev and crypto roles.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 w-full sm:w-auto">
+                        <span class="tag-pill">Dev</span>
+                        <a href="https://remoteok.com/" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded font-bold text-xs uppercase transition-all flex-grow sm:flex-grow-0 text-center">Access</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Geographic Specialists -->
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-slate-800 flex-grow"></div>
+                <h2 id="sec-3-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">Local Intel: USA & Canada</h2>
+                <div class="h-px bg-slate-800 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- USA Focus -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-extrabold flex items-center gap-3">
+                        <span class="text-3xl">🇺🇸</span> USA Focus
+                    </h3>
+                    
+                    <div class="matrix-row p-6 rounded-xl space-y-4">
+                        <div class="border-b border-slate-800 pb-4">
+                            <h4 class="font-bold text-red-500">BuiltIn</h4>
+                            <p class="text-slate-400 text-sm mb-4">Essential for Hub-specific roles (NYC, LA, Austin). Best for finding local hybrid/remote roles.</p>
+                            <a href="https://builtin.com/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                        </div>
+                        <div class="pt-2">
+                            <h4 class="font-bold text-red-500">Dice</h4>
+                            <p class="text-slate-400 text-sm mb-4">The king of Tech Contracts & Data roles. High volume of C2C/Contract opportunities.</p>
+                            <a href="https://www.dice.com/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canada Focus -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-extrabold flex items-center gap-3">
+                        <span class="text-3xl">🇨🇦</span> Canada Focus
+                    </h3>
+                    
+                    <div class="matrix-row p-6 rounded-xl space-y-4">
+                        <div class="border-b border-slate-800 pb-4">
+                            <h4 class="font-bold text-red-500">Communitech</h4>
+                            <p class="text-slate-400 text-sm mb-4">The heartbeat of the Waterloo-Kitchener tech corridor. High-quality local listings.</p>
+                            <a href="https://www.communitech.ca/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                        </div>
+                        <div class="pt-2">
+                            <h4 class="font-bold text-red-500">TechTO</h4>
+                            <p class="text-slate-400 text-sm mb-4">Toronto's tech ecosystem hub. Best for GTA-based startups and scale-ups.</p>
+                            <a href="https://www.techto.org/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p id="footer-copy" class="text-slate-500 text-xs uppercase tracking-[0.3em]">© 2024 NoMoreRTO Tactical Ops. All Signal. No Noise.</p>
+        </div>
+    </footer>
+
     <script>
-        const TIERS = {
-            en: [
-                {
-                    title: "Tier 1: General Powerhouses",
-                    subtitle: "The gatekeepers of the remote world. Strong overall presence across all industries.",
-                    items: [
-                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "Status: The world's largest remote community. Highlights: Rapid updates; strong North American presence; hard-hitting Programming and Data sections." },
-                        { name: "FlexJobs (Paid)", link: "https://www.flexjobs.com/", desc: "Status: Strictest vetting process. Highlights: Best for avoiding scams; excellent for non-tech remote roles like HR and Administration." },
-                        { name: "Remote.co", link: "https://remote.co/", desc: "Status: FlexJobs' free sister site. Highlights: Tons of real remote roles for SMBs; great for customer support and virtual assistants." },
-                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "Status: Curated high-quality listings. Highlights: Mostly Tech, Marketing, and Customer Support; saves time by clearly marking 'US Only' or 'NA Only' roles." },
-                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "Status: Focused on US-based telecommute jobs. Highlights: Great for established corporate telecommute roles in Healthcare and Education." }
-                    ]
-                },
-                {
-                    title: "Tier 2: Tech, Startups & Data",
-                    subtitle: "Your bread and butter for high-paying, modern data roles.",
-                    items: [
-                        { name: "Wellfound (AngelList)", link: "https://wellfound.com/", desc: "Core: The startup ecosystem. Highlights: Direct access to founders/CTOs; transparent salary ranges; minimal HR friction." },
-                        { name: "Himalayas", link: "https://himalayas.app/", desc: "Core: Best-in-class UI and search experience. Highlights: Superior filters including 'Timezone' (e.g., GMT-5); find roles that fit your schedule without moving." },
-                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "Core: Digital Nomad favorite. Highlights: Massive amounts of Web3, Crypto, and high-paying modern Tech roles." },
-                        { name: "Arc.dev", link: "https://arc.dev/", desc: "Core: Specialized for developers and technical talent. Highlights: 'Verified Developer' mechanism where companies approach you." },
-                        { name: "Dice", link: "https://www.dice.com/", desc: "Core: Legacy North American IT recruitment. Highlights: Excellent for remote IT/Data contracts at banks, insurance, and consulting firms." },
-                        { name: "Built In", link: "https://builtin.com/", desc: "Core: Tech hub city collectives. Highlights: High-quality remote options from reputable local tech companies in major US hubs." }
-                    ]
-                },
-                {
-                    title: "Tier 3: Creative, Design & Marketing",
-                    subtitle: "Where aesthetics meet flexibility.",
-                    items: [
-                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "Core: Designer community. Highlights: Inbound opportunities; keep your portfolio updated and let jobs find you." },
-                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Core: Adobe's creative platform. Highlights: High-end ad agencies looking for remote designers and directors." },
-                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "Core: Web and creative professionals. Highlights: Established platform for Web Design, Frontend, and UI/UX." },
-                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "Core: Nomad lifestyle. Highlights: Active 'Marketing' and 'Management' sections for operational roles." }
-                    ]
-                },
-                {
-                    title: "Tier 4: Lifestyle & Values",
-                    subtitle: "Work-life balance and inclusivity prioritized.",
-                    items: [
-                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "USP: Only lists 4-day work week companies. Highlights: The ultimate WLB destination; almost all are remote-friendly." },
-                        { name: "Idealist", link: "https://www.idealist.org/", desc: "USP: Non-profits and NGOs. Highlights: Great for Data Analysts looking for mission-driven work with potential H1B sponsorship." },
-                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "USP: Diversity, equity, and inclusion. Highlights: Highly inclusive cultures with top-tier support for remote work." },
-                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "USP: Helping caregivers return to work. Highlights: Friendly to all family needs; focuses on flexible and remote models." }
-                    ]
-                },
-                {
-                    title: "Tier 5: Newsletters & Aggregators",
-                    subtitle: "Let the best opportunities come to you.",
-                    items: [
-                        { name: "Remotive", link: "https://remotive.com/", desc: "Model: Half community, half job board. Highlights: Elite newsletter; mechanism that hides 'fake remote' roles restricted to specific zip codes." }
-                    ]
-                }
-            ],
-            cn: [
-                {
-                    title: "第一梯队：综合实力最强（流量大、职位多）",
-                    subtitle: "这几家是远程求职的“门户网站”，几乎涵盖所有行业。",
-                    items: [
-                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "地位： 全球最大的远程社区。特点： 职位更新极快，虽然它是全球的，但北美公司占比很高。它的“Programming”和“Data”版块质量很硬。" },
-                        { name: "FlexJobs (付费)", link: "https://www.flexjobs.com/", desc: "地位： 审核最严的平台。特点： 如果你不想花时间辨别诈骗，就用它。虽然要月费，但对于找传统行业（非科技）的远程岗（如HR、行政）非常有用。" },
-                        { name: "Remote.co", link: "https://remote.co/", desc: "地位： FlexJobs的免费版姊妹站。特点： 界面虽然老旧，但有很多中小型企业的真实远程岗，适合找客服、文案、助理类工作。" },
-                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "地位： 这里的职位通常是精选过的（Curated）。特点： 它主要覆盖科技、市场和客服。很多职位明确标注“US Only”或“North America Only”，帮你节省筛选时间。" },
-                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "地位： 专注于美国本土的远程工作。特点： 如果你在美国，这个平台非常适合寻找正规企业的Telecommute岗位，包括医疗、教育等传统行业。" }
-                    ]
-                },
-                {
-                    title: "第二梯队：科技、初创与数据（高薪、年轻化）",
-                    subtitle: "考虑到你的Data背景，这块是你需要重点关注的“富矿”。",
-                    items: [
-                        { name: "Wellfound (原 AngelList)", link: "https://wellfound.com/", desc: "核心： 初创公司（Startups）聚集地。亮点： 这里的公司很多支持全远程，且没有繁琐的HR流程，直接对接创始人或CTO。薪资透明。" },
-                        { name: "Himalayas", link: "https://himalayas.app/", desc: "核心： 体验最好的新兴平台。亮点： 它的筛选器是全网最强的，可以直接按“时区”筛选（比如选 GMT-5），非常适合找不需要搬家但要协同工作的岗位。" },
-                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "核心： 程序员和数字游民的最爱。亮点： 创始人是一个著名的数字游民。这里有大量的Web3、Crypto和高薪Tech职位。" },
-                        { name: "Arc.dev", link: "https://arc.dev/", desc: "核心： 开发者与技术人才垂直招聘。亮点： 适合中高级技术人员。它有一个“Verified Developer”机制，通过后会有公司主动来找你。" },
-                        { name: "Dice", link: "https://www.dice.com/", desc: "核心： 北美老牌IT招聘。亮点： 虽然不是纯远程，但勾选“Remote”后，它是找传统大厂（银行、保险、咨询）IT/Data合同工（Contractor）的神器。" },
-                        { name: "Built In", link: "https://builtin.com/", desc: "核心： 科技中心城市（Tech Hubs）的招聘集合。亮点： 虽然它按城市分类（如BuiltIn LA, BuiltIn NYC），但每个城市下都有大量的Remote选项，且都是当地叫得上名字的好公司。" }
-                    ]
-                },
-                {
-                    title: "第三梯队：创意、设计与营销",
-                    subtitle: "设计师、创意人员的自由天堂。",
-                    items: [
-                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "核心： 设计师社区。亮点： 只要你的作品集（Portfolio）在线，开启“Remote”接单，很多机会是Inbound（被动）的。" },
-                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "核心： Adobe旗下的创意平台。亮点： 它的Job List里有很多大牌广告公司招远程设计师和创意总监。" },
-                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "核心： 创意与网络专业人士。亮点： 很老牌的网站，主要针对Web Design, Frontend, 和 UI/UX 领域。" },
-                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "核心： 数字游民生活方式。亮点： 虽然也有技术岗，但它的“Marketing”和“Management”版块非常活跃，适合找运营类远程工作。" }
-                    ]
-                },
-                {
-                    title: "第四梯队：特殊文化与生活方式（价值观匹配）",
-                    subtitle: "寻找在平衡、包容性和多元化方面领先的雇主。",
-                    items: [
-                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "卖点： 只列出实行“四天工作制”的公司。适合： 如果你追求极致的工作生活平衡（WLB），这里是天堂，且大多数是远程。" },
-                        { name: "Idealist", link: "https://www.idealist.org/", desc: "卖点： 非营利组织（Non-profit）和NGO。适合： 如果你想去基金会或慈善机构做Data Analyst，这里有很多Remote且Sponsor H1B的机会。" },
-                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "卖点： 关注多元化（DEI）和女性科技人才。适合： 企业文化通常非常包容，对远程和灵活办公的支持度极高。" },
-                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "卖点： 帮助妈妈们重返职场。适合： 虽然名字叫Mom，但其实对所有有家庭照顾需求的人都友好，主打“Flexible”和“Remote”。" }
-                    ]
-                },
-                {
-                    title: "第五梯队：精选订阅/聚合类",
-                    subtitle: "订阅精选内容，让机会主动找上门。",
-                    items: [
-                        { name: "Remotive", link: "https://remotive.com/", desc: "模式： 半社区半招聘。亮点： 它的Newsletter做得非常好，每两周发送一次精选的远程机会。它的筛选机制会自动隐藏那些“要求必须居住在某地”的伪远程。" }
-                    ]
-                }
-            ]
-        };
-
-        const STRATEGY = {
-            en: {
-                title: "💡 How to use this list?",
-                body: `<ul class="space-y-4 text-gray-300">
-                    <li><strong class="text-white">Volume Strategy:</strong> Refresh <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> and <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a> daily.</li>
-                    <li><strong class="text-white">Precision Strike:</strong> Use <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> for startups and <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> for specific timezones.</li>
-                    <li><strong class="text-white">Data Careers:</strong> Focus on the remote sections of <a href="https://www.dice.com/" class="text-red-400">Dice</a> and <a href="https://builtin.com/" class="text-red-400">Built In</a>.</li>
-                </ul>`
-            },
-            cn: {
-                title: "💡 怎么用这份名单？",
-                body: `<ul class="space-y-4 text-gray-300">
-                    <li><strong class="text-white">海投策略：</strong> 每天刷 <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> 和 <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a>。</li>
-                    <li><strong class="text-white">精准突击：</strong> 用 <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> 找初创，用 <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> 找特定时区。</li>
-                    <li><strong class="text-white">Data求职：</strong> 重点关注 <a href="https://www.dice.com/" class="text-red-400">Dice</a> 和 <a href="https://builtin.com/" class="text-red-400">Built In</a> 的远程板块。</li>
-                </ul>`
-            }
-        };
-
         const CONTENT = {
             en: {
-                back: "Back to Home",
-                title: "Remote Job Boards Guide",
-                subtitle: "A curated list of platforms to escape the office grind and regain your freedom.",
-                langBtnLabel: "CN"
+                lang: "CN",
+                hero: {
+                    title: 'THE <span class="text-red-600">ESCAPE</span> ROUTES',
+                    subtitle: "We scraped the internet so you don't have to. Validated platforms for high-paying remote work."
+                },
+                footer: "© 2024 NoMoreRTO Tactical Ops. All Signal. No Noise."
             },
             cn: {
-                back: "返回首页",
-                title: "远程求职全攻略",
-                subtitle: "精选全球优质远程招聘平台，助你逃离办公室，重获自由。",
-                langBtnLabel: "EN"
+                lang: "EN",
+                hero: {
+                    title: '<span class="text-red-600">逃生</span>路线',
+                    subtitle: "我们为您搜寻了全网信息。经过验证的高薪远程办公平台。"
+                },
+                footer: "© 2024 NoMoreRTO 战术行动。全信号，零噪音。"
             }
         };
 
         let currentLang = 'en';
 
         function render() {
-            const strings = CONTENT[currentLang];
-            document.getElementById('res-back').innerText = strings.back;
-            document.getElementById('res-title').innerText = strings.title;
-            document.getElementById('res-subtitle').innerText = strings.subtitle;
-            document.getElementById('lang-label').innerText = strings.langBtnLabel;
-
-            // Render Tiers
-            const tiersContainer = document.getElementById('tiers-container');
-            tiersContainer.innerHTML = '';
-            TIERS[currentLang].forEach(tier => {
-                const tierHTML = `
-                    <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-sm">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-2">${tier.title}</h2>
-                        <p class="text-gray-500 mb-6 font-medium">${tier.subtitle}</p>
-                        <div class="space-y-6">
-                            ${tier.items.map(item => `
-                                <div class="group border-l-4 border-gray-100 hover:border-red-600 pl-4 transition-all">
-                                    <a href="${item.link}" target="_blank" class="text-lg font-bold text-gray-900 hover:text-red-600 flex items-center gap-2">
-                                        ${item.name}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transition-opacity"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-                                    </a>
-                                    <p class="text-gray-600 text-sm mt-1">${item.desc}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-                tiersContainer.insertAdjacentHTML('beforeend', tierHTML);
-            });
-
-            // Render Strategy
-            const strat = STRATEGY[currentLang];
-            const stratBox = document.getElementById('strategy-box');
-            stratBox.innerHTML = `
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-                    ${strat.title}
-                </h3>
-                <div class="prose max-w-none">
-                    ${strat.body}
-                </div>
-            `;
+            const data = CONTENT[currentLang];
+            document.getElementById('lang-toggle').innerText = data.lang;
+            document.getElementById('hero-title').innerHTML = data.hero.title;
+            document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
+            document.getElementById('footer-copy').innerText = data.footer;
         }
 
         document.getElementById('lang-toggle').addEventListener('click', () => {
