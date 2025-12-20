@@ -11,67 +11,36 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Escape Routes - NoMoreRTO Tactical Dashboard</title>
+    <title>Remote Job Resources - NoMoreRTO</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* Slate-900 */
-            color: #f8fafc;
+            background-color: #ffffff;
+            color: #111827;
+        }
+        .bg-grid {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .resource-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s ease;
+        }
+        .resource-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
-        
-        .tactical-card {
-            background-color: #ffffff;
-            color: #0f172a;
-            border-left: 4px solid #dc2626; /* Red-600 */
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .tactical-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.2);
-        }
-
-        .btn-tactical {
-            background-color: #dc2626;
-            color: white;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.2s;
-        }
-        .btn-tactical:hover {
-            background-color: #b91c1c;
-            transform: scale(1.02);
-        }
-
-        .matrix-row {
-            background-color: rgba(30, 41, 59, 0.5); /* Slate-800 opacity */
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: background 0.2s;
-        }
-        .matrix-row:hover {
-            background-color: rgba(30, 41, 59, 0.8);
-            border-color: rgba(220, 38, 38, 0.4);
-        }
-
-        .tag-pill {
-            background-color: #334155;
-            color: #f8fafc;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="bg-white">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-8">
@@ -80,11 +49,11 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 transition-all uppercase tracking-widest text-slate-300">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-all uppercase tracking-widest">
                         CN
                     </button>
-                    <a href="index.html" class="text-slate-400 hover:text-white transition-colors">
-                        <i class="fa-solid fa-house"></i>
+                    <a href="index.html" class="text-gray-400 hover:text-gray-900 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </a>
                 </div>
             </div>
@@ -92,170 +61,103 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-32 pb-16 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-                THE <span class="text-red-600">ESCAPE</span> ROUTES
+    <header class="relative pt-32 pb-16 bg-grid border-b border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 id="hero-title" class="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mb-4">
+                Remote Job Resources
             </h1>
-            <p id="hero-subtitle" class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-mono">
-                We scraped the internet so you don't have to. Validated platforms for high-paying remote work.
+            <p id="hero-subtitle" class="text-lg text-gray-500 font-medium">
+                Curated platforms and tools to help you find your next remote-first opportunity.
             </p>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 pb-24 space-y-24">
+    <main class="max-w-3xl mx-auto px-4 py-16 space-y-12">
         
-        <!-- Section 1: The Top Tier -->
-        <section>
-            <div class="flex items-center gap-4 mb-8">
-                <div class="h-px bg-slate-800 flex-grow"></div>
-                <h2 id="sec-1-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">Top Tier Assets</h2>
-                <div class="h-px bg-slate-800 flex-grow"></div>
-            </div>
-            
-            <div id="top-tier-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Featured Tier -->
+        <section class="space-y-6">
+            <h2 id="sec-1-title" class="text-xs font-bold uppercase tracking-widest text-red-600">Featured Platforms</h2>
+            <div class="grid gap-4">
                 <!-- Otta -->
-                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <i class="fa-solid fa-bolt-lightning text-red-600 text-3xl"></i>
-                            <span class="tag-pill">Premium UI</span>
+                <a href="https://otta.com/" target="_blank" class="resource-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                         </div>
-                        <h3 class="text-2xl font-black mb-2">Otta</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed">Best UI/UX. Smart matching algorithm filters noise. Highly targeted for modern tech roles.</p>
+                        <div>
+                            <h3 class="font-bold text-lg">Otta</h3>
+                            <p class="text-gray-500 text-sm">Personalized job matching for tech and data roles.</p>
+                        </div>
                     </div>
-                    <a href="https://otta.com/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
-                </div>
+                    <svg class="text-gray-300 group-hover:text-red-600 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
 
                 <!-- Wellfound -->
-                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <i class="fa-solid fa-seedling text-red-600 text-3xl"></i>
-                            <span class="tag-pill">Startup Core</span>
+                <a href="https://wellfound.com/" target="_blank" class="resource-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                         </div>
-                        <h3 class="text-2xl font-black mb-2">Wellfound</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed">Direct access to founders. Transparent salary & equity disclosure. No recruitment middlemen.</p>
+                        <div>
+                            <h3 class="font-bold text-lg">Wellfound (AngelList)</h3>
+                            <p class="text-gray-500 text-sm">Startup focused board with transparent salary data.</p>
+                        </div>
                     </div>
-                    <a href="https://wellfound.com/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
-                </div>
+                    <svg class="text-gray-300 group-hover:text-red-600 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
 
                 <!-- Himalayas -->
-                <div class="tactical-card p-8 rounded-lg flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-6">
-                            <i class="fa-solid fa-mountain text-red-600 text-3xl"></i>
-                            <span class="tag-pill">Global Filter</span>
-                        </div>
-                        <h3 class="text-2xl font-black mb-2">Himalayas</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed">Granular filters for Timezone and Visa Sponsorship. Essential for international professionals.</p>
-                    </div>
-                    <a href="https://himalayas.app/" target="_blank" class="btn-tactical py-3 rounded-md text-center">Access Board</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: The Matrix -->
-        <section>
-            <div class="flex items-center gap-4 mb-8">
-                <div class="h-px bg-slate-800 flex-grow"></div>
-                <h2 id="sec-2-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">The Matrix (General)</h2>
-                <div class="h-px bg-slate-800 flex-grow"></div>
-            </div>
-
-            <div id="matrix-container" class="space-y-4">
-                <!-- WWR Row -->
-                <div class="matrix-row p-6 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-slate-900 rounded flex items-center justify-center text-red-600">
-                            <i class="fa-solid fa-globe"></i>
+                <a href="https://himalayas.app/" target="_blank" class="resource-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg">We Work Remotely</h4>
-                            <p class="text-slate-500 text-sm">The OG board. High volume, reliable. Trusted by major remote players.</p>
+                            <h3 class="font-bold text-lg">Himalayas</h3>
+                            <p class="text-gray-500 text-sm">Excellent timezone and visa sponsorship filters.</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 w-full sm:w-auto">
-                        <span class="tag-pill">General</span>
-                        <a href="https://weworkremotely.com/" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded font-bold text-xs uppercase transition-all flex-grow sm:flex-grow-0 text-center">Access</a>
-                    </div>
-                </div>
+                    <svg class="text-gray-300 group-hover:text-red-600 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
 
-                <!-- RemoteOK Row -->
-                <div class="matrix-row p-6 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-slate-900 rounded flex items-center justify-center text-red-600">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
+        <!-- General List -->
+        <section class="space-y-6">
+            <h2 id="sec-2-title" class="text-xs font-bold uppercase tracking-widest text-gray-400">Trusted Boards</h2>
+            <div class="grid gap-4">
+                <!-- WWR -->
+                <a href="https://weworkremotely.com/" target="_blank" class="resource-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-xl flex items-center justify-center font-mono font-bold">W</div>
                         <div>
-                            <h4 class="font-bold text-lg">RemoteOK</h4>
-                            <p class="text-slate-500 text-sm">Digital Nomad favorite. Good for pure tech/dev and crypto roles.</p>
+                            <h3 class="font-bold text-lg">We Work Remotely</h3>
+                            <p class="text-gray-500 text-sm">The world's largest remote work community.</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 w-full sm:w-auto">
-                        <span class="tag-pill">Dev</span>
-                        <a href="https://remoteok.com/" target="_blank" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded font-bold text-xs uppercase transition-all flex-grow sm:flex-grow-0 text-center">Access</a>
+                    <svg class="text-gray-300 group-hover:text-red-600 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+
+                <!-- RemoteOK -->
+                <a href="https://remoteok.com/" target="_blank" class="resource-card p-6 rounded-2xl flex items-center justify-between group">
+                    <div class="flex items-center gap-5">
+                        <div class="w-12 h-12 bg-gray-50 text-gray-600 rounded-xl flex items-center justify-center font-mono font-bold">R</div>
+                        <div>
+                            <h3 class="font-bold text-lg">RemoteOK</h3>
+                            <p class="text-gray-500 text-sm">Curated list of 50,000+ remote jobs.</p>
+                        </div>
                     </div>
-                </div>
+                    <svg class="text-gray-300 group-hover:text-red-600 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
             </div>
         </section>
 
-        <!-- Section 3: Geographic Specialists -->
-        <section>
-            <div class="flex items-center gap-4 mb-8">
-                <div class="h-px bg-slate-800 flex-grow"></div>
-                <h2 id="sec-3-title" class="text-xs font-bold uppercase tracking-[0.3em] text-red-600">Local Intel: USA & Canada</h2>
-                <div class="h-px bg-slate-800 flex-grow"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- USA Focus -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-extrabold flex items-center gap-3">
-                        <span class="text-3xl">🇺🇸</span> USA Focus
-                    </h3>
-                    
-                    <div class="matrix-row p-6 rounded-xl space-y-4">
-                        <div class="border-b border-slate-800 pb-4">
-                            <h4 class="font-bold text-red-500">BuiltIn</h4>
-                            <p class="text-slate-400 text-sm mb-4">Essential for Hub-specific roles (NYC, LA, Austin). Best for finding local hybrid/remote roles.</p>
-                            <a href="https://builtin.com/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                        </div>
-                        <div class="pt-2">
-                            <h4 class="font-bold text-red-500">Dice</h4>
-                            <p class="text-slate-400 text-sm mb-4">The king of Tech Contracts & Data roles. High volume of C2C/Contract opportunities.</p>
-                            <a href="https://www.dice.com/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Canada Focus -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-extrabold flex items-center gap-3">
-                        <span class="text-3xl">🇨🇦</span> Canada Focus
-                    </h3>
-                    
-                    <div class="matrix-row p-6 rounded-xl space-y-4">
-                        <div class="border-b border-slate-800 pb-4">
-                            <h4 class="font-bold text-red-500">Communitech</h4>
-                            <p class="text-slate-400 text-sm mb-4">The heartbeat of the Waterloo-Kitchener tech corridor. High-quality local listings.</p>
-                            <a href="https://www.communitech.ca/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                        </div>
-                        <div class="pt-2">
-                            <h4 class="font-bold text-red-500">TechTO</h4>
-                            <p class="text-slate-400 text-sm mb-4">Toronto's tech ecosystem hub. Best for GTA-based startups and scale-ups.</p>
-                            <a href="https://www.techto.org/" target="_blank" class="text-xs font-black uppercase tracking-widest text-white hover:text-red-600 transition-colors">Access Board <i class="fa-solid fa-arrow-right ml-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-12">
+    <footer class="py-12 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <p id="footer-copy" class="text-slate-500 text-xs uppercase tracking-[0.3em]">© 2024 NoMoreRTO Tactical Ops. All Signal. No Noise.</p>
+            <p id="footer-copy" class="text-gray-400 text-xs uppercase tracking-widest">© 2024 NoMoreRTO Hub. Built for the Resistance.</p>
         </div>
     </footer>
 
@@ -264,18 +166,18 @@
             en: {
                 lang: "CN",
                 hero: {
-                    title: 'THE <span class="text-red-600">ESCAPE</span> ROUTES',
-                    subtitle: "We scraped the internet so you don't have to. Validated platforms for high-paying remote work."
+                    title: "Remote Job Resources",
+                    subtitle: "Curated platforms and tools to help you find your next remote-first opportunity."
                 },
-                footer: "© 2024 NoMoreRTO Tactical Ops. All Signal. No Noise."
+                footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
             cn: {
                 lang: "EN",
                 hero: {
-                    title: '<span class="text-red-600">逃生</span>路线',
-                    subtitle: "我们为您搜寻了全网信息。经过验证的高薪远程办公平台。"
+                    title: "远程求职资源",
+                    subtitle: "精心挑选的平台与工具，助力您寻找下一份远程优先的工作机会。"
                 },
-                footer: "© 2024 NoMoreRTO 战术行动。全信号，零噪音。"
+                footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
         };
 
@@ -284,7 +186,7 @@
         function render() {
             const data = CONTENT[currentLang];
             document.getElementById('lang-toggle').innerText = data.lang;
-            document.getElementById('hero-title').innerHTML = data.hero.title;
+            document.getElementById('hero-title').innerText = data.hero.title;
             document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
             document.getElementById('footer-copy').innerText = data.footer;
         }
