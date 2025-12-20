@@ -66,7 +66,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
                     <span id="res-back">Back to Home</span>
                 </a>
-                <h1 id="res-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Remote Job Boards Guide 2024</h1>
+                <h1 id="res-title" class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Remote Job Boards Guide</h1>
                 <p id="res-subtitle" class="text-gray-600 text-lg md:text-xl border-l-4 border-red-600 pl-4">A curated list of platforms to escape the office grind and regain your freedom.</p>
             </div>
 
@@ -88,91 +88,105 @@
         const TIERS = {
             en: [
                 {
-                    title: "Tier 1: Global Powerhouses",
-                    subtitle: "High volume, diverse roles, and established remote cultures.",
+                    title: "Tier 1: General Powerhouses",
+                    subtitle: "The gatekeepers of the remote world. Strong overall presence across all industries.",
                     items: [
-                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "The world's largest remote community. High-quality Programming and Data roles." },
-                        { name: "FlexJobs (Paid)", link: "https://www.flexjobs.com/", desc: "Rigorous vetting. Best for avoiding scams in traditional fields (HR, Admin)." },
-                        { name: "Remote.co", link: "https://remote.co/", desc: "Focuses on established remote companies with real culture. Good for non-tech too." },
-                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "Curated high-quality roles in Tech, Marketing, and Customer Support." },
-                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "Specializes in US-based telecommute roles across all sectors." }
+                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "Status: The world's largest remote community. Highlights: Rapid updates; strong North American presence; hard-hitting Programming and Data sections." },
+                        { name: "FlexJobs (Paid)", link: "https://www.flexjobs.com/", desc: "Status: Strictest vetting process. Highlights: Best for avoiding scams; excellent for non-tech remote roles like HR and Administration." },
+                        { name: "Remote.co", link: "https://remote.co/", desc: "Status: FlexJobs' free sister site. Highlights: Tons of real remote roles for SMBs; great for customer support and virtual assistants." },
+                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "Status: Curated high-quality listings. Highlights: Mostly Tech, Marketing, and Customer Support; saves time by clearly marking 'US Only' or 'NA Only' roles." },
+                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "Status: Focused on US-based telecommute jobs. Highlights: Great for established corporate telecommute roles in Healthcare and Education." }
                     ]
                 },
                 {
-                    title: "Tier 2: Tech, Data & Startups",
-                    subtitle: "Fast-moving companies, direct access to founders, and competitive pay.",
+                    title: "Tier 2: Tech, Startups & Data",
+                    subtitle: "Your bread and butter for high-paying, modern data roles.",
                     items: [
-                        { name: "Wellfound (AngelList)", link: "https://wellfound.com/", desc: "The startup hub. Direct access to founders and transparent salary ranges." },
-                        { name: "Himalayas", link: "https://himalayas.app/", desc: "Superior filters. Search by timezone (e.g., GMT-5) and specific benefits." },
-                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "Heavy focus on Web3, Crypto, and high-paying engineering roles." },
-                        { name: "Arc.dev", link: "https://arc.dev/", desc: "Vertical hiring for developers and technical talent. Best for senior roles." },
-                        { name: "Dice", link: "https://www.dice.com/", desc: "Legacy IT platform. Use the 'Remote' filter for enterprise tech contracts." },
-                        { name: "Built In", link: "https://builtin.com/", desc: "Hyper-focused on major tech hubs (NYC, LA, SF) with massive remote listings." }
+                        { name: "Wellfound (AngelList)", link: "https://wellfound.com/", desc: "Core: The startup ecosystem. Highlights: Direct access to founders/CTOs; transparent salary ranges; minimal HR friction." },
+                        { name: "Himalayas", link: "https://himalayas.app/", desc: "Core: Best-in-class UI and search experience. Highlights: Superior filters including 'Timezone' (e.g., GMT-5); find roles that fit your schedule without moving." },
+                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "Core: Digital Nomad favorite. Highlights: Massive amounts of Web3, Crypto, and high-paying modern Tech roles." },
+                        { name: "Arc.dev", link: "https://arc.dev/", desc: "Core: Specialized for developers and technical talent. Highlights: 'Verified Developer' mechanism where companies approach you." },
+                        { name: "Dice", link: "https://www.dice.com/", desc: "Core: Legacy North American IT recruitment. Highlights: Excellent for remote IT/Data contracts at banks, insurance, and consulting firms." },
+                        { name: "Built In", link: "https://builtin.com/", desc: "Core: Tech hub city collectives. Highlights: High-quality remote options from reputable local tech companies in major US hubs." }
                     ]
                 },
                 {
                     title: "Tier 3: Creative, Design & Marketing",
                     subtitle: "Where aesthetics meet flexibility.",
                     items: [
-                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "The leading destination for designers. Great for inbound opportunities." },
-                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Adobe's creative platform with global remote design roles." },
-                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "Focused on web professionals, designers, and creative directors." },
-                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "Excellent Marketing and Management sections for the nomad lifestyle." }
+                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "Core: Designer community. Highlights: Inbound opportunities; keep your portfolio updated and let jobs find you." },
+                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Core: Adobe's creative platform. Highlights: High-end ad agencies looking for remote designers and directors." },
+                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "Core: Web and creative professionals. Highlights: Established platform for Web Design, Frontend, and UI/UX." },
+                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "Core: Nomad lifestyle. Highlights: Active 'Marketing' and 'Management' sections for operational roles." }
                     ]
                 },
                 {
                     title: "Tier 4: Lifestyle & Values",
-                    subtitle: "Companies that prioritize balance, diversity, and impact.",
+                    subtitle: "Work-life balance and inclusivity prioritized.",
                     items: [
-                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "Exclusively lists companies with 4-day work weeks. Most are remote." },
-                        { name: "Idealist", link: "https://www.idealist.org/", desc: "The hub for Non-profits and NGOs. Find data roles with a mission." },
-                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "Focused on diversity and female technical talent. High inclusion focus." },
-                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "Focused on family-friendly flexibility for all caregivers." }
+                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "USP: Only lists 4-day work week companies. Highlights: The ultimate WLB destination; almost all are remote-friendly." },
+                        { name: "Idealist", link: "https://www.idealist.org/", desc: "USP: Non-profits and NGOs. Highlights: Great for Data Analysts looking for mission-driven work with potential H1B sponsorship." },
+                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "USP: Diversity, equity, and inclusion. Highlights: Highly inclusive cultures with top-tier support for remote work." },
+                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "USP: Helping caregivers return to work. Highlights: Friendly to all family needs; focuses on flexible and remote models." }
+                    ]
+                },
+                {
+                    title: "Tier 5: Newsletters & Aggregators",
+                    subtitle: "Let the best opportunities come to you.",
+                    items: [
+                        { name: "Remotive", link: "https://remotive.com/", desc: "Model: Half community, half job board. Highlights: Elite newsletter; mechanism that hides 'fake remote' roles restricted to specific zip codes." }
                     ]
                 }
             ],
             cn: [
                 {
-                    title: "第一梯队：综合实力最强",
-                    subtitle: "流量大、职位多，远程办公领域的“门户网站”。",
+                    title: "第一梯队：综合实力最强（流量大、职位多）",
+                    subtitle: "这几家是远程求职的“门户网站”，几乎涵盖所有行业。",
                     items: [
-                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "全球最大的远程社区。其编程和数据板块质量极硬。" },
-                        { name: "FlexJobs (付费)", link: "https://www.flexjobs.com/", desc: "审核最严。适合寻找传统行业（HR、行政）的真实远程岗。" },
-                        { name: "Remote.co", link: "https://remote.co/", desc: "FlexJobs 的免费姊妹站，涵盖大量中小型企业的客服与文案岗位。" },
-                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "精选科技、市场和客服职位的北美求职神器。" },
-                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "专注于美国本土企业的远程岗位，包括医疗、教育等传统行业。" }
+                        { name: "We Work Remotely (WWR)", link: "https://weworkremotely.com/", desc: "地位： 全球最大的远程社区。特点： 职位更新极快，虽然它是全球的，但北美公司占比很高。它的“Programming”和“Data”版块质量很硬。" },
+                        { name: "FlexJobs (付费)", link: "https://www.flexjobs.com/", desc: "地位： 审核最严的平台。特点： 如果你不想花时间辨别诈骗，就用它。虽然要月费，但对于找传统行业（非科技）的远程岗（如HR、行政）非常有用。" },
+                        { name: "Remote.co", link: "https://remote.co/", desc: "地位： FlexJobs的免费版姊妹站。特点： 界面虽然老旧，但有很多中小型企业的真实远程岗，适合找客服、文案、助理类工作。" },
+                        { name: "Jobspresso", link: "https://jobspresso.co/", desc: "地位： 这里的职位通常是精选过的（Curated）。特点： 它主要覆盖科技、市场和客服。很多职位明确标注“US Only”或“North America Only”，帮你节省筛选时间。" },
+                        { name: "Virtual Vocations", link: "https://www.virtualvocations.com/", desc: "地位： 专注于美国本土的远程工作。特点： 如果你在美国，这个平台非常适合寻找正规企业的Telecommute岗位，包括医疗、教育等传统行业。" }
                     ]
                 },
                 {
-                    title: "第二梯队：科技、初创与数据",
-                    subtitle: "高薪、年轻化，支持全远程且流程简洁。",
+                    title: "第二梯队：科技、初创与数据（高薪、年轻化）",
+                    subtitle: "考虑到你的Data背景，这块是你需要重点关注的“富矿”。",
                     items: [
-                        { name: "Wellfound (原 AngelList)", link: "https://wellfound.com/", desc: "初创公司聚集地。直接对接创始人，薪资透明且无繁琐 HR 流程。" },
-                        { name: "Himalayas", link: "https://himalayas.app/", desc: "筛选功能最强。可按“时区”筛选，适合找不需搬家的协同岗位。" },
-                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "程序员的最爱。包含大量 Web3、Crypto 和高薪 Tech 职位。" },
-                        { name: "Arc.dev", link: "https://arc.dev/", desc: "开发者垂直招聘。通过验证后会有公司主动邀请面试。" },
-                        { name: "Dice", link: "https://www.dice.com/", desc: "北美老牌 IT 招聘。找银行、咨询等大厂合同工的神器。" },
-                        { name: "Built In", link: "https://builtin.com/", desc: "集合了各大科技枢纽城市的远程选项，都是有名有姓的好公司。" }
+                        { name: "Wellfound (原 AngelList)", link: "https://wellfound.com/", desc: "核心： 初创公司（Startups）聚集地。亮点： 这里的公司很多支持全远程，且没有繁琐的HR流程，直接对接创始人或CTO。薪资透明。" },
+                        { name: "Himalayas", link: "https://himalayas.app/", desc: "核心： 体验最好的新兴平台。亮点： 它的筛选器是全网最强的，可以直接按“时区”筛选（比如选 GMT-5），非常适合找不需要搬家但要协同工作的岗位。" },
+                        { name: "RemoteOK", link: "https://remoteok.com/", desc: "核心： 程序员和数字游民的最爱。亮点： 创始人是一个著名的数字游民。这里有大量的Web3、Crypto和高薪Tech职位。" },
+                        { name: "Arc.dev", link: "https://arc.dev/", desc: "核心： 开发者与技术人才垂直招聘。亮点： 适合中高级技术人员。它有一个“Verified Developer”机制，通过后会有公司主动来找你。" },
+                        { name: "Dice", link: "https://www.dice.com/", desc: "核心： 北美老牌IT招聘。亮点： 虽然不是纯远程，但勾选“Remote”后，它是找传统大厂（银行、保险、咨询）IT/Data合同工（Contractor）的神器。" },
+                        { name: "Built In", link: "https://builtin.com/", desc: "核心： 科技中心城市（Tech Hubs）的招聘集合。亮点： 虽然它按城市分类（如BuiltIn LA, BuiltIn NYC），但每个城市下都有大量的Remote选项，且都是当地叫得上名字的好公司。" }
                     ]
                 },
                 {
                     title: "第三梯队：创意、设计与营销",
-                    subtitle: "视觉至上，适合拥有优秀作品集的自由职业者。",
+                    subtitle: "设计师、创意人员的自由天堂。",
                     items: [
-                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "设计师社区。只要作品集在线，机会就会主动找上门。" },
-                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "Adobe 旗下平台，汇集全球大牌广告公司的远程设计岗。" },
-                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "老牌网站，主要针对 Web 设计、前端及 UI/UX 领域。" },
-                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "数字游民的最爱，其“运营”和“管理”板块非常活跃。" }
+                        { name: "Dribbble", link: "https://dribbble.com/jobs", desc: "核心： 设计师社区。亮点： 只要你的作品集（Portfolio）在线，开启“Remote”接单，很多机会是Inbound（被动）的。" },
+                        { name: "Behance", link: "https://www.behance.net/joblist", desc: "核心： Adobe旗下的创意平台。亮点： 它的Job List里有很多大牌广告公司招远程设计师和创意总监。" },
+                        { name: "Authentic Jobs", link: "https://authenticjobs.com/", desc: "核心： 创意与网络专业人士。亮点： 很老牌的网站，主要针对Web Design, Frontend, 和 UI/UX 领域。" },
+                        { name: "Working Nomads", link: "https://www.workingnomads.com/jobs", desc: "核心： 数字游民生活方式。亮点： 虽然也有技术岗，但它的“Marketing”和“Management”版块非常活跃，适合找运营类远程工作。" }
                     ]
                 },
                 {
-                    title: "第四梯队：特殊文化与生活方式",
-                    subtitle: "关注价值观匹配，追求极致的工作生活平衡。",
+                    title: "第四梯队：特殊文化与生活方式（价值观匹配）",
+                    subtitle: "寻找在平衡、包容性和多元化方面领先的雇主。",
                     items: [
-                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "只列出实行“四天工作制”的公司，绝大多数支持远程。" },
-                        { name: "Idealist", link: "https://www.idealist.org/", desc: "非营利组织和 NGO 的大本营，适合想去慈善机构做数据的人。" },
-                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "关注多元化。企业文化极其包容，对灵活办公支持度极高。" },
-                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "主打“妈妈友好”，对所有有家庭照顾需求的人都非常友善。" }
+                        { name: "4 Day Week", link: "https://4dayweek.io/", desc: "卖点： 只列出实行“四天工作制”的公司。适合： 如果你追求极致的工作生活平衡（WLB），这里是天堂，且大多数是远程。" },
+                        { name: "Idealist", link: "https://www.idealist.org/", desc: "卖点： 非营利组织（Non-profit）和NGO。适合： 如果你想去基金会或慈善机构做Data Analyst，这里有很多Remote且Sponsor H1B的机会。" },
+                        { name: "PowerToFly", link: "https://powertofly.com/", desc: "卖点： 关注多元化（DEI）和女性科技人才。适合： 企业文化通常非常包容，对远程和灵活办公的支持度极高。" },
+                        { name: "The Mom Project", link: "https://www.themomproject.com/", desc: "卖点： 帮助妈妈们重返职场。适合： 虽然名字叫Mom，但其实对所有有家庭照顾需求的人都友好，主打“Flexible”和“Remote”。" }
+                    ]
+                },
+                {
+                    title: "第五梯队：精选订阅/聚合类",
+                    subtitle: "订阅精选内容，让机会主动找上门。",
+                    items: [
+                        { name: "Remotive", link: "https://remotive.com/", desc: "模式： 半社区半招聘。亮点： 它的Newsletter做得非常好，每两周发送一次精选的远程机会。它的筛选机制会自动隐藏那些“要求必须居住在某地”的伪远程。" }
                     ]
                 }
             ]
@@ -180,21 +194,19 @@
 
         const STRATEGY = {
             en: {
-                title: "💡 Usage Strategy",
+                title: "💡 How to use this list?",
                 body: `<ul class="space-y-4 text-gray-300">
-                    <li><strong class="text-white">Daily Grind:</strong> Check <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> and <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a> every morning for high-volume updates.</li>
-                    <li><strong class="text-white">Precision Strike:</strong> Use <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> for startups where you can talk to the CTO directly.</li>
-                    <li><strong class="text-white">Timezone Sync:</strong> Use <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> to filter for GMT-5 or GMT-8 to ensure you don't end up in meetings at 3 AM.</li>
-                    <li><strong class="text-white">Newsletter:</strong> Subscribe to <a href="https://remotive.com/" class="text-red-400">Remotive</a> for bi-weekly curated summaries of the best hidden gems.</li>
+                    <li><strong class="text-white">Volume Strategy:</strong> Refresh <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> and <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a> daily.</li>
+                    <li><strong class="text-white">Precision Strike:</strong> Use <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> for startups and <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> for specific timezones.</li>
+                    <li><strong class="text-white">Data Careers:</strong> Focus on the remote sections of <a href="https://www.dice.com/" class="text-red-400">Dice</a> and <a href="https://builtin.com/" class="text-red-400">Built In</a>.</li>
                 </ul>`
             },
             cn: {
-                title: "💡 投递建议",
+                title: "💡 怎么用这份名单？",
                 body: `<ul class="space-y-4 text-gray-300">
-                    <li><strong class="text-white">海投策略：</strong> 每天刷新 <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> 和 <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a>，这些平台职位更新最快。</li>
-                    <li><strong class="text-white">精准突击：</strong> 使用 <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> 找初创公司，绕过冗长的 HR 筛选，直接对话创始人。</li>
-                    <li><strong class="text-white">时区对齐：</strong> 利用 <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> 筛选特定时区（如北美东部/西部），避免昼夜颠倒。</li>
-                    <li><strong class="text-white">订阅精选：</strong> 关注 <a href="https://remotive.com/" class="text-red-400">Remotive</a> 的周报，他们会自动过滤掉那些假远程职位。</li>
+                    <li><strong class="text-white">海投策略：</strong> 每天刷 <a href="https://weworkremotely.com/" class="text-red-400">WWR</a> 和 <a href="https://remoteok.com/" class="text-red-400">RemoteOK</a>。</li>
+                    <li><strong class="text-white">精准突击：</strong> 用 <a href="https://wellfound.com/" class="text-red-400">Wellfound</a> 找初创，用 <a href="https://himalayas.app/" class="text-red-400">Himalayas</a> 找特定时区。</li>
+                    <li><strong class="text-white">Data求职：</strong> 重点关注 <a href="https://www.dice.com/" class="text-red-400">Dice</a> 和 <a href="https://builtin.com/" class="text-red-400">Built In</a> 的远程板块。</li>
                 </ul>`
             }
         };
@@ -202,13 +214,13 @@
         const CONTENT = {
             en: {
                 back: "Back to Home",
-                title: "Remote Job Boards Guide 2026",
+                title: "Remote Job Boards Guide",
                 subtitle: "A curated list of platforms to escape the office grind and regain your freedom.",
                 langBtnLabel: "CN"
             },
             cn: {
                 back: "返回首页",
-                title: "2026 远程求职全攻略",
+                title: "远程求职全攻略",
                 subtitle: "精选全球优质远程招聘平台，助你逃离办公室，重获自由。",
                 langBtnLabel: "EN"
             }

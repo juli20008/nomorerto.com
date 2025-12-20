@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV4TFZ6TRM"></script>
@@ -11,408 +11,438 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoMoreRTO - RTO is Theft</title>
+    <title>NoMoreRTO Hub - Take Back Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --brand-red: #dc2626;
+            --deep-gray: #1f2937;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
-            color: #000000;
+            color: #111827;
         }
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        /* Custom Fade In Animation */
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Smooth Fade-in */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 20px, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+
+        /* Background grid effect */
+        .bg-grid {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 40px 40px;
         }
-        .delay-100 {
-            animation-delay: 0.1s;
+        
+        .calculator-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 1px solid #e5e7eb;
         }
-        .delay-200 {
-            animation-delay: 0.2s;
+
+        .stamp {
+            border: 6px solid #dc2626;
+            color: #dc2626;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            display: inline-block;
+            transform: rotate(-12deg);
+            opacity: 0.8;
+            pointer-events: none;
         }
     </style>
 </head>
-<body class="min-h-screen w-full flex flex-col items-center py-8 px-4 relative overflow-x-hidden">
+<body class="bg-white">
 
-    <!-- Background Gradient Effect -->
-    <div class="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-50 via-white to-white pointer-events-none"></div>
-
-    <!-- Main Container -->
-    <div class="w-full max-w-3xl flex flex-col items-center z-10 flex-grow">
-        
-        <!-- Header -->
-        <header class="w-full flex justify-between items-center mb-12">
-            <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
-                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span>
-            </a>
-            <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
-                <!-- Globe Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
-                </svg>
-                <span id="lang-label">CN</span>
-            </button>
-        </header>
-
-        <!-- HOME CONTENT -->
-        <div class="w-full flex flex-col items-center transition-opacity duration-300">
-            <div class="text-center mb-12 animate-fade-in-up max-w-2xl">
-                <h1 id="hero-headline" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
-                    <!-- Content injected via JS -->
-                </h1>
-                <p id="hero-subheadline" class="text-gray-600 text-lg md:text-2xl font-medium leading-relaxed">
-                    <!-- Content injected via JS -->
-                </p>
-            </div>
-
-            <div class="w-full flex flex-col gap-10">
-                
-                <!-- Manifesto Section -->
-                <div class="w-full animate-fade-in-up delay-100">
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-sm">
-                        <h2 id="manifesto-title" class="font-bold text-gray-900 mb-4 text-lg leading-snug">
-                            <!-- Content injected via JS -->
-                        </h2>
-                        <div id="manifesto-body" class="text-sm md:text-base text-gray-600 leading-relaxed space-y-3">
-                            <!-- Content injected via JS -->
-                        </div>
+    <!-- Header & Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-8">
+                    <a href="index.html" class="font-extrabold text-2xl tracking-tighter">
+                        NoMore<span class="text-red-600">RTO</span>
+                    </a>
+                    <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+                        <a href="blacklist.html" class="hover:text-red-600">The Database</a>
+                        <a href="#calculator" class="hover:text-red-600">Calculator</a>
+                        <a href="toolkit.html" class="hover:text-red-600">Toolkit</a>
+                        <a href="resources.html" class="hover:text-red-600">Remote Jobs</a>
                     </div>
                 </div>
-
-                <!-- RTO Invoice Section -->
-                <div class="w-full max-w-lg bg-white text-black p-6 rounded-lg shadow-2xl mx-auto font-mono transform rotate-1 hover:rotate-0 transition duration-300 border border-gray-200 animate-fade-in-up delay-200">
-                    <div class="text-center border-b-2 border-dashed border-gray-400 pb-4 mb-4">
-                        <h2 id="inv-title" class="text-2xl font-black uppercase">The RTO Invoice</h2>
-                        <p id="inv-issuer" class="text-sm text-gray-600">Issued by: Your Corporate Overlords</p>
-                        <p id="inv-date" class="text-sm text-gray-600">Date: Every Single Day</p>
-                    </div>
-
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between">
-                            <span id="inv-item-1">Gas, Parking & Wear</span>
-                            <span class="font-bold">$3,750.00</span>
-                        </div>
-                        <div class="flex justify-between text-red-600">
-                            <span id="inv-item-2">Unpaid Commute Time (2hrs/day)</span>
-                            <span class="font-bold">$25,000.00</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span id="inv-item-3">"Culture" Lunches & Coffee</span>
-                            <span class="font-bold">$5,000.00</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span id="inv-item-4">Dry Cleaning & Attire</span>
-                            <span class="font-bold">$1,000.00</span>
-                        </div>
-                    </div>
-
-                    <div class="border-t-2 border-black mt-4 pt-2">
-                        <div class="flex justify-between text-xl font-black">
-                            <span id="inv-total-label">TOTAL LOSS:</span>
-                            <span id="inv-total-val" class="text-red-600">-$34,750/yr</span>
-                        </div>
-                        <p id="inv-disclaimer" class="text-xs text-center mt-4 text-gray-500">*Based on avg $50/hr salary & 5 days in office.</p>
-                    </div>
-
-                    <div class="mt-6 text-center">
-                        <div id="inv-stamp" class="inline-block border-4 border-red-600 text-red-600 font-black text-xl px-4 py-2 transform -rotate-12 opacity-80">
-                            PAY CUT
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cards Stack -->
-                <div id="cards-container" class="w-full flex flex-col gap-4">
-                    <!-- Cards injected via JS -->
+                <div class="flex items-center gap-4">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-all uppercase tracking-widest">
+                        CN
+                    </button>
+                    <a href="https://www.breakintodata.ca/" target="_blank" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition-all shadow-lg">
+                        Join the Resistance
+                    </a>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <!-- Footer -->
-        <footer class="mt-16 text-center">
-            <p id="footer-text" class="text-gray-400 text-xs uppercase tracking-widest">
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-grid overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 id="hero-h1" class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] animate-up">
+                <!-- Content injected via JS -->
+            </h1>
+            <p id="hero-p" class="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed animate-up delay-1">
                 <!-- Content injected via JS -->
             </p>
-        </footer>
-    </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-up delay-2">
+                <a href="#calculator" id="hero-cta-1" class="bg-red-600 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-red-700 hover:-translate-y-1 transition-all">
+                    Calculate My "RTO Tax"
+                </a>
+                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-gray-900 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-gray-50 transition-all">
+                    Search Company Database
+                </a>
+            </div>
+        </div>
+        <!-- Decorative abstract lines background placeholder -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+    </header>
 
-    <!-- JavaScript Application Logic -->
+    <!-- RTO Tax Calculator Section -->
+    <section id="calculator" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4">What Is Your Commute Really Costing You?</h2>
+                <p id="calc-sub" class="text-gray-500 text-lg">Input your data to reveal the hidden tax of being forced back to the office.</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto calculator-card rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+                <!-- Inputs -->
+                <div class="p-8 md:p-12 space-y-8 bg-white">
+                    <div class="space-y-4">
+                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Daily Commute Time (Total Hours)</label>
+                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-600">
+                        <div class="flex justify-between font-mono text-sm"><span>0.5h</span><span id="val-time" class="text-red-600 font-bold">1.5h</span><span>5h</span></div>
+                    </div>
+                    <div class="space-y-4">
+                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Office Days per Week</label>
+                        <div class="flex gap-2">
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="1">1</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="2">2</button>
+                            <button class="day-btn px-4 py-2 border-2 border-red-600 bg-red-50 text-red-600 font-bold transition-all" data-val="3">3</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="4">4</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="5">5</button>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <label id="lbl-salary" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Estimated Hourly Rate ($)</label>
+                        <input type="number" id="input-salary" value="50" class="w-full p-4 border-2 border-gray-100 rounded-xl font-mono text-lg focus:border-red-600 outline-none">
+                    </div>
+                    <div class="space-y-4">
+                        <label id="lbl-extras" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Daily Extra Costs (Parking, Gas, Coffee, Lunch)</label>
+                        <input type="number" id="input-extra" value="25" class="w-full p-4 border-2 border-gray-100 rounded-xl font-mono text-lg focus:border-red-600 outline-none">
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="p-8 md:p-12 bg-red-600 text-white flex flex-col justify-center relative overflow-hidden">
+                    <!-- Abstract circles bg -->
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full"></div>
+                    
+                    <div class="relative z-10 space-y-10">
+                        <div>
+                            <p id="res-label-1" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2">Annual Unpaid Labor</p>
+                            <h3 id="res-hours" class="text-5xl md:text-6xl font-black font-mono">312 Hours</h3>
+                        </div>
+                        <div>
+                            <p id="res-label-2" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2">Annual Financial Loss</p>
+                            <h3 id="res-money" class="text-5xl md:text-6xl font-black font-mono">$15,600</h3>
+                        </div>
+                        
+                        <div class="pt-4">
+                            <div id="res-stamp" class="stamp bg-white/90 font-mono text-2xl">UNPAID LABOR</div>
+                        </div>
+
+                        <button id="btn-share" class="w-full bg-white text-red-600 font-black py-4 rounded-xl hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                            Generate My Invoice & Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Preview Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h2 id="db-title" class="text-4xl font-black mb-4">The RTO Transparency Database</h2>
+                    <p id="db-sub" class="text-gray-500 text-lg">Don't believe the HR PR. Check real employee verified data on mandates and monitoring.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="blacklist.html" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-600 transition-all">Browse Full Database</a>
+                </div>
+            </div>
+
+            <!-- Table Preview -->
+            <div class="border-2 border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-50 border-b border-gray-100">
+                        <tr>
+                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Company</th>
+                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Mandate Status</th>
+                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Employee Sentiment</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-bold">Example Corp</td>
+                            <td class="p-6"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ Hard Mandate</span></td>
+                            <td class="p-6 text-sm text-gray-500">⚠️ Spyware Reported</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-bold">TechGiant Inc</td>
+                            <td class="p-6"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase">✅ Flexible Hybrid</span></td>
+                            <td class="p-6 text-sm text-gray-500">👍 Employees Verify (Real)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-6 font-bold">OldSchool Bank</td>
+                            <td class="p-6"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ "Culture" Excuse</span></td>
+                            <td class="p-6 text-sm text-gray-500">👎 Silent Layoffs Suspected</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Empowerment Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center">Arm Yourself. Don't Fight Alone.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <h3 id="card-1-title" class="text-2xl font-bold mb-4">Negotiation Toolkit</h3>
+                    <p id="card-1-p" class="text-gray-500 mb-8">20+ Email templates, legal rights guide, and scripts to refuse RTO professionally.</p>
+                    <a href="toolkit.html" class="text-blue-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 id="card-2-title" class="text-2xl font-bold mb-4">The Watercooler</h3>
+                    <p id="card-2-p" class="text-gray-500 mb-8">Join the community. Share your story anonymously and get advice from others fighting the same battles.</p>
+                    <button class="text-red-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Join Discussion <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3 id="card-3-title" class="text-2xl font-bold mb-4">Vetted Remote Jobs</h3>
+                    <p id="card-3-p" class="text-gray-500 mb-8">Access our curated list of real Remote-First companies that actually respect your work-life balance.</p>
+                    <a href="resources.html" class="text-emerald-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Escape Plan / Mentorship Section -->
+    <section class="py-24 bg-gray-900 text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 id="final-title" class="text-4xl md:text-6xl font-black mb-8">Ready to Leave Them Behind?</h2>
+            <p id="final-p" class="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto mb-12">
+                Stop begging for flexibility. Land a job that respects you. Our mentorship program helps you transition to a high-paying remote data job in 12 weeks.
+            </p>
+            <a href="https://www.breakintodata.ca/" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-2xl font-black text-xl shadow-2xl hover:-translate-y-2 transition-all">
+                Apply for Remote Career Mentorship
+            </a>
+        </div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="font-extrabold text-xl tracking-tighter mb-6">
+                NoMore<span class="text-red-600">RTO</span>
+            </div>
+            <div class="flex justify-center gap-8 mb-8 text-sm font-bold text-gray-400">
+                <a href="#" class="hover:text-gray-900">Twitter</a>
+                <a href="#" class="hover:text-gray-900">LinkedIn</a>
+                <a href="classic.html" class="text-red-600 font-bold hover:underline">Switch to Classic View</a>
+            </div>
+            <p id="footer-copy" class="text-gray-400 text-xs uppercase tracking-widest">© 2024 NoMoreRTO Hub. Built for the Resistance.</p>
+        </div>
+    </footer>
+
     <script>
-        // --- Data Configuration ---
         const CONTENT = {
             en: {
-                headline: '<span class="text-red-600">RTO</span><span class="text-gray-900"> IS THEFT.</span>',
-                subheadline: "Your commute is unpaid labor. Take back your time and money.",
-                manifestoTitle: "It's not about collaboration. It's about collusion.",
-                manifestoBody: `
-                    <p>Downtown skyscrapers are empty. Commercial real estate (CRE) values are crashing. The banks and the government are panicking.</p>
-                    <p>They need warm bodies to fill empty desks, buy overpriced salads, and pay for parking to save their investments.</p>
-                    <p><span class="font-medium text-red-600">RTO is a bailout for billionaire landlords</span>, funded by your time and gas money.</p>
-                    <p class="font-semibold text-gray-800">Stop being the bag holder for their bad investments.</p>
-                `,
-                invoice: {
-                    title: "The RTO Invoice",
-                    issuer: "Issued by: Your Corporate Overlords",
-                    date: "Date: Every Single Day",
-                    item1: "Gas, Parking & Wear",
-                    item2: "Unpaid Commute Time (2hrs/day)",
-                    item3: "\"Culture\" Lunches & Coffee",
-                    item4: "Dry Cleaning & Attire",
-                    totalLabel: "TOTAL LOSS:",
-                    totalVal: "-$34,750/yr",
-                    disclaimer: "*Based on avg $50/hr salary & 5 days in office.",
-                    stamp: "PAY CUT"
+                lang: "CN",
+                hero: {
+                    h1: "RTO IS <span class='text-red-600'>THEFT.</span>",
+                    p: "Your commute is unpaid labor. Take back your time and money. NoMoreRTO is the hub for remote transparency. We expose the lies, arm your negotiations, and help you land a career that respects your freedom.",
+                    cta1: "Calculate My 'RTO Tax'",
+                    cta2: "Search Company Database"
                 },
-                langBtnLabel: "CN",
-                footer: "© 2024 NoMoreRTO. Built for the Resistance.",
-                cards: [
-                    {
-                        title: "Company Black & White List",
-                        subtitle: "Expose toxic RTO mandates. Find remote heroes.",
-                        link: "blacklist.html",
-                        theme: "red",
-                        target: "_self"
-                    },
-                    {
-                        title: "Negotiation & Rights Toolkit",
-                        subtitle: "20+ Excuses to say NO. Auto-generate emails.",
-                        link: "toolkit.html",
-                        theme: "blue",
-                        target: "_self"
-                    },
-                    {
-                        title: "Remote Job Boards Guide",
-                        subtitle: "Top 20+ platforms to find your next escape.",
-                        link: "resources.html",
-                        theme: "gold",
-                        target: "_self"
-                    },
-                    {
-                        title: "Remote Career Mentorship",
-                        subtitle: "Stop Commuting. Start Earning. We coach you to land a Remote Data Job in 12 weeks.",
-                        link: "https://www.breakintodata.ca/",
-                        theme: "green",
-                        target: "_blank"
-                    }
-                    /* HIDDEN:
-                    {
-                        title: "US E-2 Visa Services",
-                        subtitle: "Relocate your business to the US market.",
-                        link: "E2.html",
-                        theme: "blue",
-                        target: "_self"
-                    }
-                    */
-                ]
+                calc: {
+                    title: "What Is Your Commute Really Costing You?",
+                    sub: "Input your data to reveal the hidden tax of being forced back to the office.",
+                    lblTime: "Daily Commute Time (Total Hours)",
+                    lblDays: "Office Days per Week",
+                    lblSalary: "Estimated Hourly Rate ($)",
+                    lblExtras: "Daily Extra Costs (Parking, Gas, Coffee, Lunch)",
+                    resLabel1: "Annual Unpaid Labor",
+                    resLabel2: "Annual Financial Loss",
+                    stamp: "UNPAID LABOR",
+                    share: "Generate My Invoice & Share"
+                },
+                db: {
+                    title: "The RTO Transparency Database",
+                    sub: "Don't believe the HR PR. Check real employee verified data on mandates and monitoring."
+                },
+                tools: {
+                    title: "Arm Yourself. Don't Fight Alone.",
+                    card1: { title: "Negotiation Toolkit", p: "20+ Email templates, legal rights guide, and scripts to refuse RTO professionally." },
+                    card2: { title: "The Watercooler", p: "Join the community. Share your story anonymously and get advice from others fighting the same battles." },
+                    card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." }
+                },
+                final: {
+                    title: "Ready to Leave Them Behind?",
+                    p: "Stop begging for flexibility. Land a job that respects you. Our mentorship program helps you transition to a high-paying remote data job in 12 weeks."
+                },
+                footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
             cn: {
-                headline: '<span class="text-red-600">RTO</span><span class="text-gray-900"> 就是偷窃。</span>',
-                subheadline: "通勤是无偿劳动。夺回你的时间与金钱。",
-                manifestoTitle: "这不是为了协作。这是为了合谋。",
-                manifestoBody: `
-                    <p>市中心写字楼空置率飙升，商业地产（CRE）价值崩盘，银行和政府都在恐慌。</p>
-                    <p>他们需要“肉身”来填满空荡的工位，购买高价沙拉，支付停车费，以挽救他们的投资。</p>
-                    <p><span class="font-medium text-red-600">RTO 是一场由你的时间和油钱买单的、针对亿万富翁房东的救助行动。</span></p>
-                    <p class="font-semibold text-gray-800">别再为他们的糟糕投资接盘了。</p>
-                `,
-                invoice: {
-                    title: "RTO 强制返岗账单",
-                    issuer: "开票人：你的企业主子",
-                    date: "日期：每一天",
-                    item1: "油费、停车与车辆磨损",
-                    item2: "无偿通勤时间 (每天2小时)",
-                    item3: "“团队建设”午餐与咖啡",
-                    item4: "干洗、化妆与置装费",
-                    totalLabel: "年度亏损总计：",
-                    totalVal: "-$34,750/年",
-                    disclaimer: "*基于时薪$50及每周5天坐班计算。",
-                    stamp: "变相降薪"
+                lang: "EN",
+                hero: {
+                    h1: "RTO 就是 <span class='text-red-600'>偷窃。</span>",
+                    p: "通勤是无偿劳动。夺回你的时间与金钱。NoMoreRTO 是远程办公透明化中心。我们揭穿谎言，武装你的谈判，助你开启尊重自由的职业生涯。",
+                    cta1: "计算我的“返岗税”",
+                    cta2: "查询公司数据库"
                 },
-                langBtnLabel: "EN",
-                footer: "© 2024 NoMoreRTO. 为反抗而生。",
-                cards: [
-                    {
-                        title: "企业红黑榜 (吃瓜/避雷)",
-                        subtitle: "曝光强制返岗的恶心公司，寻找神仙雇主。",
-                        link: "blacklist.html",
-                        theme: "red",
-                        target: "_self"
-                    },
-                    {
-                        title: "谈判与拒绝话术库",
-                        subtitle: "20个拒绝回去的理由 + 自动回怼邮件模板。",
-                        link: "toolkit.html",
-                        theme: "blue",
-                        target: "_self"
-                    },
-                    {
-                        title: "远程求职全攻略",
-                        subtitle: "20+个最强远程招聘平台，助你重获自由。",
-                        link: "resources.html",
-                        theme: "gold",
-                        target: "_self"
-                    },
-                    {
-                        title: "远程求职 1对1 辅导",
-                        subtitle: "拒绝通勤，开启高薪。12周内一对一带你拿下远程数据分析岗位 Offer。",
-                        link: "https://www.breakintodata.ca/",
-                        theme: "green",
-                        target: "_blank"
-                    }
-                    /* HIDDEN:
-                    {
-                        title: "美国 E-2 创业签证服务",
-                        subtitle: "将您的业务扩展至广阔的美国市场。",
-                        link: "E2.html",
-                        theme: "blue",
-                        target: "_self"
-                    }
-                    */
-                ]
+                calc: {
+                    title: "你的通勤到底让你损失了多少？",
+                    sub: "输入你的数据，揭开被迫返回办公室的隐形成本。",
+                    lblTime: "每日通勤时长 (小时)",
+                    lblDays: "每周回办公室天数",
+                    lblSalary: "预估时薪 ($)",
+                    lblExtras: "每日额外开销 (油费、停车、午餐、咖啡)",
+                    resLabel1: "年度无偿劳动时间",
+                    resLabel2: "年度经济损失",
+                    stamp: "无偿劳动",
+                    share: "生成我的账单并分享"
+                },
+                db: {
+                    title: "RTO 透明度数据库",
+                    sub: "别听 HR 的官话。查看员工真实验证的返岗政策与监控爆料。"
+                },
+                tools: {
+                    title: "武装自己。别孤军奋战。",
+                    card1: { title: "谈判工具箱", p: "20+ 邮件模板、法律权利指南和专业拒绝 RTO 的话术剧本。" },
+                    card2: { title: "匿名树洞", p: "加入社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" },
+                    card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" }
+                },
+                final: {
+                    title: "准备好离开他们了吗？",
+                    p: "别再乞求灵活性了。找一份尊重你的工作。我们的导师计划帮你 12 周内成功转型高薪远程数据岗位。"
+                },
+                footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
         };
 
-        // --- Theme Definitions ---
-        const THEMES = {
-            red: {
-                border: 'border-gray-200',
-                hoverBorder: 'hover:border-red-500',
-                glow: 'hover:shadow-[0_4px_20px_rgba(220,38,38,0.15)]',
-                iconColor: 'text-red-600',
-                gradient: 'group-hover:from-red-50'
-            },
-            blue: {
-                border: 'border-gray-200',
-                hoverBorder: 'hover:border-blue-500',
-                glow: 'hover:shadow-[0_4px_20px_rgba(37,99,235,0.15)]',
-                iconColor: 'text-blue-600',
-                gradient: 'group-hover:from-blue-50'
-            },
-            green: {
-                border: 'border-gray-200',
-                hoverBorder: 'hover:border-emerald-500',
-                glow: 'hover:shadow-[0_4px_20px_rgba(16,185,129,0.15)]',
-                iconColor: 'text-emerald-600',
-                gradient: 'group-hover:from-emerald-50'
-            },
-            gold: {
-                border: 'border-gray-200',
-                hoverBorder: 'hover:border-amber-500',
-                glow: 'hover:shadow-[0_4px_20px_rgba(245,158,11,0.15)]',
-                iconColor: 'text-amber-600',
-                gradient: 'group-hover:from-amber-50'
-            }
-        };
-
-        // --- Icon SVGs (Inline) ---
-        const ICONS = [
-            // Megaphone
-            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>`,
-            // Shield
-            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>`,
-            // Compass/Map
-            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`,
-            // Laptop
-            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 3.45H3.62a1 1 0 0 1-.9-3.45L4 16"/></svg>`,
-            // Bird/Eagle
-            `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5"/><path d="M10 18v3"/><path d="M14 17.75V21"/><path d="M7 18a6 6 0 0 0 3.84-10.61"/></svg>`
-        ];
-
-        // --- State Management ---
         let currentLang = 'en';
+        let officeDays = 3;
 
-        // --- Render Functions ---
-        function render() {
-            const data = CONTENT[currentLang];
+        function updateCalculator() {
+            const time = parseFloat(document.getElementById('input-time').value);
+            const salary = parseFloat(document.getElementById('input-salary').value) || 0;
+            const extra = parseFloat(document.getElementById('input-extra').value) || 0;
             
-            // Update Header & Footer
-            document.getElementById('lang-label').innerText = data.langBtnLabel;
-            document.getElementById('footer-text').innerText = data.footer;
+            const annualWeeks = 52;
+            const annualHours = time * officeDays * annualWeeks;
+            const annualFinancialLoss = (annualHours * salary) + (extra * officeDays * annualWeeks);
             
-            // --- Home View ---
-            document.getElementById('hero-headline').innerHTML = data.headline;
-            document.getElementById('hero-subheadline').innerText = data.subheadline;
-            
-            // Update Manifesto
-            document.getElementById('manifesto-title').innerText = data.manifestoTitle;
-            document.getElementById('manifesto-body').innerHTML = data.manifestoBody;
-
-            // Update Invoice
-            document.getElementById('inv-title').innerText = data.invoice.title;
-            document.getElementById('inv-issuer').innerText = data.invoice.issuer;
-            document.getElementById('inv-date').innerText = data.invoice.date;
-            document.getElementById('inv-item-1').innerText = data.invoice.item1;
-            document.getElementById('inv-item-2').innerText = data.invoice.item2;
-            document.getElementById('inv-item-3').innerText = data.invoice.item3;
-            document.getElementById('inv-item-4').innerText = data.invoice.item4;
-            document.getElementById('inv-total-label').innerText = data.invoice.totalLabel;
-            document.getElementById('inv-total-val').innerText = data.invoice.totalVal;
-            document.getElementById('inv-disclaimer').innerText = data.invoice.disclaimer;
-            document.getElementById('inv-stamp').innerText = data.invoice.stamp;
-
-            // Render Cards
-            const container = document.getElementById('cards-container');
-            container.innerHTML = ''; // Clear existing
-
-            data.cards.forEach((card, index) => {
-                const styles = THEMES[card.theme];
-                const iconSvg = ICONS[index % ICONS.length];
-                
-                const cardHTML = `
-                <a href="${card.link}" target="${card.target}" rel="${card.target === '_blank' ? 'noopener noreferrer' : ''}"
-                   class="group relative w-full flex items-center p-6 bg-white border-2 rounded-xl transition-all duration-300 ease-out shadow-sm 
-                          ${styles.border} ${styles.hoverBorder} ${styles.glow} hover:-translate-y-1 block">
-                    
-                    <!-- Gradient Overlay -->
-                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${styles.gradient} pointer-events-none"></div>
-
-                    <!-- Icon -->
-                    <div class="flex-shrink-0 mr-5 ${styles.iconColor} transition-transform duration-300 group-hover:scale-110 relative z-10">
-                        ${iconSvg}
-                    </div>
-
-                    <!-- Text -->
-                    <div class="flex-grow z-10">
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-black transition-colors">
-                            ${card.title}
-                        </h3>
-                        <p class="text-base text-gray-600 group-hover:text-gray-800 transition-colors leading-snug mt-1">
-                            ${card.subtitle}
-                        </p>
-                    </div>
-
-                    <!-- Arrow -->
-                    <div class="flex-shrink-0 ml-3 text-gray-300 group-hover:text-gray-600 transition-colors transform group-hover:translate-x-1 z-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                    </div>
-                </a>
-                `;
-                container.insertAdjacentHTML('beforeend', cardHTML);
-            });
+            document.getElementById('val-time').innerText = time + 'h';
+            document.getElementById('res-hours').innerText = Math.round(annualHours) + ' Hours';
+            document.getElementById('res-money').innerText = '$' + Math.round(annualFinancialLoss).toLocaleString();
         }
 
-        // --- Event Listeners ---
+        function render() {
+            const data = CONTENT[currentLang];
+            document.getElementById('lang-toggle').innerText = data.lang;
+            document.getElementById('hero-h1').innerHTML = data.hero.h1;
+            document.getElementById('hero-p').innerText = data.hero.p;
+            document.getElementById('hero-cta-1').innerText = data.hero.cta1;
+            document.getElementById('hero-cta-2').innerText = data.hero.cta2;
+            
+            document.getElementById('calc-title').innerText = data.calc.title;
+            document.getElementById('calc-sub').innerText = data.calc.sub;
+            document.getElementById('lbl-commute').innerText = data.calc.lblTime;
+            document.getElementById('lbl-days').innerText = data.calc.lblDays;
+            document.getElementById('lbl-salary').innerText = data.calc.lblSalary;
+            document.getElementById('lbl-extras').innerText = data.calc.lblExtras;
+            document.getElementById('res-label-1').innerText = data.calc.resLabel1;
+            document.getElementById('res-label-2').innerText = data.calc.resLabel2;
+            document.getElementById('res-stamp').innerText = data.calc.stamp;
+            document.getElementById('btn-share').innerText = data.calc.share;
+
+            document.getElementById('db-title').innerText = data.db.title;
+            document.getElementById('db-sub').innerText = data.db.sub;
+
+            document.getElementById('tools-title').innerText = data.tools.title;
+            document.getElementById('card-1-title').innerText = data.tools.card1.title;
+            document.getElementById('card-1-p').innerText = data.tools.card1.p;
+            document.getElementById('card-2-title').innerText = data.tools.card2.title;
+            document.getElementById('card-2-p').innerText = data.tools.card2.p;
+            document.getElementById('card-3-title').innerText = data.tools.card3.title;
+            document.getElementById('card-3-p').innerText = data.tools.card3.p;
+
+            document.getElementById('final-title').innerText = data.final.title;
+            document.getElementById('final-p').innerText = data.final.p;
+            document.getElementById('footer-copy').innerText = data.footer;
+            
+            updateCalculator();
+        }
+
+        // Event Listeners
         document.getElementById('lang-toggle').addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'cn' : 'en';
             render();
         });
 
-        // --- Initial Render ---
-        render();
+        document.getElementById('input-time').addEventListener('input', updateCalculator);
+        document.getElementById('input-salary').addEventListener('input', updateCalculator);
+        document.getElementById('input-extra').addEventListener('input', updateCalculator);
 
+        document.querySelectorAll('.day-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.day-btn').forEach(b => {
+                    b.classList.remove('border-red-600', 'bg-red-50', 'text-red-600');
+                });
+                btn.classList.add('border-red-600', 'bg-red-50', 'text-red-600');
+                officeDays = parseInt(btn.dataset.val);
+                updateCalculator();
+            });
+        });
+
+        // Initial Render
+        render();
     </script>
 </body>
 </html>
