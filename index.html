@@ -311,7 +311,8 @@
                     resLabel1: "Annual Unpaid Labor",
                     resLabel2: "Annual Financial Loss",
                     stamp: "UNPAID LABOR",
-                    share: "Generate My Invoice & Share"
+                    share: "Generate My Invoice & Share",
+                    shareSuccess: "Copied to clipboard!"
                 },
                 db: {
                     title: "The RTO Transparency Database",
@@ -348,7 +349,8 @@
                     resLabel1: "年度无偿劳动时间",
                     resLabel2: "年度经济损失",
                     stamp: "无偿劳动",
-                    share: "生成我的账单并分享"
+                    share: "生成我的账单并分享",
+                    shareSuccess: "已复制到剪贴板！"
                 },
                 db: {
                     title: "RTO 透明度数据库",
@@ -403,6 +405,7 @@
             document.getElementById('res-label-1').innerText = data.calc.resLabel1;
             document.getElementById('res-label-2').innerText = data.calc.resLabel2;
             document.getElementById('res-stamp').innerText = data.calc.stamp;
+            document.getElementById('btn-share').innerText = data.calc.share;
 
             document.getElementById('db-title').innerText = data.db.title;
             document.getElementById('db-sub').innerText = data.db.sub;
@@ -441,6 +444,40 @@
                 officeDays = parseInt(btn.dataset.val);
                 updateCalculator();
             });
+        });
+
+        // Share functionality
+        document.getElementById('btn-share').addEventListener('click', async () => {
+            const hours = document.getElementById('res-hours').innerText;
+            const money = document.getElementById('res-money').innerText;
+            const data = CONTENT[currentLang];
+            
+            const shareText = `RTO IS THEFT. My commute is costing me ${hours} of unpaid labor and ${money} in annual financial loss. Calculate your "RTO Tax" at NoMoreRTO.com`;
+            
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'My RTO Invoice',
+                        text: shareText,
+                        url: window.location.href
+                    });
+                } catch (err) {
+                    console.log('Share failed:', err);
+                }
+            } else {
+                // Fallback: Copy to clipboard
+                try {
+                    await navigator.clipboard.writeText(shareText);
+                    const btn = document.getElementById('btn-share');
+                    const originalText = btn.innerText;
+                    btn.innerText = data.calc.shareSuccess;
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                    }, 2000);
+                } catch (err) {
+                    alert('Could not copy to clipboard.');
+                }
+            }
         });
 
         // Initial Render
