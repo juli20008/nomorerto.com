@@ -76,7 +76,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-white">
 
@@ -295,9 +294,11 @@
                         <p id="stream-career-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Master high-demand skills and land a job at a Remote-First company that values output over seat-warming.</p>
                         
                         <div class="mt-auto space-y-6">
-                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center bg-rose-500/80 hover:bg-rose-500 text-white px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/5">
+                            <!-- Standard Product Button - WHITE -->
+                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center bg-white hover:bg-rose-50 text-rose-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
                                 Data Skill Accelerator
                             </a>
+                            <!-- Premium Service Button -->
                             <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-2" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
                                 Remote Career Mentorship
                             </a>
@@ -317,9 +318,11 @@
                         <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Launch your own venture. Whether virtual or physical, we help you incorporate and grow in Canada or the US.</p>
                         
                         <div class="mt-auto space-y-6">
-                            <button id="btn-stream-biz-1" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center bg-teal-500/80 hover:bg-teal-500 text-white px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/5">
+                            <!-- Standard Product Button - WHITE -->
+                            <button id="btn-stream-biz-1" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center bg-white hover:bg-teal-50 text-teal-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
                                 Online Business Launchpad
                             </button>
+                            <!-- Premium Service Button -->
                             <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
                                 Physical Biz Incubator
                             </button>
@@ -588,6 +591,5 @@
 
         render();
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
