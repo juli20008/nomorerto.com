@@ -15,10 +15,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Added html2canvas for screenshot generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Calendly link widget CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-red: #dc2626;
+            --brand-soft-red: #f43f5e; /* Rose 500 */
+            --brand-soft-teal: #14b8a6; /* Teal 500 */
             --deep-gray: #1f2937;
         }
         body {
@@ -39,18 +43,18 @@
 
         /* Background grid effect */
         .bg-grid {
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-image: radial-gradient(#f1f5f9 1px, transparent 1px);
             background-size: 40px 40px;
         }
         
         .calculator-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-            border: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #f1f5f9;
         }
 
         .stamp {
-            border: 6px solid #dc2626;
-            color: #dc2626;
+            border: 5px solid var(--brand-soft-red);
+            color: var(--brand-soft-red);
             font-weight: 900;
             text-transform: uppercase;
             padding: 8px 16px;
@@ -59,7 +63,20 @@
             opacity: 0.8;
             pointer-events: none;
         }
+
+        /* Premium "Expensive" Button Styles - Softened Gradients */
+        .btn-premium-rose {
+            background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+            box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-premium-teal {
+            background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
+            box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-white">
 
@@ -69,21 +86,21 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-8">
                     <a href="index.html" class="font-extrabold text-2xl tracking-tighter">
-                        NoMore<span class="text-red-600">RTO</span>
+                        NoMore<span class="text-rose-500">RTO</span>
                     </a>
                     <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-                        <a href="blacklist.html" class="hover:text-red-600">The Database</a>
-                        <a href="#calculator" class="hover:text-red-600">Calculator</a>
-                        <a href="toolkit.html" class="hover:text-red-600">Toolkit</a>
-                        <a href="resources.html" class="hover:text-red-600">Remote Jobs</a>
+                        <a href="blacklist.html" class="hover:text-rose-500">The Database</a>
+                        <a href="#calculator" class="hover:text-rose-500">Calculator</a>
+                        <a href="toolkit.html" class="hover:text-rose-500">Toolkit</a>
+                        <a href="resources.html" class="hover:text-rose-500">Remote Jobs</a>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-100 hover:bg-gray-200 transition-all uppercase tracking-widest">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest">
                         CN
                     </button>
-                    <a href="https://www.breakintodata.ca/" id="nav-cta" target="_blank" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-red-600 transition-all shadow-lg">
-                        Apply for Remote Career Mentorship
+                    <a href="#freedom-streams" id="nav-cta" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-rose-500 transition-all shadow-md">
+                        Plan Your Escape
                     </a>
                 </div>
             </div>
@@ -96,66 +113,58 @@
             <h1 id="hero-h1" class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] animate-up">
                 <!-- Content injected via JS -->
             </h1>
-            <p id="hero-p" class="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed animate-up delay-1">
+            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed animate-up delay-1">
                 <!-- Content injected via JS -->
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center animate-up delay-2">
-                <a href="#calculator" id="hero-cta-1" class="bg-red-600 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-red-700 hover:-translate-y-1 transition-all">
+                <a href="#calculator" id="hero-cta-1" class="bg-rose-500 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-600 hover:-translate-y-1 transition-all">
                     Calculate My "RTO Tax"
                 </a>
-                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-gray-900 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-gray-50 transition-all">
+                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-slate-50 transition-all">
                     Search Company Database
                 </a>
             </div>
         </div>
-        <!-- Decorative abstract lines background placeholder -->
-        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="black" stroke-width="1"/></pattern></defs>
-                <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-        </div>
     </header>
 
     <!-- RTO Tax Calculator Section -->
-    <section id="calculator" class="py-20 bg-gray-50">
+    <section id="calculator" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4">What Is Your Commute Really Costing You?</h2>
-                <p id="calc-sub" class="text-gray-500 text-lg">Input your data to reveal the hidden tax of being forced back to the office.</p>
+                <p id="calc-sub" class="text-slate-500 text-lg">Input your data to reveal the hidden tax of being forced back to the office.</p>
             </div>
 
-            <div class="max-w-5xl mx-auto calculator-card rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            <div class="max-w-5xl mx-auto calculator-card rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
                 <!-- Inputs -->
                 <div class="p-8 md:p-12 space-y-8 bg-white">
                     <div class="space-y-4">
-                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Daily Commute Time (Total Hours)</label>
-                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-red-600">
-                        <div class="flex justify-between font-mono text-sm"><span>0.5h</span><span id="val-time" class="text-red-600 font-bold">1.5h</span><span>5h</span></div>
+                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Daily Commute Time (Total Hours)</label>
+                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                        <div class="flex justify-between font-mono text-sm"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Office Days per Week</label>
+                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Office Days per Week</label>
                         <div class="flex gap-2">
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="1">1</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="2">2</button>
-                            <button class="day-btn px-4 py-2 border-2 border-red-600 bg-red-50 text-red-600 font-bold transition-all" data-val="3">3</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="4">4</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all" data-val="5">5</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="1">1</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="2">2</button>
+                            <button class="day-btn px-4 py-2 border-2 border-rose-400 bg-rose-50 text-rose-500 font-bold transition-all" data-val="3">3</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="4">4</button>
+                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="5">5</button>
                         </div>
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-salary" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Estimated Hourly Rate ($)</label>
-                        <input type="number" id="input-salary" value="50" class="w-full p-4 border-2 border-gray-100 rounded-xl font-mono text-lg focus:border-red-600 outline-none">
+                        <label id="lbl-salary" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Estimated Hourly Rate ($)</label>
+                        <input type="number" id="input-salary" value="50" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-extras" class="block font-bold text-sm uppercase tracking-wider text-gray-600">Daily Extra Costs (Parking, Gas, Coffee, Lunch)</label>
-                        <input type="number" id="input-extra" value="25" class="w-full p-4 border-2 border-gray-100 rounded-xl font-mono text-lg focus:border-red-600 outline-none">
+                        <label id="lbl-extras" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Daily Extra Costs (Parking, Gas, Coffee, Lunch)</label>
+                        <input type="number" id="input-extra" value="25" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
                     </div>
                 </div>
 
                 <!-- Results -->
-                <div id="results-card" class="p-8 md:p-12 bg-red-600 text-white flex flex-col justify-center relative overflow-hidden">
-                    <!-- Abstract circles bg -->
+                <div id="results-card" class="p-8 md:p-12 bg-rose-500 text-white flex flex-col justify-center relative overflow-hidden">
                     <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full"></div>
                     
                     <div class="relative z-10 space-y-10">
@@ -169,10 +178,10 @@
                         </div>
                         
                         <div class="pt-4">
-                            <div id="res-stamp" class="stamp bg-white/90 font-mono text-2xl">UNPAID LABOR</div>
+                            <div id="res-stamp" class="stamp bg-white/95 font-mono text-2xl">UNPAID LABOR</div>
                         </div>
 
-                        <button id="btn-share" class="w-full bg-white text-red-600 font-black py-4 rounded-xl hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                        <button id="btn-share" class="w-full bg-white text-rose-500 font-black py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                             <span id="btn-share-text">Generate My Invoice & Share</span>
                         </button>
@@ -188,38 +197,38 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="max-w-2xl">
                     <h2 id="db-title" class="text-4xl font-black mb-4">The RTO Transparency Database</h2>
-                    <p id="db-sub" class="text-gray-500 text-lg">Don't believe the HR PR. Check real employee verified data on mandates and monitoring.</p>
+                    <p id="db-sub" class="text-slate-500 text-lg">Don't believe the HR PR. Check real employee verified data on mandates and monitoring.</p>
                 </div>
                 <div class="flex gap-4">
-                    <a href="blacklist.html" class="bg-gray-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-600 transition-all">Browse Full Database</a>
+                    <a href="blacklist.html" class="bg-slate-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-rose-500 transition-all">Browse Full Database</a>
                 </div>
             </div>
 
             <!-- Table Preview -->
-            <div class="border-2 border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+            <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
                 <table class="w-full text-left">
-                    <thead class="bg-gray-50 border-b border-gray-100">
+                    <thead class="bg-slate-50 border-b border-slate-100">
                         <tr>
-                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Company</th>
-                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Mandate Status</th>
-                            <th class="p-6 font-bold text-gray-500 uppercase text-xs tracking-widest">Employee Sentiment</th>
+                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Company</th>
+                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Mandate Status</th>
+                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Employee Sentiment</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-100">
-                        <tr class="hover:bg-gray-50 transition-colors">
+                    <tbody class="divide-y divide-slate-50">
+                        <tr class="hover:bg-slate-50 transition-colors">
                             <td class="p-6 font-bold">Example Corp</td>
-                            <td class="p-6"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ Hard Mandate</span></td>
-                            <td class="p-6 text-sm text-gray-500">⚠️ Spyware Reported</td>
+                            <td class="p-6"><span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ Hard Mandate</span></td>
+                            <td class="p-6 text-sm text-slate-500">⚠️ Spyware Reported</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-slate-50 transition-colors">
                             <td class="p-6 font-bold">TechGiant Inc</td>
-                            <td class="p-6"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase">✅ Flexible Hybrid</span></td>
-                            <td class="p-6 text-sm text-gray-500">👍 Employees Verify (Real)</td>
+                            <td class="p-6"><span class="bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-xs font-bold uppercase">✅ Flexible Hybrid</span></td>
+                            <td class="p-6 text-sm text-slate-500">👍 Employees Verify (Real)</td>
                         </tr>
-                        <tr class="hover:bg-gray-50 transition-colors">
+                        <tr class="hover:bg-slate-50 transition-colors">
                             <td class="p-6 font-bold">OldSchool Bank</td>
-                            <td class="p-6"><span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ "Culture" Excuse</span></td>
-                            <td class="p-6 text-sm text-gray-500">👎 Silent Layoffs Suspected</td>
+                            <td class="p-6"><span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ "Culture" Excuse</span></td>
+                            <td class="p-6 text-sm text-slate-500">👎 Silent Layoffs Suspected</td>
                         </tr>
                     </tbody>
                 </table>
@@ -228,67 +237,111 @@
     </section>
 
     <!-- Tools & Empowerment Section -->
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 id="tools-title" class="text-4xl font-black mb-12 text-center">Arm Yourself. Don't Fight Alone.</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
                     <h3 id="card-1-title" class="text-2xl font-bold mb-4">Negotiation Toolkit</h3>
-                    <p id="card-1-p" class="text-gray-500 mb-8">20+ Email templates, legal rights guide, and scripts to refuse RTO professionally.</p>
-                    <a href="toolkit.html" class="text-blue-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <p id="card-1-p" class="text-slate-500 mb-8">20+ Email templates, legal rights guide, and scripts to refuse RTO professionally.</p>
+                    <a href="toolkit.html" class="text-blue-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-all">
+                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:bg-rose-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <h3 id="card-2-title" class="text-2xl font-bold mb-4">The Watercooler</h3>
-                    <p id="card-2-p" class="text-gray-500 mb-8">Join the community. Share your story anonymously and get advice from others fighting the same battles.</p>
-                    <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-red-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Join Discussion <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <p id="card-2-p" class="text-slate-500 mb-8">Join the community. Share your story anonymously and get advice from others fighting the same battles.</p>
+                    <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-rose-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Join Discussion <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                    <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-500 mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
                     <h3 id="card-3-title" class="text-2xl font-bold mb-4">Vetted Remote Jobs</h3>
-                    <p id="card-3-p" class="text-gray-500 mb-8">Access our curated list of real Remote-First companies that actually respect your work-life balance.</p>
-                    <a href="resources.html" class="text-emerald-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <p id="card-3-p" class="text-slate-500 mb-8">Access our curated list of real Remote-First companies that actually respect your work-life balance.</p>
+                    <a href="resources.html" class="text-teal-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Escape Plan / Mentorship Section -->
-    <section class="py-24 bg-gray-900 text-white overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h2 id="final-title" class="text-4xl md:text-6xl font-black mb-8">Ready to Leave Them Behind?</h2>
-            <p id="final-p" class="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto mb-12">
-                Stop begging for flexibility. Land a job that respects you. Our mentorship program helps you transition to a high-paying remote data job in 12 weeks.
-            </p>
-            <a href="https://www.breakintodata.ca/" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white px-10 py-5 rounded-2xl font-black text-xl shadow-2xl hover:-translate-y-2 transition-all">
-                Apply for Remote Career Mentorship
-            </a>
+    <!-- Escape Plan / Freedom Streams Section -->
+    <section id="freedom-streams" class="py-24 bg-slate-900 text-white overflow-hidden relative border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 id="final-main-title" class="text-4xl md:text-6xl font-black mb-8 tracking-tight">Ready to Take Back Control?</h2>
+                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
+                    Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Career Track Stream -->
+                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-rose-400/30 transition-all group">
+                    <div class="p-8 md:p-12 flex flex-col h-full">
+                        <div class="mb-6 flex items-center gap-3">
+                            <div class="w-12 h-12 bg-rose-500/20 rounded-xl flex items-center justify-center text-rose-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                            </div>
+                            <h3 id="stream-career-title" class="text-3xl font-black uppercase tracking-tighter">Career Track</h3>
+                        </div>
+                        <p id="stream-career-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Master high-demand skills and land a job at a Remote-First company that values output over seat-warming.</p>
+                        
+                        <div class="mt-auto space-y-6">
+                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center bg-rose-500/80 hover:bg-rose-500 text-white px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/5">
+                                Data Skill Accelerator
+                            </a>
+                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-2" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
+                                Remote Career Mentorship
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entrepreneur Track Stream -->
+                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-teal-400/30 transition-all group">
+                    <div class="p-8 md:p-12 flex flex-col h-full">
+                        <div class="mb-6 flex items-center gap-3">
+                            <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                            </div>
+                            <h3 id="stream-biz-title" class="text-3xl font-black uppercase tracking-tighter">Entrepreneur Track</h3>
+                        </div>
+                        <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Launch your own venture. Whether virtual or physical, we help you incorporate and grow in Canada or the US.</p>
+                        
+                        <div class="mt-auto space-y-6">
+                            <button id="btn-stream-biz-1" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center bg-teal-500/80 hover:bg-teal-500 text-white px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/5">
+                                Online Business Launchpad
+                            </button>
+                            <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
+                                Physical Biz Incubator
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-gray-100">
+    <footer class="py-12 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="font-extrabold text-xl tracking-tighter mb-6">
-                NoMore<span class="text-red-600">RTO</span>
+                NoMore<span class="text-rose-500">RTO</span>
             </div>
-            <div class="flex justify-center gap-8 mb-8 text-sm font-bold text-gray-400">
-                <a href="#" class="hover:text-gray-900">Twitter</a>
-                <a href="#" class="hover:text-gray-900">LinkedIn</a>
-                <a href="classic.html" class="text-red-600 font-bold hover:underline">Switch to Classic View</a>
+            <div class="flex justify-center gap-8 mb-8 text-sm font-bold text-slate-400">
+                <a href="#" class="hover:text-slate-900">Twitter</a>
+                <a href="#" class="hover:text-slate-900">LinkedIn</a>
+                <a href="classic.html" class="text-rose-500 font-bold hover:underline">Switch to Classic View</a>
             </div>
-            <p id="footer-copy" class="text-gray-400 text-xs uppercase tracking-widest">© 2024 NoMoreRTO Hub. Built for the Resistance.</p>
+            <p id="footer-copy" class="text-slate-400 text-xs uppercase tracking-widest">© 2024 NoMoreRTO Hub. Built for the Resistance.</p>
         </div>
     </footer>
 
@@ -296,10 +349,10 @@
         const CONTENT = {
             en: {
                 lang: "CN",
-                navCta: "Apply for Remote Career Mentorship",
+                navCta: "Plan Your Escape",
                 hero: {
-                    h1: "RTO IS <span class='text-red-600'>THEFT.</span>",
-                    p: "Your commute is unpaid labor. Take back your time and money. NoMoreRTO is the hub for remote transparency. We expose the lies, arm your negotiations, and help you land a career that respects your freedom.",
+                    h1: "Your Commute Is <span class='text-rose-500'>Unpaid Labor.</span>",
+                    p: "Stop donating your time to the Downtown Monopoly. NoMoreRTO is the resistance against forced mandates. We expose the lies, arm your negotiations, and provide the roadmap to a remote career or independent business that respects your freedom.",
                     cta1: "Calculate My 'RTO Tax'",
                     cta2: "Search Company Database"
                 },
@@ -327,18 +380,26 @@
                     card2: { title: "The Watercooler", p: "Join the community. Share your story anonymously and get advice from others fighting the same battles." },
                     card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." }
                 },
-                final: {
-                    title: "Ready to Leave Them Behind?",
-                    p: "Stop begging for flexibility. Land a job that respects you. Our mentorship program helps you transition to a high-paying remote data job in 12 weeks."
+                freedom: {
+                    mainTitle: "Ready to Take Back Control?",
+                    mainP: "Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.",
+                    careerTitle: "Career Track",
+                    careerP: "Master high-demand skills and land a job at a Remote-First company that values output over seat-warming.",
+                    careerBtn1: "Data Skill Accelerator",
+                    careerBtn2: "Remote Career Mentorship",
+                    bizTitle: "Entrepreneur Track",
+                    bizP: "Launch your own venture. Whether virtual or physical, we help you incorporate and grow in Canada or the US.",
+                    bizBtn1: "Online Business Launchpad",
+                    bizBtn2: "Physical Biz Incubator"
                 },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
             cn: {
                 lang: "EN",
-                navCta: "申请远程职业导师项目",
+                navCta: "制定逃离计划",
                 hero: {
-                    h1: "RTO 就是 <span class='text-red-600'>偷窃。</span>",
-                    p: "通勤是无偿劳动。夺回你的时间与金钱。NoMoreRTO 是远程办公透明化中心。我们揭穿谎言，武装你的谈判，助你开启尊重自由的职业生涯。",
+                    h1: "通勤即 <span class='text-rose-500'>无偿劳动。</span>",
+                    p: "别再把时间捐给市中心的地主。NoMoreRTO 是对抗强制返岗的反抗军。我们揭穿谎言，武装你的谈判，并为你提供通往远程职业或独立事业的路线图，开启尊重自由的生活。",
                     cta1: "计算我的“返岗税”",
                     cta2: "查询公司数据库"
                 },
@@ -366,9 +427,17 @@
                     card2: { title: "匿名树洞", p: "加入社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" },
                     card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" }
                 },
-                final: {
-                    title: "准备好离开他们了吗？",
-                    p: "别再乞求灵活性了。找一份尊重你的工作。我们的导师计划帮你 12 周内成功转型高薪远程数据岗位。"
+                freedom: {
+                    mainTitle: "准备好夺回掌控权了吗？",
+                    mainP: "别再乞求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
+                    careerTitle: "职业赛道",
+                    careerP: "掌握高需求技能，入职一家尊重产出而非坐班时长的远程优先公司。",
+                    careerBtn1: "数据技能加速器",
+                    careerBtn2: "远程职业导师项目",
+                    bizTitle: "创业赛道",
+                    bizP: "开启你自己的事业。无论是线上还是实体，我们助你在加拿大或美国注册并发展。",
+                    bizBtn1: "线上商业启动中心",
+                    bizBtn2: "实体业务孵化器"
                 },
                 footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
@@ -422,14 +491,22 @@
             document.getElementById('card-3-title').innerText = data.tools.card3.title;
             document.getElementById('card-3-p').innerText = data.tools.card3.p;
 
-            document.getElementById('final-title').innerText = data.final.title;
-            document.getElementById('final-p').innerText = data.final.p;
+            document.getElementById('final-main-title').innerText = data.freedom.mainTitle;
+            document.getElementById('final-main-p').innerText = data.freedom.mainP;
+            document.getElementById('stream-career-title').innerText = data.freedom.careerTitle;
+            document.getElementById('stream-career-p').innerText = data.freedom.careerP;
+            document.getElementById('btn-stream-career-1').innerText = data.freedom.careerBtn1;
+            document.getElementById('btn-stream-career-2').innerText = data.freedom.careerBtn2;
+            document.getElementById('stream-biz-title').innerText = data.freedom.bizTitle;
+            document.getElementById('stream-biz-p').innerText = data.freedom.bizP;
+            document.getElementById('btn-stream-biz-1').innerText = data.freedom.bizBtn1;
+            document.getElementById('btn-stream-biz-2').innerText = data.freedom.bizBtn2;
+
             document.getElementById('footer-copy').innerText = data.footer;
             
             updateCalculator();
         }
 
-        // Event Listeners
         document.getElementById('lang-toggle').addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'cn' : 'en';
             render();
@@ -442,31 +519,30 @@
         document.querySelectorAll('.day-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.day-btn').forEach(b => {
-                    b.classList.remove('border-red-600', 'bg-red-50', 'text-red-600');
+                    b.classList.remove('border-rose-400', 'bg-rose-50', 'text-rose-500');
+                    b.classList.add('border-slate-100');
                 });
-                btn.classList.add('border-red-600', 'bg-red-50', 'text-red-600');
+                btn.classList.remove('border-slate-100');
+                btn.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-500');
                 officeDays = parseInt(btn.dataset.val);
                 updateCalculator();
             });
         });
 
-        // Fixed Share functionality with Screenshot Generation
         document.getElementById('btn-share').addEventListener('click', async () => {
             const btn = document.getElementById('btn-share');
             const btnText = document.getElementById('btn-share-text');
             const resultsCard = document.getElementById('results-card');
             const data = CONTENT[currentLang];
             
-            // Visual feedback - start
             btn.disabled = true;
             const originalText = btnText.innerText;
             btnText.innerText = data.calc.shareLoading;
 
             try {
-                // Use html2canvas to capture the red results card as the "Invoice"
                 const canvas = await html2canvas(resultsCard, {
                     scale: 2,
-                    backgroundColor: '#dc2626', // Brand Red
+                    backgroundColor: '#f43f5e',
                     useCORS: true,
                     logging: false,
                     ignoreElements: (element) => element.id === 'btn-share'
@@ -482,11 +558,9 @@
                     files: [file]
                 };
 
-                // Check if the environment supports Web Share API with files
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share(shareData);
                 } else {
-                    // Fallback: Download the image
                     const link = document.createElement('a');
                     link.download = 'NoMoreRTO_Invoice.png';
                     link.href = imageBase64;
@@ -494,7 +568,6 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    // Also copy text to clipboard as a courtesy
                     await navigator.clipboard.writeText(shareData.text);
                     alert(data.calc.shareSuccess + " (Image downloaded, text copied)");
                 }
@@ -506,15 +579,15 @@
                 }, 2000);
 
             } catch (err) {
-                console.error('Screenshot generation or sharing failed:', err);
-                alert('Generation failed. Please try again or take a manual screenshot.');
+                console.error('Screenshot failed:', err);
+                alert('Generation failed. Please try again.');
                 btnText.innerText = originalText;
                 btn.disabled = false;
             }
         });
 
-        // Initial Render
         render();
     </script>
+<script type="module" src="/index.tsx"></script>
 </body>
 </html>
