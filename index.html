@@ -295,13 +295,19 @@
                         
                         <div class="mt-auto space-y-6">
                             <!-- Standard Product Button - WHITE -->
-                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center bg-white hover:bg-rose-50 text-rose-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
-                                Data Skill Accelerator
-                            </a>
+                            <div class="space-y-3">
+                                <a href="https://www.breakintodata.ca/accelerator" target="_blank" id="btn-stream-career-1" class="block w-full text-center bg-white hover:bg-rose-50 text-rose-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
+                                    Data Skill Accelerator
+                                </a>
+                                <p id="info-stream-career-1" class="text-xs text-slate-400 px-2 leading-relaxed italic"></p>
+                            </div>
                             <!-- Premium Service Button -->
-                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-2" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
-                                Remote Career Mentorship
-                            </a>
+                            <div class="space-y-3">
+                                <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-2" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
+                                    Remote Career Mentorship
+                                </a>
+                                <p id="info-stream-career-2" class="text-xs text-slate-400 px-2 leading-relaxed italic"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -319,13 +325,19 @@
                         
                         <div class="mt-auto space-y-6">
                             <!-- Standard Product Button - WHITE -->
-                            <button id="btn-stream-biz-1" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center bg-white hover:bg-teal-50 text-teal-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
-                                Online Business Launchpad
-                            </button>
+                            <div class="space-y-3">
+                                <button id="btn-stream-biz-1" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center bg-white hover:bg-teal-50 text-teal-600 px-8 py-5 rounded-2xl font-black text-lg shadow-lg transition-all border border-white/10">
+                                    Online Business Launchpad
+                                </button>
+                                <p id="info-stream-biz-1" class="text-xs text-slate-400 px-2 leading-relaxed italic"></p>
+                            </div>
                             <!-- Premium Service Button -->
-                            <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
-                                Physical Biz Incubator
-                            </button>
+                            <div class="space-y-3">
+                                <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
+                                    Physical Biz Incubator
+                                </button>
+                                <p id="info-stream-biz-2" class="text-xs text-slate-400 px-2 leading-relaxed italic"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -389,11 +401,15 @@
                     careerTitle: "Career Track",
                     careerP: "Master high-demand skills and land a job at a Remote-First company that values output over seat-warming.",
                     careerBtn1: "Data Skill Accelerator",
+                    careerInfo1: "Perfect for beginners: Master Excel/SQL/Power BI in 6 weeks to bridge your career transition gap.",
                     careerBtn2: "Remote Career Mentorship",
+                    careerInfo2: "Outcome-focused: High-efficiency applications + Resume optimization + Interview coaching until you land a high-paying remote offer.",
                     bizTitle: "Business Track",
-                    bizP: "Launch your own side hustle, or a formal business. Whether virtual or physical, we help you incorporate and grow in Canada or the US.",
+                    bizP: "Launch your own venture. Whether virtual or physical, we help you incorporate and grow in Canada or the US.",
                     bizBtn1: "Online Business Launchpad",
-                    bizBtn2: "Physical Biz Incubator"
+                    bizInfo1: "Light Asset: Launch a low-cost AI startup and build a location-independent cash flow business.",
+                    bizBtn2: "Physical Biz Incubator",
+                    bizInfo2: "Heavy Asset: Integrate offline resources and business plans to build local physical assets with a moat."
                 },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
@@ -436,11 +452,15 @@
                     careerTitle: "职业赛道",
                     careerP: "掌握高需求技能，入职一家尊重产出而非坐班时长的远程优先公司。",
                     careerBtn1: "数据技能加速器",
+                    careerInfo1: "适合零基础： 6周掌握 Excel/SQL/Power BI核心技能，补齐转行短板。",
                     careerBtn2: "远程职业导师项目",
+                    careerInfo2: "结果导向： 高效投递 + 简历优化 + 面试全案陪跑，直至斩获高薪远程 Offer。",
                     bizTitle: "创业赛道",
                     bizP: "开启副业或创办正规公司。 无论是线上业务还是线下实体，我们助你在美国或加拿大完成公司注册与业务落地。",
                     bizBtn1: "线上商业启动计划",
-                    bizBtn2: "实体业务孵化器"
+                    bizInfo1: "轻资产模式： 低成本 AI 创业，打造不受地理限制的现金流生意。",
+                    bizBtn2: "实体业务孵化器",
+                    bizInfo2: "重资产模式： 整合线下资源和商业计划，建立有护城河的本地实体资产。"
                 },
                 footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
@@ -499,11 +519,16 @@
             document.getElementById('stream-career-title').innerText = data.freedom.careerTitle;
             document.getElementById('stream-career-p').innerText = data.freedom.careerP;
             document.getElementById('btn-stream-career-1').innerText = data.freedom.careerBtn1;
+            document.getElementById('info-stream-career-1').innerText = data.freedom.careerInfo1;
             document.getElementById('btn-stream-career-2').innerText = data.freedom.careerBtn2;
+            document.getElementById('info-stream-career-2').innerText = data.freedom.careerInfo2;
+            
             document.getElementById('stream-biz-title').innerText = data.freedom.bizTitle;
             document.getElementById('stream-biz-p').innerText = data.freedom.bizP;
             document.getElementById('btn-stream-biz-1').innerText = data.freedom.bizBtn1;
+            document.getElementById('info-stream-biz-1').innerText = data.freedom.bizInfo1;
             document.getElementById('btn-stream-biz-2').innerText = data.freedom.bizBtn2;
+            document.getElementById('info-stream-biz-2').innerText = data.freedom.bizInfo2;
 
             document.getElementById('footer-copy').innerText = data.footer;
             
