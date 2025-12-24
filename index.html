@@ -70,6 +70,10 @@
             box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        
+        /* Modal Animation */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
     </style>
 </head>
 <body class="bg-white">
@@ -89,7 +93,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest">
                         CN
                     </button>
                     <a href="#freedom-streams" id="nav-cta" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-rose-500 transition-all shadow-md">
@@ -251,7 +255,7 @@
                         <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed flex-grow"></p>
                         <div class="space-y-6">
                             <div class="space-y-4">
-                                <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
+                                <button id="btn-stream-biz-2" onclick="openPrescreenModal()" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
                                 <p id="info-stream-biz-2" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center min-h-[4.5rem]"></p>
                             </div>
                         </div>
@@ -260,6 +264,44 @@
             </div>
         </div>
     </section>
+
+    <!-- Prescreen Modal -->
+    <div id="prescreen-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white rounded-[2rem] shadow-2xl max-w-lg w-full overflow-hidden modal-enter" id="prescreen-content">
+            <div class="p-8 md:p-10">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 id="modal-title" class="text-2xl font-black text-slate-900 tracking-tight"></h3>
+                        <p id="modal-sub" class="text-slate-500 text-sm"></p>
+                    </div>
+                    <button onclick="closePrescreenModal()" class="text-slate-400 hover:text-slate-900 p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                
+                <div class="space-y-4 mb-8">
+                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
+                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
+                        <span id="check-1" class="text-slate-700 font-medium leading-tight"></span>
+                    </label>
+                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
+                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
+                        <span id="check-2" class="text-slate-700 font-medium leading-tight"></span>
+                    </label>
+                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
+                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
+                        <span id="check-3" class="text-slate-700 font-medium leading-tight"></span>
+                    </label>
+                </div>
+
+                <button id="modal-book-btn" disabled onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'}); closePrescreenModal();" 
+                        class="w-full py-5 rounded-2xl font-black text-xl transition-all bg-slate-200 text-slate-400 cursor-not-allowed">
+                    Proceed to Booking
+                </button>
+                <p id="modal-tip" class="text-center text-xs text-slate-400 mt-4"></p>
+            </div>
+        </div>
+    </div>
 
     <footer class="py-12 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -316,8 +358,17 @@
                     careerInfo1: "Master high-demand Data skills + Unlock the 'Internal HR Secrets' to the Canadian job market that recruiters never tell you.",
                     bizTitle: "Business Track",
                     bizP: "Build low-cost, high-moat physical assets in Canada or the US. Secure your residency and future with a tangible venture.",
-                    bizBtn2: "Physical Business & US Relocation",
+                    bizBtn2: "Check Eligibility & Book",
                     bizInfo2: "Tired of Canada's stagnant economy and brutal winters? Moving to the US is easier than you think. Simultaneously launch your dream business and relocate—killing two birds with one stone."
+                },
+                modal: {
+                    title: "Prescreen Checklist",
+                    sub: "Please confirm you meet the core requirements for the US Business Track.",
+                    check1: "At least one family member holds Canadian citizenship.",
+                    check2: "Ability to invest $70,000 USD or more.",
+                    check3: "Willing to invest in or start a physical business (e.g., F&B, Logistics, Property Management).",
+                    btn: "Book Consultation Call",
+                    tip: "All boxes must be checked to enable booking."
                 },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
@@ -360,8 +411,17 @@
                     careerInfo1: "1. 掌握核心Data技能；2. 内部HR直通，为你揭秘加拿大找工作的真正‘求职密码’与底层逻辑。",
                     bizTitle: "创业赛道",
                     bizP: "在加拿大或美国建立低成本、高护城河的实体资产。通过实业投资保障您的居留权与未来。",
-                    bizBtn2: "实体商业与美国定居方案",
+                    bizBtn2: "确认资格并预约",
                     bizInfo2: "受够了加拿大的‘又穷又冷’？移居美国比你想象的要容易。在开启梦想创业的同时完成全家身份跨越，一举两得。"
+                },
+                modal: {
+                    title: "预筛清单",
+                    sub: "请确认您符合美国实体商业赛道的核心要求。",
+                    check1: "家庭成员中至少一人持有加拿大国籍。",
+                    check2: "具备 7 万美元或以上的投资能力。",
+                    check3: "愿意投资或创立一个实体生意（如：餐饮、物流、物业管理等）。",
+                    btn: "立即预约咨询",
+                    tip: "需勾选全部项目以开启预约按钮"
                 },
                 footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
@@ -369,6 +429,47 @@
 
         let currentLang = 'en';
         let officeDays = 3;
+
+        function openPrescreenModal() {
+            const modal = document.getElementById('prescreen-modal');
+            const content = document.getElementById('prescreen-content');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                content.classList.remove('modal-enter');
+                content.classList.add('modal-enter-active');
+            }, 10);
+        }
+
+        function closePrescreenModal() {
+            const modal = document.getElementById('prescreen-modal');
+            const content = document.getElementById('prescreen-content');
+            content.classList.remove('modal-enter-active');
+            content.classList.add('modal-enter');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function validatePrescreen() {
+            const checks = document.querySelectorAll('.prescreen-check');
+            const allChecked = Array.from(checks).every(c => c.checked);
+            const bookBtn = document.getElementById('modal-book-btn');
+            const data = CONTENT[currentLang];
+            
+            if (allChecked) {
+                bookBtn.disabled = false;
+                bookBtn.classList.remove('bg-slate-200', 'text-slate-400', 'cursor-not-allowed');
+                bookBtn.classList.add('btn-premium-teal', 'text-white', 'shadow-xl');
+                bookBtn.innerText = data.modal.btn;
+            } else {
+                bookBtn.disabled = true;
+                bookBtn.classList.add('bg-slate-200', 'text-slate-400', 'cursor-not-allowed');
+                bookBtn.classList.remove('btn-premium-teal', 'text-white', 'shadow-xl');
+                bookBtn.innerText = data.modal.btn;
+            }
+        }
 
         function updateCalculator() {
             const time = parseFloat(document.getElementById('input-time').value);
@@ -421,6 +522,17 @@
             document.getElementById('stream-biz-p').innerText = data.freedom.bizP;
             document.getElementById('btn-stream-biz-2').innerText = data.freedom.bizBtn2;
             document.getElementById('info-stream-biz-2').innerText = data.freedom.bizInfo2;
+            
+            // Modal Render
+            document.getElementById('modal-title').innerText = data.modal.title;
+            document.getElementById('modal-sub').innerText = data.modal.sub;
+            document.getElementById('check-1').innerText = data.modal.check1;
+            document.getElementById('check-2').innerText = data.modal.check2;
+            document.getElementById('check-3').innerText = data.modal.check3;
+            document.getElementById('modal-book-btn').innerText = data.modal.btn;
+            document.getElementById('modal-tip').innerText = data.modal.tip;
+            validatePrescreen(); // Refresh button state with new language
+
             document.getElementById('footer-copy').innerText = data.footer;
             updateCalculator();
         }
