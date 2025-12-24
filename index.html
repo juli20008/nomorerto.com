@@ -231,13 +231,13 @@
         </div>
     </section>
 
-    <!-- The Hidden Job Market Section (Light Gray Highlight) -->
+    <!-- The Hidden Job Market Section (Light Gray Highlight with Countdown) -->
     <section id="hidden-market" class="py-24 bg-slate-50 overflow-hidden relative border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <h2 id="hidden-title" class="text-4xl md:text-5xl font-black mb-4 text-slate-900"></h2>
             <p id="hidden-sub" class="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed"></p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-16">
                 <!-- Mock Job 1 -->
                 <div onclick="scrollToWaitlist()" class="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-indigo-500/50 transition-all cursor-pointer group relative overflow-hidden shadow-sm hover:shadow-md">
                     <div class="blur-job">
@@ -286,12 +286,35 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Countdown Timer Display -->
+            <div id="countdown-wrapper" class="flex justify-center gap-4 mb-8">
+                <div class="flex flex-col items-center">
+                    <div id="cd-days" class="text-4xl font-black bg-slate-900 text-white w-16 h-16 rounded-xl flex items-center justify-center">05</div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mt-2">Days</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="cd-hours" class="text-4xl font-black bg-slate-900 text-white w-16 h-16 rounded-xl flex items-center justify-center">00</div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mt-2">Hrs</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="cd-mins" class="text-4xl font-black bg-slate-900 text-white w-16 h-16 rounded-xl flex items-center justify-center">00</div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mt-2">Mins</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="cd-secs" class="text-4xl font-black bg-rose-500 text-white w-16 h-16 rounded-xl flex items-center justify-center">00</div>
+                    <span class="text-[10px] uppercase font-bold text-slate-400 mt-2">Secs</span>
+                </div>
+            </div>
             
-            <div id="waitlist-container" class="mt-16 max-w-xl mx-auto p-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl shadow-xl">
+            <div id="waitlist-container" class="max-w-xl mx-auto p-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl shadow-xl">
                 <div class="bg-white p-8 rounded-[calc(1.5rem-1px)]">
                     <p id="hidden-tip" class="text-slate-900 text-lg font-bold mb-6"></p>
-                    <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-3">
-                        <input type="text" id="waitlist-input" required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="">
+                    <!-- FormSubmit Integration -->
+                    <form action="https://formsubmit.co/hranalytics.ca@gmail.com" method="POST" id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
+                        <input type="hidden" name="_subject" value="New Waitlist Inquiry from NoMoreRTO">
+                        <input type="hidden" name="_next" value="https://nomorerto.com/">
+                        <input type="text" name="contact_info" id="waitlist-input" required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="">
                         <button type="submit" id="waitlist-submit" class="bg-indigo-600 text-white font-black px-8 py-4 rounded-xl hover:bg-indigo-500 transition-all shadow-lg whitespace-nowrap"></button>
                     </form>
                     <p id="waitlist-success" class="hidden text-teal-600 font-bold mt-4 animate-up"></p>
@@ -537,7 +560,7 @@
                     careerBtn1: "远程职业加速器",
                     careerInfo1: "1. 掌握核心Data技能；2. 内部HR直通，为你揭秘加拿大找工作的真正‘求职密码’与底层逻辑。",
                     bizTitle: "创业赛道",
-                    bizP: "在加拿大或美国建立低成本、高护城河的实体资产。通过实业投资保障您的居留权与未来。",
+                    bizP: "在加拿大或美国建立低成本、高护园河的实体资产。通过实业投资保障您的居留权与未来。",
                     bizBtn2: "确认资格并预约",
                     bizInfo2: "受够了加拿大的‘又穷又冷’？移居美国比你想象的要容易。在开启梦想创业的同时完成全家身份跨越，一举两得。"
                 },
@@ -557,32 +580,48 @@
         let currentLang = 'en';
         let officeDays = 3;
 
+        // Countdown Logic
+        function startCountdown() {
+            // Target: 5 days from the first load of the page, or a fixed relative date
+            // Let's use a fixed 5 days from NOW for the demo, or stored in localStorage to persist
+            let targetDate = localStorage.getItem('nomorerto_target');
+            if (!targetDate) {
+                targetDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+                localStorage.setItem('nomorerto_target', targetDate);
+            }
+
+            const update = () => {
+                const now = new Date().getTime();
+                const diff = targetDate - now;
+
+                if (diff <= 0) {
+                    document.getElementById('countdown-wrapper').innerHTML = "<p class='text-indigo-600 font-black text-xl'>LAUNCHED</p>";
+                    return;
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = d.toString().padStart(2, '0');
+                document.getElementById('cd-hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('cd-mins').innerText = m.toString().padStart(2, '0');
+                document.getElementById('cd-secs').innerText = s.toString().padStart(2, '0');
+            };
+
+            setInterval(update, 1000);
+            update();
+        }
+
         function scrollToWaitlist() {
             document.getElementById('waitlist-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
             document.getElementById('waitlist-input').focus();
         }
 
         function handleWaitlistSubmit(event) {
-            event.preventDefault();
-            const input = document.getElementById('waitlist-input');
-            const submitBtn = document.getElementById('waitlist-submit');
-            const successMsg = document.getElementById('waitlist-success');
-            const data = CONTENT[currentLang];
-            
-            // Production submission simulation
-            submitBtn.disabled = true;
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = "...";
-            
-            // Logic: Data will be handled in lead management system. 
-            // Submission to hranalytics.ca@gmail.com is logged for simulation.
-            console.log("Waitlist Submission Received for hranalytics.ca@gmail.com:", input.value);
-
-            setTimeout(() => {
-                document.getElementById('waitlist-form').classList.add('hidden');
-                successMsg.innerText = data.hidden.success;
-                successMsg.classList.remove('hidden');
-            }, 1200);
+            // Note: This function is replaced by the standard HTML form submission to formsubmit.co
+            // But we can add UI logic if we want to handle via fetch for smoother experience.
         }
 
         function openPrescreenModal() {
@@ -774,6 +813,7 @@
         });
 
         render();
+        startCountdown();
     </script>
 </body>
 </html>
