@@ -167,80 +167,55 @@
         </div>
     </section>
 
+    <!-- Tools & Empowerment Section -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div class="max-w-2xl">
-                    <h2 id="db-title" class="text-4xl font-black mb-4"></h2>
-                    <p id="db-sub" class="text-slate-500 text-lg"></p>
+            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center tracking-tight"></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Negotiation Toolkit -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <h3 id="card-1-title" class="text-xl font-bold mb-3"></h3>
+                    <p id="card-1-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
+                    <a href="toolkit.html" class="text-blue-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
-                <div class="flex gap-4">
-                    <a href="blacklist.html" class="bg-slate-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-rose-500 transition-all">Browse Full Database</a>
-                </div>
-            </div>
-            <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-50 border-b border-slate-100">
-                        <tr>
-                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Company</th>
-                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Mandate Status</th>
-                            <th class="p-6 font-bold text-slate-500 uppercase text-xs tracking-widest">Employee Sentiment</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-50">
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 font-bold">Example Corp</td>
-                            <td class="p-6"><span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ Hard Mandate</span></td>
-                            <td class="p-6 text-sm text-slate-500">⚠️ Spyware Reported</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 font-bold">TechGiant Inc</td>
-                            <td class="p-6"><span class="bg-teal-50 text-teal-600 px-3 py-1 rounded-full text-xs font-bold uppercase">✅ Flexible Hybrid</span></td>
-                            <td class="p-6 text-sm text-slate-500">👍 Employees Verify (Real)</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition-colors">
-                            <td class="p-6 font-bold">OldSchool Bank</td>
-                            <td class="p-6"><span class="bg-rose-50 text-rose-600 px-3 py-1 rounded-full text-xs font-bold uppercase">❌ "Culture" Excuse</span></td>
-                            <td class="p-6 text-sm text-slate-500">👎 Silent Layoffs Suspected</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center"></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                <!-- Card 2: RTO Database -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+                    <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
                     </div>
-                    <h3 id="card-1-title" class="text-2xl font-bold mb-4"></h3>
-                    <p id="card-1-p" class="text-slate-500 mb-8"></p>
-                    <a href="toolkit.html" class="text-blue-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <h3 id="card-db-title" class="text-xl font-bold mb-3"></h3>
+                    <p id="card-db-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
+                    <a href="blacklist.html" class="text-rose-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Browse List <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
-                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:bg-rose-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+
+                <!-- Card 3: Vetted Remote Jobs -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-500 mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <h3 id="card-2-title" class="text-2xl font-bold mb-4"></h3>
-                    <p id="card-2-p" class="text-slate-500 mb-8"></p>
-                    <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-rose-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Join Discussion <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <h3 id="card-3-title" class="text-xl font-bold mb-3"></h3>
+                    <p id="card-3-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
+                    <a href="resources.html" class="text-teal-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
-                <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
-                    <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-500 mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+
+                <!-- Card 4: The Watercooler (Discord) -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-500 mb-6 group-hover:bg-[#5865F2] group-hover:text-white transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.39,80.21a105.73,105.73,0,0,0,32.17,16.15,77.7,77.7,0,0,0,6.89-11.11,68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.52-51.06-19.35-72.13ZM42.45,65.69c-6.22,0-11.38-5.71-11.38-12.73S36,40.23,42.45,40.23s11.44,5.71,11.38,12.73-5.05,12.73-11.38,12.73Zm42.24,0c-6.22,0-11.38-5.71-11.38-12.73s5.12-12.73,11.38-12.73,11.44,5.71,11.38,12.73-5.05,12.73-11.38,12.73Z"/></svg>
                     </div>
-                    <h3 id="card-3-title" class="text-2xl font-bold mb-4"></h3>
-                    <p id="card-3-p" class="text-slate-500 mb-8"></p>
-                    <a href="resources.html" class="text-teal-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
+                    <h3 id="card-2-title" class="text-xl font-bold mb-3"></h3>
+                    <p id="card-2-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
+                    <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-indigo-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Discord <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Escape Plan / Freedom Streams Section -->
     <section id="freedom-streams" class="py-24 bg-slate-900 text-white overflow-hidden relative border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
@@ -325,15 +300,12 @@
                     shareLoading: "Generating Invoice...",
                     shareSuccess: "Invoice Generated!"
                 },
-                db: {
-                    title: "The RTO Transparency Database",
-                    sub: "Don't believe the HR PR. Check real employee verified data on mandates and monitoring."
-                },
                 tools: {
                     title: "Arm Yourself. Don't Fight Alone.",
                     card1: { title: "Negotiation Toolkit", p: "20+ Email templates, legal rights guide, and scripts to refuse RTO professionally." },
-                    card2: { title: "The Watercooler", p: "Join the community. Share your story anonymously and get advice from others fighting the same battles." },
-                    card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." }
+                    cardDb: { title: "Transparency Database", p: "Don't believe the HR PR. Check real employee verified data on mandates and monitoring." },
+                    card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." },
+                    card2: { title: "The Watercooler", p: "Join the community on Discord. Share your story anonymously and get advice from the alliance." }
                 },
                 freedom: {
                     mainTitle: "Ready to Take Back Control?",
@@ -342,8 +314,8 @@
                     careerP: "Scale your income by mastering high-demand skills. Access our automated curriculum designed for remote mastery.",
                     careerBtn1: "Remote Career Accelerator",
                     careerInfo1: "Master high-demand Data skills + Unlock the 'Internal HR Secrets' to the Canadian job market that recruiters never tell you.",
-                    bizTitle: "Business Track",
-                    bizP: "Build low-entry high-moat physical assets in the US. Secure your residency and future with a tangible venture.",
+                    bizTitle: "Start a physical business & Moving to the US",
+                    bizP: "Build high-moat physical assets in Canada or the US. Secure your residency and future with a tangible venture.",
                     bizBtn2: "Physical Business & US Relocation",
                     bizInfo2: "Tired of Canada's stagnant economy and brutal winters? Moving to the US is easier than you think. Simultaneously launch your dream business and relocate—killing two birds with one stone."
                 },
@@ -372,15 +344,12 @@
                     shareLoading: "正在生成账单...",
                     shareSuccess: "账单生成成功！"
                 },
-                db: {
-                    title: "RTO 透明度数据库",
-                    sub: "别听 HR 的官话。查看员工真实验证的返岗政策与监控爆料。"
-                },
                 tools: {
                     title: "武装自己。别孤军奋战。",
                     card1: { title: "谈判工具箱", p: "20+ 邮件模板、法律权利指南和专业拒绝 RTO 的话术剧本。" },
-                    card2: { title: "匿名树洞", p: "加入社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" },
-                    card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" }
+                    cardDb: { title: "RTO 透明数据库", p: "别听 HR 的官话。查看员工真实验证的返岗政策与真实监控爆料。" },
+                    card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" },
+                    card2: { title: "匿名树洞", p: "加入 Discord 社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" }
                 },
                 freedom: {
                     mainTitle: "准备好夺回掌控权了吗？",
@@ -389,8 +358,8 @@
                     careerP: "通过掌握高需求技能实现收入跃迁。访问我们专为远程专家设计的自动化课程体系。",
                     careerBtn1: "远程职业加速器",
                     careerInfo1: "1. 掌握核心Data技能；2. 内部HR直通，为你揭秘加拿大找工作的真正‘求职密码’与底层逻辑。",
-                    bizTitle: "商业赛道",
-                    bizP: "在美国建立或投资低价高护城河的实体资产。通过实业投资保障您的居留权与未来。",
+                    bizTitle: "实体业务与移居美国",
+                    bizP: "在加拿大或美国建立高护城河的实体资产。通过实业投资保障您的居留权与未来。",
                     bizBtn2: "实体商业与美国定居方案",
                     bizInfo2: "受够了加拿大的‘又穷又冷’？移居美国比你想象的要容易。在开启梦想创业的同时完成全家身份跨越，一举两得。"
                 },
@@ -431,15 +400,17 @@
             document.getElementById('res-label-2').innerText = data.calc.resLabel2;
             document.getElementById('res-stamp').innerText = data.calc.stamp;
             document.getElementById('btn-share-text').innerText = data.calc.share;
-            document.getElementById('db-title').innerText = data.db.title;
-            document.getElementById('db-sub').innerText = data.db.sub;
+
             document.getElementById('tools-title').innerText = data.tools.title;
             document.getElementById('card-1-title').innerText = data.tools.card1.title;
             document.getElementById('card-1-p').innerText = data.tools.card1.p;
+            document.getElementById('card-db-title').innerText = data.tools.cardDb.title;
+            document.getElementById('card-db-p').innerText = data.tools.cardDb.p;
             document.getElementById('card-2-title').innerText = data.tools.card2.title;
             document.getElementById('card-2-p').innerText = data.tools.card2.p;
             document.getElementById('card-3-title').innerText = data.tools.card3.title;
             document.getElementById('card-3-p').innerText = data.tools.card3.p;
+
             document.getElementById('final-main-title').innerText = data.freedom.mainTitle;
             document.getElementById('final-main-p').innerText = data.freedom.mainP;
             document.getElementById('stream-career-title').innerText = data.freedom.careerTitle;
