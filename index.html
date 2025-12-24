@@ -82,6 +82,14 @@
         .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
 
         .blur-job { filter: blur(8px); pointer-events: none; user-select: none; }
+
+        /* Highlight nav board pulse */
+        .nav-board-highlight {
+            background: #fef08a; /* yellow-200 */
+            color: #854d0e; /* yellow-900 */
+            border-color: #facc15;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -97,8 +105,8 @@
                         <a href="blacklist.html" class="hover:text-rose-500">The Database</a>
                         <a href="#calculator" class="hover:text-rose-500">Calculator</a>
                         <!-- Highlighted Insider Board -->
-                        <a href="#" onclick="alert('Open in 5 days. Exclusive access for the resistance.'); return false;" class="px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-all flex items-center gap-1 border border-indigo-200">
-                            Insider Board <span class="text-[10px] bg-indigo-600 text-white px-1.5 rounded font-bold animate-pulse">NEW</span>
+                        <a href="#" onclick="alert('Open in 5 days. Exclusive access for the resistance.'); return false;" class="nav-board-highlight px-3 py-1.5 rounded-full transition-all flex items-center gap-1 border">
+                            Insider Board <span class="text-[10px] bg-yellow-600 text-white px-1.5 rounded font-bold animate-pulse">NEW</span>
                         </a>
                         <a href="toolkit.html" class="hover:text-rose-500">Toolkit</a>
                         <a href="resources.html" class="hover:text-rose-500">Remote Jobs</a>
@@ -310,11 +318,9 @@
             <div id="waitlist-container" class="max-w-xl mx-auto p-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl shadow-xl">
                 <div class="bg-white p-8 rounded-[calc(1.5rem-1px)]">
                     <p id="hidden-tip" class="text-slate-900 text-lg font-bold mb-6"></p>
-                    <!-- FormSubmit Integration -->
-                    <form action="https://formsubmit.co/hranalytics.ca@gmail.com" method="POST" id="waitlist-form" class="flex flex-col sm:flex-row gap-3">
-                        <input type="hidden" name="_subject" value="New Waitlist Inquiry from NoMoreRTO">
-                        <input type="hidden" name="_next" value="https://nomorerto.com/">
-                        <input type="text" name="contact_info" id="waitlist-input" required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="">
+                    <!-- AJAX Form Submission to hranalytics.ca@gmail.com -->
+                    <form id="waitlist-form" onsubmit="submitWaitlist(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" name="contact" id="waitlist-input" required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="">
                         <button type="submit" id="waitlist-submit" class="bg-indigo-600 text-white font-black px-8 py-4 rounded-xl hover:bg-indigo-500 transition-all shadow-lg whitespace-nowrap"></button>
                     </form>
                     <p id="waitlist-success" class="hidden text-teal-600 font-bold mt-4 animate-up"></p>
@@ -477,11 +483,11 @@
                 },
                 hidden: {
                     title: "The Hidden Job Market Access",
-                    sub: "Get referred directly by the person leaving the role. Replace them before the job even hits LinkedIn.",
-                    tip: "Full board access opening in 5 days. Join the waitlist to be priority contacted.",
+                    sub: "<mark class='bg-yellow-200 px-1 rounded'>Get referred directly by the person leaving the role. Replace them before the job even hits LinkedIn.</mark>",
+                    tip: "Full board access opening soon. Join the waitlist to be priority contacted.",
                     placeholder: "Email or Phone Number",
                     btn: "Join Waitlist",
-                    success: "You're on the list! We'll contact you soon."
+                    success: "Success! You are now priority listed. We'll contact you soon."
                 },
                 freedom: {
                     mainTitle: "Ready to Take Back Control?",
@@ -515,7 +521,7 @@
                 navCta: "制定逃离计划",
                 hero: {
                     h1: "通勤即 <span class='text-rose-500'>无偿劳动。</span>",
-                    p: "别再把时间捐给市中心的地主。NoMoreRTO 是对抗强制返岗的反抗军。我们揭穿谎言，武装你的谈判，并为你提供通往远程职业或独立事业的路线图，开启尊重自由的生活。",
+                    p: "别再把时间捐给市中心的地主处理。NoMoreRTO 是对抗强制返岗的反抗军。我们揭穿谎言，武装你的谈判，并为你提供通往远程职业或独立事业的路线图，开启尊重自由的生活。",
                     cta1: "计算我的“返岗税”",
                     cta2: "查询公司数据库"
                 },
@@ -542,11 +548,11 @@
                 },
                 hidden: {
                     title: "隐藏就业市场直通车",
-                    sub: "由即将离职的内部人员直接推荐。在职位还没上 LinkedIn 之前就“接班”他们。",
-                    tip: "内推看板将在 5 天后全量上线。立即加入候补名单，获取优先咨询资格。",
+                    sub: "<mark class='bg-yellow-200 px-1 rounded'>由即将离职的内部人员直接推荐。在职位还没上 LinkedIn 之前就“接班”他们。</mark>",
+                    tip: "内推看板即将上线。立即加入候补名单，获取优先咨询资格。",
                     placeholder: "邮箱或电话号码",
                     btn: "加入候补名单",
-                    success: "已加入名单！我们将尽快与您联系。"
+                    success: "提交成功！您已进入优先联系名单，我们将尽快与您取得联系。"
                 },
                 freedom: {
                     mainTitle: "准备好夺回掌控权了吗？",
@@ -560,7 +566,7 @@
                     careerBtn1: "远程职业加速器",
                     careerInfo1: "1. 掌握核心Data技能；2. 内部HR直通，为你揭秘加拿大找工作的真正‘求职密码’与底层逻辑。",
                     bizTitle: "创业赛道",
-                    bizP: "在加拿大或美国建立低成本、高护园河的实体资产。通过实业投资保障您的居留权与未来。",
+                    bizP: "在加拿大或美国建立低成本、高护城河的实体资产。通过实业投资保障您的居留权与未来。",
                     bizBtn2: "确认资格并预约",
                     bizInfo2: "受够了加拿大的‘又穷又冷’？移居美国比你想象的要容易。在开启梦想创业的同时完成全家身份跨越，一举两得。"
                 },
@@ -580,22 +586,21 @@
         let currentLang = 'en';
         let officeDays = 3;
 
-        // Countdown Logic
+        // Countdown Timer Logic
         function startCountdown() {
-            // Target: 5 days from the first load of the page, or a fixed relative date
-            // Let's use a fixed 5 days from NOW for the demo, or stored in localStorage to persist
-            let targetDate = localStorage.getItem('nomorerto_target');
+            let targetDate = localStorage.getItem('nomorerto_countdown_target');
             if (!targetDate) {
-                targetDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
-                localStorage.setItem('nomorerto_target', targetDate);
+                targetDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000); // 5 days from now
+                localStorage.setItem('nomorerto_countdown_target', targetDate);
             }
 
-            const update = () => {
+            const interval = setInterval(() => {
                 const now = new Date().getTime();
                 const diff = targetDate - now;
 
                 if (diff <= 0) {
-                    document.getElementById('countdown-wrapper').innerHTML = "<p class='text-indigo-600 font-black text-xl'>LAUNCHED</p>";
+                    clearInterval(interval);
+                    document.getElementById('countdown-wrapper').innerHTML = "<div class='text-indigo-600 font-black text-2xl tracking-widest animate-pulse'>BOARD ACCESS OPENING NOW</div>";
                     return;
                 }
 
@@ -608,20 +613,54 @@
                 document.getElementById('cd-hours').innerText = h.toString().padStart(2, '0');
                 document.getElementById('cd-mins').innerText = m.toString().padStart(2, '0');
                 document.getElementById('cd-secs').innerText = s.toString().padStart(2, '0');
-            };
+            }, 1000);
+        }
 
-            setInterval(update, 1000);
-            update();
+        // AJAX Form Submission
+        async function submitWaitlist(event) {
+            event.preventDefault();
+            const form = event.target;
+            const input = document.getElementById('waitlist-input');
+            const submitBtn = document.getElementById('waitlist-submit');
+            const successMsg = document.getElementById('waitlist-success');
+            const data = CONTENT[currentLang];
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "...";
+
+            try {
+                // Using FormSubmit.co AJAX API
+                const response = await fetch("https://formsubmit.co/ajax/hranalytics.ca@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: "NoMoreRTO Waitlist",
+                        contact: input.value,
+                        _subject: "New Insider Board Waitlist Submission"
+                    })
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMsg.innerText = data.hidden.success;
+                    successMsg.classList.remove('hidden');
+                } else {
+                    throw new Error("Submission failed");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Submission failed. Please try again or contact us directly.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = data.hidden.btn;
+            }
         }
 
         function scrollToWaitlist() {
             document.getElementById('waitlist-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
             document.getElementById('waitlist-input').focus();
-        }
-
-        function handleWaitlistSubmit(event) {
-            // Note: This function is replaced by the standard HTML form submission to formsubmit.co
-            // But we can add UI logic if we want to handle via fetch for smoother experience.
         }
 
         function openPrescreenModal() {
@@ -708,7 +747,7 @@
 
             // Hidden Market
             document.getElementById('hidden-title').innerText = data.hidden.title;
-            document.getElementById('hidden-sub').innerText = data.hidden.sub;
+            document.getElementById('hidden-sub').innerHTML = data.hidden.sub; // Using innerHTML for highlight
             document.getElementById('hidden-tip').innerText = data.hidden.tip;
             document.getElementById('waitlist-input').placeholder = data.hidden.placeholder;
             document.getElementById('waitlist-submit').innerText = data.hidden.btn;
