@@ -21,6 +21,7 @@
         :root {
             --brand-soft-red: #f43f5e;
             --brand-soft-teal: #14b8a6;
+            --brand-indigo: #6366f1;
             --deep-gray: #1f2937;
         }
         body {
@@ -70,10 +71,17 @@
             box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .btn-premium-indigo {
+            background: linear-gradient(135deg, #818cf8 0%, #4f46e5 100%);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
         
         /* Modal Animation */
         .modal-enter { opacity: 0; transform: scale(0.95); }
         .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
+
+        .blur-job { filter: blur(8px); pointer-events: none; user-select: none; }
     </style>
 </head>
 <body class="bg-white">
@@ -85,9 +93,13 @@
                     <a href="index.html" class="font-extrabold text-2xl tracking-tighter">
                         NoMore<span class="text-rose-500">RTO</span>
                     </a>
-                    <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+                    <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors items-center">
                         <a href="blacklist.html" class="hover:text-rose-500">The Database</a>
                         <a href="#calculator" class="hover:text-rose-500">Calculator</a>
+                        <!-- Highlighted Insider Board -->
+                        <a href="#" onclick="alert('Open in 5 days. Exclusive access for the resistance.'); return false;" class="px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-all flex items-center gap-1 border border-indigo-200">
+                            Insider Board <span class="text-[10px] bg-indigo-600 text-white px-1.5 rounded font-bold animate-pulse">NEW</span>
+                        </a>
                         <a href="toolkit.html" class="hover:text-rose-500">Toolkit</a>
                         <a href="resources.html" class="hover:text-rose-500">Remote Jobs</a>
                     </div>
@@ -174,7 +186,7 @@
     <!-- Tools & Empowerment Section -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center tracking-tight"></h2>
+            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center tracking-tight text-slate-900"></h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1: Negotiation Toolkit -->
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
@@ -219,23 +231,112 @@
         </div>
     </section>
 
-    <!-- Escape Plan / Freedom Streams Section -->
+    <!-- The Hidden Job Market Section (Light Gray Highlight) -->
+    <section id="hidden-market" class="py-24 bg-slate-50 overflow-hidden relative border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 id="hidden-title" class="text-4xl md:text-5xl font-black mb-4 text-slate-900"></h2>
+            <p id="hidden-sub" class="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed"></p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <!-- Mock Job 1 -->
+                <div onclick="scrollToWaitlist()" class="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-indigo-500/50 transition-all cursor-pointer group relative overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="blur-job">
+                        <div class="text-indigo-600 font-mono text-sm mb-2">Ref #4829</div>
+                        <h4 class="text-slate-900 text-xl font-bold mb-1 italic tracking-tight uppercase">Senior Data Scientist</h4>
+                        <p class="text-slate-500 text-sm">Major Fintech | Toronto / Remote</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">$180k - $220k</span>
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">Equity</span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/10 backdrop-blur-sm">
+                        <span class="bg-indigo-600 text-white px-6 py-2 rounded-full font-black uppercase text-sm shadow-xl">Inquire Pricing</span>
+                    </div>
+                </div>
+
+                <!-- Mock Job 2 -->
+                <div onclick="scrollToWaitlist()" class="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-indigo-500/50 transition-all cursor-pointer group relative overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="blur-job">
+                        <div class="text-indigo-600 font-mono text-sm mb-2">Ref #7731</div>
+                        <h4 class="text-slate-900 text-xl font-bold mb-1 italic tracking-tight uppercase">Engineering Manager</h4>
+                        <p class="text-slate-500 text-sm">Tier-1 E-commerce | Vancouver / Remote</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">$210k - $250k</span>
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">RemoteFirst</span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/10 backdrop-blur-sm">
+                        <span class="bg-indigo-600 text-white px-6 py-2 rounded-full font-black uppercase text-sm shadow-xl">Inquire Pricing</span>
+                    </div>
+                </div>
+
+                <!-- Mock Job 3 -->
+                <div onclick="scrollToWaitlist()" class="bg-white border border-slate-200 p-8 rounded-[2rem] hover:border-indigo-500/50 transition-all cursor-pointer group relative overflow-hidden shadow-sm hover:shadow-md">
+                    <div class="blur-job">
+                        <div class="text-indigo-600 font-mono text-sm mb-2">Ref #9012</div>
+                        <h4 class="text-slate-900 text-xl font-bold mb-1 italic tracking-tight uppercase">Strategy Director</h4>
+                        <p class="text-slate-500 text-sm">Cloud Scaleup | Global Remote</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">$190k+</span>
+                            <span class="px-2 py-1 bg-slate-100 rounded text-xs text-slate-600">RetentionBonus</span>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/10 backdrop-blur-sm">
+                        <span class="bg-indigo-600 text-white px-6 py-2 rounded-full font-black uppercase text-sm shadow-xl">Inquire Pricing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="waitlist-container" class="mt-16 max-w-xl mx-auto p-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl shadow-xl">
+                <div class="bg-white p-8 rounded-[calc(1.5rem-1px)]">
+                    <p id="hidden-tip" class="text-slate-900 text-lg font-bold mb-6"></p>
+                    <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="text" id="waitlist-input" required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all" placeholder="">
+                        <button type="submit" id="waitlist-submit" class="bg-indigo-600 text-white font-black px-8 py-4 rounded-xl hover:bg-indigo-500 transition-all shadow-lg whitespace-nowrap"></button>
+                    </form>
+                    <p id="waitlist-success" class="hidden text-teal-600 font-bold mt-4 animate-up"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Escape Plan / Freedom Streams Section (Dark) -->
     <section id="freedom-streams" class="py-24 bg-slate-900 text-white overflow-hidden relative border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 id="final-main-title" class="text-4xl md:text-6xl font-black mb-8 tracking-tight"></h2>
                 <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed"></p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- EXIT BONUS CARD -->
+                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-indigo-400/30 transition-all group">
+                    <div class="p-8 md:p-12 flex flex-col h-full">
+                        <div class="mb-6 flex items-center gap-3">
+                            <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            </div>
+                            <h3 id="stream-exit-title" class="text-2xl font-black uppercase tracking-tighter leading-none"></h3>
+                        </div>
+                        <p id="stream-exit-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                        <div class="space-y-6">
+                            <div class="space-y-4">
+                                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" id="btn-stream-exit" class="block w-full text-center btn-premium-indigo text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
+                                <p id="info-stream-exit" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center min-h-[4.5rem]"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Track -->
                 <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-rose-400/30 transition-all group">
                     <div class="p-8 md:p-12 flex flex-col h-full">
                         <div class="mb-6 flex items-center gap-3">
                             <div class="w-12 h-12 bg-rose-500/20 rounded-xl flex items-center justify-center text-rose-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
                             </div>
-                            <h3 id="stream-career-title" class="text-3xl font-black uppercase tracking-tighter"></h3>
+                            <h3 id="stream-career-title" class="text-2xl font-black uppercase tracking-tighter leading-none"></h3>
                         </div>
-                        <p id="stream-career-p" class="text-slate-400 text-lg mb-10 leading-relaxed flex-grow"></p>
+                        <p id="stream-career-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
                         <div class="space-y-6">
                             <div class="space-y-4">
                                 <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></a>
@@ -244,15 +345,17 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Business Track -->
                 <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-teal-400/30 transition-all group">
                     <div class="p-8 md:p-12 flex flex-col h-full">
                         <div class="mb-6 flex items-center gap-3">
                             <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                             </div>
-                            <h3 id="stream-biz-title" class="text-3xl font-black uppercase tracking-tighter"></h3>
+                            <h3 id="stream-biz-title" class="text-2xl font-black uppercase tracking-tighter leading-none"></h3>
                         </div>
-                        <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed flex-grow"></p>
+                        <p id="stream-biz-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
                         <div class="space-y-6">
                             <div class="space-y-4">
                                 <button id="btn-stream-biz-2" onclick="openPrescreenModal()" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
@@ -349,9 +452,21 @@
                     card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." },
                     card2: { title: "The Watercooler", p: "Join the community on Discord. Share your story anonymously and get advice from the alliance." }
                 },
+                hidden: {
+                    title: "The Hidden Job Market Access",
+                    sub: "Get referred directly by the person leaving the role. Replace them before the job even hits LinkedIn.",
+                    tip: "Full board access opening in 5 days. Join the waitlist to be priority contacted.",
+                    placeholder: "Email or Phone Number",
+                    btn: "Join Waitlist",
+                    success: "You're on the list! We'll contact you soon."
+                },
                 freedom: {
                     mainTitle: "Ready to Take Back Control?",
                     mainP: "Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.",
+                    exitTitle: "Exit Bonus",
+                    exitP: "Leaving or forced out? Don't leave your last company asset on the table. Refer your successor and get paid.",
+                    exitBtn: "Claim My Exit Bonus",
+                    exitInfo: "Skip the recruiters. We have top-tier Data/Tech candidates. Hand-deliver them to your boss and secure a massive cash reward upon their hire.",
                     careerTitle: "Career Track",
                     careerP: "Scale your income by mastering high-demand skills. Access our automated curriculum designed for remote mastery.",
                     careerBtn1: "Remote Career Accelerator",
@@ -402,9 +517,21 @@
                     card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" },
                     card2: { title: "匿名树洞", p: "加入 Discord 社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" }
                 },
+                hidden: {
+                    title: "隐藏就业市场直通车",
+                    sub: "由即将离职的内部人员直接推荐。在职位还没上 LinkedIn 之前就“接班”他们。",
+                    tip: "内推看板将在 5 天后全量上线。立即加入候补名单，获取优先咨询资格。",
+                    placeholder: "邮箱或电话号码",
+                    btn: "加入候补名单",
+                    success: "已加入名单！我们将尽快与您联系。"
+                },
                 freedom: {
                     mainTitle: "准备好夺回掌控权了吗？",
                     mainP: "别再乞求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
+                    exitTitle: "离职变现",
+                    exitP: "打算离职/被RTO劝退？别浪费了你在公司的最后一点资产！赚一笔自己的 Exit Bonus。",
+                    exitBtn: "领取我的 Exit Bonus",
+                    exitInfo: "别让猎头赚佣金。我们有顶尖 Data/Tech 候选人。你只需把他们作为你的“接班人”推荐给老板，入职即可获得丰厚现金回报。",
                     careerTitle: "职业赛道",
                     careerP: "通过掌握高需求技能实现收入跃迁。访问我们专为远程专家设计的自动化课程体系。",
                     careerBtn1: "远程职业加速器",
@@ -429,6 +556,34 @@
 
         let currentLang = 'en';
         let officeDays = 3;
+
+        function scrollToWaitlist() {
+            document.getElementById('waitlist-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.getElementById('waitlist-input').focus();
+        }
+
+        function handleWaitlistSubmit(event) {
+            event.preventDefault();
+            const input = document.getElementById('waitlist-input');
+            const submitBtn = document.getElementById('waitlist-submit');
+            const successMsg = document.getElementById('waitlist-success');
+            const data = CONTENT[currentLang];
+            
+            // Production submission simulation
+            submitBtn.disabled = true;
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = "...";
+            
+            // Logic: Data will be handled in lead management system. 
+            // Submission to hranalytics.ca@gmail.com is logged for simulation.
+            console.log("Waitlist Submission Received for hranalytics.ca@gmail.com:", input.value);
+
+            setTimeout(() => {
+                document.getElementById('waitlist-form').classList.add('hidden');
+                successMsg.innerText = data.hidden.success;
+                successMsg.classList.remove('hidden');
+            }, 1200);
+        }
 
         function openPrescreenModal() {
             const modal = document.getElementById('prescreen-modal');
@@ -512,8 +667,22 @@
             document.getElementById('card-3-title').innerText = data.tools.card3.title;
             document.getElementById('card-3-p').innerText = data.tools.card3.p;
 
+            // Hidden Market
+            document.getElementById('hidden-title').innerText = data.hidden.title;
+            document.getElementById('hidden-sub').innerText = data.hidden.sub;
+            document.getElementById('hidden-tip').innerText = data.hidden.tip;
+            document.getElementById('waitlist-input').placeholder = data.hidden.placeholder;
+            document.getElementById('waitlist-submit').innerText = data.hidden.btn;
+
             document.getElementById('final-main-title').innerText = data.freedom.mainTitle;
             document.getElementById('final-main-p').innerText = data.freedom.mainP;
+            
+            // Exit Bonus Card
+            document.getElementById('stream-exit-title').innerText = data.freedom.exitTitle;
+            document.getElementById('stream-exit-p').innerText = data.freedom.exitP;
+            document.getElementById('btn-stream-exit').innerText = data.freedom.exitBtn;
+            document.getElementById('info-stream-exit').innerText = data.freedom.exitInfo;
+
             document.getElementById('stream-career-title').innerText = data.freedom.careerTitle;
             document.getElementById('stream-career-p').innerText = data.freedom.careerP;
             document.getElementById('btn-stream-career-1').innerText = data.freedom.careerBtn1;
@@ -531,7 +700,7 @@
             document.getElementById('check-3').innerText = data.modal.check3;
             document.getElementById('modal-book-btn').innerText = data.modal.btn;
             document.getElementById('modal-tip').innerText = data.modal.tip;
-            validatePrescreen(); // Refresh button state with new language
+            validatePrescreen();
 
             document.getElementById('footer-copy').innerText = data.footer;
             updateCalculator();
