@@ -13,16 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoMoreRTO Hub - Take Back Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Added html2canvas for screenshot generation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- Calendly link widget CSS -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-soft-red: #f43f5e; /* Rose 500 */
-            --brand-soft-teal: #14b8a6; /* Teal 500 */
+            --brand-soft-red: #f43f5e;
+            --brand-soft-teal: #14b8a6;
             --deep-gray: #1f2937;
         }
         body {
@@ -32,7 +30,6 @@
         }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
-        /* Smooth Fade-in */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -41,7 +38,6 @@
         .delay-1 { animation-delay: 0.2s; opacity: 0; }
         .delay-2 { animation-delay: 0.4s; opacity: 0; }
 
-        /* Background grid effect */
         .bg-grid {
             background-image: radial-gradient(#f1f5f9 1px, transparent 1px);
             background-size: 40px 40px;
@@ -64,7 +60,6 @@
             pointer-events: none;
         }
 
-        /* Premium "Expensive" Button Styles - Softened Gradients */
         .btn-premium-rose {
             background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
             box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.3);
@@ -79,7 +74,6 @@
 </head>
 <body class="bg-white">
 
-    <!-- Header & Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -106,44 +100,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-grid overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 id="hero-h1" class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] animate-up">
-                <!-- Content injected via JS -->
-            </h1>
-            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed animate-up delay-1">
-                <!-- Content injected via JS -->
-            </p>
+            <h1 id="hero-h1" class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] animate-up"></h1>
+            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed animate-up delay-1"></p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center animate-up delay-2">
-                <a href="#calculator" id="hero-cta-1" class="bg-rose-500 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-600 hover:-translate-y-1 transition-all">
-                    Calculate My "RTO Tax"
-                </a>
-                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-slate-50 transition-all">
-                    Search Company Database
-                </a>
+                <a href="#calculator" id="hero-cta-1" class="bg-rose-500 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-600 hover:-translate-y-1 transition-all"></a>
+                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-slate-50 transition-all"></a>
             </div>
         </div>
     </header>
 
-    <!-- RTO Tax Calculator Section -->
     <section id="calculator" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4">What Is Your Commute Really Costing You?</h2>
-                <p id="calc-sub" class="text-slate-500 text-lg">Input your data to reveal the hidden tax of being forced back to the office.</p>
+                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4"></h2>
+                <p id="calc-sub" class="text-slate-500 text-lg"></p>
             </div>
-
             <div class="max-w-5xl mx-auto calculator-card rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-                <!-- Inputs -->
                 <div class="p-8 md:p-12 space-y-8 bg-white">
                     <div class="space-y-4">
-                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Daily Commute Time (Total Hours)</label>
+                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-slate-600"></label>
                         <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500">
                         <div class="flex justify-between font-mono text-sm"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-slate-600">Office Days per Week</label>
+                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-slate-600"></label>
                         <div class="flex gap-2">
                             <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="1">1</button>
                             <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="2">2</button>
@@ -153,36 +135,31 @@
                         </div>
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-salary" class="block text-sm font-bold uppercase tracking-wider text-slate-600">Estimated Hourly Rate ($)</label>
+                        <label id="lbl-salary" class="block text-sm font-bold uppercase tracking-wider text-slate-600"></label>
                         <input type="number" id="input-salary" value="50" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-extras" class="block text-sm font-bold uppercase tracking-wider text-slate-600">Daily Extra Costs (Parking, Gas, Coffee, Lunch)</label>
+                        <label id="lbl-extras" class="block text-sm font-bold uppercase tracking-wider text-slate-600"></label>
                         <input type="number" id="input-extra" value="25" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
                     </div>
                 </div>
-
-                <!-- Results -->
                 <div id="results-card" class="p-8 md:p-12 bg-rose-500 text-white flex flex-col justify-center relative overflow-hidden">
                     <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full"></div>
-                    
                     <div class="relative z-10 space-y-10">
                         <div>
-                            <p id="res-label-1" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2">Annual Unpaid Labor</p>
-                            <h3 id="res-hours" class="text-5xl md:text-6xl font-black font-mono">312 Hours</h3>
+                            <p id="res-label-1" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2"></p>
+                            <h3 id="res-hours" class="text-5xl md:text-6xl font-black font-mono"></h3>
                         </div>
                         <div>
-                            <p id="res-label-2" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2">Annual Financial Loss</p>
-                            <h3 id="res-money" class="text-5xl md:text-6xl font-black font-mono">$15,600</h3>
+                            <p id="res-label-2" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2"></p>
+                            <h3 id="res-money" class="text-5xl md:text-6xl font-black font-mono"></h3>
                         </div>
-                        
                         <div class="pt-4">
-                            <div id="res-stamp" class="stamp bg-white/95 font-mono text-2xl">UNPAID LABOR</div>
+                            <div id="res-stamp" class="stamp bg-white/95 font-mono text-2xl"></div>
                         </div>
-
                         <button id="btn-share" class="w-full bg-white text-rose-500 font-black py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                            <span id="btn-share-text">Generate My Invoice & Share</span>
+                            <span id="btn-share-text"></span>
                         </button>
                     </div>
                 </div>
@@ -190,20 +167,17 @@
         </div>
     </section>
 
-    <!-- Database Preview Section -->
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div class="max-w-2xl">
-                    <h2 id="db-title" class="text-4xl font-black mb-4">The RTO Transparency Database</h2>
-                    <p id="db-sub" class="text-slate-500 text-lg">Don't believe the HR PR. Check real employee verified data on mandates and monitoring.</p>
+                    <h2 id="db-title" class="text-4xl font-black mb-4"></h2>
+                    <p id="db-sub" class="text-slate-500 text-lg"></p>
                 </div>
                 <div class="flex gap-4">
                     <a href="blacklist.html" class="bg-slate-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-rose-500 transition-all">Browse Full Database</a>
                 </div>
             </div>
-
-            <!-- Table Preview -->
             <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
                 <table class="w-full text-left">
                     <thead class="bg-slate-50 border-b border-slate-100">
@@ -235,94 +209,75 @@
         </div>
     </section>
 
-    <!-- Tools & Empowerment Section -->
     <section class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center">Arm Yourself. Don't Fight Alone.</h2>
+            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center"></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
                 <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
                     <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
-                    <h3 id="card-1-title" class="text-2xl font-bold mb-4">Negotiation Toolkit</h3>
-                    <p id="card-1-p" class="text-slate-500 mb-8">20+ Email templates, legal rights guide, and scripts to refuse RTO professionally.</p>
+                    <h3 id="card-1-title" class="text-2xl font-bold mb-4"></h3>
+                    <p id="card-1-p" class="text-slate-500 mb-8"></p>
                     <a href="toolkit.html" class="text-blue-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
-                <!-- Card 2 -->
                 <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
                     <div class="w-16 h-16 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:bg-rose-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
-                    <h3 id="card-2-title" class="text-2xl font-bold mb-4">The Watercooler</h3>
-                    <p id="card-2-p" class="text-slate-500 mb-8">Join the community. Share your story anonymously and get advice from others fighting the same battles.</p>
+                    <h3 id="card-2-title" class="text-2xl font-bold mb-4"></h3>
+                    <p id="card-2-p" class="text-slate-500 mb-8"></p>
                     <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-rose-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Join Discussion <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
-                <!-- Card 3 -->
                 <div class="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
                     <div class="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-500 mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
-                    <h3 id="card-3-title" class="text-2xl font-bold mb-4">Vetted Remote Jobs</h3>
-                    <p id="card-3-p" class="text-slate-500 mb-8">Access our curated list of real Remote-First companies that actually respect your work-life balance.</p>
+                    <h3 id="card-3-title" class="text-2xl font-bold mb-4"></h3>
+                    <p id="card-3-p" class="text-slate-500 mb-8"></p>
                     <a href="resources.html" class="text-teal-500 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Escape Plan / Freedom Streams Section -->
     <section id="freedom-streams" class="py-24 bg-slate-900 text-white overflow-hidden relative border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 id="final-main-title" class="text-4xl md:text-6xl font-black mb-8 tracking-tight">Ready to Take Back Control?</h2>
-                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
-                    Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.
-                </p>
+                <h2 id="final-main-title" class="text-4xl md:text-6xl font-black mb-8 tracking-tight"></h2>
+                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed"></p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-                <!-- Career Track Stream -->
                 <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-rose-400/30 transition-all group">
                     <div class="p-8 md:p-12 flex flex-col h-full">
                         <div class="mb-6 flex items-center gap-3">
                             <div class="w-12 h-12 bg-rose-500/20 rounded-xl flex items-center justify-center text-rose-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
                             </div>
-                            <h3 id="stream-career-title" class="text-3xl font-black uppercase tracking-tighter">Career Track</h3>
+                            <h3 id="stream-career-title" class="text-3xl font-black uppercase tracking-tighter"></h3>
                         </div>
-                        <p id="stream-career-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Scale your income by mastering high-demand skills. Access our automated curriculum designed for remote mastery.</p>
-                        
+                        <p id="stream-career-p" class="text-slate-400 text-lg mb-10 leading-relaxed"></p>
                         <div class="mt-auto space-y-6">
-                            <!-- Single High-Value Course Button -->
                             <div class="space-y-4">
-                                <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
-                                    Remote Career Accelerator
-                                </a>
-                                <p id="info-stream-career-1" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center">Perfect for beginners: Master Excel/SQL/Power BI in 6 weeks to bridge your career transition gap.</p>
+                                <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-career-1" class="block w-full text-center btn-premium-rose text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></a>
+                                <p id="info-stream-career-1" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Business Track Stream -->
                 <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-teal-400/30 transition-all group">
                     <div class="p-8 md:p-12 flex flex-col h-full">
                         <div class="mb-6 flex items-center gap-3">
                             <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center text-teal-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                             </div>
-                            <h3 id="stream-biz-title" class="text-3xl font-black uppercase tracking-tighter">Business Track</h3>
+                            <h3 id="stream-biz-title" class="text-3xl font-black uppercase tracking-tighter"></h3>
                         </div>
-                        <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed">Build high-moat physical assets in Canada or the US. Secure your residency and future with a tangible venture.</p>
-                        
+                        <p id="stream-biz-p" class="text-slate-400 text-lg mb-10 leading-relaxed"></p>
                         <div class="mt-auto space-y-6">
-                            <!-- Single High-Ticket Strategy Button -->
                             <div class="space-y-4">
-                                <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110">
-                                    Physical Business & US Relocation
-                                </button>
-                                <p id="info-stream-biz-2" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center">Heavy Asset: Integrate offline resources and business plans to build local physical assets with a moat.</p>
+                                <button id="btn-stream-biz-2" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" class="block w-full text-center btn-premium-teal text-white px-8 py-6 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
+                                <p id="info-stream-biz-2" class="text-xs text-slate-400 px-4 leading-relaxed italic text-center"></p>
                             </div>
                         </div>
                     </div>
@@ -331,7 +286,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-12 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="font-extrabold text-xl tracking-tighter mb-6">
@@ -342,7 +296,7 @@
                 <a href="#" class="hover:text-slate-900">LinkedIn</a>
                 <a href="classic.html" class="text-rose-500 font-bold hover:underline">Switch to Classic View</a>
             </div>
-            <p id="footer-copy" class="text-slate-400 text-xs uppercase tracking-widest">© 2024 NoMoreRTO Hub. Built for the Resistance.</p>
+            <p id="footer-copy" class="text-slate-400 text-xs uppercase tracking-widest"></p>
         </div>
     </footer>
 
@@ -387,11 +341,11 @@
                     careerTitle: "Career Track",
                     careerP: "Scale your income by mastering high-demand skills. Access our automated curriculum designed for remote mastery.",
                     careerBtn1: "Remote Career Accelerator",
-                    careerInfo1: "Perfect for beginners: Master Excel/SQL/Power BI in 6 weeks to bridge your career transition gap.",
+                    careerInfo1: "Master high-demand Data skills + Unlock the 'Internal HR Secrets' to the Canadian job market that recruiters never tell you.",
                     bizTitle: "Business Track",
-                    bizP: "Build/invest high-moat physical assets in the US. Secure your residency and future with a tangible venture.",
-                    bizBtn2: "Physical Business Path to US Relocation",
-                    bizInfo2: "Heavy Asset: Integrate offline resources and business plans to build local physical assets with a moat."
+                    bizP: "Build low-entry high-moat physical assets in the US. Secure your residency and future with a tangible venture.",
+                    bizBtn2: "Physical Business & US Relocation",
+                    bizInfo2: "Tired of Canada's stagnant economy and brutal winters? Moving to the US is easier than you think. Simultaneously launch your dream business and relocate—killing two birds with one stone."
                 },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
@@ -434,11 +388,11 @@
                     careerTitle: "职业赛道",
                     careerP: "通过掌握高需求技能实现收入跃迁。访问我们专为远程专家设计的自动化课程体系。",
                     careerBtn1: "远程职业加速器",
-                    careerInfo1: "适合零基础： 6周掌握 Excel/SQL/Power BI核心技能，补齐转行短板。",
+                    careerInfo1: "1. 掌握核心Data技能；2. 内部HR直通，为你揭秘加拿大找工作的真正‘求职密码’与底层逻辑。",
                     bizTitle: "商业赛道",
-                    bizP: "在美国建立或购买高护城河的实体资产。通过低价实业投资保障您的居留权与未来。",
+                    bizP: "在美国建立或投资低价高护城河的实体资产。通过实业投资保障您的居留权与未来。",
                     bizBtn2: "实体商业与美国定居方案",
-                    bizInfo2: "重资产模式： 整合线下资源和商业计划，建立有护城河的本地实体资产。"
+                    bizInfo2: "受够了加拿大的‘又穷又冷’？移居美国比你想象的要容易。在开启梦想创业的同时完成全家身份跨越，一举两得。"
                 },
                 footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
             }
@@ -451,11 +405,9 @@
             const time = parseFloat(document.getElementById('input-time').value);
             const salary = parseFloat(document.getElementById('input-salary').value) || 0;
             const extra = parseFloat(document.getElementById('input-extra').value) || 0;
-            
             const annualWeeks = 52;
             const annualHours = time * officeDays * annualWeeks;
             const annualFinancialLoss = (annualHours * salary) + (extra * officeDays * annualWeeks);
-            
             document.getElementById('val-time').innerText = time + 'h';
             document.getElementById('res-hours').innerText = Math.round(annualHours) + ' Hours';
             document.getElementById('res-money').innerText = '$' + Math.round(annualFinancialLoss).toLocaleString();
@@ -469,7 +421,6 @@
             document.getElementById('hero-p').innerText = data.hero.p;
             document.getElementById('hero-cta-1').innerText = data.hero.cta1;
             document.getElementById('hero-cta-2').innerText = data.hero.cta2;
-            
             document.getElementById('calc-title').innerText = data.calc.title;
             document.getElementById('calc-sub').innerText = data.calc.sub;
             document.getElementById('lbl-commute').innerText = data.calc.lblTime;
@@ -480,10 +431,8 @@
             document.getElementById('res-label-2').innerText = data.calc.resLabel2;
             document.getElementById('res-stamp').innerText = data.calc.stamp;
             document.getElementById('btn-share-text').innerText = data.calc.share;
-
             document.getElementById('db-title').innerText = data.db.title;
             document.getElementById('db-sub').innerText = data.db.sub;
-
             document.getElementById('tools-title').innerText = data.tools.title;
             document.getElementById('card-1-title').innerText = data.tools.card1.title;
             document.getElementById('card-1-p').innerText = data.tools.card1.p;
@@ -491,21 +440,17 @@
             document.getElementById('card-2-p').innerText = data.tools.card2.p;
             document.getElementById('card-3-title').innerText = data.tools.card3.title;
             document.getElementById('card-3-p').innerText = data.tools.card3.p;
-
             document.getElementById('final-main-title').innerText = data.freedom.mainTitle;
             document.getElementById('final-main-p').innerText = data.freedom.mainP;
             document.getElementById('stream-career-title').innerText = data.freedom.careerTitle;
             document.getElementById('stream-career-p').innerText = data.freedom.careerP;
             document.getElementById('btn-stream-career-1').innerText = data.freedom.careerBtn1;
             document.getElementById('info-stream-career-1').innerText = data.freedom.careerInfo1;
-            
             document.getElementById('stream-biz-title').innerText = data.freedom.bizTitle;
             document.getElementById('stream-biz-p').innerText = data.freedom.bizP;
             document.getElementById('btn-stream-biz-2').innerText = data.freedom.bizBtn2;
             document.getElementById('info-stream-biz-2').innerText = data.freedom.bizInfo2;
-
             document.getElementById('footer-copy').innerText = data.footer;
-            
             updateCalculator();
         }
 
@@ -524,7 +469,6 @@
                     b.classList.remove('border-rose-400', 'bg-rose-50', 'text-rose-500');
                     b.classList.add('border-slate-100');
                 });
-                btn.classList.remove('border-slate-100');
                 btn.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-500');
                 officeDays = parseInt(btn.dataset.val);
                 updateCalculator();
@@ -536,11 +480,9 @@
             const btnText = document.getElementById('btn-share-text');
             const resultsCard = document.getElementById('results-card');
             const data = CONTENT[currentLang];
-            
             btn.disabled = true;
             const originalText = btnText.innerText;
             btnText.innerText = data.calc.shareLoading;
-
             try {
                 const canvas = await html2canvas(resultsCard, {
                     scale: 2,
@@ -549,17 +491,14 @@
                     logging: false,
                     ignoreElements: (element) => element.id === 'btn-share'
                 });
-
                 const imageBase64 = canvas.toDataURL('image/png');
                 const blob = await (await fetch(imageBase64)).blob();
                 const file = new File([blob], 'NoMoreRTO_Invoice.png', { type: 'image/png' });
-
                 const shareData = {
                     title: 'My RTO Invoice',
                     text: `RTO IS THEFT. My commute is costing me ${document.getElementById('res-hours').innerText} of unpaid labor and ${document.getElementById('res-money').innerText} in annual financial loss. Calculate your "RTO Tax" at NoMoreRTO.com`,
                     files: [file]
                 };
-
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share(shareData);
                 } else {
@@ -569,17 +508,11 @@
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
-                    
                     await navigator.clipboard.writeText(shareData.text);
                     alert(data.calc.shareSuccess + " (Image downloaded, text copied)");
                 }
-
                 btnText.innerText = data.calc.shareSuccess;
-                setTimeout(() => {
-                    btnText.innerText = originalText;
-                    btn.disabled = false;
-                }, 2000);
-
+                setTimeout(() => { btnText.innerText = originalText; btn.disabled = false; }, 2000);
             } catch (err) {
                 console.error('Screenshot failed:', err);
                 alert('Generation failed. Please try again.');
