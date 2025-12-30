@@ -52,13 +52,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --brand-rose: #f43f5e;
             --brand-teal: #14b8a6;
             --brand-indigo: #6366f1;
+            --bg-light: #f9fafb;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -68,37 +69,46 @@
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
         .bg-grid {
-            background-image: radial-gradient(#f1f5f9 1px, transparent 1px);
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
             background-size: 40px 40px;
         }
         
         .calculator-card {
             background: #ffffff;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
         }
 
         .stamp {
-            border: 5px solid var(--brand-rose);
+            border: 4px solid var(--brand-rose);
             color: var(--brand-rose);
             font-weight: 900;
             text-transform: uppercase;
-            padding: 8px 16px;
+            padding: 4px 12px;
             display: inline-block;
-            transform: rotate(-8deg);
+            transform: rotate(-6deg);
             opacity: 0.9;
         }
 
-        .btn-matrix-blue { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); }
-        .btn-matrix-purple { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); box-shadow: 0 0 25px rgba(168, 85, 247, 0.3); }
-        .btn-matrix-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); box-shadow: 0 0 25px rgba(249, 115, 22, 0.3); }
-        .btn-matrix-gold { background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); box-shadow: 0 0 25px rgba(234, 179, 8, 0.3); }
+        .btn-matrix-blue { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2); }
+        .btn-matrix-purple { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2); }
+        .btn-matrix-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.2); }
+        .btn-matrix-gold { background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.2); }
         
-        @keyframes glow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+        .matrix-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .pulse-glow { animation: glow 3s infinite ease-in-out; }
+        .matrix-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+            border-color: #e2e8f0;
+        }
+
+        /* Remove italics globally */
+        * { font-style: normal !important; }
     </style>
 </head>
 <body class="bg-white">
@@ -108,7 +118,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-8">
-                    <a href="/" class="font-extrabold text-2xl tracking-tighter text-gray-900">
+                    <a href="/" class="font-black text-2xl tracking-tighter text-gray-900">
                         NoMore<span class="text-rose-500">RTO</span>
                     </a>
                     <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-500">
@@ -130,77 +140,69 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-grid overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 id="hero-h1" class="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 mb-6 leading-none"></h1>
-            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed font-medium"></p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#calculator" id="hero-cta-1" class="bg-rose-600 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-500 transition-all"></a>
-                <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-slate-50 transition-all"></a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Calculator -->
-    <section id="calculator" class="py-20 bg-slate-50 border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4 text-gray-900"></h2>
-                <p id="calc-sub" class="text-slate-500 text-lg"></p>
-            </div>
-            <div class="max-w-5xl mx-auto calculator-card rounded-[2rem] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-                <!-- Inputs -->
-                <div class="p-8 md:p-12 space-y-8 bg-white">
-                    <div class="space-y-4">
-                        <label id="lbl-commute" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
-                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-rose-500">
-                        <div class="flex justify-between font-mono text-xs text-slate-400"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
-                    </div>
-                    <div class="space-y-4">
-                        <label id="lbl-days" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
-                        <div class="flex gap-2">
-                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="1">1</button>
-                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="2">2</button>
-                            <button class="day-btn flex-1 py-2 border-2 border-rose-500 bg-rose-50 text-rose-600 font-bold transition-all" data-val="3">3</button>
-                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="4">4</button>
-                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="5">5</button>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-2">
-                            <label id="lbl-salary" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
-                            <input type="number" id="input-salary" value="50" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
-                        </div>
-                        <div class="space-y-2">
-                            <label id="lbl-extras" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
-                            <input type="number" id="input-extra" value="25" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
-                        </div>
+    <!-- Unified Hero + Calculator -->
+    <section class="relative pt-28 pb-20 md:pt-40 md:pb-32 bg-grid overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col xl:flex-row gap-12 items-center">
+                <!-- Headline Column -->
+                <div class="xl:w-1/2 text-center xl:text-left">
+                    <h1 id="hero-h1" class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 mb-8 leading-[1.05]"></h1>
+                    <p id="hero-p" class="text-xl md:text-2xl text-slate-500 mb-10 leading-relaxed font-medium max-w-2xl mx-auto xl:mx-0"></p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start">
+                        <a href="blacklist.html" id="hero-cta-2" class="text-slate-400 hover:text-gray-900 font-bold text-sm underline underline-offset-4 transition-all"></a>
                     </div>
                 </div>
-                <!-- Results -->
-                <div id="results-card" class="p-8 md:p-12 bg-rose-600 text-white flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
-                    <div class="relative z-10 space-y-8 text-center md:text-left">
-                        <div>
-                            <p id="res-label-1" class="text-xs font-bold uppercase tracking-[0.2em] text-rose-100 mb-2"></p>
-                            <h3 id="res-hours" class="text-4xl md:text-5xl font-black font-mono"></h3>
+
+                <!-- Calculator Column -->
+                <div class="xl:w-1/2 w-full max-w-2xl">
+                    <div class="calculator-card rounded-[2.5rem] overflow-hidden grid grid-cols-1">
+                        <!-- Inputs -->
+                        <div class="p-8 md:p-10 space-y-8 bg-white">
+                            <div class="space-y-4">
+                                <label id="lbl-commute" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
+                                <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                                <div class="flex justify-between font-mono text-xs text-slate-400"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
+                            </div>
+                            <div class="space-y-4">
+                                <label id="lbl-days" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
+                                <div class="flex gap-2">
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="1">1</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="2">2</button>
+                                    <button class="day-btn flex-1 py-2 border-2 border-rose-500 bg-rose-50 text-rose-600 font-bold transition-all" data-val="3">3</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="4">4</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="5">5</button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label id="lbl-salary" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
+                                    <input type="number" id="input-salary" value="50" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                                </div>
+                                <div class="space-y-2">
+                                    <label id="lbl-extras" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
+                                    <input type="number" id="input-extra" value="25" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p id="res-label-2" class="text-xs font-bold uppercase tracking-[0.2em] text-rose-100 mb-2"></p>
-                            <h3 id="res-money" class="text-4xl md:text-5xl font-black font-mono"></h3>
-                        </div>
-                        <div class="pt-4">
-                            <div id="res-stamp" class="stamp bg-white font-mono text-xl"></div>
-                        </div>
-                        <div class="space-y-3 pt-4">
-                            <button id="btn-share" class="w-full bg-white text-rose-600 font-black py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                                <span id="btn-share-text"></span>
-                            </button>
-                            <a href="#freedom-streams" class="block w-full text-center text-white/90 hover:text-white font-bold text-sm underline underline-offset-4 transition-all">
-                                Stop losing this money. Pick your solution below 👇
-                            </a>
+                        <!-- Results Stripe -->
+                        <div id="results-card" class="p-8 md:p-10 bg-rose-600 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div class="absolute inset-0 bg-gradient-to-r from-rose-700 to-rose-600"></div>
+                            <div class="relative z-10 flex-grow text-center md:text-left space-y-4">
+                                <div>
+                                    <p id="res-label-2" class="text-[10px] font-black uppercase tracking-[0.2em] text-rose-200 mb-1"></p>
+                                    <h3 id="res-money" class="text-4xl lg:text-5xl font-black font-mono leading-none"></h3>
+                                </div>
+                                <div id="res-stamp" class="stamp bg-white font-mono text-sm"></div>
+                            </div>
+                            <div class="relative z-10 w-full md:w-auto flex flex-col gap-3">
+                                <button id="btn-share" class="bg-white text-rose-600 font-black px-6 py-3 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                    <span id="btn-share-text"></span>
+                                </button>
+                                <a href="#freedom-streams" class="text-center text-white/90 hover:text-white font-bold text-xs underline underline-offset-4 transition-all">
+                                    Don't lose this money. Pick your solution below 👇
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,78 +210,78 @@
         </div>
     </section>
 
-    <!-- Freedom Streams / Matrix (Dark) -->
-    <section id="freedom-streams" class="py-24 bg-[#09090b] relative border-t border-white/5">
+    <!-- Freedom Streams / Matrix (Clean Light Mode) -->
+    <section id="freedom-streams" class="py-32 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 id="final-main-title" class="text-4xl md:text-7xl font-black mb-8 text-white tracking-tighter"></h2>
-                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium"></p>
+            <div class="text-center mb-20">
+                <h2 id="final-main-title" class="text-4xl md:text-7xl font-black mb-8 text-gray-900 tracking-tighter leading-none"></h2>
+                <p id="final-main-p" class="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium"></p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- CARD 1: THE SHIELD -->
-                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-blue-500/40 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 text-blue-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-blue-500/10 rounded-full" id="tag-shield"></div>
-                    <div class="mb-8 w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
+                <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
+                    <div class="absolute top-6 right-8 text-blue-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-blue-50 rounded-full" id="tag-shield"></div>
+                    <div class="mb-10 w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
-                    <h3 id="stream-shield-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
-                    <p id="stream-shield-sub" class="text-blue-400 text-sm font-bold mt-1 uppercase mb-6"></p>
-                    <p id="stream-shield-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <h3 id="stream-shield-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
+                    <p id="stream-shield-sub" class="text-blue-600 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-shield-p" class="text-slate-500 text-base mb-10 leading-relaxed flex-grow font-medium"></p>
                     <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-shield" class="btn-matrix-blue text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
 
                 <!-- CARD 2: THE EXIT BOUNTY -->
-                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-purple-500/40 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 text-purple-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-purple-500/10 rounded-full" id="tag-viral"></div>
-                    <div class="mb-8 w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400">
+                <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
+                    <div class="absolute top-6 right-8 text-purple-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-purple-50 rounded-full" id="tag-viral"></div>
+                    <div class="mb-10 w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
                     </div>
-                    <h3 id="stream-viral-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
-                    <p id="stream-viral-sub" class="text-purple-400 text-sm font-bold mt-1 uppercase mb-6"></p>
-                    <p id="stream-viral-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <h3 id="stream-viral-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
+                    <p id="stream-viral-sub" class="text-purple-600 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-viral-p" class="text-slate-500 text-base mb-10 leading-relaxed flex-grow font-medium"></p>
                     <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-viral" class="btn-matrix-purple text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
 
                 <!-- CARD 3: CAREER ACCELERATOR -->
-                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-orange-500/40 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 text-orange-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-orange-500/10 rounded-full" id="tag-accelerator"></div>
-                    <div class="mb-8 w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center text-orange-400">
+                <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
+                    <div class="absolute top-6 right-8 text-orange-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-orange-50 rounded-full" id="tag-accelerator"></div>
+                    <div class="mb-10 w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
-                    <h3 id="stream-accel-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
-                    <p id="stream-accel-sub" class="text-orange-400 text-sm font-bold mt-1 uppercase mb-6"></p>
-                    <p id="stream-accel-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <h3 id="stream-accel-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
+                    <p id="stream-accel-sub" class="text-orange-600 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-accel-p" class="text-slate-500 text-base mb-10 leading-relaxed flex-grow font-medium"></p>
                     <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-accel" class="btn-matrix-orange text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all text-center"></a>
                 </div>
 
                 <!-- CARD 4: US FREEDOM PASS -->
-                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-yellow-500/40 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 text-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-yellow-500/10 rounded-full" id="tag-escape"></div>
-                    <div class="mb-8 w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center text-yellow-400">
+                <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
+                    <div class="absolute top-6 right-8 text-yellow-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-yellow-50 rounded-full" id="tag-escape"></div>
+                    <div class="mb-10 w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
                     </div>
-                    <h3 id="stream-escape-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
-                    <p id="stream-escape-sub" class="text-yellow-400 text-sm font-bold mt-1 uppercase mb-6"></p>
-                    <p id="stream-escape-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <h3 id="stream-escape-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
+                    <p id="stream-escape-sub" class="text-yellow-600 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-escape-p" class="text-slate-500 text-base mb-10 leading-relaxed flex-grow font-medium"></p>
                     <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-escape" class="btn-matrix-gold text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-20 bg-black border-t border-white/5">
+    <!-- Footer (Clean Light) -->
+    <footer class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="font-extrabold text-2xl tracking-tighter text-white mb-8">NoMore<span class="text-rose-500">RTO</span></div>
-            <div class="flex justify-center flex-wrap gap-6 md:gap-10 text-xs font-bold text-slate-500 uppercase tracking-widest mb-12">
-                <a href="blacklist.html" class="hover:text-white transition-colors">Watchlist</a>
-                <a href="toolkit.html" class="hover:text-white transition-colors">Negotiation</a>
-                <a href="resources.html" class="hover:text-white transition-colors">Job Boards</a>
-                <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-white transition-colors">Discord</a>
-                <a href="classic.html" class="hover:text-white transition-colors">Classic Mode</a>
+            <div class="font-extrabold text-2xl tracking-tighter text-gray-900 mb-10">NoMore<span class="text-rose-500">RTO</span></div>
+            <div class="flex justify-center flex-wrap gap-8 md:gap-12 text-xs font-bold text-slate-400 uppercase tracking-widest mb-16">
+                <a href="blacklist.html" class="hover:text-gray-900 transition-colors">Watchlist</a>
+                <a href="toolkit.html" class="hover:text-gray-900 transition-colors">Negotiation</a>
+                <a href="resources.html" class="hover:text-gray-900 transition-colors">Job Boards</a>
+                <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-gray-900 transition-colors">Discord</a>
+                <a href="classic.html" class="hover:text-gray-900 transition-colors">Classic Mode</a>
             </div>
-            <p id="footer-copy" class="text-slate-600 text-[10px] uppercase tracking-[0.4em]"></p>
+            <p id="footer-copy" class="text-slate-300 text-[10px] uppercase tracking-[0.4em] font-semibold"></p>
         </div>
     </footer>
 
@@ -288,20 +290,16 @@
             en: {
                 lang: "CN",
                 hero: {
-                    h1: "COMMUTE IS <span class='text-rose-500'>UNPAID LABOR.</span>",
-                    p: "Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced mandates. We reveal the hidden 'RTO Tax' and arm you with the roadmap to professional freedom.",
-                    cta1: "Calculate My Loss",
+                    h1: "COMMUTE IS UNPAID LABOR.",
+                    p: "Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced mandates. Reveal the hidden 'RTO Tax' on your time and money below.",
                     cta2: "Search RTO Blacklist"
                 },
                 calc: {
-                    title: "What Is RTO Costing You?",
-                    sub: "Revealing the hidden financial and time tax of the forced office commute.",
                     lblTime: "Daily Commute (Total Hours)",
                     lblDays: "Office Days Per Week",
                     lblSalary: "Hourly Rate ($)",
                     lblExtras: "Daily Extras (Gas, Parking, Food)",
-                    resLabel1: "Annual Unpaid Labor",
-                    resLabel2: "Annual Financial Loss",
+                    resLabel2: "Your Annual RTO Tax",
                     stamp: "PAY CUT",
                     share: "Export My Invoice"
                 },
@@ -310,7 +308,7 @@
                     mainP: "Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.",
                     matrix: {
                         shield: { title: "Stay Remote", sub: "The Negotiation Toolkit", p: "Demanding RTO? Don't send an emotional email. Use attorney-grade AWA templates and scripts to legally secure your remote rights without quitting.", btn: "Get Scripts", tag: "Instant Access" },
-                        viral: { title: "The Exit Bounty", sub: "Earn $2,000 On Your Exit", p: "Resigning? Cash out. Refer one of our pre-vetted Data candidates to fill your spot, and we'll pay you a $2,000 bounty upon their successful hire.", btn: "Claim Bounty", tag: "Reward: $2,000" },
+                        viral: { title: "The Exit Bounty", sub: "Refer your replacement. Earn $2,000.", p: "Resigning? Cash out. Refer one of our pre-vetted Data candidates to fill your spot, and we'll pay you a $2,000 bounty upon their successful hire.", btn: "Claim Bounty", tag: "Reward: $2,000" },
                         accel: { title: "Career Accelerator", sub: "Bypass the Office Grind", p: "Land a Remote-First Data role in 12 weeks. We arm you with MVP Data skills (SQL/Python) and insider strategies to bypass HR filters.", btn: "Start Training", tag: "Hiring Priority" },
                         escape: { title: "US Freedom Pass", sub: "Escape the Canadian Ceiling", p: "Canada's market is stagnant. Move south to where the money is. Our TN Visa Mentorship guides you from stagnation to high-earner status.", btn: "Apply for VIP", tag: "Limited Spots" }
                     }
@@ -320,20 +318,16 @@
             cn: {
                 lang: "EN",
                 hero: {
-                    h1: "通勤即 <span class='text-rose-500'>无偿劳动。</span>",
-                    p: "别再把生命浪费在为开发商打工。NoMoreRTO 是针对强制返岗的反抗军。我们揭露隐形的“返岗税”，并为你提供通向职业自由的路线图。",
-                    cta1: "计算我的损失",
+                    h1: "通勤即无偿劳动。",
+                    p: "别再把生命浪费在为开发商打工。NoMoreRTO 是针对强制返岗的反抗军。在下方揭开强制返岗对你金钱与时间的“隐形加税”。",
                     cta2: "查询返岗黑榜"
                 },
                 calc: {
-                    title: "RTO 让你亏了多少钱？",
-                    sub: "揭开强制返回办公室带来的金钱与时间的隐形成本。",
                     lblTime: "每日通勤时长 (总小时)",
                     lblDays: "每周回办公室天数",
                     lblSalary: "预估时薪 ($)",
                     lblExtras: "每日额外开销 (油费/停车/午餐)",
-                    resLabel1: "年度无偿劳动时长",
-                    resLabel2: "年度经济损失",
+                    resLabel2: "你的年度返岗税额",
                     stamp: "变相降薪",
                     share: "生成我的损失账单"
                 },
@@ -342,7 +336,7 @@
                     mainP: "别再祈求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
                     matrix: {
                         shield: { title: "稳住远程", sub: "谈判话术工具箱", p: "老板逼你回去？别发情绪化邮件。使用律师级的 AWA 模板和话术，在不离职的情况下合法锁定你的远程权。", btn: "获取话术库", tag: "即时获取" },
-                        viral: { title: "离职赏金计划", sub: "离职也能赚 $2,000", p: "打算走人？别空手而归。推荐我们预筛的 Data 候选人接替你的位置，入职后我们将为你支付 $2,000 美金赏金。", btn: "领取赏金", tag: "赏金: $2,000" },
+                        viral: { title: "离职赏金计划", sub: "推荐你的接班人。赚取 $2,000。", p: "打算走人？别空手而归。推荐我们预筛的 Data 候选人接替你的位置，入职后我们将为你支付 $2,000 美金赏金。", btn: "领取赏金", tag: "赏金: $2,000" },
                         accel: { title: "职场加速器", sub: "攻克远程高薪岗", p: "12 周助你拿下远程 Data 岗位。我们为你武装核心技能与内推策略，直接绕过垃圾 HR 筛选。", btn: "开启转型", tag: "内推名额" },
                         escape: { title: "美国自由通行证", sub: "逃离加国职业天花板", p: "加拿大市场正在萎缩。通过 TN 签证导师计划，助你跨越国境，开启美金高薪模式，逃离内卷现状。", btn: "预约导师", tag: "名额有限" }
                     }
@@ -362,7 +356,6 @@
             const annualHours = time * officeDays * annualWeeks;
             const annualFinancialLoss = (annualHours * salary) + (extra * officeDays * annualWeeks);
             document.getElementById('val-time').innerText = time + 'h';
-            document.getElementById('res-hours').innerText = Math.round(annualHours) + ' Hours';
             document.getElementById('res-money').innerText = '$' + Math.round(annualFinancialLoss).toLocaleString();
         }
 
@@ -371,15 +364,11 @@
             document.getElementById('lang-toggle').innerText = data.lang;
             document.getElementById('hero-h1').innerHTML = data.hero.h1;
             document.getElementById('hero-p').innerText = data.hero.p;
-            document.getElementById('hero-cta-1').innerText = data.hero.cta1;
             document.getElementById('hero-cta-2').innerText = data.hero.cta2;
-            document.getElementById('calc-title').innerText = data.calc.title;
-            document.getElementById('calc-sub').innerText = data.calc.sub;
             document.getElementById('lbl-commute').innerText = data.calc.lblTime;
             document.getElementById('lbl-days').innerText = data.calc.lblDays;
             document.getElementById('lbl-salary').innerText = data.calc.lblSalary;
             document.getElementById('lbl-extras').innerText = data.calc.lblExtras;
-            document.getElementById('res-label-1').innerText = data.calc.resLabel1;
             document.getElementById('res-label-2').innerText = data.calc.resLabel2;
             document.getElementById('res-stamp').innerText = data.calc.stamp;
             document.getElementById('btn-share-text').innerText = data.calc.share;
