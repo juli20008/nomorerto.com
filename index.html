@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- Basic SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoMoreRTO | Calculate Your Commute Tax & Escape Forced RTO</title>
+    <meta name="description" content="Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced return-to-office mandates. Calculate your unpaid labor cost and find remote paths.">
+    <meta name="keywords" content="No More RTO, Commute Cost Calculator, Remote Jobs Canada, TN Visa for Canadians, Refuse RTO Toronto, Work From Home Rights, Remote Data Jobs">
+    <link rel="canonical" href="https://nomorerto.com/" />
+    
+    <!-- Geo-Targeting -->
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="Toronto" />
+    <meta name="geo.position" content="43.6532;-79.3832" />
+    <meta name="ICBM" content="43.6532, -79.3832" />
+
+    <!-- Open Graph / CTR Optimization -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nomorerto.com/">
+    <meta property="og:title" content="RTO is Unpaid Labor | Calculate Your Loss">
+    <meta property="og:description" content="Revealing the hidden 'RTO Tax' on Canadian workers. Access scripts to stay remote or tools to escape.">
+    <meta property="og:image" content="https://nomorerto.com/og-image.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RTO Commute Tax Calculator",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Calculates the annual financial loss and unpaid labor time caused by daily office commutes."
+    }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DV4TFZ6TRM"></script>
     <script>
@@ -9,20 +47,18 @@
       gtag('js', new Date());
       gtag('config', 'G-DV4TFZ6TRM');
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoMoreRTO Hub - Take Back Control</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --brand-soft-red: #f43f5e;
-            --brand-soft-teal: #14b8a6;
+            --brand-rose: #f43f5e;
+            --brand-teal: #14b8a6;
             --brand-indigo: #6366f1;
-            --deep-gray: #1f2937;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -31,375 +67,219 @@
         }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .delay-1 { animation-delay: 0.2s; opacity: 0; }
-        .delay-2 { animation-delay: 0.4s; opacity: 0; }
-
         .bg-grid {
             background-image: radial-gradient(#f1f5f9 1px, transparent 1px);
             background-size: 40px 40px;
         }
         
         .calculator-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            background: #ffffff;
             border: 1px solid #f1f5f9;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
         }
 
         .stamp {
-            border: 5px solid var(--brand-soft-red);
-            color: var(--brand-soft-red);
+            border: 5px solid var(--brand-rose);
+            color: var(--brand-rose);
             font-weight: 900;
             text-transform: uppercase;
             padding: 8px 16px;
             display: inline-block;
-            transform: rotate(-12deg);
-            opacity: 0.8;
-            pointer-events: none;
+            transform: rotate(-8deg);
+            opacity: 0.9;
         }
 
-        .btn-premium-rose {
-            background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
-            box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .btn-premium-teal {
-            background: linear-gradient(135deg, #2dd4bf 0%, #0d9488 100%);
-            box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .btn-premium-indigo {
-            background: linear-gradient(135deg, #818cf8 0%, #4f46e5 100%);
-            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .btn-matrix-blue { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 0 25px rgba(59, 130, 246, 0.3); }
+        .btn-matrix-purple { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); box-shadow: 0 0 25px rgba(168, 85, 247, 0.3); }
+        .btn-matrix-orange { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); box-shadow: 0 0 25px rgba(249, 115, 22, 0.3); }
+        .btn-matrix-gold { background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%); box-shadow: 0 0 25px rgba(234, 179, 8, 0.3); }
         
-        /* New Matrix Buttons */
-        .btn-matrix-blue {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
-        .btn-matrix-purple {
-            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-        }
-        .btn-matrix-orange {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
-        }
-        .btn-matrix-gold {
-            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-            box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
-        }
-        
-        /* Modal Animation */
-        .modal-enter { opacity: 0; transform: scale(0.95); }
-        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
-
-        .blur-job { filter: blur(8px); pointer-events: none; user-select: none; }
-
-        /* Highlight nav board pulse */
-        .nav-board-highlight {
-            background: #fef08a; /* yellow-200 */
-            color: #854d0e; /* yellow-900 */
-            border-color: #facc15;
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
-        }
+        .pulse-glow { animation: glow 3s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-white">
 
+    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-8">
-                    <a href="index.html" class="font-extrabold text-2xl tracking-tighter">
+                    <a href="/" class="font-extrabold text-2xl tracking-tighter text-gray-900">
                         NoMore<span class="text-rose-500">RTO</span>
                     </a>
-                    <div class="hidden md:flex gap-6 text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors items-center">
-                        <a href="blacklist.html" class="hover:text-rose-500">The Database</a>
-                        <a href="#calculator" class="hover:text-rose-500">Calculator</a>
-                        <!-- Highlighted Insider Board - HIDDEN FOR NOW -->
-                        <a href="#" onclick="alert('Open in 5 days. Exclusive access for the resistance.'); return false;" class="hidden nav-board-highlight px-3 py-1.5 rounded-full transition-all flex items-center gap-1 border">
-                            Insider Board <span class="text-[10px] bg-yellow-600 text-white px-1.5 rounded font-bold animate-pulse">NEW</span>
-                        </a>
-                        <a href="toolkit.html" class="hover:text-rose-500">Toolkit</a>
-                        <a href="resources.html" class="hover:text-rose-500">Remote Jobs</a>
+                    <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-500">
+                        <a href="blacklist.html" class="hover:text-rose-500 transition-colors">The Database</a>
+                        <a href="toolkit.html" class="hover:text-rose-500 transition-colors">Negotiation Scripts</a>
+                        <a href="resources.html" class="hover:text-rose-500 transition-colors">Remote Jobs</a>
+                        <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-indigo-600 transition-colors">Discord</a>
                     </div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest">
+                    <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest text-gray-900">
                         CN
                     </button>
-                    <a href="#freedom-streams" id="nav-cta" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-rose-500 transition-all shadow-md">
-                        Plan Your Escape
+                    <a href="#freedom-streams" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-rose-500 transition-all">
+                        Escape Plan
                     </a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Hero -->
     <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-grid overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 id="hero-h1" class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 mb-6 leading-[1.1] animate-up"></h1>
-            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed animate-up delay-1"></p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-up delay-2">
-                <a href="#calculator" id="hero-cta-1" class="bg-rose-500 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-600 hover:-translate-y-1 transition-all"></a>
+            <h1 id="hero-h1" class="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 mb-6 leading-none"></h1>
+            <p id="hero-p" class="text-xl md:text-2xl text-slate-500 max-w-4xl mx-auto mb-10 leading-relaxed font-medium"></p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#calculator" id="hero-cta-1" class="bg-rose-600 text-white px-8 py-4 rounded-xl font-extrabold text-lg shadow-xl hover:bg-rose-500 transition-all"></a>
                 <a href="blacklist.html" id="hero-cta-2" class="bg-white text-gray-900 border-2 border-slate-200 px-8 py-4 rounded-xl font-extrabold text-lg hover:bg-slate-50 transition-all"></a>
             </div>
         </div>
     </header>
 
-    <section id="calculator" class="py-20 bg-slate-50">
+    <!-- Calculator -->
+    <section id="calculator" class="py-20 bg-slate-50 border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4"></h2>
+                <h2 id="calc-title" class="text-3xl md:text-5xl font-black mb-4 text-gray-900"></h2>
                 <p id="calc-sub" class="text-slate-500 text-lg"></p>
             </div>
-            <div class="max-w-5xl mx-auto calculator-card rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+            <div class="max-w-5xl mx-auto calculator-card rounded-[2rem] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+                <!-- Inputs -->
                 <div class="p-8 md:p-12 space-y-8 bg-white">
                     <div class="space-y-4">
-                        <label id="lbl-commute" class="block font-bold text-sm uppercase tracking-wider text-slate-600"></label>
-                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-500">
-                        <div class="flex justify-between font-mono text-sm"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
+                        <label id="lbl-commute" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
+                        <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                        <div class="flex justify-between font-mono text-xs text-slate-400"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
                     </div>
                     <div class="space-y-4">
-                        <label id="lbl-days" class="block font-bold text-sm uppercase tracking-wider text-slate-600"></label>
+                        <label id="lbl-days" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
                         <div class="flex gap-2">
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="1">1</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="2">2</button>
-                            <button class="day-btn px-4 py-2 border-2 border-rose-400 bg-rose-50 text-rose-500 font-bold transition-all" data-val="3">3</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="4">4</button>
-                            <button class="day-btn px-4 py-2 border-2 rounded-lg font-bold transition-all border-slate-100" data-val="5">5</button>
+                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="1">1</button>
+                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="2">2</button>
+                            <button class="day-btn flex-1 py-2 border-2 border-rose-500 bg-rose-50 text-rose-600 font-bold transition-all" data-val="3">3</button>
+                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="4">4</button>
+                            <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="5">5</button>
                         </div>
                     </div>
-                    <div class="space-y-4">
-                        <label id="lbl-salary" class="block text-sm font-bold uppercase tracking-wider text-slate-600"></label>
-                        <input type="number" id="input-salary" value="50" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
-                    </div>
-                    <div class="space-y-4">
-                        <label id="lbl-extras" class="block text-sm font-bold uppercase tracking-wider text-slate-600"></label>
-                        <input type="number" id="input-extra" value="25" class="w-full p-4 border-2 border-slate-100 rounded-xl font-mono text-lg focus:border-rose-400 outline-none">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label id="lbl-salary" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
+                            <input type="number" id="input-salary" value="50" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                        </div>
+                        <div class="space-y-2">
+                            <label id="lbl-extras" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
+                            <input type="number" id="input-extra" value="25" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                        </div>
                     </div>
                 </div>
-                <div id="results-card" class="p-8 md:p-12 bg-rose-500 text-white flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full"></div>
-                    <div class="relative z-10 space-y-10">
+                <!-- Results -->
+                <div id="results-card" class="p-8 md:p-12 bg-rose-600 text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                    <div class="relative z-10 space-y-8 text-center md:text-left">
                         <div>
-                            <p id="res-label-1" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2"></p>
-                            <h3 id="res-hours" class="text-5xl md:text-6xl font-black font-mono"></h3>
+                            <p id="res-label-1" class="text-xs font-bold uppercase tracking-[0.2em] text-rose-100 mb-2"></p>
+                            <h3 id="res-hours" class="text-4xl md:text-5xl font-black font-mono"></h3>
                         </div>
                         <div>
-                            <p id="res-label-2" class="text-sm font-bold uppercase tracking-[0.2em] opacity-80 mb-2"></p>
-                            <h3 id="res-money" class="text-5xl md:text-6xl font-black font-mono"></h3>
+                            <p id="res-label-2" class="text-xs font-bold uppercase tracking-[0.2em] text-rose-100 mb-2"></p>
+                            <h3 id="res-money" class="text-4xl md:text-5xl font-black font-mono"></h3>
                         </div>
                         <div class="pt-4">
-                            <div id="res-stamp" class="stamp bg-white/95 font-mono text-2xl"></div>
+                            <div id="res-stamp" class="stamp bg-white font-mono text-xl"></div>
                         </div>
-                        <button id="btn-share" class="w-full bg-white text-rose-500 font-black py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-                            <span id="btn-share-text"></span>
-                        </button>
+                        <div class="space-y-3 pt-4">
+                            <button id="btn-share" class="w-full bg-white text-rose-600 font-black py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                <span id="btn-share-text"></span>
+                            </button>
+                            <a href="#freedom-streams" class="block w-full text-center text-white/90 hover:text-white font-bold text-sm underline underline-offset-4 transition-all">
+                                Stop losing this money. Pick your solution below 👇
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools & Empowerment Section -->
-    <section class="py-24 bg-white">
+    <!-- Freedom Streams / Matrix (Dark) -->
+    <section id="freedom-streams" class="py-24 bg-[#09090b] relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="tools-title" class="text-4xl font-black mb-12 text-center tracking-tight text-slate-900"></h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1: Negotiation Toolkit -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                    </div>
-                    <h3 id="card-1-title" class="text-xl font-bold mb-3"></h3>
-                    <p id="card-1-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
-                    <a href="toolkit.html" class="text-blue-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Get Scripts <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
-                </div>
-
-                <!-- Card 2: RTO Database -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center text-rose-500 mb-6 group-hover:bg-rose-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-                    </div>
-                    <h3 id="card-db-title" class="text-xl font-bold mb-3"></h3>
-                    <p id="card-db-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
-                    <a href="blacklist.html" class="text-rose-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Browse List <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
-                </div>
-
-                <!-- Card 3: Vetted Remote Jobs -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-500 mb-6 group-hover:bg-teal-500 group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    </div>
-                    <h3 id="card-3-title" class="text-xl font-bold mb-3"></h3>
-                    <p id="card-3-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
-                    <a href="resources.html" class="text-teal-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Find Freedom <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
-                </div>
-
-                <!-- Card 4: The Watercooler (Discord) -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col">
-                    <div class="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-500 mb-6 group-hover:bg-[#5865F2] group-hover:text-white transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.39,80.21a105.73,105.73,0,0,0,32.17,16.15,77.7,77.7,0,0,0,6.89-11.11,68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1,105.25,105.25,0,0,0,32.19-16.14c2.64-27.38-4.52-51.06-19.35-72.13ZM42.45,65.69c-6.22,0-11.38-5.71-11.38-12.73S36,40.23,42.45,40.23s11.44,5.71,11.38,12.73-5.05,12.73-11.38,12.73Zm42.24,0c-6.22,0-11.38-5.71-11.38-12.73s5.12-12.73,11.38-12.73,11.44,5.71,11.38,12.73-5.05,12.73-11.38,12.73Z"/></svg>
-                    </div>
-                    <h3 id="card-2-title" class="text-xl font-bold mb-3"></h3>
-                    <p id="card-2-p" class="text-slate-500 text-sm mb-6 flex-grow"></p>
-                    <a href="https://discord.gg/pzScQxUzA" target="_blank" rel="noopener noreferrer" class="text-indigo-500 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">Discord <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Escape Plan / Freedom Matrix Section (Dark) -->
-    <section id="freedom-streams" class="py-24 bg-slate-900 text-white overflow-hidden relative border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <h2 id="final-main-title" class="text-4xl md:text-6xl font-black mb-8 tracking-tight"></h2>
-                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed"></p>
+                <h2 id="final-main-title" class="text-4xl md:text-7xl font-black mb-8 text-white tracking-tighter"></h2>
+                <p id="final-main-p" class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium"></p>
             </div>
             
-            <!-- 2x2 Matrix Layout -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- CARD 1: THE SHIELD (Stay Remote) -->
-                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-blue-400/30 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 bg-blue-600/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-500/30" id="tag-shield"></div>
-                    <div class="p-8 md:p-10 flex flex-col h-full">
-                        <div class="mb-6 flex items-center gap-4">
-                            <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                            </div>
-                            <div>
-                                <h3 id="stream-shield-title" class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none"></h3>
-                                <p id="stream-shield-sub" class="text-blue-400 text-sm font-bold mt-1 uppercase tracking-wider"></p>
-                            </div>
-                        </div>
-                        <p id="stream-shield-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
-                        <div class="space-y-4">
-                            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" id="btn-stream-shield" class="block w-full text-center btn-matrix-blue text-white px-8 py-5 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
-                        </div>
+                <!-- CARD 1: THE SHIELD -->
+                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-blue-500/40 transition-all group relative overflow-hidden">
+                    <div class="absolute top-4 right-6 text-blue-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-blue-500/10 rounded-full" id="tag-shield"></div>
+                    <div class="mb-8 w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
+                    <h3 id="stream-shield-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
+                    <p id="stream-shield-sub" class="text-blue-400 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-shield-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-shield" class="btn-matrix-blue text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
 
-                <!-- CARD 2: THE VIRAL ENGINE (Exit Bonus) -->
-                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-purple-400/30 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 bg-purple-600/20 text-purple-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-purple-500/30" id="tag-viral"></div>
-                    <div class="p-8 md:p-10 flex flex-col h-full">
-                        <div class="mb-6 flex items-center gap-4">
-                            <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-                            </div>
-                            <div>
-                                <h3 id="stream-viral-title" class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none"></h3>
-                                <p id="stream-viral-sub" class="text-purple-400 text-sm font-bold mt-1 uppercase tracking-wider"></p>
-                            </div>
-                        </div>
-                        <p id="stream-viral-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
-                        <div class="space-y-4">
-                            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" id="btn-stream-viral" class="block w-full text-center btn-matrix-purple text-white px-8 py-5 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
-                        </div>
+                <!-- CARD 2: THE EXIT BOUNTY -->
+                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-purple-500/40 transition-all group relative overflow-hidden">
+                    <div class="absolute top-4 right-6 text-purple-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-purple-500/10 rounded-full" id="tag-viral"></div>
+                    <div class="mb-8 w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
                     </div>
+                    <h3 id="stream-viral-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
+                    <p id="stream-viral-sub" class="text-purple-400 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-viral-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-viral" class="btn-matrix-purple text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
 
-                <!-- CARD 3: THE CAREER ACCELERATOR (Pivot) -->
-                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-orange-400/30 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 bg-orange-600/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-orange-500/30" id="tag-accelerator"></div>
-                    <div class="p-8 md:p-10 flex flex-col h-full">
-                        <div class="mb-6 flex items-center gap-4">
-                            <div class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center text-orange-400 shadow-[0_0_15px_rgba(249,115,22,0.3)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 16.5-1.5 3 3-1.5"/><path d="M12 3v5.5"/><path d="M19.5 16.5 21 19.5 18 18"/><path d="m9 12 1.5 1.5L12 12"/><path d="M12 12s2.5 1 4.5-1.5c2-2.5 1.5-6.5 1.5-6.5s-4 .5-6.5 2.5c-2.5 2-1.5 4.5-1.5 4.5"/><path d="M12 21v-4.5"/><path d="m15 12-1.5 1.5-1.5-1.5"/></svg>
-                            </div>
-                            <div>
-                                <h3 id="stream-accel-title" class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none"></h3>
-                                <p id="stream-accel-sub" class="text-orange-400 text-sm font-bold mt-1 uppercase tracking-wider"></p>
-                            </div>
-                        </div>
-                        <p id="stream-accel-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
-                        <div class="space-y-4">
-                            <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-accel" class="block w-full text-center btn-matrix-orange text-white px-8 py-5 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></a>
-                        </div>
+                <!-- CARD 3: CAREER ACCELERATOR -->
+                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-orange-500/40 transition-all group relative overflow-hidden">
+                    <div class="absolute top-4 right-6 text-orange-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-orange-500/10 rounded-full" id="tag-accelerator"></div>
+                    <div class="mb-8 w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center text-orange-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
+                    <h3 id="stream-accel-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
+                    <p id="stream-accel-sub" class="text-orange-400 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-accel-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <a href="https://www.breakintodata.ca/" target="_blank" id="btn-stream-accel" class="btn-matrix-orange text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all text-center"></a>
                 </div>
 
-                <!-- CARD 4: THE ULTIMATE ESCAPE (US Pass) -->
-                <div class="flex flex-col p-1 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-yellow-400/30 transition-all group relative overflow-hidden">
-                    <div class="absolute top-4 right-6 bg-yellow-600/20 text-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-yellow-500/30" id="tag-escape"></div>
-                    <div class="p-8 md:p-10 flex flex-col h-full">
-                        <div class="mb-6 flex items-center gap-4">
-                            <div class="w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center text-yellow-400 shadow-[0_0_15px_rgba(234,179,8,0.3)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
-                            </div>
-                            <div>
-                                <h3 id="stream-escape-title" class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none"></h3>
-                                <p id="stream-escape-sub" class="text-yellow-400 text-sm font-bold mt-1 uppercase tracking-wider"></p>
-                            </div>
-                        </div>
-                        <p id="stream-escape-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
-                        <div class="space-y-4">
-                            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});return false;" id="btn-stream-escape" class="block w-full text-center btn-matrix-gold text-white px-8 py-5 rounded-2xl font-black text-xl transition-all hover:-translate-y-1 hover:brightness-110"></button>
-                        </div>
+                <!-- CARD 4: US FREEDOM PASS -->
+                <div class="flex flex-col p-8 md:p-10 bg-white/5 rounded-[2.5rem] border border-white/10 hover:border-yellow-500/40 transition-all group relative overflow-hidden">
+                    <div class="absolute top-4 right-6 text-yellow-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-yellow-500/10 rounded-full" id="tag-escape"></div>
+                    <div class="mb-8 w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center text-yellow-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
                     </div>
+                    <h3 id="stream-escape-title" class="text-3xl font-black text-white uppercase tracking-tight"></h3>
+                    <p id="stream-escape-sub" class="text-yellow-400 text-sm font-bold mt-1 uppercase mb-6"></p>
+                    <p id="stream-escape-p" class="text-slate-400 text-base mb-10 leading-relaxed flex-grow"></p>
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'});" id="btn-stream-escape" class="btn-matrix-gold text-white py-5 rounded-2xl font-black text-xl hover:-translate-y-1 transition-all"></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Prescreen Modal -->
-    <div id="prescreen-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-        <div class="bg-white rounded-[2rem] shadow-2xl max-w-lg w-full overflow-hidden modal-enter" id="prescreen-content">
-            <div class="p-8 md:p-10">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <h3 id="modal-title" class="text-2xl font-black text-slate-900 tracking-tight"></h3>
-                        <p id="modal-sub" class="text-slate-500 text-sm"></p>
-                    </div>
-                    <button onclick="closePrescreenModal()" class="text-slate-400 hover:text-slate-900 p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                    </button>
-                </div>
-                
-                <div class="space-y-4 mb-8">
-                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
-                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
-                        <span id="check-1" class="text-slate-700 font-medium leading-tight"></span>
-                    </label>
-                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
-                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
-                        <span id="check-2" class="text-slate-700 font-medium leading-tight"></span>
-                    </label>
-                    <label class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 cursor-pointer hover:bg-teal-50/30 transition-colors">
-                        <input type="checkbox" class="prescreen-check mt-1 w-5 h-5 rounded-md border-slate-300 text-teal-500 focus:ring-teal-500" onchange="validatePrescreen()">
-                        <span id="check-3" class="text-slate-700 font-medium leading-tight"></span>
-                    </label>
-                </div>
-
-                <button id="modal-book-btn" disabled onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/30min'}); closePrescreenModal();" 
-                        class="w-full py-5 rounded-2xl font-black text-xl transition-all bg-slate-200 text-slate-400 cursor-not-allowed">
-                    Proceed to Booking
-                </button>
-                <p id="modal-tip" class="text-center text-xs text-slate-400 mt-4"></p>
+    <!-- Footer -->
+    <footer class="py-20 bg-black border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="font-extrabold text-2xl tracking-tighter text-white mb-8">NoMore<span class="text-rose-500">RTO</span></div>
+            <div class="flex justify-center flex-wrap gap-6 md:gap-10 text-xs font-bold text-slate-500 uppercase tracking-widest mb-12">
+                <a href="blacklist.html" class="hover:text-white transition-colors">Watchlist</a>
+                <a href="toolkit.html" class="hover:text-white transition-colors">Negotiation</a>
+                <a href="resources.html" class="hover:text-white transition-colors">Job Boards</a>
+                <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-white transition-colors">Discord</a>
+                <a href="classic.html" class="hover:text-white transition-colors">Classic Mode</a>
             </div>
-        </div>
-    </div>
-
-    <footer class="py-12 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="font-extrabold text-xl tracking-tighter mb-6">
-                NoMore<span class="text-rose-500">RTO</span>
-            </div>
-            <div class="flex justify-center gap-8 mb-8 text-sm font-bold text-slate-400">
-                <a href="#" class="hover:text-slate-900">Twitter</a>
-                <a href="#" class="hover:text-slate-900">LinkedIn</a>
-                <a href="classic.html" class="text-rose-500 font-bold hover:underline">Switch to Classic View</a>
-            </div>
-            <p id="footer-copy" class="text-slate-400 text-xs uppercase tracking-widest"></p>
+            <p id="footer-copy" class="text-slate-600 text-[10px] uppercase tracking-[0.4em]"></p>
         </div>
     </footer>
 
@@ -407,244 +287,72 @@
         const CONTENT = {
             en: {
                 lang: "CN",
-                navCta: "Plan Your Escape",
                 hero: {
-                    h1: "Your Commute Is <span class='text-rose-500'>Unpaid Labor.</span>",
-                    p: "Stop donating your time to the Downtown Monopoly. NoMoreRTO is the resistance against forced mandates. We expose the lies, arm your negotiations, and provide the roadmap to a remote career or independent business that respects your freedom.",
-                    cta1: "Calculate My 'RTO Tax'",
-                    cta2: "Search Company Database"
+                    h1: "COMMUTE IS <span class='text-rose-500'>UNPAID LABOR.</span>",
+                    p: "Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced mandates. We reveal the hidden 'RTO Tax' and arm you with the roadmap to professional freedom.",
+                    cta1: "Calculate My Loss",
+                    cta2: "Search RTO Blacklist"
                 },
                 calc: {
-                    title: "What Is Your Commute Really Costing You?",
-                    sub: "Input your data to reveal the hidden tax of being forced back to the office.",
-                    lblTime: "Daily Commute Time (Total Hours)",
-                    lblDays: "Office Days per Week",
-                    lblSalary: "Estimated Hourly Rate ($)",
-                    lblExtras: "Daily Extra Costs (Parking, Gas, Coffee, Lunch)",
+                    title: "What Is RTO Costing You?",
+                    sub: "Revealing the hidden financial and time tax of the forced office commute.",
+                    lblTime: "Daily Commute (Total Hours)",
+                    lblDays: "Office Days Per Week",
+                    lblSalary: "Hourly Rate ($)",
+                    lblExtras: "Daily Extras (Gas, Parking, Food)",
                     resLabel1: "Annual Unpaid Labor",
                     resLabel2: "Annual Financial Loss",
-                    stamp: "UNPAID LABOR",
-                    share: "Generate My Invoice & Share",
-                    shareLoading: "Generating Invoice...",
-                    shareSuccess: "Invoice Generated!"
-                },
-                tools: {
-                    title: "Arm Yourself. Don't Fight Alone.",
-                    card1: { title: "Negotiation Toolkit", p: "20+ Email templates, legal rights guide, and scripts to refuse RTO professionally." },
-                    cardDb: { title: "Transparency Database", p: "Don't believe the HR PR. Check real employee verified data on mandates and monitoring." },
-                    card3: { title: "Vetted Remote Jobs", p: "Access our curated list of real Remote-First companies that actually respect your work-life balance." },
-                    card2: { title: "The Watercooler", p: "Join the community on Discord. Share your story anonymously and get advice from the alliance." }
-                },
-                hidden: {
-                    title: "The Hidden Job Market Access",
-                    sub: "Get referred directly by the person leaving the role. Replace them before the job even hits LinkedIn.",
-                    tip: "Full board access opening soon. Join the waitlist to be priority contacted.",
-                    placeholder: "Email or Phone Number",
-                    btn: "Join Waitlist",
-                    success: "Success! You are now priority listed. We'll contact you soon."
+                    stamp: "PAY CUT",
+                    share: "Export My Invoice"
                 },
                 freedom: {
-                    mainTitle: "Ready to Take Back Control?",
+                    mainTitle: "TAKE BACK CONTROL",
                     mainP: "Stop begging for flexibility. Start building a life that respects your terms. Choose your path to freedom.",
                     matrix: {
-                        shield: { title: "Stay Remote & Win", sub: "Don't quit. Negotiate.", p: "Boss demanding RTO? Don't send an emotional email. Use our attorney-grade AWA (Agile Working Arrangement) templates and psychological scripts to legally secure your remote rights.", btn: "Get Toolkit", tag: "Instant Access" },
-                        viral: { title: "The Exit Bonus", sub: "Cash in on your exit.", p: "Turn your resignation into a paycheck. Refer one of our pre-vetted Data candidates to fill your spot, and we’ll pay you a $2,000 commission upon their hire.", btn: "Claim My Bounty", tag: "Earn $2,000" },
-                        accel: { title: "Career Accelerator", sub: "Hack the Hidden Market.", p: "Stuck in Support roles? Stop applying blindly. We arm you with MVP Data Skills (SQL/Excel) and 'HR-Insider' strategies to bypass ATS. Includes 'Exit Bonus' network access.", btn: "Join Accelerator", tag: "Internal Access" },
-                        escape: { title: "The US Freedom Pass", sub: "Escape the Ceiling.", p: "Canada’s job market is shrinking. The US is booming. Our TN Visa VIP Mentorship guides you from 'Canadian Stagnation' to 'American High-Earner'.", btn: "Apply for VIP", tag: "Limited Spots" }
+                        shield: { title: "Stay Remote", sub: "The Negotiation Toolkit", p: "Demanding RTO? Don't send an emotional email. Use attorney-grade AWA templates and scripts to legally secure your remote rights without quitting.", btn: "Get Scripts", tag: "Instant Access" },
+                        viral: { title: "The Exit Bounty", sub: "Earn $2,000 On Your Exit", p: "Resigning? Cash out. Refer one of our pre-vetted Data candidates to fill your spot, and we'll pay you a $2,000 bounty upon their successful hire.", btn: "Claim Bounty", tag: "Reward: $2,000" },
+                        accel: { title: "Career Accelerator", sub: "Bypass the Office Grind", p: "Land a Remote-First Data role in 12 weeks. We arm you with MVP Data skills (SQL/Python) and insider strategies to bypass HR filters.", btn: "Start Training", tag: "Hiring Priority" },
+                        escape: { title: "US Freedom Pass", sub: "Escape the Canadian Ceiling", p: "Canada's market is stagnant. Move south to where the money is. Our TN Visa Mentorship guides you from stagnation to high-earner status.", btn: "Apply for VIP", tag: "Limited Spots" }
                     }
-                },
-                modal: {
-                    title: "Prescreen Checklist",
-                    sub: "Please confirm you meet the core requirements for the US Business Track.",
-                    check1: "At least one family member holds Canadian citizenship.",
-                    check2: "Ability to invest $70,000 USD or more.",
-                    check3: "Willing to invest in or start a physical business (e.g., F&B, Logistics, Property Management).",
-                    btn: "Book Consultation Call",
-                    tip: "All boxes must be checked to enable booking."
                 },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
             cn: {
                 lang: "EN",
-                navCta: "制定逃离计划",
                 hero: {
                     h1: "通勤即 <span class='text-rose-500'>无偿劳动。</span>",
-                    p: "别再把时间捐给市中心的地主。NoMoreRTO 是对抗强制返岗的反抗军。我们揭穿谎言，武装你的谈判，并为你提供通往远程职业或独立事业的路线图，开启尊重自由的生活。",
-                    cta1: "计算我的“返岗税”",
-                    cta2: "查询公司数据库"
+                    p: "别再把生命浪费在为开发商打工。NoMoreRTO 是针对强制返岗的反抗军。我们揭露隐形的“返岗税”，并为你提供通向职业自由的路线图。",
+                    cta1: "计算我的损失",
+                    cta2: "查询返岗黑榜"
                 },
                 calc: {
-                    title: "你的通勤到底让你损失了多少？",
-                    sub: "输入你的数据，揭开被迫返回办公室的隐形成本。",
-                    lblTime: "每日通勤时长 (小时)",
+                    title: "RTO 让你亏了多少钱？",
+                    sub: "揭开强制返回办公室带来的金钱与时间的隐形成本。",
+                    lblTime: "每日通勤时长 (总小时)",
                     lblDays: "每周回办公室天数",
                     lblSalary: "预估时薪 ($)",
-                    lblExtras: "每日额外开销 (油费、停车、午餐、咖啡)",
-                    resLabel1: "年度无偿劳动时间",
+                    lblExtras: "每日额外开销 (油费/停车/午餐)",
+                    resLabel1: "年度无偿劳动时长",
                     resLabel2: "年度经济损失",
-                    stamp: "无偿劳动",
-                    share: "生成我的账单并分享",
-                    shareLoading: "正在生成账单...",
-                    shareSuccess: "账单生成成功！"
-                },
-                tools: {
-                    title: "武装自己。别孤军奋战。",
-                    card1: { title: "谈判工具箱", p: "20+ 邮件模板、法律权利指南和专业拒绝 RTO 的话术剧本。" },
-                    cardDb: { title: "RTO 透明数据库", p: "别听 HR 的官话。查看员工真实验证的返岗政策与真实监控爆料。" },
-                    card3: { title: "精选远程工作", p: "访问我们验证过的、真正尊重工作生活平衡的远程优先公司列表。" },
-                    card2: { title: "匿名树洞", p: "加入 Discord社区。匿名分享你的经历，获取正在战斗的盟友们的建议。" }
-                },
-                hidden: {
-                    title: "隐藏就业市场直通车",
-                    sub: "由即将离职的内部人员直接推荐。在职位还没上 LinkedIn 之前就“接班”他们。",
-                    tip: "内推看板即将上线。立即加入候补名单，获取优先咨询资格。",
-                    placeholder: "邮箱或电话号码",
-                    btn: "加入候补名单",
-                    success: "提交成功！您已进入优先联系名单，我们将尽快与您取得联系。"
+                    stamp: "变相降薪",
+                    share: "生成我的损失账单"
                 },
                 freedom: {
-                    mainTitle: "准备好夺回掌控权了吗？",
-                    mainP: "别再乞求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
+                    mainTitle: "夺回掌控权",
+                    mainP: "别再祈求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
                     matrix: {
-                        shield: { title: "稳住远程：谈判大师", sub: "不辞职，也能远程", p: "老板逼你回办公室？别发情绪化邮件。使用我们的律师级 AWA 模板和心理学话术，在保住工作的同时，合法锁定你的远程工作权利。", btn: "下载话术库", tag: "即时获取" },
-                        viral: { title: "离职赏金计划", sub: "把离职信变成支票", p: "打算走人？别空手而归。推荐我们预筛的 Data 候选人接替你的位置，一旦入职，我们将向你支付 $2,000 美金的佣金。", btn: "领取我的离职赏金", tag: "赚取 $2,000" },
-                        accel: { title: "职场跃迁加速器", sub: "攻克隐藏招聘市场", p: "厌倦了平庸岗位？别再盲目投简历。我们为你武装核心 Data 技能 (SQL/Excel) 和 HR 内部内推策略，助你绕过 ATS 筛选。", btn: "开启转型之路", tag: "内推名额" },
-                        escape: { title: "美国自由通行证", sub: "逃离天花板", p: "加拿大市场正在萎缩，美国市场正在腾飞。我们的 TN 签证导师计划带你完成从‘加国停滞’到‘美金高薪’的跨越。", btn: "预约导师咨询", tag: "名额有限" }
+                        shield: { title: "稳住远程", sub: "谈判话术工具箱", p: "老板逼你回去？别发情绪化邮件。使用律师级的 AWA 模板和话术，在不离职的情况下合法锁定你的远程权。", btn: "获取话术库", tag: "即时获取" },
+                        viral: { title: "离职赏金计划", sub: "离职也能赚 $2,000", p: "打算走人？别空手而归。推荐我们预筛的 Data 候选人接替你的位置，入职后我们将为你支付 $2,000 美金赏金。", btn: "领取赏金", tag: "赏金: $2,000" },
+                        accel: { title: "职场加速器", sub: "攻克远程高薪岗", p: "12 周助你拿下远程 Data 岗位。我们为你武装核心技能与内推策略，直接绕过垃圾 HR 筛选。", btn: "开启转型", tag: "内推名额" },
+                        escape: { title: "美国自由通行证", sub: "逃离加国职业天花板", p: "加拿大市场正在萎缩。通过 TN 签证导师计划，助你跨越国境，开启美金高薪模式，逃离内卷现状。", btn: "预约导师", tag: "名额有限" }
                     }
                 },
-                modal: {
-                    title: "预筛清单",
-                    sub: "请确认您符合美国实体商业赛道的核心要求。",
-                    check1: "家庭成员中至少一人持有加拿大国籍。",
-                    check2: "具备 7 万美元或以上的投资能力。",
-                    check3: "愿意投资或创立一个实体生意（如：餐饮、物流、物业管理等）。",
-                    btn: "立即预约咨询",
-                    tip: "需勾选全部项目以开启预约按钮"
-                },
-                footer: "© 2024 NoMoreRTO 枢纽。为反抗而生。"
+                footer: "© 2024 NoMoreRTO 枢纽. 为反抗而生。"
             }
         };
 
         let currentLang = 'en';
         let officeDays = 3;
-
-        // Countdown Timer Logic
-        function startCountdown() {
-            let targetDate = localStorage.getItem('nomorerto_countdown_target');
-            if (!targetDate) {
-                targetDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000); // 5 days from now
-                localStorage.setItem('nomorerto_countdown_target', targetDate);
-            }
-
-            const interval = setInterval(() => {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    clearInterval(interval);
-                    const wrapper = document.getElementById('countdown-wrapper');
-                    if(wrapper) wrapper.innerHTML = "<div class='text-indigo-600 font-black text-2xl tracking-widest animate-pulse'>BOARD ACCESS OPENING NOW</div>";
-                    return;
-                }
-
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-                const dEl = document.getElementById('cd-days');
-                const hEl = document.getElementById('cd-hours');
-                const mEl = document.getElementById('cd-mins');
-                const sEl = document.getElementById('cd-secs');
-                
-                if(dEl) dEl.innerText = d.toString().padStart(2, '0');
-                if(hEl) hEl.innerText = h.toString().padStart(2, '0');
-                if(mEl) mEl.innerText = m.toString().padStart(2, '0');
-                if(sEl) sEl.innerText = s.toString().padStart(2, '0');
-            }, 1000);
-        }
-
-        // AJAX Form Submission
-        async function submitWaitlist(event) {
-            event.preventDefault();
-            const form = event.target;
-            const input = document.getElementById('waitlist-input');
-            const submitBtn = document.getElementById('waitlist-submit');
-            const successMsg = document.getElementById('waitlist-success');
-            const data = CONTENT[currentLang];
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = "...";
-
-            try {
-                const response = await fetch("https://formsubmit.co/ajax/hranalytics.ca@gmail.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: "NoMoreRTO Waitlist",
-                        contact: input.value,
-                        _subject: "New Insider Board Waitlist Submission"
-                    })
-                });
-
-                if (response.ok) {
-                    form.classList.add('hidden');
-                    successMsg.innerText = data.hidden.success;
-                    successMsg.classList.remove('hidden');
-                } else {
-                    throw new Error("Submission failed");
-                }
-            } catch (err) {
-                console.error(err);
-                alert("Submission failed. Please try again or contact us directly.");
-                submitBtn.disabled = false;
-                submitBtn.innerText = data.hidden.btn;
-            }
-        }
-
-        function openPrescreenModal() {
-            const modal = document.getElementById('prescreen-modal');
-            const content = document.getElementById('prescreen-content');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            setTimeout(() => {
-                content.classList.remove('modal-enter');
-                content.classList.add('modal-enter-active');
-            }, 10);
-        }
-
-        function closePrescreenModal() {
-            const modal = document.getElementById('prescreen-modal');
-            const content = document.getElementById('prescreen-content');
-            content.classList.remove('modal-enter-active');
-            content.classList.add('modal-enter');
-            setTimeout(() => {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        function validatePrescreen() {
-            const checks = document.querySelectorAll('.prescreen-check');
-            const allChecked = Array.from(checks).every(c => c.checked);
-            const bookBtn = document.getElementById('modal-book-btn');
-            const data = CONTENT[currentLang];
-            
-            if (allChecked) {
-                bookBtn.disabled = false;
-                bookBtn.classList.remove('bg-slate-200', 'text-slate-400', 'cursor-not-allowed');
-                bookBtn.classList.add('btn-premium-teal', 'text-white', 'shadow-xl');
-                bookBtn.innerText = data.modal.btn;
-            } else {
-                bookBtn.disabled = true;
-                bookBtn.classList.add('bg-slate-200', 'text-slate-400', 'cursor-not-allowed');
-                bookBtn.classList.remove('btn-premium-teal', 'text-white', 'shadow-xl');
-                bookBtn.innerText = data.modal.btn;
-            }
-        }
 
         function updateCalculator() {
             const time = parseFloat(document.getElementById('input-time').value);
@@ -661,7 +369,6 @@
         function render() {
             const data = CONTENT[currentLang];
             document.getElementById('lang-toggle').innerText = data.lang;
-            document.getElementById('nav-cta').innerText = data.navCta;
             document.getElementById('hero-h1').innerHTML = data.hero.h1;
             document.getElementById('hero-p').innerText = data.hero.p;
             document.getElementById('hero-cta-1').innerText = data.hero.cta1;
@@ -677,67 +384,33 @@
             document.getElementById('res-stamp').innerText = data.calc.stamp;
             document.getElementById('btn-share-text').innerText = data.calc.share;
 
-            document.getElementById('tools-title').innerText = data.tools.title;
-            document.getElementById('card-1-title').innerText = data.tools.card1.title;
-            document.getElementById('card-1-p').innerText = data.tools.card1.p;
-            document.getElementById('card-db-title').innerText = data.tools.cardDb.title;
-            document.getElementById('card-db-p').innerText = data.tools.cardDb.p;
-            document.getElementById('card-2-title').innerText = data.tools.card2.title;
-            document.getElementById('card-2-p').innerText = data.tools.card2.p;
-            document.getElementById('card-3-title').innerText = data.tools.card3.title;
-            document.getElementById('card-3-p').innerText = data.tools.card3.p;
-
-            // Hidden Market (Optional)
-            const ht = document.getElementById('hidden-title');
-            if(ht) ht.innerText = data.hidden.title;
-            const hs = document.getElementById('hidden-sub');
-            if(hs) hs.innerHTML = data.hidden.sub;
-            const htip = document.getElementById('hidden-tip');
-            if(htip) htip.innerText = data.hidden.tip;
-
             document.getElementById('final-main-title').innerText = data.freedom.mainTitle;
             document.getElementById('final-main-p').innerText = data.freedom.mainP;
             
-            // --- 4-Step Matrix Render ---
             const m = data.freedom.matrix;
-            
-            // Shield Card
             document.getElementById('stream-shield-title').innerText = m.shield.title;
             document.getElementById('stream-shield-sub').innerText = m.shield.sub;
             document.getElementById('stream-shield-p').innerText = m.shield.p;
             document.getElementById('btn-stream-shield').innerText = m.shield.btn;
             document.getElementById('tag-shield').innerText = m.shield.tag;
 
-            // Viral Engine Card
             document.getElementById('stream-viral-title').innerText = m.viral.title;
             document.getElementById('stream-viral-sub').innerText = m.viral.sub;
             document.getElementById('stream-viral-p').innerText = m.viral.p;
             document.getElementById('btn-stream-viral').innerText = m.viral.btn;
             document.getElementById('tag-viral').innerText = m.viral.tag;
 
-            // Accel Card
             document.getElementById('stream-accel-title').innerText = m.accel.title;
             document.getElementById('stream-accel-sub').innerText = m.accel.sub;
             document.getElementById('stream-accel-p').innerText = m.accel.p;
             document.getElementById('btn-stream-accel').innerText = m.accel.btn;
             document.getElementById('tag-accelerator').innerText = m.accel.tag;
 
-            // Escape Card
             document.getElementById('stream-escape-title').innerText = m.escape.title;
             document.getElementById('stream-escape-sub').innerText = m.escape.sub;
             document.getElementById('stream-escape-p').innerText = m.escape.p;
             document.getElementById('btn-stream-escape').innerText = m.escape.btn;
             document.getElementById('tag-escape').innerText = m.escape.tag;
-            
-            // Modal Render
-            document.getElementById('modal-title').innerText = data.modal.title;
-            document.getElementById('modal-sub').innerText = data.modal.sub;
-            document.getElementById('check-1').innerText = data.modal.check1;
-            document.getElementById('check-2').innerText = data.modal.check2;
-            document.getElementById('check-3').innerText = data.modal.check3;
-            document.getElementById('modal-book-btn').innerText = data.modal.btn;
-            document.getElementById('modal-tip').innerText = data.modal.tip;
-            validatePrescreen();
 
             document.getElementById('footer-copy').innerText = data.footer;
             updateCalculator();
@@ -753,65 +426,28 @@
         document.getElementById('input-extra').addEventListener('input', updateCalculator);
 
         document.querySelectorAll('.day-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', () => {
                 document.querySelectorAll('.day-btn').forEach(b => {
-                    b.classList.remove('border-rose-400', 'bg-rose-50', 'text-rose-500');
-                    b.classList.add('border-slate-100');
+                    b.classList.remove('border-2', 'border-rose-500', 'bg-rose-50', 'text-rose-600');
+                    b.classList.add('border', 'border-slate-200', 'text-slate-400');
                 });
-                btn.classList.add('border-rose-400', 'bg-rose-50', 'text-rose-500');
+                btn.classList.add('border-2', 'border-rose-500', 'bg-rose-50', 'text-rose-600');
+                btn.classList.remove('border-slate-200', 'text-slate-400');
                 officeDays = parseInt(btn.dataset.val);
                 updateCalculator();
             });
         });
 
         document.getElementById('btn-share').addEventListener('click', async () => {
-            const btn = document.getElementById('btn-share');
-            const btnText = document.getElementById('btn-share-text');
             const resultsCard = document.getElementById('results-card');
-            const data = CONTENT[currentLang];
-            btn.disabled = true;
-            const originalText = btnText.innerText;
-            btnText.innerText = data.calc.shareLoading;
-            try {
-                const canvas = await html2canvas(resultsCard, {
-                    scale: 2,
-                    backgroundColor: '#f43f5e',
-                    useCORS: true,
-                    logging: false,
-                    ignoreElements: (element) => element.id === 'btn-share'
-                });
-                const imageBase64 = canvas.toDataURL('image/png');
-                const blob = await (await fetch(imageBase64)).blob();
-                const file = new File([blob], 'NoMoreRTO_Invoice.png', { type: 'image/png' });
-                const shareData = {
-                    title: 'My RTO Invoice',
-                    text: `RTO IS THEFT. My commute is costing me ${document.getElementById('res-hours').innerText} of unpaid labor and ${document.getElementById('res-money').innerText} in annual financial loss. Calculate your "RTO Tax" at NoMoreRTO.com`,
-                    files: [file]
-                };
-                if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                    await navigator.share(shareData);
-                } else {
-                    const link = document.createElement('a');
-                    link.download = 'NoMoreRTO_Invoice.png';
-                    link.href = imageBase64;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    await navigator.clipboard.writeText(shareData.text);
-                    alert(data.calc.shareSuccess + " (Image downloaded, text copied)");
-                }
-                btnText.innerText = data.calc.shareSuccess;
-                setTimeout(() => { btnText.innerText = originalText; btn.disabled = false; }, 2000);
-            } catch (err) {
-                console.error('Screenshot failed:', err);
-                alert('Generation failed. Please try again.');
-                btnText.innerText = originalText;
-                btn.disabled = false;
-            }
+            const canvas = await html2canvas(resultsCard, { scale: 2, backgroundColor: '#e11d48' });
+            const link = document.createElement('a');
+            link.download = 'RTO_Invoice.png';
+            link.href = canvas.toDataURL();
+            link.click();
         });
 
         render();
-        startCountdown();
     </script>
 </body>
 </html>
