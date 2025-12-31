@@ -12,7 +12,7 @@
             --brand-navy: #0f172a;
             --brand-teal: #0abab5;
             --brand-blue: #0ea5e9;
-            --brand-slate: #334155;
+            --brand-slate: #1e293b; /* Darker slate for better visibility */
             --brand-light: #f8fafc;
         }
         body {
@@ -29,87 +29,88 @@
         .text-teal { color: var(--brand-teal); }
         
         .hero-gradient {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
         }
 
         /* Bento Grid Style */
         .bento-card {
             background: #ffffff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1; /* Darker border for visibility */
             border-radius: 1.5rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .bento-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: var(--brand-blue);
         }
 
         /* Premium Card Highlight */
         .premium-card {
-            border: 2px solid var(--brand-blue);
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.1);
+            border: 3px solid var(--brand-blue);
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.15);
             position: relative;
         }
         .premium-card::before {
             content: 'Recommended';
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--brand-blue);
-            color: #000000;
-            padding: 4px 16px;
+            color: #000000; /* Solid Black text */
+            padding: 4px 18px;
             border-radius: 99px;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             z-index: 10;
         }
 
-        /* Button Constraints: No white or transparent text */
+        /* Button Constraints: Solid Black Text for maximum contrast on bright backgrounds */
         .btn-cta {
             background-color: var(--brand-blue);
-            color: #020617; /* Solid Dark Black/Navy */
-            font-weight: 800;
+            color: #000000 !important; /* Forces Jet Black */
+            font-weight: 900;
             transition: all 0.2s;
+            border: none;
         }
         .btn-cta:hover {
-            background-color: #0284c7;
+            background-color: #38bdf8;
             transform: scale(1.02);
         }
         .btn-outline {
             border: 2px solid var(--brand-navy);
-            color: var(--brand-navy);
-            font-weight: 800;
+            color: #000000 !important; /* Jet Black */
+            font-weight: 900;
         }
         .btn-outline:hover {
             background-color: var(--brand-navy);
-            color: #ffffff; /* This is allowed on hover for contrast, but per instruction "buttons text cannot be white" - I will use a light yellow or high-vis slate instead if white is strictly banned. Using high-vis teal for safety. */
-            color: var(--brand-teal);
+            color: var(--brand-teal) !important;
         }
 
         /* Modal specific */
         #assessment-modal {
             display: none;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            background: rgba(2, 6, 23, 0.8);
         }
         #assessment-modal.active {
             display: flex;
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Grid Pattern */
+        /* Grid Pattern - Subtle but visible */
         .grid-bg {
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.3;
+            background-image: linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
         }
 
         * { font-style: normal !important; }
@@ -118,20 +119,20 @@
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-4">
-                    <a href="index.html" class="font-black text-2xl tracking-tighter text-navy flex items-center">
-                        NoMore<span class="text-teal">RTO</span>
+                    <a href="index.html" class="font-black text-2xl tracking-tighter text-slate-900 flex items-center">
+                        NoMore<span class="text-[#0abab5]">RTO</span>
                     </a>
                 </div>
                 <div class="flex items-center gap-6">
-                    <button class="text-sm font-bold text-slate-600 hover:text-navy transition-colors">Log In</button>
-                    <button id="lang-toggle" class="text-[10px] font-black px-3 py-1 rounded bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-all uppercase tracking-widest text-navy">
+                    <button class="text-sm font-black text-slate-800 hover:text-blue-600 transition-colors">Log In</button>
+                    <button id="lang-toggle" class="text-[11px] font-black px-4 py-1.5 rounded-lg bg-slate-100 border border-slate-300 hover:bg-slate-200 transition-all uppercase tracking-widest text-slate-900">
                         CN
                     </button>
-                    <button id="nav-assessment-btn" class="btn-cta px-6 py-2.5 rounded-full text-sm shadow-sm">
+                    <button id="nav-assessment-btn" class="btn-cta px-6 py-2.5 rounded-full text-sm shadow-md">
                         Get Free Assessment
                     </button>
                 </div>
@@ -140,44 +141,44 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-40 pb-32 hero-gradient overflow-hidden">
-        <div class="absolute inset-0 grid-bg opacity-10"></div>
+    <header class="relative pt-44 pb-36 hero-gradient overflow-hidden">
+        <div class="absolute inset-0 grid-bg"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-3/5 text-center lg:text-left">
                     <h1 id="hero-title" class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-8 tracking-tight">
                         From Canada to the US: Secure Your <span class="text-blue-400">TN Visa.</span>
                     </h1>
-                    <p id="hero-subtitle" class="text-lg md:text-xl text-slate-400 mb-12 max-w-2xl leading-relaxed">
+                    <p id="hero-subtitle" class="text-xl md:text-2xl text-slate-200 mb-12 max-w-2xl leading-relaxed font-medium">
                         Don't let a bad job description ruin your American dream. We provide the legal strategy, HR negotiation, and interview prep you need to cross the border with confidence.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <button id="hero-assessment-btn" class="btn-cta px-10 py-5 rounded-2xl text-xl shadow-2xl">
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+                        <button id="hero-assessment-btn" class="btn-cta px-12 py-5 rounded-2xl text-xl shadow-2xl">
                             <span id="hero-cta-main"></span>
                         </button>
-                        <div class="flex items-center gap-3 px-6 py-4">
-                            <div class="flex -space-x-2">
-                                <div class="w-8 h-8 rounded-full bg-slate-700 border-2 border-navy"></div>
-                                <div class="w-8 h-8 rounded-full bg-slate-600 border-2 border-navy"></div>
-                                <div class="w-8 h-8 rounded-full bg-slate-500 border-2 border-navy"></div>
+                        <div class="flex items-center gap-4 px-6">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-slate-600 border-2 border-slate-900"></div>
+                                <div class="w-10 h-10 rounded-full bg-slate-500 border-2 border-slate-900"></div>
+                                <div class="w-10 h-10 rounded-full bg-slate-400 border-2 border-slate-900"></div>
                             </div>
-                            <span class="text-xs font-bold text-slate-500 uppercase tracking-widest" id="hero-sub-cta"></span>
+                            <span class="text-sm font-black text-slate-300 uppercase tracking-widest" id="hero-sub-cta"></span>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-2/5 w-full">
-                    <div class="glass p-8 rounded-[2rem] border-white/10 relative">
-                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-500/20 blur-[60px]"></div>
-                        <div class="space-y-6">
-                            <div class="p-4 bg-white/5 rounded-xl border border-white/10">
-                                <div class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Recent Success</div>
-                                <div class="text-white font-medium" id="hero-success-1">Data Analyst, Toronto → Seattle</div>
-                                <div class="text-xs text-slate-500">Approved at Peace Bridge • 10m interview</div>
+                    <div class="glass p-10 rounded-[2.5rem] border-white/20 relative shadow-2xl">
+                        <div class="absolute -top-10 -right-10 w-48 h-48 bg-blue-500/30 blur-[70px]"></div>
+                        <div class="space-y-8">
+                            <div class="p-5 bg-white/10 rounded-2xl border border-white/10">
+                                <div class="text-[11px] font-black text-blue-400 uppercase tracking-widest mb-2">Recent Success</div>
+                                <div class="text-white font-bold text-lg" id="hero-success-1">Data Analyst, Toronto → Seattle</div>
+                                <div class="text-sm text-slate-300 mt-1">Approved at Peace Bridge • 10m interview</div>
                             </div>
-                            <div class="p-4 bg-white/5 rounded-xl border border-white/10">
-                                <div class="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">Recent Success</div>
-                                <div class="text-white font-medium" id="hero-success-2">Software Engineer, Vancouver → SF</div>
-                                <div class="text-xs text-slate-500">Y-Combinator Startup • Full Support</div>
+                            <div class="p-5 bg-white/10 rounded-2xl border border-white/10">
+                                <div class="text-[11px] font-black text-blue-400 uppercase tracking-widest mb-2">Recent Success</div>
+                                <div class="text-white font-bold text-lg" id="hero-success-2">Software Engineer, Vancouver → SF</div>
+                                <div class="text-sm text-slate-300 mt-1">Y-Combinator Startup • Full Support</div>
                             </div>
                         </div>
                     </div>
@@ -185,33 +186,33 @@
             </div>
 
             <!-- Logo Wall -->
-            <div class="mt-32 pt-16 border-t border-white/5">
-                <p class="text-center text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] mb-10">Trusted by professionals from</p>
-                <div class="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale invert">
-                    <span class="font-black text-2xl text-white tracking-tighter">SHOPIFY</span>
-                    <span class="font-black text-2xl text-white tracking-tighter">TD BANK</span>
-                    <span class="font-black text-2xl text-white tracking-tighter">AMAZON</span>
-                    <span class="font-black text-2xl text-white tracking-tighter">RBC</span>
-                    <span class="font-black text-2xl text-white tracking-tighter">GOOGLE</span>
+            <div class="mt-40 pt-16 border-t border-white/10">
+                <p class="text-center text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] mb-12">Trusted by professionals from</p>
+                <div class="flex flex-wrap justify-center items-center gap-16 opacity-50 grayscale invert">
+                    <span class="font-black text-3xl text-white tracking-tighter">SHOPIFY</span>
+                    <span class="font-black text-3xl text-white tracking-tighter">TD BANK</span>
+                    <span class="font-black text-3xl text-white tracking-tighter">AMAZON</span>
+                    <span class="font-black text-3xl text-white tracking-tighter">RBC</span>
+                    <span class="font-black text-3xl text-white tracking-tighter">GOOGLE</span>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- The Two Paths Section -->
-    <section class="py-32 bg-white relative">
+    <section class="py-36 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-24">
-                <h2 id="paths-title" class="font-serif text-4xl md:text-6xl text-navy mb-6 tracking-tight">Choose Your Path to Freedom.</h2>
-                <p id="paths-subtitle" class="text-slate-500 text-xl font-medium max-w-2xl mx-auto"></p>
+            <div class="text-center mb-28">
+                <h2 id="paths-title" class="font-serif text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight">Choose Your Path to Freedom.</h2>
+                <p id="paths-subtitle" class="text-slate-600 text-xl font-bold max-w-2xl mx-auto"></p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <!-- Card 1: Visa Secure Pack -->
-                <div class="bento-card p-12 flex flex-col h-full border-slate-100">
-                    <div class="mb-10 inline-flex px-4 py-1.5 bg-slate-50 text-slate-600 rounded-lg text-[10px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
-                    <h3 id="prod-a-title" class="text-4xl font-black text-navy mb-4"></h3>
-                    <p id="prod-a-sub" class="text-blue-500 text-sm font-bold uppercase tracking-widest mb-10"></p>
+                <div class="bento-card p-14 flex flex-col h-full border-slate-300">
+                    <div class="mb-10 inline-flex px-5 py-2 bg-slate-100 text-slate-900 rounded-lg text-[11px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
+                    <h3 id="prod-a-title" class="text-4xl font-black text-slate-900 mb-4"></h3>
+                    <p id="prod-a-sub" class="text-blue-600 text-sm font-black uppercase tracking-widest mb-10"></p>
                     <ul id="prod-a-list" class="space-y-6 mb-16 flex-grow">
                         <!-- Injected -->
                     </ul>
@@ -219,115 +220,113 @@
                 </div>
 
                 <!-- Card 2: Career Launchpad (Highlighted) -->
-                <div class="bento-card p-12 flex flex-col h-full premium-card">
-                    <div class="mb-10 inline-flex px-4 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-[10px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
-                    <h3 id="prod-b-title" class="text-4xl font-black text-navy mb-4"></h3>
-                    <p id="prod-b-sub" class="text-blue-600 text-sm font-bold uppercase tracking-widest mb-10"></p>
+                <div class="bento-card p-14 flex flex-col h-full premium-card">
+                    <div class="mb-10 inline-flex px-5 py-2 bg-blue-100 text-blue-900 rounded-lg text-[11px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
+                    <h3 id="prod-b-title" class="text-4xl font-black text-slate-900 mb-4"></h3>
+                    <p id="prod-b-sub" class="text-blue-600 text-sm font-black uppercase tracking-widest mb-10"></p>
                     <ul id="prod-b-list" class="space-y-6 mb-16 flex-grow">
                         <!-- Injected -->
                     </ul>
-                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-cta text-center py-5 rounded-2xl shadow-xl shadow-blue-500/10 transition-all" id="prod-b-btn"></a>
+                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-cta text-center py-5 rounded-2xl shadow-xl shadow-blue-500/20 transition-all" id="prod-b-btn"></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Us Section (Bento Grid) -->
-    <section class="py-32 bg-slate-50 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full grid-bg opacity-20 pointer-events-none"></div>
+    <section class="py-36 bg-slate-50 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full grid-bg opacity-10 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                <div class="max-w-xl">
-                    <h2 id="why-main-title" class="font-serif text-4xl md:text-5xl text-navy mb-4">What we do, others can't.</h2>
-                    <p id="why-main-sub" class="text-slate-500 text-lg font-medium">Bypassing the friction between legal compliance and corporate hiring.</p>
-                </div>
+            <div class="mb-20">
+                <h2 id="why-main-title" class="font-serif text-4xl md:text-5xl text-slate-900 mb-6">What we do, others can't.</h2>
+                <p id="why-main-sub" class="text-slate-700 text-xl font-bold">Bypassing the friction between legal compliance and corporate hiring.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Box 1 -->
-                <div class="bento-card p-10 bg-white">
-                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+                <div class="bento-card p-12 bg-white">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 border border-blue-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
                     </div>
-                    <h4 id="why-1-title" class="text-xl font-black text-navy mb-4"></h4>
-                    <p id="why-1-p" class="text-slate-500 text-sm leading-relaxed"></p>
+                    <h4 id="why-1-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
+                    <p id="why-1-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
                 </div>
                 <!-- Box 2 -->
-                <div class="bento-card p-10 bg-white">
-                    <div class="w-14 h-14 bg-teal-50 text-teal rounded-2xl flex items-center justify-center mb-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
+                <div class="bento-card p-12 bg-white">
+                    <div class="w-16 h-16 bg-teal-50 text-teal rounded-2xl flex items-center justify-center mb-8 border border-teal-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
                     </div>
-                    <h4 id="why-2-title" class="text-xl font-black text-navy mb-4"></h4>
-                    <p id="why-2-p" class="text-slate-500 text-sm leading-relaxed"></p>
+                    <h4 id="why-2-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
+                    <p id="why-2-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
                 </div>
                 <!-- Box 3 -->
-                <div class="bento-card p-10 bg-white">
-                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                <div class="bento-card p-12 bg-white">
+                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8 border border-indigo-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
-                    <h4 id="why-3-title" class="text-xl font-black text-navy mb-4"></h4>
-                    <p id="why-3-p" class="text-slate-500 text-sm leading-relaxed"></p>
+                    <h4 id="why-3-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
+                    <p id="why-3-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Social Proof / Testimonials -->
-    <section class="py-32 bg-white">
+    <section class="py-36 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="cases-title" class="font-serif text-4xl md:text-5xl text-center mb-24 text-navy">Verified Border Crossings.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 id="cases-title" class="font-serif text-4xl md:text-5xl text-center mb-24 text-slate-900">Verified Border Crossings.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Testimonial 1 -->
-                <div class="p-10 rounded-[2rem] border border-slate-100 bg-slate-50/50">
-                    <div class="flex gap-1 text-teal mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
+                    <div class="flex gap-1.5 text-teal mb-8">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     </div>
-                    <p id="case-1-p" class="text-slate-600 font-medium mb-10 leading-relaxed"></p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                    <p id="case-1-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
+                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
                         <div>
-                            <div class="text-sm font-black text-navy">Data Analyst</div>
-                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Toronto → Seattle</div>
+                            <div class="text-base font-black text-slate-900 leading-none">Data Analyst</div>
+                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Toronto → Seattle</div>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 2 -->
-                <div class="p-10 rounded-[2rem] border border-slate-100 bg-slate-50/50">
-                    <div class="flex gap-1 text-teal mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
+                    <div class="flex gap-1.5 text-teal mb-8">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     </div>
-                    <p id="case-2-p" class="text-slate-600 font-medium mb-10 leading-relaxed"></p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                    <p id="case-2-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
+                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
                         <div>
-                            <div class="text-sm font-black text-navy">Systems Analyst</div>
-                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vancouver → SF</div>
+                            <div class="text-base font-black text-slate-900 leading-none">Systems Analyst</div>
+                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Vancouver → SF</div>
                         </div>
                     </div>
                 </div>
                 <!-- Testimonial 3 -->
-                <div class="p-10 rounded-[2rem] border border-slate-100 bg-slate-50/50">
-                    <div class="flex gap-1 text-teal mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
+                    <div class="flex gap-1.5 text-teal mb-8">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     </div>
-                    <p id="case-3-p" class="text-slate-600 font-medium mb-10 leading-relaxed"></p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-full bg-slate-200"></div>
+                    <p id="case-3-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
+                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
                         <div>
-                            <div class="text-sm font-black text-navy">BI Specialist</div>
-                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Montreal → NYC</div>
+                            <div class="text-base font-black text-slate-900 leading-none">BI Specialist</div>
+                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Montreal → NYC</div>
                         </div>
                     </div>
                 </div>
@@ -336,79 +335,79 @@
     </section>
 
     <!-- Bottom CTA -->
-    <section class="py-32 hero-gradient relative overflow-hidden">
-        <div class="absolute inset-0 grid-bg opacity-10"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 id="final-cta-title" class="font-serif text-4xl md:text-6xl text-white mb-8">Your American dream is one assessment away.</h2>
-            <button id="bottom-assessment-btn" class="btn-cta px-12 py-6 rounded-2xl text-2xl shadow-2xl">
+    <section class="py-40 hero-gradient relative overflow-hidden">
+        <div class="absolute inset-0 grid-bg"></div>
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <h2 id="final-cta-title" class="font-serif text-5xl md:text-7xl text-white mb-10 leading-tight">Your American dream is one assessment away.</h2>
+            <button id="bottom-assessment-btn" class="btn-cta px-16 py-7 rounded-2xl text-2xl shadow-2xl">
                 <span id="final-cta-btn"></span>
             </button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 bg-white border-t border-slate-100">
+    <footer class="py-24 bg-white border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="font-extrabold text-2xl tracking-tighter text-navy mb-10">NoMore<span class="text-teal">RTO</span></div>
-            <div class="flex justify-center flex-wrap gap-12 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-12">
-                <a href="index.html" class="hover:text-navy transition-colors">Privacy</a>
-                <a href="index.html" class="hover:text-navy transition-colors">Terms</a>
-                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-navy transition-colors">Contact</a>
+            <div class="font-extrabold text-2xl tracking-tighter text-slate-900 mb-10">NoMore<span class="text-[#0abab5]">RTO</span></div>
+            <div class="flex justify-center flex-wrap gap-16 text-[12px] font-black text-slate-500 uppercase tracking-[0.3em] mb-12">
+                <a href="index.html" class="hover:text-blue-600 transition-colors">Privacy</a>
+                <a href="index.html" class="hover:text-blue-600 transition-colors">Terms</a>
+                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-blue-600 transition-colors">Contact</a>
             </div>
-            <p id="footer-copy" class="text-slate-300 text-[10px] uppercase tracking-[0.4em] font-black"></p>
+            <p id="footer-copy" class="text-slate-400 text-[11px] uppercase tracking-[0.4em] font-black"></p>
         </div>
     </footer>
 
     <!-- MODAL FORM -->
-    <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4 bg-navy/60">
+    <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4">
         <div class="bg-white w-full max-w-xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
-            <div class="bg-navy p-10 text-white relative">
-                <button id="close-modal-btn" class="absolute top-8 right-8 text-slate-400 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <div class="bg-slate-950 p-10 text-white relative">
+                <button id="close-modal-btn" class="absolute top-8 right-8 text-slate-500 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
-                <h2 id="modal-title" class="font-serif text-3xl mb-2"></h2>
-                <p id="modal-subtitle" class="text-slate-400 text-sm font-medium"></p>
+                <h2 id="modal-title" class="font-serif text-3xl mb-3"></h2>
+                <p id="modal-subtitle" class="text-slate-400 text-base font-bold"></p>
             </div>
             
-            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-10 space-y-6">
-                <div class="space-y-2">
-                    <label id="lbl-q1" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy focus:border-blue-400 outline-none appearance-none">
+            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-10 space-y-8">
+                <div class="space-y-3">
+                    <label id="lbl-q1" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
+                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none appearance-none">
                         <option value="" disabled selected id="opt-q1-def"></option>
                         <option value="Yes" id="opt-q1-yes"></option>
                         <option value="No" id="opt-q1-no"></option>
                     </select>
                 </div>
-                <div class="space-y-2">
-                    <label id="lbl-q2" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy focus:border-blue-400 outline-none" placeholder="e.g. Computer Science">
+                <div class="space-y-3">
+                    <label id="lbl-q2" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
+                    <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. Computer Science">
                 </div>
-                <div class="space-y-2">
-                    <label id="lbl-q3" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy focus:border-blue-400 outline-none" placeholder="e.g. Data Scientist">
+                <div class="space-y-3">
+                    <label id="lbl-q3" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
+                    <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. Data Scientist">
                 </div>
-                <div class="space-y-2">
-                    <label id="lbl-q4" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="number" name="years_of_exp" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy focus:border-blue-400 outline-none" placeholder="e.g. 5">
+                <div class="space-y-3">
+                    <label id="lbl-q4" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
+                    <input type="number" name="years_of_exp" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. 5">
                 </div>
-                <div class="space-y-2">
-                    <label id="lbl-q5" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
+                <div class="space-y-3">
+                    <label id="lbl-q5" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
                     <div class="flex gap-4">
                         <label class="flex-1">
                             <input type="radio" name="has_offer" value="Yes" required class="hidden peer">
-                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-blue-400 peer-checked:text-navy peer-checked:border-blue-400 transition-all" id="lbl-q5-yes"></div>
+                            <div class="p-4 text-center border-2 border-slate-200 rounded-xl font-black cursor-pointer peer-checked:bg-blue-500 peer-checked:text-black peer-checked:border-blue-500 transition-all" id="lbl-q5-yes"></div>
                         </label>
                         <label class="flex-1">
                             <input type="radio" name="has_offer" value="No" required class="hidden peer">
-                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-blue-400 peer-checked:text-navy peer-checked:border-blue-400 transition-all" id="lbl-q5-no"></div>
+                            <div class="p-4 text-center border-2 border-slate-200 rounded-xl font-black cursor-pointer peer-checked:bg-blue-500 peer-checked:text-black peer-checked:border-blue-500 transition-all" id="lbl-q5-no"></div>
                         </label>
                     </div>
                 </div>
-                <div class="space-y-2">
-                    <label id="lbl-email" class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Your Email</label>
-                    <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-navy focus:border-blue-400 outline-none" placeholder="name@email.com">
+                <div class="space-y-3">
+                    <label id="lbl-email" class="block text-[11px] font-black uppercase tracking-widest text-slate-900">Your Email</label>
+                    <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="name@email.com">
                 </div>
-                <button type="submit" class="w-full py-5 btn-cta rounded-2xl text-xl shadow-lg border-none">
+                <button type="submit" class="w-full py-5 btn-cta rounded-2xl text-xl shadow-lg">
                     <span id="submit-btn"></span>
                 </button>
             </form>
@@ -566,14 +565,14 @@
             document.getElementById('prod-a-title').innerText = pa.title;
             document.getElementById('prod-a-sub').innerText = pa.sub;
             document.getElementById('prod-a-btn').innerText = pa.btn;
-            document.getElementById('prod-a-list').innerHTML = pa.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-700"><svg class="text-blue-500 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            document.getElementById('prod-a-list').innerHTML = pa.list.map(i => `<li class="flex items-center gap-4 text-base font-black text-slate-800"><svg class="text-blue-500 w-6 h-6" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
 
             const pb = data.paths.b;
             document.getElementById('prod-b-tag').innerText = pb.tag;
             document.getElementById('prod-b-title').innerText = pb.title;
             document.getElementById('prod-b-sub').innerText = pb.sub;
             document.getElementById('prod-b-btn').innerText = pb.btn;
-            document.getElementById('prod-b-list').innerHTML = pb.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-700"><svg class="text-blue-500 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            document.getElementById('prod-b-list').innerHTML = pb.list.map(i => `<li class="flex items-center gap-4 text-base font-black text-slate-800"><svg class="text-blue-500 w-6 h-6" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
 
             document.getElementById('why-main-title').innerText = data.why.mainTitle;
             document.getElementById('why-main-sub').innerText = data.why.mainSub;
