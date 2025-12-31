@@ -48,6 +48,15 @@
         .text-tiffany { color: var(--tiffany-blue); }
         .bg-tiffany-light { background-color: var(--tiffany-light); }
 
+        /* Modal specific */
+        #assessment-modal {
+            display: none;
+            backdrop-filter: blur(8px);
+        }
+        #assessment-modal.active {
+            display: flex;
+        }
+
         /* Remove italics globally */
         * { font-style: normal !important; }
     </style>
@@ -75,7 +84,7 @@
         </div>
     </nav>
 
-    <!-- Hero / Lead Magnet -->
+    <!-- Hero Section -->
     <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-grid overflow-hidden border-b border-gray-50">
         <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
             <div class="inline-block px-4 py-1.5 mb-6 bg-tiffany-light rounded-full">
@@ -84,41 +93,13 @@
             <h1 id="hero-title" class="text-4xl md:text-7xl font-black tracking-tighter text-gray-900 mb-8 leading-[1.1]"></h1>
             <p id="hero-subtitle" class="text-lg md:text-2xl text-slate-500 mb-12 max-w-3xl mx-auto font-medium leading-relaxed"></p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#assessment" class="btn-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl w-full sm:w-auto">
+                <button id="open-modal-btn" class="btn-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl w-full sm:w-auto">
                     <span id="hero-cta-main"></span>
-                </a>
+                </button>
                 <p id="hero-sub-cta" class="text-slate-400 text-sm font-bold"></p>
             </div>
         </div>
     </header>
-
-    <!-- Evaluation Section (The Anchor) -->
-    <section id="assessment" class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="bg-gray-900 rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-tiffany opacity-10 blur-[100px]"></div>
-                <div class="relative z-10">
-                    <h2 id="eval-title" class="text-3xl md:text-5xl font-black mb-6 tracking-tight"></h2>
-                    <p id="eval-p" class="text-slate-400 text-lg mb-10 leading-relaxed"></p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-tiffany flex-shrink-0">1</div>
-                            <p id="eval-step-1" class="text-sm font-medium text-slate-300"></p>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-tiffany flex-shrink-0">2</div>
-                            <p id="eval-step-2" class="text-sm font-medium text-slate-300"></p>
-                        </div>
-                    </div>
-
-                    <a href="https://forms.gle/your-form-link-here" target="_blank" class="block w-full text-center bg-white text-gray-900 py-5 rounded-2xl font-black text-xl hover:bg-tiffany hover:text-white transition-all">
-                        <span id="eval-btn"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- The Two Paths -->
     <section class="py-24 bg-slate-50">
@@ -156,7 +137,7 @@
     </section>
 
     <!-- Why Us -->
-    <section class="py-24 bg-white overflow-hidden">
+    <section class="py-24 bg-white overflow-hidden border-t border-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="space-y-4">
@@ -219,6 +200,74 @@
         </div>
     </footer>
 
+    <!-- MODAL FORM -->
+    <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4 bg-gray-900/40">
+        <div class="bg-white w-full max-w-xl rounded-[2rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+            <div class="bg-gray-900 p-8 text-white relative">
+                <button id="close-modal-btn" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+                <h2 id="modal-title" class="text-2xl md:text-3xl font-black tracking-tight mb-2"></h2>
+                <p id="modal-subtitle" class="text-slate-400 text-sm font-medium"></p>
+            </div>
+            
+            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-8 space-y-6">
+                <!-- Q1: Citizenship -->
+                <div class="space-y-2">
+                    <label id="lbl-q1" class="block text-xs font-black uppercase tracking-widest text-slate-500"></label>
+                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-gray-900 focus:border-tiffany outline-none appearance-none">
+                        <option value="" disabled selected id="opt-q1-def"></option>
+                        <option value="Yes" id="opt-q1-yes"></option>
+                        <option value="No" id="opt-q1-no"></option>
+                    </select>
+                </div>
+
+                <!-- Q2: Degree & Major -->
+                <div class="space-y-2">
+                    <label id="lbl-q2" class="block text-xs font-black uppercase tracking-widest text-slate-500"></label>
+                    <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-gray-900 focus:border-tiffany outline-none" placeholder="e.g. Master of Computer Science">
+                </div>
+
+                <!-- Q3: Job Title -->
+                <div class="space-y-2">
+                    <label id="lbl-q3" class="block text-xs font-black uppercase tracking-widest text-slate-500"></label>
+                    <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-gray-900 focus:border-tiffany outline-none" placeholder="e.g. Data Scientist">
+                </div>
+
+                <!-- Q4: Exp -->
+                <div class="space-y-2">
+                    <label id="lbl-q4" class="block text-xs font-black uppercase tracking-widest text-slate-500"></label>
+                    <input type="number" name="years_of_exp" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-gray-900 focus:border-tiffany outline-none" placeholder="e.g. 5">
+                </div>
+
+                <!-- Q5: Has Offer -->
+                <div class="space-y-2">
+                    <label id="lbl-q5" class="block text-xs font-black uppercase tracking-widest text-slate-500"></label>
+                    <div class="flex gap-4">
+                        <label class="flex-1">
+                            <input type="radio" name="has_offer" value="Yes" required class="hidden peer">
+                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-tiffany peer-checked:text-white peer-checked:border-tiffany transition-all" id="lbl-q5-yes"></div>
+                        </label>
+                        <label class="flex-1">
+                            <input type="radio" name="has_offer" value="No" required class="hidden peer">
+                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-tiffany peer-checked:text-white peer-checked:border-tiffany transition-all" id="lbl-q5-no"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Contact (Email) -->
+                <div class="space-y-2">
+                    <label id="lbl-email" class="block text-xs font-black uppercase tracking-widest text-slate-500">Your Email</label>
+                    <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-gray-900 focus:border-tiffany outline-none" placeholder="name@email.com">
+                </div>
+
+                <button type="submit" class="w-full py-5 bg-tiffany text-white rounded-2xl font-black text-xl hover:bg-tiffany-dark transition-all shadow-lg">
+                    <span id="submit-btn"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script>
         const CONTENT = {
             en: {
@@ -229,13 +278,6 @@
                     subtitle: "Not every degree matches every job. Stop guessing and start your journey with a verified roadmap from our legal and career experts.",
                     cta: "Get My Free Assessment",
                     subCta: "Results in < 24 Hours"
-                },
-                eval: {
-                    title: "Check Your Success Probability",
-                    p: "Fill in 5 key questions about your degree and role. We'll analyze your background against USMCA regulations for free.",
-                    step1: "Degree & Major verification against the official TN list.",
-                    step2: "Job Title & JD risk assessment for border interviews.",
-                    btn: "Start Assessment Now"
                 },
                 paths: {
                     title: "Choose Your Mission",
@@ -266,6 +308,21 @@
                     2: "\"Data Analyst from Vancouver. Their end-to-end coaching landed me a 160k USD role in SF with full visa support.\"",
                     3: "\"Non-tech degree pivot. They optimized my systems background to fit the CSA category perfectly. No RFE, immediate approval.\""
                 },
+                modal: {
+                    title: "TN Success Assessment",
+                    subtitle: "Enter your details for a 24h expert review.",
+                    q1: "Are you a Canadian Citizen?",
+                    q1_def: "Select status...",
+                    q1_yes: "Yes, I am a Canadian Citizen",
+                    q1_no: "No, I am a permanent resident/other",
+                    q2: "Highest Degree & Major",
+                    q3: "Target Position / Offer Job Title",
+                    q4: "Years of Professional Experience",
+                    q5: "Do you already have an Offer?",
+                    q5_yes: "Yes, I have an Offer",
+                    q5_no: "No, currently searching",
+                    submit: "Send Assessment Request"
+                },
                 footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
             },
             cn: {
@@ -276,13 +333,6 @@
                     subtitle: "并不是所有学位都能匹配职位。停止盲目猜测，由我们的法律与人才专家为你提供一份经过验证的成功路线图。",
                     cta: "立即获取免费评估",
                     subCta: "24 小时内反馈结果"
-                },
-                eval: {
-                    title: "评估你的获批概率",
-                    p: "回答 5 个关于学位和职位的关键问题。我们将根据 USMCA 法规免费分析你的背景。",
-                    step1: "学位与专业是否符合官方 TN 职业列表。",
-                    step2: "职位名称与 JD 描述在海关面试中的风险等级。",
-                    btn: "立即开始免费评估"
                 },
                 paths: {
                     title: "选择你的转型路径",
@@ -313,11 +363,34 @@
                     2: "“温哥华 Data Analyst。通过全案陪跑，3个月拿下旧金山 16万美金 Offer 并在机场顺利获批。”",
                     3: "“文科背景转行。他们优化了我的系统分析背景，成功匹配 CSA 类别。无补件，当场获批。”"
                 },
+                modal: {
+                    title: "评估你的获批概率",
+                    subtitle: "填写以下信息，专家将在 24 小时内反馈结果。",
+                    q1: "1. 是否入加拿大籍？",
+                    q1_def: "请选择...",
+                    q1_yes: "是，我是加拿大公民",
+                    q1_no: "否，我是永久居民或其他",
+                    q2: "2. 最高学历 & 专业 (Degree & Major)",
+                    q3: "3. 目标职位/已获 Offer 职位 (Job Title)",
+                    q4: "4. 工作年限 (Years of Exp)",
+                    q5: "5. 是否已有 Offer？",
+                    q5_yes: "是，已有 Offer",
+                    q5_no: "否，正在寻找",
+                    submit: "立即提交免费评估"
+                },
                 footer: "© 2024 NoMoreRTO 枢纽. 为反抗而生。"
             }
         };
 
         let currentLang = 'en';
+
+        const modal = document.getElementById('assessment-modal');
+        const openBtn = document.getElementById('open-modal-btn');
+        const closeBtn = document.getElementById('close-modal-btn');
+
+        openBtn.addEventListener('click', () => modal.classList.add('active'));
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        window.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
         function render() {
             const data = CONTENT[currentLang];
@@ -327,12 +400,6 @@
             document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
             document.getElementById('hero-cta-main').innerText = data.hero.cta;
             document.getElementById('hero-sub-cta').innerText = data.hero.subCta;
-
-            document.getElementById('eval-title').innerText = data.eval.title;
-            document.getElementById('eval-p').innerText = data.eval.p;
-            document.getElementById('eval-step-1').innerText = data.eval.step1;
-            document.getElementById('eval-step-2').innerText = data.eval.step2;
-            document.getElementById('eval-btn').innerText = data.eval.btn;
 
             document.getElementById('paths-title').innerText = data.paths.title;
             document.getElementById('paths-subtitle').innerText = data.paths.subtitle;
@@ -362,6 +429,22 @@
             document.getElementById('case-1-p').innerText = data.cases[1];
             document.getElementById('case-2-p').innerText = data.cases[2];
             document.getElementById('case-3-p').innerText = data.cases[3];
+
+            // Modal Labels
+            const m = data.modal;
+            document.getElementById('modal-title').innerText = m.title;
+            document.getElementById('modal-subtitle').innerText = m.subtitle;
+            document.getElementById('lbl-q1').innerText = m.q1;
+            document.getElementById('opt-q1-def').innerText = m.q1_def;
+            document.getElementById('opt-q1-yes').innerText = m.q1_yes;
+            document.getElementById('opt-q1-no').innerText = m.q1_no;
+            document.getElementById('lbl-q2').innerText = m.q2;
+            document.getElementById('lbl-q3').innerText = m.q3;
+            document.getElementById('lbl-q4').innerText = m.q4;
+            document.getElementById('lbl-q5').innerText = m.q5;
+            document.getElementById('lbl-q5-yes').innerText = m.q5_yes;
+            document.getElementById('lbl-q5-no').innerText = m.q5_no;
+            document.getElementById('submit-btn').innerText = m.submit;
 
             document.getElementById('footer-copy').innerText = data.footer;
         }
