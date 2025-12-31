@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-navy: #0f172a;
-            --brand-teal: #0abab5;
+            --brand-navy: #020617;
+            --brand-deep: #0f172a;
             --brand-blue: #0ea5e9;
-            --brand-slate: #1e293b; /* Darker slate for better visibility */
-            --brand-light: #f8fafc;
+            --brand-teal: #0abab5;
+            --brand-slate: #1e293b;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -23,11 +23,6 @@
         .font-serif { font-family: 'Playfair Display', serif; }
         .font-display { font-family: 'DM Sans', sans-serif; }
         
-        .bg-navy { background-color: var(--brand-navy); }
-        .text-navy { color: var(--brand-navy); }
-        .bg-teal { background-color: var(--brand-teal); }
-        .text-teal { color: var(--brand-teal); }
-        
         .hero-gradient {
             background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
         }
@@ -35,82 +30,80 @@
         /* Bento Grid Style */
         .bento-card {
             background: #ffffff;
-            border: 1px solid #cbd5e1; /* Darker border for visibility */
-            border-radius: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            border-radius: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .bento-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1);
             border-color: var(--brand-blue);
         }
 
-        /* Premium Card Highlight */
-        .premium-card {
-            border: 3px solid var(--brand-blue);
-            box-shadow: 0 0 40px rgba(14, 165, 233, 0.15);
-            position: relative;
-        }
-        .premium-card::before {
-            content: 'Recommended';
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--brand-blue);
-            color: #000000; /* Solid Black text */
-            padding: 4px 18px;
-            border-radius: 99px;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            z-index: 10;
+        /* Comparison Table Styles */
+        .comparison-cell {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        /* Button Constraints: Solid Black Text for maximum contrast on bright backgrounds */
-        .btn-cta {
+        /* Button Constraint: NO white or transparent text */
+        .btn-primary {
             background-color: var(--brand-blue);
-            color: #000000 !important; /* Forces Jet Black */
+            color: #020617 !important; /* Solid Jet Black */
             font-weight: 900;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             border: none;
         }
-        .btn-cta:hover {
+        .btn-primary:hover {
             background-color: #38bdf8;
             transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4);
         }
+
         .btn-outline {
-            border: 2px solid var(--brand-navy);
-            color: #000000 !important; /* Jet Black */
+            border: 2.5px solid var(--brand-navy);
+            color: var(--brand-navy) !important;
             font-weight: 900;
         }
         .btn-outline:hover {
             background-color: var(--brand-navy);
-            color: var(--brand-teal) !important;
+            color: var(--brand-teal) !important; /* High contrast teal on dark */
+        }
+
+        /* Accordion Logic */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
         }
 
         /* Modal specific */
         #assessment-modal {
             display: none;
-            backdrop-filter: blur(16px);
-            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(20px);
+            background: rgba(2, 6, 23, 0.7);
         }
         #assessment-modal.active {
             display: flex;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Grid Pattern - Subtle but visible */
+        /* Grid Pattern */
         .grid-bg {
             background-image: linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.15;
+            background-size: 60px 60px;
+            opacity: 0.08;
+        }
+
+        .risk-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #fff 100%);
+            border: 2px dashed #fca5a5;
         }
 
         * { font-style: normal !important; }
@@ -119,7 +112,7 @@
 <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-2xl border-b border-slate-200">
+    <nav class="fixed top-0 w-full z-[60] bg-white/90 backdrop-blur-2xl border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-4">
@@ -128,11 +121,10 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-6">
-                    <button class="text-sm font-black text-slate-800 hover:text-blue-600 transition-colors">Log In</button>
-                    <button id="lang-toggle" class="text-[11px] font-black px-4 py-1.5 rounded-lg bg-slate-100 border border-slate-300 hover:bg-slate-200 transition-all uppercase tracking-widest text-slate-900">
+                    <button id="lang-toggle" class="text-[11px] font-black px-4 py-2 rounded-xl bg-slate-100 border border-slate-200 hover:bg-slate-200 transition-all uppercase tracking-widest text-slate-900">
                         CN
                     </button>
-                    <button id="nav-assessment-btn" class="btn-cta px-6 py-2.5 rounded-full text-sm shadow-md">
+                    <button onclick="openModal()" class="btn-primary px-8 py-3 rounded-full text-sm shadow-xl hidden md:block">
                         Get Free Assessment
                     </button>
                 </div>
@@ -141,256 +133,186 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-44 pb-36 hero-gradient overflow-hidden">
+    <header class="relative pt-48 pb-32 hero-gradient overflow-hidden">
         <div class="absolute inset-0 grid-bg"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-3/5 text-center lg:text-left">
-                    <h1 id="hero-title" class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-8 tracking-tight">
-                        From Canada to the US: Secure Your <span class="text-blue-400">TN Visa.</span>
-                    </h1>
-                    <p id="hero-subtitle" class="text-xl md:text-2xl text-slate-200 mb-12 max-w-2xl leading-relaxed font-medium">
-                        Don't let a bad job description ruin your American dream. We provide the legal strategy, HR negotiation, and interview prep you need to cross the border with confidence.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                        <button id="hero-assessment-btn" class="btn-cta px-12 py-5 rounded-2xl text-xl shadow-2xl">
-                            <span id="hero-cta-main"></span>
-                        </button>
-                        <div class="flex items-center gap-4 px-6">
-                            <div class="flex -space-x-3">
-                                <div class="w-10 h-10 rounded-full bg-slate-600 border-2 border-slate-900"></div>
-                                <div class="w-10 h-10 rounded-full bg-slate-500 border-2 border-slate-900"></div>
-                                <div class="w-10 h-10 rounded-full bg-slate-400 border-2 border-slate-900"></div>
-                            </div>
-                            <span class="text-sm font-black text-slate-300 uppercase tracking-widest" id="hero-sub-cta"></span>
-                        </div>
-                    </div>
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+                    <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                    Now accepting Q4 VIP Applicants
                 </div>
-                <div class="lg:w-2/5 w-full">
-                    <div class="glass p-10 rounded-[2.5rem] border-white/20 relative shadow-2xl">
-                        <div class="absolute -top-10 -right-10 w-48 h-48 bg-blue-500/30 blur-[70px]"></div>
-                        <div class="space-y-8">
-                            <div class="p-5 bg-white/10 rounded-2xl border border-white/10">
-                                <div class="text-[11px] font-black text-blue-400 uppercase tracking-widest mb-2">Recent Success</div>
-                                <div class="text-white font-bold text-lg" id="hero-success-1">Data Analyst, Toronto → Seattle</div>
-                                <div class="text-sm text-slate-300 mt-1">Approved at Peace Bridge • 10m interview</div>
-                            </div>
-                            <div class="p-5 bg-white/10 rounded-2xl border border-white/10">
-                                <div class="text-[11px] font-black text-blue-400 uppercase tracking-widest mb-2">Recent Success</div>
-                                <div class="text-white font-bold text-lg" id="hero-success-2">Software Engineer, Vancouver → SF</div>
-                                <div class="text-sm text-slate-300 mt-1">Y-Combinator Startup • Full Support</div>
-                            </div>
-                        </div>
+                <h1 id="hero-title" class="font-serif text-5xl md:text-8xl text-white leading-[1.05] mb-10 tracking-tight"></h1>
+                <p id="hero-subtitle" class="text-xl md:text-2xl text-slate-300 mb-16 leading-relaxed max-w-3xl mx-auto font-medium"></p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <button onclick="openModal()" class="btn-primary px-12 py-6 rounded-2xl text-2xl shadow-2xl">
+                        <span id="hero-cta-main"></span>
+                    </button>
+                    <div class="flex items-center justify-center gap-3 text-slate-400 font-bold text-sm">
+                        <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        <span id="hero-sub-cta"></span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Logo Wall -->
-            <div class="mt-40 pt-16 border-t border-white/10">
-                <p class="text-center text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] mb-12">Trusted by professionals from</p>
-                <div class="flex flex-wrap justify-center items-center gap-16 opacity-50 grayscale invert">
-                    <span class="font-black text-3xl text-white tracking-tighter">SHOPIFY</span>
-                    <span class="font-black text-3xl text-white tracking-tighter">TD BANK</span>
-                    <span class="font-black text-3xl text-white tracking-tighter">AMAZON</span>
-                    <span class="font-black text-3xl text-white tracking-tighter">RBC</span>
-                    <span class="font-black text-3xl text-white tracking-tighter">GOOGLE</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- The Two Paths Section -->
-    <section class="py-36 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-28">
-                <h2 id="paths-title" class="font-serif text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight">Choose Your Path to Freedom.</h2>
-                <p id="paths-subtitle" class="text-slate-600 text-xl font-bold max-w-2xl mx-auto"></p>
+    <!-- Value Comparison Section -->
+    <section class="py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 id="comp-title" class="font-serif text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"></h2>
+                <p id="comp-sub" class="text-slate-500 text-xl font-medium"></p>
             </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-separate border-spacing-0 rounded-3xl border border-slate-200 overflow-hidden shadow-sm">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="comparison-cell font-black text-xs uppercase tracking-widest text-slate-400">Feature</th>
+                            <th class="comparison-cell font-black text-xl text-red-500">H-1B Visa</th>
+                            <th class="comparison-cell font-black text-xl text-teal-600 bg-teal-50/50">TN Status (Canada)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 font-bold">
+                        <tr>
+                            <td class="comparison-cell" id="comp-f1-label"></td>
+                            <td class="comparison-cell text-slate-400" id="comp-f1-h1b"></td>
+                            <td class="comparison-cell text-teal-600 bg-teal-50/50" id="comp-f1-tn"></td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell" id="comp-f2-label"></td>
+                            <td class="comparison-cell text-slate-400" id="comp-f2-h1b"></td>
+                            <td class="comparison-cell text-teal-600 bg-teal-50/50" id="comp-f2-tn"></td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell" id="comp-f3-label"></td>
+                            <td class="comparison-cell text-slate-400" id="comp-f3-h1b"></td>
+                            <td class="comparison-cell text-teal-600 bg-teal-50/50" id="comp-f3-tn"></td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell border-none" id="comp-f4-label"></td>
+                            <td class="comparison-cell border-none text-slate-400" id="comp-f4-h1b"></td>
+                            <td class="comparison-cell border-none text-teal-600 bg-teal-50/50" id="comp-f4-tn"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <!-- Card 1: Visa Secure Pack -->
-                <div class="bento-card p-14 flex flex-col h-full border-slate-300">
-                    <div class="mb-10 inline-flex px-5 py-2 bg-slate-100 text-slate-900 rounded-lg text-[11px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
-                    <h3 id="prod-a-title" class="text-4xl font-black text-slate-900 mb-4"></h3>
-                    <p id="prod-a-sub" class="text-blue-600 text-sm font-black uppercase tracking-widest mb-10"></p>
-                    <ul id="prod-a-list" class="space-y-6 mb-16 flex-grow">
-                        <!-- Injected -->
-                    </ul>
-                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-outline text-center py-5 rounded-2xl transition-all" id="prod-a-btn"></a>
+    <!-- Eligibility & The Trap Section -->
+    <section class="py-32 bg-slate-50 overflow-hidden relative">
+        <div class="absolute inset-0 grid-bg opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 id="trap-title" class="font-serif text-4xl md:text-6xl text-slate-900 mb-8 leading-tight"></h2>
+                    <p id="trap-sub" class="text-slate-600 text-lg mb-12 font-medium"></p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-teal-600 flex-shrink-0">1</div>
+                            <div>
+                                <h4 id="trap-step1-t" class="font-black text-slate-900 mb-1"></h4>
+                                <p id="trap-step1-p" class="text-sm text-slate-500 font-medium"></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-teal-600 flex-shrink-0">2</div>
+                            <div>
+                                <h4 id="trap-step2-t" class="font-black text-slate-900 mb-1"></h4>
+                                <p id="trap-step2-p" class="text-sm text-slate-500 font-medium"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Card 2: Career Launchpad (Highlighted) -->
-                <div class="bento-card p-14 flex flex-col h-full premium-card">
-                    <div class="mb-10 inline-flex px-5 py-2 bg-blue-100 text-blue-900 rounded-lg text-[11px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
-                    <h3 id="prod-b-title" class="text-4xl font-black text-slate-900 mb-4"></h3>
-                    <p id="prod-b-sub" class="text-blue-600 text-sm font-black uppercase tracking-widest mb-10"></p>
-                    <ul id="prod-b-list" class="space-y-6 mb-16 flex-grow">
-                        <!-- Injected -->
-                    </ul>
-                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-cta text-center py-5 rounded-2xl shadow-xl shadow-blue-500/20 transition-all" id="prod-b-btn"></a>
+                
+                <div class="risk-card p-10 md:p-12 rounded-[2.5rem] shadow-xl relative">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-red-500 rounded-full flex items-center justify-center text-white shadow-lg animate-bounce">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 id="risk-title" class="text-2xl font-black text-red-600 mb-6 uppercase tracking-tight"></h3>
+                    <p id="risk-p" class="text-slate-700 font-bold mb-8 leading-relaxed"></p>
+                    <ul id="risk-list" class="space-y-4"></ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section (Bento Grid) -->
-    <section class="py-36 bg-slate-50 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full grid-bg opacity-10 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="mb-20">
-                <h2 id="why-main-title" class="font-serif text-4xl md:text-5xl text-slate-900 mb-6">What we do, others can't.</h2>
-                <p id="why-main-sub" class="text-slate-700 text-xl font-bold">Bypassing the friction between legal compliance and corporate hiring.</p>
-            </div>
+    <!-- Pricing / Paths -->
+    <section class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <div class="bento-card p-12 flex flex-col border-slate-200">
+                    <div class="mb-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Offer In Hand</div>
+                    <h3 id="path1-t" class="text-4xl font-black text-slate-900 mb-4"></h3>
+                    <p id="path1-sub" class="text-blue-500 text-sm font-black mb-10"></p>
+                    <ul id="path1-list" class="space-y-6 mb-16 flex-grow"></ul>
+                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-outline text-center py-5 rounded-2xl"></a>
+                </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Box 1 -->
-                <div class="bento-card p-12 bg-white">
-                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 border border-blue-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
-                    </div>
-                    <h4 id="why-1-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
-                    <p id="why-1-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
-                </div>
-                <!-- Box 2 -->
-                <div class="bento-card p-12 bg-white">
-                    <div class="w-16 h-16 bg-teal-50 text-teal rounded-2xl flex items-center justify-center mb-8 border border-teal-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
-                    </div>
-                    <h4 id="why-2-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
-                    <p id="why-2-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
-                </div>
-                <!-- Box 3 -->
-                <div class="bento-card p-12 bg-white">
-                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-8 border border-indigo-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                    </div>
-                    <h4 id="why-3-title" class="text-2xl font-black text-slate-900 mb-4"></h4>
-                    <p id="why-3-p" class="text-slate-800 text-base leading-relaxed font-medium"></p>
+                <div class="bento-card p-12 flex flex-col border-blue-500 border-2 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-black px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">Most Popular</div>
+                    <div class="mb-10 text-[10px] font-black uppercase tracking-[0.2em] text-blue-500">End-to-End Success</div>
+                    <h3 id="path2-t" class="text-4xl font-black text-slate-900 mb-4"></h3>
+                    <p id="path2-sub" class="text-blue-500 text-sm font-black mb-10"></p>
+                    <ul id="path2-list" class="space-y-6 mb-16 flex-grow"></ul>
+                    <a href="https://calendly.com/breakintodata-ca/30min" target="_blank" class="btn-primary text-center py-5 rounded-2xl shadow-xl shadow-blue-500/20"></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof / Testimonials -->
-    <section class="py-36 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="cases-title" class="font-serif text-4xl md:text-5xl text-center mb-24 text-slate-900">Verified Border Crossings.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Testimonial 1 -->
-                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
-                    <div class="flex gap-1.5 text-teal mb-8">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-1-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <div class="text-base font-black text-slate-900 leading-none">Data Analyst</div>
-                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Toronto → Seattle</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
-                    <div class="flex gap-1.5 text-teal mb-8">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-2-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <div class="text-base font-black text-slate-900 leading-none">Systems Analyst</div>
-                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Vancouver → SF</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="p-12 rounded-[2.5rem] border border-slate-200 bg-slate-50 shadow-sm">
-                    <div class="flex gap-1.5 text-teal mb-8">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-3-p" class="text-slate-900 text-lg font-bold mb-10 leading-relaxed italic"></p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200">
-                        <div class="w-12 h-12 rounded-full bg-slate-300"></div>
-                        <div>
-                            <div class="text-base font-black text-slate-900 leading-none">BI Specialist</div>
-                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest mt-1">Montreal → NYC</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- FAQ Accordion -->
+    <section class="py-32 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 id="faq-title" class="font-serif text-4xl md:text-5xl text-center text-slate-900 mb-20 tracking-tight"></h2>
+            <div id="faq-container" class="space-y-4"></div>
         </div>
     </section>
 
-    <!-- Bottom CTA -->
-    <section class="py-40 hero-gradient relative overflow-hidden">
-        <div class="absolute inset-0 grid-bg"></div>
-        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
-            <h2 id="final-cta-title" class="font-serif text-5xl md:text-7xl text-white mb-10 leading-tight">Your American dream is one assessment away.</h2>
-            <button id="bottom-assessment-btn" class="btn-cta px-16 py-7 rounded-2xl text-2xl shadow-2xl">
-                <span id="final-cta-btn"></span>
+    <!-- Sticky Footer / Final CTA -->
+    <div class="fixed bottom-8 left-0 w-full px-4 z-50 pointer-events-none">
+        <div class="max-w-5xl mx-auto bg-slate-900/90 backdrop-blur-xl p-4 md:p-6 rounded-[2rem] border border-white/10 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 pointer-events-auto">
+            <p id="final-footer-text" class="text-white font-bold text-base md:text-lg"></p>
+            <button onclick="openModal()" class="btn-primary px-10 py-4 rounded-xl text-lg w-full md:w-auto">
+                <span id="final-footer-btn"></span>
             </button>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-24 bg-white border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="font-extrabold text-2xl tracking-tighter text-slate-900 mb-10">NoMore<span class="text-[#0abab5]">RTO</span></div>
-            <div class="flex justify-center flex-wrap gap-16 text-[12px] font-black text-slate-500 uppercase tracking-[0.3em] mb-12">
-                <a href="index.html" class="hover:text-blue-600 transition-colors">Privacy</a>
-                <a href="index.html" class="hover:text-blue-600 transition-colors">Terms</a>
-                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-blue-600 transition-colors">Contact</a>
-            </div>
-            <p id="footer-copy" class="text-slate-400 text-[11px] uppercase tracking-[0.4em] font-black"></p>
-        </div>
-    </footer>
+    </div>
 
     <!-- MODAL FORM -->
     <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4">
         <div class="bg-white w-full max-w-xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
             <div class="bg-slate-950 p-10 text-white relative">
-                <button id="close-modal-btn" class="absolute top-8 right-8 text-slate-500 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 <h2 id="modal-title" class="font-serif text-3xl mb-3"></h2>
                 <p id="modal-subtitle" class="text-slate-400 text-base font-bold"></p>
             </div>
-            
-            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-10 space-y-8">
-                <div class="space-y-3">
+            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-10 space-y-6">
+                <div class="space-y-2">
                     <label id="lbl-q1" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
-                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none appearance-none">
+                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none">
                         <option value="" disabled selected id="opt-q1-def"></option>
                         <option value="Yes" id="opt-q1-yes"></option>
                         <option value="No" id="opt-q1-no"></option>
                     </select>
                 </div>
-                <div class="space-y-3">
+                <div class="space-y-2">
                     <label id="lbl-q2" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
                     <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. Computer Science">
                 </div>
-                <div class="space-y-3">
+                <div class="space-y-2">
                     <label id="lbl-q3" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
                     <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. Data Scientist">
                 </div>
-                <div class="space-y-3">
+                <div class="space-y-2">
                     <label id="lbl-q4" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
                     <input type="number" name="years_of_exp" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="e.g. 5">
                 </div>
-                <div class="space-y-3">
+                <div class="space-y-2">
                     <label id="lbl-q5" class="block text-[11px] font-black uppercase tracking-widest text-slate-900"></label>
                     <div class="flex gap-4">
                         <label class="flex-1">
@@ -403,11 +325,11 @@
                         </label>
                     </div>
                 </div>
-                <div class="space-y-3">
+                <div class="space-y-2">
                     <label id="lbl-email" class="block text-[11px] font-black uppercase tracking-widest text-slate-900">Your Email</label>
                     <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border-2 border-slate-200 rounded-xl font-bold text-slate-950 focus:border-blue-500 outline-none" placeholder="name@email.com">
                 </div>
-                <button type="submit" class="w-full py-5 btn-cta rounded-2xl text-xl shadow-lg">
+                <button type="submit" class="w-full py-5 btn-primary rounded-2xl text-xl shadow-lg">
                     <span id="submit-btn"></span>
                 </button>
             </form>
@@ -419,179 +341,164 @@
             en: {
                 lang: "CN",
                 hero: {
-                    tag: "The VIP US Career Path",
-                    cta: "Get My Free Assessment",
-                    subCta: "Results in < 24 Hours"
+                    title: "The US Job Market is <span class='text-blue-500'>Open</span> for Canadians.",
+                    subtitle: "Stop relying on the H-1B lottery. Secure your future with the TN Status strategy that works in days, not months.",
+                    cta: "Check Eligibility (Free)",
+                    subCta: "24h Priority Review"
+                },
+                comp: {
+                    title: "Why Smart Talent Chooses TN",
+                    sub: "The massive advantage Canadians have in the US market.",
+                    f1: { l: "Processing Time", h1b: "6+ Months (Lottery)", tn: "Instant (At the Border)" },
+                    f2: { l: "Approval Logic", h1b: "Random Luck", tn: "Merit & Education" },
+                    f3: { l: "Duration", h1b: "Capped at 6 Years", tn: "Unlimited Renewals" },
+                    f4: { l: "Employer Cost", h1b: "$5,000+ Filing Fees", tn: "$0 (Minimal Support)" }
+                },
+                trap: {
+                    title: "Do You Qualify? (The Devil is in the Details)",
+                    sub: "90% of rejections happen because the Job Title doesn't match the NAFTA Education requirements.",
+                    s1: { t: "The Checklist", p: "Canadian Citizenship + Job Offer + Professional Degree." },
+                    s2: { t: "The 'Grey Area'", p: "Matching tech stacks to official categories like CSA or Engineer." },
+                    riskTitle: "The Mismatch Risk",
+                    riskP: "Generic titles often lead to an instant border ban:",
+                    riskItems: ["'Product Manager' is NOT on the TN list.", "'Data Scientist' requires specific mapping.", "'Experience-only' candidates are highly scrutinized."],
                 },
                 paths: {
-                    title: "Choose Your Path to Freedom.",
-                    subtitle: "Two specialized paths to secure your US paycheck.",
-                    a: { 
-                        tag: "I have a Job Offer.",
-                        title: "Visa Secure Pack", 
-                        sub: "THE FINAL MILE",
-                        list: ["JD Risk Control & HR Negotiation", "Immigration Attorney Liaison", "1-on-1 Mock Border Interview", "Complete Binder Preparation"],
-                        btn: "Book Strategy Session"
-                    },
-                    b: { 
-                        tag: "I need a US Job.",
-                        title: "Career Launchpad", 
-                        sub: "THE FULL MENTORSHIP",
-                        list: ["Includes Everything in Visa Pack", "US-Optimized Resume & LinkedIn", "Internal Tech/Data Referrals", "Interview & Salary Negotiation Prep"],
-                        btn: "Apply for VIP Coaching"
-                    }
+                    p1: { t: "Visa Secure Pack", sub: "THE FINAL MILE", btn: "Book Strategy Session", items: ["JD Risk Control & Compliance Audit", "Mock Border Interview (1-on-1)", "Complete Binder Preparation", "Immigration Lawyer Liaison"] },
+                    p2: { t: "Career Launchpad", sub: "FULL MENTORSHIP", btn: "Apply for VIP Coaching", items: ["Includes Everything in Visa Pack", "US-Optimized Resume & LinkedIn", "Internal Tech/Data Referrals", "Salary Negotiation (Earn in USD)"] }
                 },
-                why: {
-                    mainTitle: "What we do, others can't.",
-                    mainSub: "Bypassing the friction between legal compliance and corporate hiring.",
-                    1: { title: "HR Negotiators", p: "Attorneys don't talk to HR. We do. We teach your US employer exactly how to write a compliant JD." },
-                    2: { title: "Tech Insiders", p: "We know the difference between a Data Analyst and a CSA. We package your tech stack for approval." },
-                    3: { title: "Risk Audits", p: "We scan your background before the officer does, providing the logic for your interview answers." }
+                faq: {
+                    title: "Expert Answers to Tough Questions",
+                    items: [
+                        { q: "Does my US employer need to 'sponsor' me?", a: "Technically, no. Unlike H-1B, TN requires $0 investment and no lengthy filing from the employer. However, they must sign a Support Letter. We provide the templates and talk to HR to explain that this costs them nothing." },
+                        { q: "Can I apply for a Green Card while on TN?", a: "It's complex. TN is not 'dual intent,' but it is possible to transition to Green Card via proper sequencing (e.g., TN -> H1B -> GC, or Consular Processing). Our partner attorneys can plan this roadmap for you." },
+                        { q: "What if I get rejected at the border?", a: "A rejection is recorded in the CBP system. Future attempts become much harder. This is why 'DIY' is risky. We ensure your first attempt is your only attempt needed." },
+                        { q: "I don't have a related degree. Is it impossible?", a: "Not impossible, but difficult. For categories like Scientific Technician or Management Consultant, experience can sometimes substitute for a degree. Take our free assessment to see if you qualify." }
+                    ]
                 },
-                cases: {
-                    title: "Verified Border Crossings.",
-                    1: "\"Had an offer but the JD was rejected by my lawyer. BreakIntoData's team negotiated with HR and got me through the Peace Bridge in 10 mins.\"",
-                    2: "\"Data Analyst from Vancouver. Their end-to-end coaching landed me a 160k USD role in SF with full visa support.\"",
-                    3: "\"Non-tech degree pivot. They optimized my systems background to fit the CSA category perfectly. No RFE, immediate approval.\""
-                },
-                finalCta: {
-                    title: "Your American dream is one assessment away.",
-                    btn: "Start Free Assessment"
-                },
-                modal: {
-                    title: "Eligibility Check",
-                    subtitle: "Enter your details for a 24h expert review.",
-                    q1: "Are you a Canadian Citizen?",
-                    q1_def: "Select status...",
-                    q1_yes: "Yes, I am a Canadian Citizen",
-                    q1_no: "No, I am a permanent resident/other",
-                    q2: "Highest Degree & Major",
-                    q3: "Target Position / Offer Job Title",
-                    q4: "Years of Professional Experience",
-                    q5: "Do you already have an Offer?",
-                    q5_yes: "Yes, I have an Offer",
-                    q5_no: "No, currently searching",
-                    submit: "Send Assessment Request"
-                },
-                footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
+                footer: { text: "Don't guess with your career. Get a verified roadmap.", btn: "Start Free Assessment" },
+                modal: { title: "Eligibility Check", subtitle: "Enter your details for a 24h expert review.", q1: "Canadian Citizen?", q1_def: "Select status...", q1_yes: "Yes", q1_no: "No", q2: "Highest Degree & Major", q3: "Target Position / Job Title", q4: "Years of Experience", q5: "Do you have an Offer?", q5_yes: "Yes", q5_no: "No", submit: "Send Assessment Request" }
             },
             cn: {
                 lang: "EN",
                 hero: {
-                    tag: "VIP 赴美职场路径",
-                    cta: "立即获取免费评估",
-                    subCta: "24 小时内反馈结果"
+                    title: "加国精英的美国职场<span class='text-blue-500'>快车道</span>",
+                    subtitle: "别再死磕 H-1B 抽签。通过 TN 签证策略，在几天内（而非几个月）锁定你的美金薪资与未来。",
+                    cta: "免费评估资格",
+                    subCta: "24小时内反馈结果"
+                },
+                comp: {
+                    title: "为什么聪明人选择 TN",
+                    sub: "加拿大公民在进军美国市场时拥有的巨大降维打击优势。",
+                    f1: { l: "处理时间", h1b: "6个月以上 (靠运气抽签)", tn: "当场获批 (边境面试)" },
+                    f2: { l: "获批逻辑", h1b: "随机抽奖", tn: "背景与学历对齐" },
+                    f3: { l: "有效时长", h1b: "上限 6 年", tn: "无限次续签" },
+                    f4: { l: "雇主成本", h1b: "$5,000+ 申请费", tn: "$0 (仅需签字支持信)" }
+                },
+                trap: {
+                    title: "你有资格吗？ (魔鬼隐藏在细节中)",
+                    sub: "90% 的拒签是因为 Job Title 与官方学历要求不匹配。",
+                    s1: { t: "基础清单", p: "加国公民 + 美国 Offer + 相关专业学位。" },
+                    s2: { t: "灰色地带", p: "如何将你的技术栈包装进 CSA 或 Engineer 等官方类别。" },
+                    riskTitle: "匹配失败的风险",
+                    riskP: "常见的通用职位名称往往会导致当场拒签：",
+                    riskItems: ["'Product Manager' 不在 TN 列表上。", "'Data Scientist' 需要特定的合规映射。", "“纯经验”无学位的申请人会面临极严审计。"],
                 },
                 paths: {
-                    title: "选择你的转型路径",
-                    subtitle: "两条专业路径，助你锁定美金薪水。",
-                    a: { 
-                        tag: "已有 Offer (或面试中)",
-                        title: "TN 签证通关包", 
-                        sub: "临门一脚，万无一失",
-                        list: ["JD 风险控制与 HR 谈判建议", "顶级移民律师对接", "1对1 模拟海关面试演练", "通关材料活页夹整理指导"],
-                        btn: "预约启动会议"
-                    },
-                    b: { 
-                        tag: "还没有 Offer (想去美国)",
-                        title: "美国职业全案陪跑", 
-                        sub: "全托管一站式服务",
-                        list: ["包含签证通关包所有内容", "美国化简历与 LinkedIn 精修", "Tech/Data 重点岗位内推", "全套面试辅导与薪酬谈判"],
-                        btn: "申请 VIP 陪跑名额"
-                    }
+                    p1: { t: "TN 签证通关包", sub: "临门一脚，万无一失", btn: "预约启动会议", items: ["JD 风险审计与合规修改意见", "1对1 模拟海关面试演练", "通关材料活页夹整理指导", "顶级移民律师对接支持"] },
+                    p2: { t: "美国职业全案陪跑", sub: "全托管式一站式服务", btn: "申请 VIP 陪跑名额", items: ["包含签证通关包所有内容", "美国化简历与 LinkedIn 精修", "Tech/Data 重点岗位内推", "薪资谈判指导 (赚取美金薪水)"] }
                 },
-                why: {
-                    mainTitle: "我们的独特价值",
-                    mainSub: "解决法律合规与企业招聘之间的信息差。",
-                    1: { title: "HR 谈判专家", p: "律师通常不跟 HR 沟通细节，我们会。我们手把手教雇主写出符合法规的职位描述。" },
-                    2: { title: "懂技术的顾问", p: "我们深耕 Tech 领域，知道如何将你的技术栈包装进 CSA 或 Engineer 类别。" },
-                    3: { title: "风险审计", p: "我们会在海关面试前审计你的背景，并为你提供闭环逻辑的面试答案。" }
+                faq: {
+                    title: "专家解答核心疑问",
+                    items: [
+                        { q: "美国雇主需要“担保”我吗？", a: "技术上讲，不需要。与 H-1B 不同，TN 签证不需要雇主支付高昂申请费或进行复杂的劳工证明。他们只需签署一份支持信。我们提供模板并负责向 HR 解释这不会增加他们的成本。" },
+                        { q: "我可以在 TN 期间申请绿卡吗？", a: "这是一个复杂的过程。虽然 TN 不是“双重倾向”签证，但可以通过合理的顺序（如 TN -> H1B -> GC 或领事处理）转换。我们的律师团队会为您规划路线图。" },
+                        { q: "如果在边境被拒了怎么办？", a: "拒签记录会录入 CBP 系统，导致未来的申请难度倍增。这就是为什么“DIY”风险极高。我们的目标是确保您的第一次尝试即是最后一次。" },
+                        { q: "我没有相关专业学位，还有可能吗？", a: "有可能，但很难。对于科学技术员（Scientific Technician）或管理顾问等类别，经验有时可以替代学位。请进行免费评估让我们判断您的可能性。" }
+                    ]
                 },
-                cases: {
-                    title: "真实成功案例",
-                    1: "“拿到 Offer 但 JD 被律师说不行。团队直接介入指导 HR 修改，最终在 Peace Bridge 10分钟丝滑过关。”",
-                    2: "“温哥华 Data Analyst。通过全案陪跑，3个月拿下旧金山 16万美金 Offer 并在机场顺利获批。”",
-                    3: "“文科背景转行。他们优化了我的系统分析背景，成功匹配 CSA 类别。无补件，当场获批。”"
-                },
-                finalCta: {
-                    title: "美国梦的开始，只需一次评估。",
-                    btn: "开始免费评估"
-                },
-                modal: {
-                    title: "评估你的获批概率",
-                    subtitle: "填写以下信息，专家将在 24 小时内反馈结果。",
-                    q1: "1. 是否入加拿大籍？",
-                    q1_def: "请选择...",
-                    q1_yes: "是，我是加拿大公民",
-                    q1_no: "否，我是永久居民或其他",
-                    q2: "2. 最高学历 & 专业 (Degree & Major)",
-                    q3: "3. 目标职位/已获 Offer 职位 (Job Title)",
-                    q4: "4. 工作年限 (Years of Exp)",
-                    q5: "5. 是否已有 Offer？",
-                    q5_yes: "是，已有 Offer",
-                    q5_no: "否，正在寻找",
-                    submit: "立即提交免费评估"
-                },
-                footer: "© 2024 NoMoreRTO 枢纽. 为反抗而生。"
+                footer: { text: "别拿职业生涯做赌注。获取一份经过验证的路线图。", btn: "立即开始免费评估" },
+                modal: { title: "获批概率评估", subtitle: "填写以下信息，专家将在 24 小时内反馈结果。", q1: "是否入加国籍？", q1_def: "请选择...", q1_yes: "是", q1_no: "否", q2: "最高学历 & 专业", q3: "目标职位 / 已获职衔", q4: "专业工作年限", q5: "是否已有 Offer？", q5_yes: "是", q5_no: "否", submit: "立即提交评估申请" }
             }
         };
 
         let currentLang = 'en';
 
-        const modal = document.getElementById('assessment-modal');
-        const openModalBtns = [
-            document.getElementById('nav-assessment-btn'),
-            document.getElementById('hero-assessment-btn'),
-            document.getElementById('bottom-assessment-btn')
-        ];
-        const closeBtn = document.getElementById('close-modal-btn');
+        function toggleFaq(el) {
+            const item = el.closest('.accordion-item');
+            item.classList.toggle('active');
+        }
 
-        openModalBtns.forEach(btn => btn.addEventListener('click', () => modal.classList.add('active')));
-        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
-        window.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+        function openModal() { document.getElementById('assessment-modal').classList.add('active'); }
+        function closeModal() { document.getElementById('assessment-modal').classList.remove('active'); }
 
         function render() {
             const data = CONTENT[currentLang];
             document.getElementById('lang-toggle').innerText = data.lang;
-            document.getElementById('hero-tag').innerText = data.hero.tag;
+            document.getElementById('hero-title').innerHTML = data.hero.title;
+            document.getElementById('hero-subtitle').innerText = data.hero.subtitle;
             document.getElementById('hero-cta-main').innerText = data.hero.cta;
             document.getElementById('hero-sub-cta').innerText = data.hero.subCta;
 
-            document.getElementById('paths-title').innerText = data.paths.title;
-            document.getElementById('paths-subtitle').innerText = data.paths.subtitle;
+            // Comparison
+            document.getElementById('comp-title').innerText = data.comp.title;
+            document.getElementById('comp-sub').innerText = data.comp.sub;
+            document.getElementById('comp-f1-label').innerText = data.comp.f1.l;
+            document.getElementById('comp-f1-h1b').innerText = data.comp.f1.h1b;
+            document.getElementById('comp-f1-tn').innerText = data.comp.f1.tn;
+            document.getElementById('comp-f2-label').innerText = data.comp.f2.l;
+            document.getElementById('comp-f2-h1b').innerText = data.comp.f2.h1b;
+            document.getElementById('comp-f2-tn').innerText = data.comp.f2.tn;
+            document.getElementById('comp-f3-label').innerText = data.comp.f3.l;
+            document.getElementById('comp-f3-h1b').innerText = data.comp.f3.h1b;
+            document.getElementById('comp-f3-tn').innerText = data.comp.f3.tn;
+            document.getElementById('comp-f4-label').innerText = data.comp.f4.l;
+            document.getElementById('comp-f4-h1b').innerText = data.comp.f4.h1b;
+            document.getElementById('comp-f4-tn').innerText = data.comp.f4.tn;
 
-            const pa = data.paths.a;
-            document.getElementById('prod-a-tag').innerText = pa.tag;
-            document.getElementById('prod-a-title').innerText = pa.title;
-            document.getElementById('prod-a-sub').innerText = pa.sub;
-            document.getElementById('prod-a-btn').innerText = pa.btn;
-            document.getElementById('prod-a-list').innerHTML = pa.list.map(i => `<li class="flex items-center gap-4 text-base font-black text-slate-800"><svg class="text-blue-500 w-6 h-6" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            // Trap
+            document.getElementById('trap-title').innerText = data.trap.title;
+            document.getElementById('trap-sub').innerText = data.trap.sub;
+            document.getElementById('trap-step1-t').innerText = data.trap.s1.t;
+            document.getElementById('trap-step1-p').innerText = data.trap.s1.p;
+            document.getElementById('trap-step2-t').innerText = data.trap.s2.t;
+            document.getElementById('trap-step2-p').innerText = data.trap.s2.p;
+            document.getElementById('risk-title').innerText = data.trap.riskTitle;
+            document.getElementById('risk-p').innerText = data.trap.riskP;
+            document.getElementById('risk-list').innerHTML = data.trap.riskItems.map(i => `<li class="flex items-center gap-3 text-red-600 font-bold text-sm"><svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>${i}</li>`).join('');
 
-            const pb = data.paths.b;
-            document.getElementById('prod-b-tag').innerText = pb.tag;
-            document.getElementById('prod-b-title').innerText = pb.title;
-            document.getElementById('prod-b-sub').innerText = pb.sub;
-            document.getElementById('prod-b-btn').innerText = pb.btn;
-            document.getElementById('prod-b-list').innerHTML = pb.list.map(i => `<li class="flex items-center gap-4 text-base font-black text-slate-800"><svg class="text-blue-500 w-6 h-6" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            // Paths
+            document.getElementById('path1-t').innerText = data.paths.p1.t;
+            document.getElementById('path1-sub').innerText = data.paths.p1.sub;
+            document.getElementById('path1-list').innerHTML = data.paths.p1.items.map(i => `<li class="flex items-center gap-4 text-slate-800 font-bold"><svg class="text-blue-500 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            const btn1 = document.querySelectorAll('.bento-card .btn-outline')[0];
+            btn1.innerText = data.paths.p1.btn;
 
-            document.getElementById('why-main-title').innerText = data.why.mainTitle;
-            document.getElementById('why-main-sub').innerText = data.why.mainSub;
-            document.getElementById('why-1-title').innerText = data.why[1].title;
-            document.getElementById('why-1-p').innerText = data.why[1].p;
-            document.getElementById('why-2-title').innerText = data.why[2].title;
-            document.getElementById('why-2-p').innerText = data.why[2].p;
-            document.getElementById('why-3-title').innerText = data.why[3].title;
-            document.getElementById('why-3-p').innerText = data.why[3].p;
+            document.getElementById('path2-t').innerText = data.paths.p2.t;
+            document.getElementById('path2-sub').innerText = data.paths.p2.sub;
+            document.getElementById('path2-list').innerHTML = data.paths.p2.items.map(i => `<li class="flex items-center gap-4 text-slate-800 font-bold"><svg class="text-blue-500 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            const btn2 = document.querySelectorAll('.bento-card .btn-primary')[0];
+            btn2.innerText = data.paths.p2.btn;
 
-            document.getElementById('cases-title').innerText = data.cases.title;
-            document.getElementById('case-1-p').innerText = data.cases[1];
-            document.getElementById('case-2-p').innerText = data.cases[2];
-            document.getElementById('case-3-p').innerText = data.cases[3];
+            // FAQ
+            document.getElementById('faq-title').innerText = data.faq.title;
+            document.getElementById('faq-container').innerHTML = data.faq.items.map(i => `
+                <div class="accordion-item bento-card bg-white overflow-hidden !rounded-2xl">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
+                        <span class="text-lg md:text-xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">${i.q}</span>
+                        <svg class="accordion-icon w-6 h-6 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content px-6 md:px-8">
+                        <p class="text-slate-600 font-medium leading-relaxed">${i.a}</p>
+                    </div>
+                </div>
+            `).join('');
 
-            document.getElementById('final-cta-title').innerText = data.finalCta.title;
-            document.getElementById('final-cta-btn').innerText = data.finalCta.btn;
+            // Footer
+            document.getElementById('final-footer-text').innerText = data.footer.text;
+            document.getElementById('final-footer-btn').innerText = data.footer.btn;
 
-            // Modal Labels
+            // Modal
             const m = data.modal;
             document.getElementById('modal-title').innerText = m.title;
             document.getElementById('modal-subtitle').innerText = m.subtitle;
@@ -606,14 +513,14 @@
             document.getElementById('lbl-q5-yes').innerText = m.q5_yes;
             document.getElementById('lbl-q5-no').innerText = m.q5_no;
             document.getElementById('submit-btn').innerText = m.submit;
-
-            document.getElementById('footer-copy').innerText = data.footer;
         }
 
         document.getElementById('lang-toggle').addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'cn' : 'en';
             render();
         });
+
+        window.addEventListener('click', (e) => { if(e.target === document.getElementById('assessment-modal')) closeModal(); });
 
         render();
     </script>
