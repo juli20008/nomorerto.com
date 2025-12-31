@@ -8,7 +8,7 @@
     
     <!-- Calendly Assets -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -222,29 +222,29 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <!-- Package A -->
+                <!-- Package A: Has Offer -->
                 <div class="bg-white border-thin p-12 md:p-16 rounded-[3rem] flex flex-col hover:border-sky-200 transition-all pro-shadow">
                     <div class="mb-12 inline-flex px-4 py-1.5 bg-slate-50 text-slate-500 rounded-full text-[10px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
                     <h3 id="prod-a-title" class="font-serif text-4xl text-slate-900 mb-6"></h3>
                     <p id="prod-a-sub" class="text-sky-600 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-a-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/15min'});" class="w-full py-5 rounded-full border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-all" id="prod-a-btn"></button>
+                    <button id="prod-a-btn" onclick="openBooking()" class="w-full py-5 rounded-full border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-all"></button>
                 </div>
 
-                <!-- Package B -->
+                <!-- Package B: No Offer -->
                 <div class="bg-slate-900 p-12 md:p-16 rounded-[3rem] flex flex-col relative text-white pro-shadow">
                     <div class="absolute top-8 right-12 bg-sky-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">Elite Mentorship</div>
                     <div class="mb-12 inline-flex px-4 py-1.5 bg-white/5 text-sky-400 rounded-full text-[10px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
                     <h3 id="prod-b-title" class="font-serif text-4xl text-white mb-6"></h3>
                     <p id="prod-b-sub" class="text-sky-400 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-b-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/15min'});" class="btn-primary w-full py-5 rounded-full text-lg shadow-xl" id="prod-b-btn"></button>
+                    <button id="prod-b-btn" onclick="openBooking()" class="btn-primary w-full py-5 rounded-full text-lg shadow-xl"></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Knowledge Hub Section (Law Firm Sidebar Style) -->
+    <!-- Knowledge Hub Section -->
     <section id="knowledge" class="section-py bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-12 gap-16">
@@ -294,7 +294,7 @@
                         </nav>
                         <div class="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
                             <p class="text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-4">Urgent Case?</p>
-                            <button onclick="openModal()" class="w-full py-3 bg-sky-500 text-white rounded-xl text-xs font-bold hover:bg-sky-600 transition-colors">Call Mentorship Line</button>
+                            <button onclick="openBooking()" class="w-full py-3 bg-sky-500 text-white rounded-xl text-xs font-bold hover:bg-sky-600 transition-colors">Call Mentorship Line</button>
                         </div>
                     </div>
                 </div>
@@ -359,7 +359,7 @@
             <div class="flex justify-center flex-wrap gap-12 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-16">
                 <a href="#" class="hover:text-sky-400 transition-colors">Strategic Privacy</a>
                 <a href="#" class="hover:text-sky-400 transition-colors">Engagement Terms</a>
-                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-sky-400 transition-colors">Counsel Line</a>
+                <a href="https://calendly.com/breakintodata-ca/15min" class="hover:text-sky-400 transition-colors">Counsel Line</a>
             </div>
             <p id="footer-copy" class="text-slate-700 text-[10px] uppercase tracking-[0.4em] font-black"></p>
         </div>
@@ -413,6 +413,18 @@
     </div>
 
     <script>
+        const BOOKING_URL = 'https://calendly.com/breakintodata-ca/15min';
+
+        // Robust function to open Calendly or fallback to new tab
+        function openBooking() {
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initPopupWidget({ url: BOOKING_URL });
+            } else {
+                window.open(BOOKING_URL, '_blank');
+            }
+            return false;
+        }
+
         const CONTENT = {
             en: {
                 lang: "CN",
@@ -428,14 +440,14 @@
                     title: "Select Your Strategy.",
                     subtitle: "Structured mentorship for professionals ready to transition.",
                     a: { 
-                        tag: "Advisory Level I",
+                        tag: "I have a US Job Offer.",
                         title: "Visa Secure Pack", 
                         sub: "The Final Mile Strategy",
                         list: ["JD Compliance & Risk Audit", "Immigration Counsel Liaison", "Mock Border Simulation", "Official Evidence Preparation"],
                         btn: "Schedule Session"
                     },
                     b: { 
-                        tag: "Advisory Level II",
+                        tag: "I need a US Job Offer.",
                         title: "Career Launchpad", 
                         sub: "Complete Career Relocation",
                         list: ["Full Visa Secure Features", "US-Optimized Executive Branding", "High-Value Referral Network", "Salary & Equity Negotiation"],
@@ -485,18 +497,18 @@
                     title: "选择您的进阶方案",
                     subtitle: "为准备跨越国境的高级人才提供结构化指导。",
                     a: { 
-                        tag: "咨询等级 I",
+                        tag: "已有美国岗位 Offer (或面试中)",
                         title: "签证通关保障包", 
                         sub: "临门一脚，万无一失",
                         list: ["JD 风险审计与合规修改", "专业移民律师对接", "全真边境面试模拟", "通关证据链材料整理"],
-                        btn: "预约启动会议"
+                        btn: "预约策略会议"
                     },
                     b: { 
-                        tag: "咨询等级 II",
+                        tag: "正在寻求美国工作机会",
                         title: "美国职业全案导师", 
                         sub: "一站式事业版图搬迁",
                         list: ["包含通关包所有服务", "美国化高管个人品牌塑造", "高薪岗位内推网络", "薪资与期权谈判策略"],
-                        btn: "申请 VIP 席位"
+                        btn: "申请一对一指导"
                     }
                 },
                 why: {
