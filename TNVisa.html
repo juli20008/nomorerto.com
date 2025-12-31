@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TN Visa Strategic Mentorship | NoMoreRTO Hub</title>
     <meta name="description" content="Expert TN Visa mentorship for Canadian professionals. Secure your US career transition with HR negotiation and mock border interviews.">
+    
+    <!-- Calendly Assets -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -144,7 +149,7 @@
                             </div>
                             <div class="flex gap-4 opacity-60">
                                 <div class="w-12 h-12 rounded-xl bg-slate-700 flex items-center justify-center text-slate-400 shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                 </div>
                                 <div>
                                     <div class="text-white font-bold text-sm">Data Scientist</div>
@@ -223,7 +228,7 @@
                     <h3 id="prod-a-title" class="font-serif text-4xl text-slate-900 mb-6"></h3>
                     <p id="prod-a-sub" class="text-sky-600 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-a-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="openModal()" class="w-full py-5 rounded-full border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-all" id="prod-a-btn"></button>
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/15min'});" class="w-full py-5 rounded-full border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-all" id="prod-a-btn"></button>
                 </div>
 
                 <!-- Package B -->
@@ -233,7 +238,7 @@
                     <h3 id="prod-b-title" class="font-serif text-4xl text-white mb-6"></h3>
                     <p id="prod-b-sub" class="text-sky-400 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-b-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="openModal()" class="btn-primary w-full py-5 rounded-full text-lg shadow-xl" id="prod-b-btn"></button>
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/breakintodata-ca/15min'});" class="btn-primary w-full py-5 rounded-full text-lg shadow-xl" id="prod-b-btn"></button>
                 </div>
             </div>
         </div>
@@ -512,7 +517,7 @@
                         { q: "Q2: 我的 Offer 是 'Product Manager' 或 'Data Scientist'，不在 TN 列表上怎么办？", a: "直接用这些头衔申请会被<strong>当场拒签</strong>。TN 职业列表是 90 年代制定的，没有这些现代职位。<ul class='list-disc pl-5 mt-2 space-y-1'><li><strong>Data Scientist:</strong> 通常需要包装成 <em>Mathematician</em> 或 <em>Statistician</em>。</li><li><strong>Product Manager:</strong> 极难申请，除非侧重于系统分析，包装成 <em>Computer Systems Analyst (CSA)</em>。</li></ul><div class='mt-2 p-2 bg-blue-50 text-blue-800 text-sm rounded'>警示：这需要修改 JD 的职责描述以匹配 TN 类别，同时不能造假。这是我们最核心的服务内容。</div>" },
                         { q: "Q3: 我是文科/商科背景转码 (Non-Tech Degree)，能申请 Tech 岗位吗？", a: "这是一个高风险区域。<em>Engineer</em> 类别必须要求工科学位。但 <em>Computer Systems Analyst (CSA)</em> 允许'相关学位'。如果你的学位完全不相关，我们需要挖掘你成绩单中的数学/逻辑课程，结合过往工作经验，撰写详细的解释信（Brief）。" },
                         { q: "Q4: 我可以直接拿着公司的 Offer Letter 去海关吗？", a: "<strong>绝对不行！这是自杀行为。</strong> Offer Letter 通常包含 'Permanent Position'（永久职位）字样，这直接违反了 TN Visa 的 'Temporary Entry' 要求，会导致直接拒签。你必须准备一份单独的 <strong>Support Letter</strong>，明确注明 '3-year period'。我们会为你起草这份文件供雇主签字。" },
-                        { q: "Q5: 持有 TN Visa 以后可以申请绿卡 (Green Card) 吗？", a: "TN 是'单向意图'签证，这意味着你在入境时不能表现出移民倾向。但实际上，你<strong>可以</strong>通过 'Consular Processing' 或者先转 H-1B 再转绿卡的方式拿到身份。关键在于时机：如果在入境 90 天内提交绿卡申请，会被视为'签证欺诈'。" },
+                        { q: "Q5: 持有 TN Visa 以后可以申请绿卡 (Green Card) 吗？", a: "TN 是'单向意图'签证，这意味着你在入境时不能表现出移民倾向. 但实际上，你<strong>可以</strong>通过 'Consular Processing' 或者先转 H-1B 再转绿卡的方式拿到身份。关键在于时机：如果在入境 90 天内提交绿卡申请，会被视为'签证欺诈'。" },
                         { q: "Q6: 如果在海关被拒签了会怎样？会有记录吗？", a: "是的，每一次拒签都会在 CBP 系统中留下永久记录。下一次入境时，官员会看到你被拒的原因，并进行更严厉的盘问。这也是为什么我们要进行 Mock Interview，确保你第一次就顺利通过。" },
                         { q: "Q7: 整个申请流程需要多久？", a: "非常快。只要你准备好了材料，你可以直接买机票飞往美国。<strong>在机场或边境口岸，审核通常只需要 20-60 分钟。</strong> 如果通过，你会当场获得 TN 签证章（I-94），立即生效。" },
                         { q: "Q8: 我的配偶和孩子可以一起去美国吗？", a: "可以。你的配偶和 21 岁以下子女可以申请 <strong>TD Visa (Trade Dependent)</strong>。他们可以随你在美国居住和上学。<div class='mt-2 p-2 bg-yellow-50 text-yellow-800 text-sm rounded'>注意：TD 签证持有者不能在美国工作（除非他们自己也申请到了 TN 或 H-1B）。</div>" },
