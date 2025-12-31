@@ -52,7 +52,7 @@
     <div class="w-full max-w-6xl flex flex-col items-center z-10 flex-grow">
         <header class="w-full flex justify-between items-center mb-8 max-w-4xl">
             <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
-                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span>
+                <span class="text-gray-900">NoMore</span><span class="text-[#0abab5]">RTO</span>
             </a>
             <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -75,18 +75,18 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                <section class="bg-white border border-red-200 rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
-                    <div class="bg-red-50 p-4 border-b border-red-100 flex items-center gap-3 sticky top-0 z-10">
-                        <div class="p-2 bg-red-600 rounded-lg text-white shadow-sm">
+                <section class="bg-white border border-[#b2ece9] rounded-xl shadow-lg flex flex-col h-full overflow-hidden">
+                    <div class="bg-[#e6f7f7] p-4 border-b border-[#b2ece9] flex items-center gap-3 sticky top-0 z-10">
+                        <div class="p-2 bg-[#0abab5] rounded-lg text-white shadow-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                         </div>
                         <div>
                             <h2 id="bl-section-bad" class="text-xl font-bold text-gray-900">The Blacklist</h2>
-                            <p id="bl-desc-bad" class="text-xs text-red-600 font-semibold uppercase tracking-wider">Strict RTO / Mandates</p>
+                            <p id="bl-desc-bad" class="text-xs text-[#0abab5] font-semibold uppercase tracking-wider">Strict RTO / Mandates</p>
                         </div>
                     </div>
-                    <div class="p-0 flex-grow bg-red-50/10">
-                        <ul id="list-bad" class="divide-y divide-red-100/50"></ul>
+                    <div class="p-0 flex-grow bg-[#e6f7f7]/10">
+                        <ul id="list-bad" class="divide-y divide-[#b2ece9]/50"></ul>
                     </div>
                 </section>
 
@@ -204,7 +204,7 @@
             document.getElementById('bl-section-good').innerText = data.blacklist.goodSection;
             document.getElementById('bl-desc-good').innerText = data.blacklist.goodDesc;
 
-            renderList('list-bad', COMPANIES.bad, 'bg-red-100 text-red-800');
+            renderList('list-bad', COMPANIES.bad, 'bg-[#e6f7f7] text-[#08918c]');
             renderList('list-good', COMPANIES.good, 'bg-emerald-100 text-emerald-800');
         }
 

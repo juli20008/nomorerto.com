@@ -56,7 +56,7 @@
     
     <style>
         :root {
-            --brand-rose: #f43f5e;
+            --brand-rose: #0abab5;
             --brand-teal: #14b8a6;
             --brand-indigo: #6366f1;
             --bg-light: #f9fafb;
@@ -119,12 +119,12 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center gap-8">
                     <a href="/" class="font-black text-2xl tracking-tighter text-gray-900">
-                        NoMore<span class="text-rose-500">RTO</span>
+                        NoMore<span class="text-[#0abab5]">RTO</span>
                     </a>
                     <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-500">
-                        <a href="blacklist.html" class="hover:text-rose-500 transition-colors">The Database</a>
-                        <a href="toolkit.html" class="hover:text-rose-500 transition-colors">Negotiation Scripts</a>
-                        <a href="resources.html" class="hover:text-rose-500 transition-colors">Remote Jobs</a>
+                        <a href="blacklist.html" class="hover:text-[#0abab5] transition-colors">The Database</a>
+                        <a href="toolkit.html" class="hover:text-[#0abab5] transition-colors">Negotiation Scripts</a>
+                        <a href="resources.html" class="hover:text-[#0abab5] transition-colors">Remote Jobs</a>
                         <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-indigo-600 transition-colors">Discord</a>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                     <button id="lang-toggle" class="text-xs font-bold px-3 py-1 rounded bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all uppercase tracking-widest text-gray-900">
                         CN
                     </button>
-                    <a href="#freedom-streams" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-rose-500 transition-all">
+                    <a href="#freedom-streams" class="hidden sm:block bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#0abab5] transition-all">
                         Escape Plan
                     </a>
                 </div>
@@ -160,42 +160,42 @@
                         <div class="p-8 md:p-10 space-y-8 bg-white">
                             <div class="space-y-4">
                                 <label id="lbl-commute" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
-                                <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-rose-500">
-                                <div class="flex justify-between font-mono text-xs text-slate-400"><span>0.5h</span><span id="val-time" class="text-rose-500 font-bold">1.5h</span><span>5h</span></div>
+                                <input type="range" id="input-time" min="0.5" max="5" step="0.5" value="1.5" class="w-full h-1.5 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-[#0abab5]">
+                                <div class="flex justify-between font-mono text-xs text-slate-400"><span>0.5h</span><span id="val-time" class="text-[#0abab5] font-bold">1.5h</span><span>5h</span></div>
                             </div>
                             <div class="space-y-4">
                                 <label id="lbl-days" class="block font-bold text-xs uppercase tracking-widest text-slate-500"></label>
                                 <div class="flex gap-2">
-                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="1">1</button>
-                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="2">2</button>
-                                    <button class="day-btn flex-1 py-2 border-2 border-rose-500 bg-rose-50 text-rose-600 font-bold transition-all" data-val="3">3</button>
-                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="4">4</button>
-                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-rose-500/50 transition-all" data-val="5">5</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-[#0abab5]/50 transition-all" data-val="1">1</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-[#0abab5]/50 transition-all" data-val="2">2</button>
+                                    <button class="day-btn flex-1 py-2 border-2 border-[#0abab5] bg-[#e6f7f7] text-[#08918c] font-bold transition-all" data-val="3">3</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-[#0abab5]/50 transition-all" data-val="4">4</button>
+                                    <button class="day-btn flex-1 py-2 border border-slate-200 rounded-lg font-bold text-slate-400 hover:border-[#0abab5]/50 transition-all" data-val="5">5</button>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="space-y-2">
                                     <label id="lbl-salary" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
-                                    <input type="number" id="input-salary" value="50" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                                    <input type="number" id="input-salary" value="50" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-[#0abab5]">
                                 </div>
                                 <div class="space-y-2">
                                     <label id="lbl-extras" class="block text-xs font-bold uppercase tracking-widest text-slate-500"></label>
-                                    <input type="number" id="input-extra" value="25" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-rose-500">
+                                    <input type="number" id="input-extra" value="25" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-xl font-mono text-gray-900 outline-none focus:border-[#0abab5]">
                                 </div>
                             </div>
                         </div>
                         <!-- Results Stripe -->
-                        <div id="results-card" class="p-8 md:p-10 bg-rose-600 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
-                            <div class="absolute inset-0 bg-gradient-to-r from-rose-700 to-rose-600"></div>
+                        <div id="results-card" class="p-8 md:p-10 bg-[#0abab5] text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div class="absolute inset-0 bg-gradient-to-r from-[#08918c] to-[#0abab5]"></div>
                             <div class="relative z-10 flex-grow text-center md:text-left space-y-4">
                                 <div>
-                                    <p id="res-label-2" class="text-[10px] font-black uppercase tracking-[0.2em] text-rose-200 mb-1"></p>
+                                    <p id="res-label-2" class="text-[10px] font-black uppercase tracking-[0.2em] text-[#b2ece9] mb-1"></p>
                                     <h3 id="res-money" class="text-4xl lg:text-6xl font-black font-mono leading-none tracking-tighter"></h3>
                                 </div>
                                 <div id="res-stamp" class="stamp bg-white font-mono text-sm"></div>
                             </div>
                             <div class="relative z-10 w-full md:w-auto flex flex-col gap-4">
-                                <button id="btn-share" class="bg-white text-rose-600 font-black px-6 py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
+                                <button id="btn-share" class="bg-white text-[#0abab5] font-black px-6 py-4 rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                                     <span id="btn-share-text"></span>
                                 </button>
@@ -222,7 +222,7 @@
                 <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
                     <div class="absolute top-6 right-8 text-blue-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-blue-50 rounded-full" id="tag-shield"></div>
                     <div class="mb-10 w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
                     </div>
                     <h3 id="stream-shield-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
                     <p id="stream-shield-sub" class="text-blue-600 text-sm font-bold mt-1 uppercase mb-6"></p>
@@ -234,7 +234,7 @@
                 <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
                     <div class="absolute top-6 right-8 text-purple-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-purple-50 rounded-full" id="tag-viral"></div>
                     <div class="mb-10 w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
                     </div>
                     <h3 id="stream-viral-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
                     <p id="stream-viral-sub" class="text-purple-600 text-sm font-bold mt-1 uppercase mb-6"></p>
@@ -246,7 +246,7 @@
                 <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
                     <div class="absolute top-6 right-8 text-orange-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-orange-50 rounded-full" id="tag-accelerator"></div>
                     <div class="mb-10 w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
                     <h3 id="stream-accel-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
                     <p id="stream-accel-sub" class="text-orange-600 text-sm font-bold mt-1 uppercase mb-6"></p>
@@ -258,7 +258,7 @@
                 <div class="matrix-card flex flex-col p-10 md:p-12 rounded-[2.5rem] group relative overflow-hidden">
                     <div class="absolute top-6 right-8 text-yellow-600 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-yellow-50 rounded-full" id="tag-escape"></div>
                     <div class="mb-10 w-14 h-14 bg-yellow-50 rounded-2xl flex items-center justify-center text-yellow-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
                     </div>
                     <h3 id="stream-escape-title" class="text-3xl font-black text-gray-900 uppercase tracking-tight"></h3>
                     <p id="stream-escape-sub" class="text-yellow-600 text-sm font-bold mt-1 uppercase mb-6"></p>
@@ -272,11 +272,11 @@
     <!-- Footer (Clean Light) -->
     <footer class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="font-extrabold text-2xl tracking-tighter text-gray-900 mb-10">NoMore<span class="text-rose-500">RTO</span></div>
+            <div class="font-extrabold text-2xl tracking-tighter text-gray-900 mb-10">NoMore<span class="text-[#0abab5]">RTO</span></div>
             <div class="flex justify-center flex-wrap gap-8 md:gap-12 text-xs font-bold text-slate-400 uppercase tracking-widest mb-16">
-                <a href="blacklist.html" class="hover:text-gray-900 transition-colors">Watchlist</a>
-                <a href="toolkit.html" class="hover:text-gray-900 transition-colors">Negotiation</a>
-                <a href="resources.html" class="hover:text-gray-900 transition-colors">Job Boards</a>
+                <a href="blacklist.html" class="hover:text-[#0abab5] transition-colors">Watchlist</a>
+                <a href="toolkit.html" class="hover:text-[#0abab5] transition-colors">Negotiation</a>
+                <a href="resources.html" class="hover:text-[#0abab5] transition-colors">Job Boards</a>
                 <a href="https://discord.gg/pzScQxUzA" target="_blank" class="hover:text-gray-900 transition-colors">Discord</a>
                 <a href="classic.html" class="hover:text-gray-900 transition-colors">Classic Mode</a>
             </div>
@@ -289,8 +289,8 @@
             en: {
                 lang: "CN",
                 hero: {
-                    h1: "COMMUTE IS UNPAID LABOR.",
-                    p: "Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced mandates. Reveal the hidden 'RTO Tax' on your time and money below.",
+                    h1: 'COMMUTE IS <span class="text-[#0abab5]">UNPAID LABOR.</span>',
+                    p: "Stop donating your time to corporate landlords. NoMoreRTO is the resistance against forced return-to-office mandates. Reveal the hidden 'RTO Tax' on your time and money below.",
                     cta2: "Search RTO Blacklist"
                 },
                 calc: {
@@ -318,7 +318,7 @@
             cn: {
                 lang: "EN",
                 hero: {
-                    h1: "通勤即无偿劳动。",
+                    h1: '通勤即<span class="text-[#0abab5]">无偿劳动。</span>',
                     p: "别再把生命浪费在为地产商捐钱。NoMoreRTO 是针对强制返岗的反抗军。在下方揭开强制返岗对你金钱与时间的“隐形加税”。",
                     cta2: "查询返岗黑榜"
                 },
@@ -336,7 +336,7 @@
                     mainTitle: "夺回掌控权",
                     mainP: "别再祈求灵活性。开始建立一个尊重你条件的生活。选择你的自由之路。",
                     matrix: {
-                        shield: { title: "稳住远程", sub: "谈判话术工具箱", p: "老板逼你回去？别发情绪化邮件。使用律师级的 AWA 模板和话术，在不离职的情况下合法锁定你的远程权。", btn: "获取话术库", tag: "即时获取" },
+                        shield: { title: "稳住远程", sub: "谈判话术工具箱", p: "老板逼你回去？别发情绪化邮件。使用律师级的 AWA 模板和话术，在不离职的情况下合法锁定你的远程权。", btn: "获取工具箱", tag: "即时获取" },
                         viral: { title: "离职赏金计划", sub: "推荐你的接班人。赚取 $2,000。", p: "打算走人？别空手而归。推荐我们预筛的 Data 候选人接替你的位置，入职后我们将为你支付 $2,000 美金赏金。", btn: "领取赏金", tag: "赏金: $2,000" },
                         accel: { title: "职场加速器", sub: "攻克远程高薪岗", p: "12 周助你拿下远程 Data 岗位。我们为你武装核心技能与内推策略，直接绕过垃圾 HR 筛选。", btn: "开启转型", tag: "内推名额" },
                         escape: { title: "美国自由通行证", sub: "逃离加国职业天花板", p: "加拿大市场正在萎缩。通过 TN 签证导师计划，助你跨越国境，开启美金高薪模式，逃离内卷现状。", btn: "预约导师", tag: "名额有限" }
@@ -419,10 +419,10 @@
         document.querySelectorAll('.day-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.day-btn').forEach(b => {
-                    b.classList.remove('border-2', 'border-rose-500', 'bg-rose-50', 'text-rose-600');
+                    b.classList.remove('border-2', 'border-[#0abab5]', 'bg-[#e6f7f7]', 'text-[#08918c]');
                     b.classList.add('border', 'border-slate-200', 'text-slate-400');
                 });
-                btn.classList.add('border-2', 'border-rose-500', 'bg-rose-50', 'text-rose-600');
+                btn.classList.add('border-2', 'border-[#0abab5]', 'bg-[#e6f7f7]', 'text-[#08918c]');
                 btn.classList.remove('border-slate-200', 'text-slate-400');
                 officeDays = parseInt(btn.dataset.val);
                 updateCalculator();
@@ -431,7 +431,7 @@
 
         document.getElementById('btn-share').addEventListener('click', async () => {
             const resultsCard = document.getElementById('results-card');
-            const canvas = await html2canvas(resultsCard, { scale: 2, backgroundColor: '#e11d48' });
+            const canvas = await html2canvas(resultsCard, { scale: 2, backgroundColor: '#0abab5' });
             const link = document.createElement('a');
             link.download = 'RTO_Invoice.png';
             link.href = canvas.toDataURL();

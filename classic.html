@@ -56,10 +56,10 @@
         <!-- Header -->
         <header class="w-full flex justify-between items-center mb-12">
             <a href="index.html" class="font-bold text-2xl tracking-tighter select-none cursor-pointer no-underline">
-                <span class="text-gray-900">NoMore</span><span class="text-red-600">RTO</span>
+                <span class="text-gray-900">NoMore</span><span class="text-[#0abab5]">RTO</span>
             </a>
             <div class="flex items-center gap-4">
-                <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-red-600 transition-colors uppercase tracking-widest">Back to Hub</a>
+                <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-[#0abab5] transition-colors uppercase tracking-widest">Back to Hub</a>
                 <button id="lang-toggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-400 hover:bg-gray-200 transition-all text-sm font-medium text-gray-600 hover:text-gray-900 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
@@ -107,7 +107,7 @@
                             <span id="inv-item-1">Gas, Parking & Wear</span>
                             <span class="font-bold">$3,750.00</span>
                         </div>
-                        <div class="flex justify-between text-red-600">
+                        <div class="flex justify-between text-[#0abab5]">
                             <span id="inv-item-2">Unpaid Commute Time (2hrs/day)</span>
                             <span class="font-bold">$25,000.00</span>
                         </div>
@@ -124,13 +124,13 @@
                     <div class="border-t-2 border-black mt-4 pt-2">
                         <div class="flex justify-between text-xl font-black">
                             <span id="inv-total-label">TOTAL LOSS:</span>
-                            <span id="inv-total-val" class="text-red-600">-$34,750/yr</span>
+                            <span id="inv-total-val" class="text-[#0abab5]">-$34,750/yr</span>
                         </div>
                         <p id="inv-disclaimer" class="text-xs text-center mt-4 text-gray-500">*Based on avg $50/hr salary & 5 days in office.</p>
                     </div>
 
                     <div class="mt-6 text-center">
-                        <div id="inv-stamp" class="inline-block border-4 border-red-600 text-red-600 font-black text-xl px-4 py-2 transform -rotate-12 opacity-80">
+                        <div id="inv-stamp" class="inline-block border-4 border-[#0abab5] text-[#0abab5] font-black text-xl px-4 py-2 transform -rotate-12 opacity-80">
                             PAY CUT
                         </div>
                     </div>
@@ -155,13 +155,13 @@
     <script>
         const CONTENT = {
             en: {
-                headline: '<span class="text-red-600">RTO</span><span class="text-gray-900"> IS THEFT.</span>',
-                subheadline: "Your commute is unpaid labor. Take back your time and money.",
+                headline: '<span class="text-[#0abab5]">RTO</span><span class="text-gray-900"> IS THEFT.</span>',
+                subheadline: 'Your commute is <span class="text-[#0abab5]">unpaid labor</span>. Take back your time and money.',
                 manifestoTitle: "It's not about collaboration. It's about collusion.",
                 manifestoBody: `
                     <p>Downtown skyscrapers are empty. Commercial real estate (CRE) values are crashing. The banks and the government are panicking.</p>
                     <p>They need warm bodies to fill empty desks, buy overpriced salads, and pay for parking to save their investments.</p>
-                    <p><span class="font-medium text-red-600">RTO is a bailout for billionaire landlords</span>, funded by your time and gas money.</p>
+                    <p><span class="font-medium text-[#0abab5]">RTO is a bailout for billionaire landlords</span>, funded by your time and gas money.</p>
                     <p class="font-semibold text-gray-800">Stop being the bag holder for their bad investments.</p>
                 `,
                 invoice: {
@@ -184,7 +184,7 @@
                         title: "Company Black & White List",
                         subtitle: "Expose toxic RTO mandates. Find remote heroes.",
                         link: "blacklist.html",
-                        theme: "red",
+                        theme: "tiffany",
                         target: "_self"
                     },
                     {
@@ -211,13 +211,13 @@
                 ]
             },
             cn: {
-                headline: '<span class="text-red-600">RTO</span><span class="text-gray-900"> 就是偷窃。</span>',
-                subheadline: "通勤是无偿劳动。夺回你的时间与金钱。",
+                headline: '<span class="text-[#0abab5]">RTO</span><span class="text-gray-900"> 就是偷窃。</span>',
+                subheadline: '通勤是<span class="text-[#0abab5]">无偿劳动</span>。夺回你的时间与金钱。',
                 manifestoTitle: "这不是为了协作。这是为了合谋。",
                 manifestoBody: `
                     <p>市中心写字楼空置率飙升，商业地产（CRE）价值崩盘，银行和政府都在恐慌。</p>
                     <p>他们需要“肉身”来填满空荡的工位，购买高价沙拉，支付停车费，以挽救他们的投资。</p>
-                    <p><span class="font-medium text-red-600">RTO 是一场由你的时间和油钱买单的、针对亿万富翁房东的救助行动。</span></p>
+                    <p><span class="font-medium text-[#0abab5]">RTO 是一场由你的时间和油钱买单的、针对亿万富翁房东的救助行动。</span></p>
                     <p class="font-semibold text-gray-800">别再为他们的糟糕投资接盘了。</p>
                 `,
                 invoice: {
@@ -240,7 +240,7 @@
                         title: "企业红黑榜 (吃瓜/避雷)",
                         subtitle: "曝光强制返岗的恶心公司，寻找神仙雇主。",
                         link: "blacklist.html",
-                        theme: "red",
+                        theme: "tiffany",
                         target: "_self"
                     },
                     {
@@ -269,7 +269,7 @@
         };
 
         const THEMES = {
-            red: { border: 'border-gray-200', hoverBorder: 'hover:border-red-500', glow: 'hover:shadow-[0_4px_20px_rgba(220,38,38,0.15)]', iconColor: 'text-red-600', gradient: 'group-hover:from-red-50' },
+            tiffany: { border: 'border-gray-200', hoverBorder: 'hover:border-[#0abab5]', glow: 'hover:shadow-[0_4px_20px_rgba(10,186,181,0.15)]', iconColor: 'text-[#0abab5]', gradient: 'group-hover:from-[#e6f7f7]' },
             blue: { border: 'border-gray-200', hoverBorder: 'hover:border-blue-500', glow: 'hover:shadow-[0_4px_20px_rgba(37,99,235,0.15)]', iconColor: 'text-blue-600', gradient: 'group-hover:from-blue-50' },
             green: { border: 'border-gray-200', hoverBorder: 'hover:border-emerald-500', glow: 'hover:shadow-[0_4px_20px_rgba(16,185,129,0.15)]', iconColor: 'text-emerald-600', gradient: 'group-hover:from-emerald-50' },
             gold: { border: 'border-gray-200', hoverBorder: 'hover:border-amber-500', glow: 'hover:shadow-[0_4px_20px_rgba(245,158,11,0.15)]', iconColor: 'text-amber-600', gradient: 'group-hover:from-amber-50' }
@@ -289,7 +289,7 @@
             document.getElementById('lang-label').innerText = data.langBtnLabel;
             document.getElementById('footer-text').innerText = data.footer;
             document.getElementById('hero-headline').innerHTML = data.headline;
-            document.getElementById('hero-subheadline').innerText = data.subheadline;
+            document.getElementById('hero-subheadline').innerHTML = data.subheadline;
             document.getElementById('manifesto-title').innerText = data.manifestoTitle;
             document.getElementById('manifesto-body').innerHTML = data.manifestoBody;
             document.getElementById('inv-title').innerText = data.invoice.title;
