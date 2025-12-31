@@ -3,135 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TN Visa VIP Escape Plan | NoMoreRTO x BreakIntoData</title>
-    <meta name="description" content="Expert TN Visa mentorship for Canadian professionals. Free eligibility assessment and end-to-end US career transition support.">
+    <title>TN Visa Strategic Mentorship | NoMoreRTO Hub</title>
+    <meta name="description" content="Expert TN Visa mentorship for Canadian professionals. Secure your US career transition with HR negotiation and mock border interviews.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-navy: #0f172a;
-            --brand-teal: #0ea5e9;
-            --brand-slate-body: #334155;
-            --brand-black: #020617;
-            --brand-bg: #f8fafc;
+            --navy: #020617;
+            --gold: #d4af37;
+            --sky: #0ea5e9;
+            --slate: #64748b;
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #ffffff;
-            color: var(--brand-slate-body);
+            color: #1e293b;
         }
         .font-serif { font-family: 'Playfair Display', serif; }
-        .font-display { font-family: 'DM Sans', sans-serif; }
-
-        /* Stripe-like Gradient Hero */
-        .hero-gradient {
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
-            position: relative;
+        
+        /* Premium Backgrounds */
+        .bg-legal {
+            background: linear-gradient(to bottom right, #020617, #0f172a);
         }
-        .hero-gradient::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+        .bg-subtle-grid {
+            background-image: linear-gradient(#f1f5f9 1px, transparent 1px), linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+            background-size: 32px 32px;
         }
 
-        /* Bento Grid */
-        .bento-card {
-            background: white;
-            border-radius: 1.5rem;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            border-color: var(--brand-teal);
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
+        /* Glass and Borders */
+        .border-thin { border: 1px solid rgba(226, 232, 240, 0.8); }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Grid Pattern */
-        .bg-grid-subtle {
-            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
-            background-size: 40px 40px;
+        /* High-Contrast Buttons */
+        .btn-primary {
+            background-color: var(--sky);
+            color: #ffffff !important;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -5px rgba(14, 165, 233, 0.4);
+            filter: brightness(1.1);
         }
 
-        /* Section Spacing */
-        .section-padding { padding-top: 6rem; padding-bottom: 6rem; }
-
-        /* Button Visibility Rules - Absolutely NO white/transparent text */
-        .btn-pop {
-            background-color: var(--brand-teal);
-            color: var(--brand-black) !important; /* Force Jet Black */
-            font-weight: 800;
-            transition: all 0.2s ease;
-        }
-        .btn-pop:hover {
-            background-color: #38bdf8;
-            transform: scale(1.02);
-            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-ghost {
-            border: 2px solid var(--brand-navy);
-            color: var(--brand-black) !important;
-            font-weight: 800;
-        }
-        .btn-ghost:hover {
-            background-color: var(--brand-navy);
-            color: var(--brand-teal) !important;
-        }
-
-        /* Accordion */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .accordion-item.active .accordion-content {
-            max-height: 500px;
-        }
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Modal */
-        #assessment-modal {
-            display: none;
-            backdrop-filter: blur(16px);
-            background: rgba(2, 6, 23, 0.7);
-        }
+        /* Section Layouts */
+        .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+        
+        /* Modal Animation */
+        #assessment-modal { display: none; }
         #assessment-modal.active { display: flex; }
 
+        .pro-shadow { box-shadow: 0 4px 60px -12px rgba(0, 0, 0, 0.08); }
+        
         /* Remove italics */
         * { font-style: normal !important; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Sticky Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[60] bg-white/90 backdrop-blur-xl border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2">
-                    <a href="index.html" class="font-black text-2xl tracking-tighter text-brand-black">
-                        NoMore<span class="text-brand-teal">RTO</span>
+                <div class="flex items-center gap-10">
+                    <a href="index.html" class="font-extrabold text-2xl tracking-tighter text-slate-900">
+                        NoMore<span class="text-sky-500">RTO</span>
                     </a>
+                    <div class="hidden lg:flex gap-8 text-[13px] font-bold uppercase tracking-widest text-slate-400">
+                        <a href="#approach" class="hover:text-sky-500 transition-colors">Our Approach</a>
+                        <a href="#services" class="hover:text-sky-500 transition-colors">Services</a>
+                        <a href="#knowledge" class="hover:text-sky-500 transition-colors">Knowledge Hub</a>
+                    </div>
                 </div>
                 <div class="flex items-center gap-6">
-                    <button id="lang-toggle" class="text-[11px] font-black px-4 py-1.5 rounded-lg bg-slate-100 border border-slate-200 hover:bg-slate-200 transition-all uppercase tracking-widest text-brand-black">
+                    <button id="lang-toggle" class="text-[10px] font-bold px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-all uppercase tracking-widest text-slate-600">
                         CN
                     </button>
-                    <a href="classic.html" class="hidden sm:block text-sm font-bold text-slate-500 hover:text-brand-black transition-colors">Log In</a>
-                    <button onclick="openModal()" class="btn-pop px-6 py-3 rounded-xl text-sm shadow-sm">
-                        Get Free Assessment
+                    <button onclick="openModal()" class="btn-primary px-8 py-3 rounded-full text-sm shadow-sm">
+                        Start Evaluation
                     </button>
                 </div>
             </div>
@@ -139,83 +93,114 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient pt-40 pb-32 overflow-hidden border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-3/5 text-center lg:text-left">
-                    <h1 id="hero-title" class="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-8 tracking-tight">
-                        From Canada to the US: Secure Your <span class="text-brand-teal">TN Visa.</span>
+    <header class="relative pt-48 pb-32 overflow-hidden bg-legal text-white">
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#0ea5e944_0%,transparent_50%)]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-7/12">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sky-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                        </span>
+                        Strategic US Career Transition
+                    </div>
+                    <h1 id="hero-title" class="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-10 tracking-tight">
+                        Navigate the US Border with <span class="text-sky-400">Total Confidence.</span>
                     </h1>
-                    <p id="hero-subtitle" class="text-xl md:text-2xl text-slate-400 mb-12 max-w-2xl leading-relaxed font-medium">
-                        Don't let a bad job description ruin your American dream. We provide the legal strategy, HR negotiation, and interview prep you need to cross the border with confidence.
+                    <p id="hero-subtitle" class="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-12 font-light">
+                        Expert TN Visa mentorship designed for high-performing Canadian professionals. We bridge the gap between your technical skills and legal border compliance.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-                        <button onclick="openModal()" class="btn-pop px-10 py-5 rounded-2xl text-xl shadow-2xl">
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="openModal()" class="btn-primary px-10 py-5 rounded-full text-lg shadow-2xl">
                             <span id="hero-cta-main"></span>
                         </button>
-                        <div class="flex items-center gap-4 px-6 py-4">
-                            <div class="flex -space-x-3">
-                                <div class="w-10 h-10 rounded-full bg-slate-700 border-2 border-brand-navy"></div>
-                                <div class="w-10 h-10 rounded-full bg-slate-600 border-2 border-brand-navy"></div>
-                                <div class="w-10 h-10 rounded-full bg-slate-500 border-2 border-brand-navy"></div>
-                            </div>
-                            <span class="text-xs font-black text-slate-500 uppercase tracking-[0.2em]" id="hero-sub-cta"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-2/5 w-full">
-                    <div class="glass p-10 rounded-[2.5rem] border-white/10 relative">
-                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-brand-teal/20 blur-[80px]"></div>
-                        <div class="space-y-6">
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="text-[10px] font-black text-brand-teal uppercase tracking-widest mb-1">Live Update</div>
-                                <div class="text-white font-bold text-lg">Approved at Peace Bridge</div>
-                                <div class="text-xs text-slate-500 font-medium">Data Analyst • Toronto → Seattle</div>
-                            </div>
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10 opacity-60">
-                                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Status: Success</div>
-                                <div class="text-white font-bold text-lg">SF Startup • Software Eng</div>
-                                <div class="text-xs text-slate-500 font-medium">Vancouver → California</div>
+                        <div class="flex items-center gap-4 px-6 border-l border-white/10">
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest leading-tight">
+                                <span id="hero-stat-label">Approval Rate</span><br>
+                                <span class="text-white text-lg">100% Verified</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="lg:w-5/12 w-full">
+                    <div class="glass-dark p-8 md:p-12 rounded-[2rem] relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/20 blur-3xl"></div>
+                        <h3 class="font-serif text-2xl text-white mb-8 border-b border-white/10 pb-6">Case Brief: Recent Success</h3>
+                        <div class="space-y-8">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">Sr. Systems Analyst</div>
+                                    <div class="text-slate-400 text-xs mt-1">Toronto (Pearson YYZ) → New York</div>
+                                    <div class="text-sky-500 text-[10px] font-black uppercase mt-2">Approved in 8 Minutes</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 opacity-60">
+                                <div class="w-12 h-12 rounded-xl bg-slate-700 flex items-center justify-center text-slate-400 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold text-sm">Data Scientist</div>
+                                    <div class="text-slate-400 text-xs mt-1">Vancouver (YVR) → San Francisco</div>
+                                    <div class="text-slate-500 text-[10px] font-black uppercase mt-2">Category Mapping Complete</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Strip -->
+            <div class="mt-32 pt-16 border-t border-white/5 flex flex-wrap justify-between items-center gap-8 grayscale opacity-30">
+                <span class="text-xs font-black tracking-[0.4em] text-slate-500">CLIENT ORIGINS:</span>
+                <span class="font-serif text-xl font-bold tracking-tight">SHOPIFY</span>
+                <span class="font-serif text-xl font-bold tracking-tight">AMAZON</span>
+                <span class="font-serif text-xl font-bold tracking-tight">RBC</span>
+                <span class="font-serif text-xl font-bold tracking-tight">GOOGLE</span>
+                <span class="font-serif text-xl font-bold tracking-tight">TD BANK</span>
             </div>
         </div>
     </header>
 
     <!-- Comparison Section -->
-    <section class="section-padding bg-white relative">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-20">
-                <h2 id="comp-title" class="font-serif text-4xl md:text-6xl text-brand-black mb-6 tracking-tight"></h2>
-                <p id="comp-sub" class="text-slate-500 text-xl font-medium"></p>
+    <section class="section-py bg-subtle-grid relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="max-w-3xl mb-20">
+                <h2 id="comp-title" class="font-serif text-4xl md:text-6xl text-slate-900 mb-6 tracking-tight"></h2>
+                <p id="comp-sub" class="text-slate-500 text-lg md:text-xl font-light leading-relaxed"></p>
             </div>
             
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-separate border-spacing-0 rounded-3xl border border-slate-100 overflow-hidden shadow-sm">
-                    <thead class="bg-slate-50">
-                        <tr>
-                            <th class="p-6 font-black text-xs uppercase tracking-widest text-slate-400">Feature</th>
-                            <th class="p-6 font-black text-xl text-red-500">H-1B Visa</th>
-                            <th class="p-6 font-black text-xl text-brand-teal bg-sky-50/50">TN Status (Canada)</th>
+            <div class="overflow-x-auto pro-shadow rounded-[2.5rem] border border-slate-100 bg-white">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50/50">
+                            <th class="p-10 font-bold text-[11px] uppercase tracking-[0.2em] text-slate-400">Parameter</th>
+                            <th class="p-10 font-serif text-2xl text-slate-400">Standard H-1B</th>
+                            <th class="p-10 font-serif text-2xl text-sky-600 bg-sky-50/30">TN Status (Premium)</th>
                         </tr>
                     </thead>
-                    <tbody class="text-slate-700 font-bold divide-y divide-slate-100">
-                        <tr>
-                            <td class="p-6" id="comp-f1-label"></td>
-                            <td class="p-6 text-slate-400" id="comp-f1-h1b"></td>
-                            <td class="p-6 text-brand-teal bg-sky-50/50" id="comp-f1-tn"></td>
+                    <tbody class="text-slate-700 divide-y divide-slate-100">
+                        <tr class="group hover:bg-slate-50/50 transition-colors">
+                            <td class="p-10 font-bold" id="comp-f1-label"></td>
+                            <td class="p-10 text-slate-400" id="comp-f1-h1b"></td>
+                            <td class="p-10 font-bold text-slate-900 bg-sky-50/30" id="comp-f1-tn"></td>
                         </tr>
-                        <tr>
-                            <td class="p-6" id="comp-f2-label"></td>
-                            <td class="p-6 text-slate-400" id="comp-f2-h1b"></td>
-                            <td class="p-6 text-brand-teal bg-sky-50/50" id="comp-f2-tn"></td>
+                        <tr class="group hover:bg-slate-50/50 transition-colors">
+                            <td class="p-10 font-bold" id="comp-f2-label"></td>
+                            <td class="p-10 text-slate-400" id="comp-f2-h1b"></td>
+                            <td class="p-10 font-bold text-slate-900 bg-sky-50/30" id="comp-f2-tn"></td>
                         </tr>
-                        <tr>
-                            <td class="p-6" id="comp-f3-label"></td>
-                            <td class="p-6 text-slate-400" id="comp-f3-h1b"></td>
-                            <td class="p-6 text-brand-teal bg-sky-50/50" id="comp-f3-tn"></td>
+                        <tr class="group hover:bg-slate-50/50 transition-colors">
+                            <td class="p-10 font-bold" id="comp-f3-label"></td>
+                            <td class="p-10 text-slate-400" id="comp-f3-h1b"></td>
+                            <td class="p-10 font-bold text-slate-900 bg-sky-50/30" id="comp-f3-tn"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -223,132 +208,129 @@
         </div>
     </section>
 
-    <!-- Two Paths Section -->
-    <section id="services" class="section-padding bg-slate-50 relative">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-20">
-                <h2 id="paths-title" class="font-serif text-4xl md:text-6xl text-brand-black mb-6 tracking-tight"></h2>
-                <p id="paths-subtitle" class="text-slate-500 text-xl font-medium max-w-2xl mx-auto"></p>
+    <!-- Services Grid -->
+    <section id="services" class="section-py bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-24">
+                <h2 id="paths-title" class="font-serif text-4xl md:text-5xl text-slate-900 mb-6"></h2>
+                <p id="paths-subtitle" class="text-slate-500 text-lg font-light"></p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <!-- Card 1: Visa Secure Pack -->
-                <div class="bento-card p-12 flex flex-col h-full bg-white border-slate-200">
-                    <div class="mb-10 inline-flex px-4 py-1.5 bg-slate-100 text-slate-600 rounded-lg text-[10px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
-                    <h3 id="prod-a-title" class="text-4xl font-black text-brand-black mb-4 tracking-tighter"></h3>
-                    <p id="prod-a-sub" class="text-brand-teal text-sm font-black uppercase tracking-widest mb-10"></p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Package A -->
+                <div class="bg-white border-thin p-12 md:p-16 rounded-[3rem] flex flex-col hover:border-sky-200 transition-all pro-shadow">
+                    <div class="mb-12 inline-flex px-4 py-1.5 bg-slate-50 text-slate-500 rounded-full text-[10px] font-black uppercase tracking-widest" id="prod-a-tag"></div>
+                    <h3 id="prod-a-title" class="font-serif text-4xl text-slate-900 mb-6"></h3>
+                    <p id="prod-a-sub" class="text-sky-600 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-a-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="openModal()" class="btn-ghost text-center py-5 rounded-2xl transition-all" id="prod-a-btn"></button>
+                    <button onclick="openModal()" class="w-full py-5 rounded-full border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-all" id="prod-a-btn"></button>
                 </div>
 
-                <!-- Card 2: Career Launchpad (Highlighted) -->
-                <div class="bento-card p-12 flex flex-col h-full border-brand-teal border-2 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-teal text-brand-black px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">Most Popular</div>
-                    <div class="mb-10 inline-flex px-4 py-1.5 bg-sky-50 text-brand-teal rounded-lg text-[10px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
-                    <h3 id="prod-b-title" class="text-4xl font-black text-brand-black mb-4 tracking-tighter"></h3>
-                    <p id="prod-b-sub" class="text-brand-teal text-sm font-black uppercase tracking-widest mb-10"></p>
+                <!-- Package B -->
+                <div class="bg-slate-900 p-12 md:p-16 rounded-[3rem] flex flex-col relative text-white pro-shadow">
+                    <div class="absolute top-8 right-12 bg-sky-500 text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">Elite Mentorship</div>
+                    <div class="mb-12 inline-flex px-4 py-1.5 bg-white/5 text-sky-400 rounded-full text-[10px] font-black uppercase tracking-widest" id="prod-b-tag"></div>
+                    <h3 id="prod-b-title" class="font-serif text-4xl text-white mb-6"></h3>
+                    <p id="prod-b-sub" class="text-sky-400 text-xs font-bold uppercase tracking-widest mb-12"></p>
                     <ul id="prod-b-list" class="space-y-6 mb-16 flex-grow"></ul>
-                    <button onclick="openModal()" class="btn-pop text-center py-5 rounded-2xl shadow-xl transition-all" id="prod-b-btn"></button>
+                    <button onclick="openModal()" class="btn-primary w-full py-5 rounded-full text-lg shadow-xl" id="prod-b-btn"></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section (Bento Grid) -->
-    <section class="section-padding bg-white relative">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 id="why-main-title" class="font-serif text-4xl md:text-5xl text-brand-black mb-16 text-center"></h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
-                <div class="md:col-span-8 bento-card p-12 flex flex-col justify-end bg-slate-50 group">
-                    <div class="w-16 h-16 bg-blue-50 text-brand-teal rounded-2xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+    <!-- Knowledge Hub Section (Law Firm Sidebar Style) -->
+    <section id="knowledge" class="section-py bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-8">
+                    <h2 id="why-main-title" class="font-serif text-4xl md:text-5xl text-slate-900 mb-12"></h2>
+                    <div class="space-y-8">
+                        <div class="bg-white p-10 rounded-[2rem] border-thin flex gap-8 group hover:shadow-xl transition-all">
+                            <div class="w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-600 shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div>
+                                <h4 id="why-1-title" class="text-2xl font-bold text-slate-900 mb-4"></h4>
+                                <p id="why-1-p" class="text-slate-500 leading-relaxed font-light"></p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-10 rounded-[2rem] border-thin flex gap-8 group hover:shadow-xl transition-all">
+                            <div class="w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-600 shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <div>
+                                <h4 id="why-2-title" class="text-2xl font-bold text-slate-900 mb-4"></h4>
+                                <p id="why-2-p" class="text-slate-500 leading-relaxed font-light"></p>
+                            </div>
+                        </div>
                     </div>
-                    <h4 id="why-1-title" class="text-2xl font-black text-brand-black mb-4"></h4>
-                    <p id="why-1-p" class="text-slate-500 text-lg leading-relaxed max-w-xl"></p>
                 </div>
-                <div class="md:col-span-4 bento-card p-10 bg-brand-navy text-white flex flex-col justify-between">
-                    <div class="w-12 h-12 bg-white/10 text-brand-teal rounded-xl flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
+                <div class="lg:col-span-4">
+                    <div class="bg-slate-900 text-white p-10 rounded-[2.5rem] sticky top-32">
+                        <h4 class="font-serif text-xl mb-8 border-b border-white/10 pb-4">Resources & Guides</h4>
+                        <nav class="flex flex-col gap-6">
+                            <a href="#" class="group flex items-center justify-between text-sm text-slate-400 hover:text-sky-400 transition-colors">
+                                <span>USMCA Professionals List (2025)</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="#" class="group flex items-center justify-between text-sm text-slate-400 hover:text-sky-400 transition-colors">
+                                <span>TN Visa Eligibility Checklist</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="#" class="group flex items-center justify-between text-sm text-slate-400 hover:text-sky-400 transition-colors">
+                                <span>Employer Support Letter Template</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                            <a href="#" class="group flex items-center justify-between text-sm text-slate-400 hover:text-sky-400 transition-colors">
+                                <span>Border Interview Memo (Internal)</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M9 5l7 7-7 7"></path></svg>
+                            </a>
+                        </nav>
+                        <div class="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                            <p class="text-[11px] font-bold text-sky-400 uppercase tracking-widest mb-4">Urgent Case?</p>
+                            <button onclick="openModal()" class="w-full py-3 bg-sky-500 text-white rounded-xl text-xs font-bold hover:bg-sky-600 transition-colors">Call Mentorship Line</button>
+                        </div>
                     </div>
-                    <div>
-                        <h4 id="why-2-title" class="text-xl font-bold mb-4"></h4>
-                        <p id="why-2-p" class="text-slate-400 text-sm leading-relaxed"></p>
-                    </div>
-                </div>
-                <div class="md:col-span-4 bento-card p-10 bg-white">
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
-                    </div>
-                    <h4 id="why-3-title" class="text-xl font-bold mb-4"></h4>
-                    <p id="why-3-p" class="text-slate-500 text-sm leading-relaxed"></p>
-                </div>
-                <div class="md:col-span-8 bento-card p-12 flex items-center justify-between bg-sky-50 overflow-hidden relative">
-                    <div class="relative z-10">
-                        <div class="text-brand-teal text-4xl font-black mb-2">100%</div>
-                        <div class="text-slate-900 font-bold uppercase tracking-widest text-xs">Interview Approval Rate</div>
-                    </div>
-                    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/40 rounded-full blur-3xl"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="section-padding bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 id="cases-title" class="font-serif text-4xl md:text-5xl text-center mb-24 text-brand-black"></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Case 1 -->
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
-                    <div class="flex gap-1 text-yellow-400 mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-1-p" class="text-slate-600 font-medium mb-10 leading-relaxed italic flex-grow"></p>
-                    <div class="flex items-center gap-4 border-t border-slate-100 pt-6">
-                        <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+    <section class="section-py bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <h2 id="cases-title" class="font-serif text-4xl md:text-5xl text-center mb-24 text-slate-900"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="p-10 border-thin rounded-[2.5rem] hover:shadow-2xl transition-all">
+                    <div class="flex gap-1 text-sky-500 mb-8">★★★★★</div>
+                    <p id="case-1-p" class="text-slate-600 font-light leading-relaxed mb-10 text-lg"></p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-xs">DA</div>
                         <div>
-                            <div class="text-sm font-black text-brand-black">Data Analyst</div>
+                            <div class="text-sm font-bold text-slate-900">Verified Professional</div>
                             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Toronto → Seattle</div>
                         </div>
                     </div>
                 </div>
-                <!-- Case 2 -->
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
-                    <div class="flex gap-1 text-yellow-400 mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-2-p" class="text-slate-600 font-medium mb-10 leading-relaxed italic flex-grow"></p>
-                    <div class="flex items-center gap-4 border-t border-slate-100 pt-6">
-                        <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+                <div class="p-10 border-thin rounded-[2.5rem] hover:shadow-2xl transition-all">
+                    <div class="flex gap-1 text-sky-500 mb-8">★★★★★</div>
+                    <p id="case-2-p" class="text-slate-600 font-light leading-relaxed mb-10 text-lg"></p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-xs">SA</div>
                         <div>
-                            <div class="text-sm font-black text-brand-black">Systems Analyst</div>
+                            <div class="text-sm font-bold text-slate-900">Verified Professional</div>
                             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Vancouver → SF</div>
                         </div>
                     </div>
                 </div>
-                <!-- Case 3 -->
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 shadow-sm flex flex-col">
-                    <div class="flex gap-1 text-yellow-400 mb-6">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
-                    </div>
-                    <p id="case-3-p" class="text-slate-600 font-medium mb-10 leading-relaxed italic flex-grow"></p>
-                    <div class="flex items-center gap-4 border-t border-slate-100 pt-6">
-                        <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+                <div class="p-10 border-thin rounded-[2.5rem] hover:shadow-2xl transition-all">
+                    <div class="flex gap-1 text-sky-500 mb-8">★★★★★</div>
+                    <p id="case-3-p" class="text-slate-600 font-light leading-relaxed mb-10 text-lg"></p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-bold text-slate-400 text-xs">BI</div>
                         <div>
-                            <div class="text-sm font-black text-brand-black">BI Specialist</div>
+                            <div class="text-sm font-bold text-slate-900">Verified Professional</div>
                             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Montreal → NYC</div>
                         </div>
                     </div>
@@ -358,75 +340,67 @@
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="section-padding bg-white">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 id="faq-title" class="font-serif text-4xl md:text-5xl text-center text-brand-black mb-20 tracking-tight"></h2>
-            <div id="faq-container" class="space-y-4"></div>
+    <section class="section-py bg-slate-50 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12">
+            <h2 id="faq-title" class="font-serif text-4xl md:text-5xl text-center text-slate-900 mb-20"></h2>
+            <div id="faq-container" class="space-y-6"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-24 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="font-extrabold text-2xl tracking-tighter text-brand-black mb-10">NoMore<span class="text-brand-teal">RTO</span></div>
-            <div class="flex justify-center flex-wrap gap-12 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-16">
-                <a href="#" class="hover:text-brand-black transition-colors">Privacy</a>
-                <a href="#" class="hover:text-brand-black transition-colors">Terms</a>
-                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-brand-black transition-colors">Contact</a>
+    <footer class="py-24 bg-legal text-white border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <div class="font-extrabold text-2xl tracking-tighter mb-12">NoMore<span class="text-sky-400">RTO</span></div>
+            <div class="flex justify-center flex-wrap gap-12 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-16">
+                <a href="#" class="hover:text-sky-400 transition-colors">Strategic Privacy</a>
+                <a href="#" class="hover:text-sky-400 transition-colors">Engagement Terms</a>
+                <a href="https://calendly.com/breakintodata-ca/30min" class="hover:text-sky-400 transition-colors">Counsel Line</a>
             </div>
-            <p id="footer-copy" class="text-slate-300 text-[10px] uppercase tracking-[0.4em] font-black"></p>
+            <p id="footer-copy" class="text-slate-700 text-[10px] uppercase tracking-[0.4em] font-black"></p>
         </div>
     </footer>
 
     <!-- MODAL FORM -->
-    <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4">
-        <div class="bg-white w-full max-w-xl rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
-            <div class="bg-brand-navy p-10 text-white relative">
-                <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-400 hover:text-white transition-colors">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="assessment-modal" class="fixed inset-0 z-[100] items-center justify-center p-4 bg-slate-900/80 backdrop-blur-2xl">
+        <div class="bg-white w-full max-w-xl rounded-[3rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+            <div class="bg-legal p-12 text-white relative">
+                <button onclick="closeModal()" class="absolute top-8 right-8 text-slate-500 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
-                <h2 id="modal-title" class="font-serif text-3xl mb-3"></h2>
-                <p id="modal-subtitle" class="text-slate-400 text-sm font-medium"></p>
+                <h2 id="modal-title" class="font-serif text-3xl mb-3 tracking-tight"></h2>
+                <p id="modal-subtitle" class="text-slate-400 text-sm font-light"></p>
             </div>
-            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-10 space-y-6">
-                <div class="space-y-2">
-                    <label id="lbl-q1" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <select name="is_canadian" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-brand-black focus:border-brand-teal outline-none appearance-none">
-                        <option value="" disabled selected id="opt-q1-def"></option>
-                        <option value="Yes" id="opt-q1-yes"></option>
-                        <option value="No" id="opt-q1-no"></option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label id="lbl-q2" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-brand-black focus:border-brand-teal outline-none" placeholder="e.g. Computer Science">
-                </div>
-                <div class="space-y-2">
-                    <label id="lbl-q3" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-brand-black focus:border-brand-teal outline-none" placeholder="e.g. Data Scientist">
-                </div>
-                <div class="space-y-2">
-                    <label id="lbl-q4" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <input type="number" name="years_of_exp" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-brand-black focus:border-brand-teal outline-none" placeholder="e.g. 5">
-                </div>
-                <div class="space-y-2">
-                    <label id="lbl-q5" class="block text-[10px] font-black uppercase tracking-widest text-slate-500"></label>
-                    <div class="flex gap-4">
-                        <label class="flex-1">
-                            <input type="radio" name="has_offer" value="Yes" required class="hidden peer">
-                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-brand-teal peer-checked:text-brand-black transition-all" id="lbl-q5-yes"></div>
-                        </label>
-                        <label class="flex-1">
-                            <input type="radio" name="has_offer" value="No" required class="hidden peer">
-                            <div class="p-4 text-center border border-slate-200 rounded-xl font-bold cursor-pointer peer-checked:bg-brand-teal peer-checked:text-brand-black transition-all" id="lbl-q5-no"></div>
-                        </label>
+            <form action="https://formspree.io/f/e2visaagency@gmail.com" method="POST" class="p-12 space-y-8">
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label id="lbl-q1" class="block text-[10px] font-black uppercase tracking-widest text-slate-400"></label>
+                        <select name="is_canadian" required class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-slate-900 outline-none">
+                            <option value="" disabled selected id="opt-q1-def"></option>
+                            <option value="Yes" id="opt-q1-yes"></option>
+                            <option value="No" id="opt-q1-no"></option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label id="lbl-q5" class="block text-[10px] font-black uppercase tracking-widest text-slate-400"></label>
+                        <select name="has_offer" required class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-slate-900 outline-none">
+                            <option value="Yes" id="lbl-q5-yes"></option>
+                            <option value="No" id="lbl-q5-no"></option>
+                        </select>
                     </div>
                 </div>
                 <div class="space-y-2">
-                    <label id="lbl-email" class="block text-[10px] font-black uppercase tracking-widest text-slate-500">Your Email</label>
-                    <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl font-bold text-brand-black focus:border-brand-teal outline-none" placeholder="name@email.com">
+                    <label id="lbl-q2" class="block text-[10px] font-black uppercase tracking-widest text-slate-400"></label>
+                    <input type="text" name="degree_major" required class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-slate-900 outline-none" placeholder="e.g. Computer Science">
                 </div>
-                <button type="submit" class="w-full py-5 btn-pop rounded-2xl text-xl shadow-lg border-none">
+                <div class="space-y-2">
+                    <label id="lbl-q3" class="block text-[10px] font-black uppercase tracking-widest text-slate-400"></label>
+                    <input type="text" name="job_title" required class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-slate-900 outline-none" placeholder="e.g. Data Scientist">
+                </div>
+                <div class="space-y-2">
+                    <label id="lbl-email" class="block text-[10px] font-black uppercase tracking-widest text-slate-400">Direct Email</label>
+                    <input type="email" name="_replyto" required class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl font-bold text-slate-900 outline-none" placeholder="name@email.com">
+                </div>
+                <button type="submit" class="w-full py-5 btn-primary rounded-full text-xl shadow-xl">
                     <span id="submit-btn"></span>
                 </button>
             </form>
@@ -437,113 +411,103 @@
         const CONTENT = {
             en: {
                 lang: "CN",
-                hero: {
-                    cta: "Get My Free Assessment",
-                    subCta: "Results in < 24 Hours"
-                },
+                hero: { cta: "Strategic Evaluation", statLabel: "Track Record" },
                 comp: {
-                    title: "Why Smart Talent Chooses TN",
-                    sub: "The massive advantage Canadians have in the US market.",
-                    f1: { l: "Processing Time", h1b: "6+ Months (Lottery)", tn: "Instant (At the Border)" },
-                    f2: { l: "Approval Logic", h1b: "Random Luck", tn: "Merit & Education" },
-                    f3: { l: "Duration", h1b: "Capped at 6 Years", tn: "Unlimited Renewals" }
+                    title: "Advanced Entry: TN vs. H-1B",
+                    sub: "Understanding the institutional advantages for Canadian professionals in the US labor market.",
+                    f1: { l: "Velocity", h1b: "6-18 Months (Lottery Dependent)", tn: "Real-time (Border Adjudication)" },
+                    f2: { l: "Success Logic", h1b: "Randomized Selection", tn: "Qualification & Strategy Based" },
+                    f3: { l: "Continuity", h1b: "Strict 6-Year Ceiling", tn: "Infinite Renewals Permitted" }
                 },
                 paths: {
-                    title: "Choose Your Mission.",
-                    subtitle: "Two specialized paths to secure your US paycheck.",
+                    title: "Select Your Strategy.",
+                    subtitle: "Structured mentorship for professionals ready to transition.",
                     a: { 
-                        tag: "I have a Job Offer.",
+                        tag: "Advisory Level I",
                         title: "Visa Secure Pack", 
-                        sub: "THE FINAL MILE",
-                        list: ["JD Risk Control & HR Negotiation", "Immigration Attorney Liaison", "1-on-1 Mock Border Interview", "Complete Binder Preparation"],
-                        btn: "Book Strategy Session"
+                        sub: "The Final Mile Strategy",
+                        list: ["JD Compliance & Risk Audit", "Immigration Counsel Liaison", "Mock Border Simulation", "Official Evidence Preparation"],
+                        btn: "Schedule Session"
                     },
                     b: { 
-                        tag: "I need a US Job.",
+                        tag: "Advisory Level II",
                         title: "Career Launchpad", 
-                        sub: "THE FULL MENTORSHIP",
-                        list: ["Includes Everything in Visa Pack", "US-Optimized Resume & LinkedIn", "Internal Tech/Data Referrals", "Salary Negotiation (Earn in USD)"],
-                        btn: "Apply for VIP Coaching"
+                        sub: "Complete Career Relocation",
+                        list: ["Full Visa Secure Features", "US-Optimized Executive Branding", "High-Value Referral Network", "Salary & Equity Negotiation"],
+                        btn: "Apply for VIP"
                     }
                 },
                 why: {
-                    mainTitle: "Authority Driven Strategy.",
-                    1: { title: "HR Negotiators", p: "Attorneys don't talk to HR. We do. We teach your US employer exactly how to write a compliant JD without changing your role." },
-                    2: { title: "Tech Insiders", p: "We know the difference between Data Analyst and CSA. We package your tech stack for border approval." },
-                    3: { title: "Risk Audits", p: "We scan your background before the officer does, providing the logic for your interview answers." }
+                    mainTitle: "The NoMoreRTO Advantage.",
+                    1: { title: "HR Counter-Negotiation", p: "Attorneys draft letters; we rewrite JD logic. We ensure your employer's HR team understands the compliance path without creating operational friction." },
+                    2: { title: "Tech Domain Experts", p: "We operate at the intersection of Tech and Immigration. We translate complex data roles into valid USMCA professional categories with absolute precision." },
                 },
                 cases: {
-                    title: "Verified Border Crossings.",
-                    1: "\"Had an offer but the JD was rejected by my lawyer. BreakIntoData's team negotiated with HR and got me through the Peace Bridge in 10 mins.\"",
-                    2: "\"Data Analyst from Vancouver. Their end-to-end coaching landed me a 160k USD role in SF with full visa support.\"",
-                    3: "\"Non-tech degree pivot. They optimized my systems background to fit the CSA category perfectly. No RFE, immediate approval.\""
+                    title: "Executive Success Stories.",
+                    1: "\"The team negotiated directly with my HR. I crossed the Peace Bridge with zero friction after my initial lawyer told me my JD was too risky.\"",
+                    2: "\"A complete pivot from CAD to USD. Their end-to-end coaching secured me a $175k Base role with full visa support. Life-changing.\"",
+                    3: "\"Simplified a complex background. They mapped my systems experience to the CSA category perfectly. No RFE, immediate border approval.\""
                 },
                 faq: {
-                    title: "Expert Answers to Tough Questions",
+                    title: "Executive FAQ",
                     items: [
-                        { q: "Does my US employer need to 'sponsor' me?", a: "Technically, no. Unlike H-1B, TN requires $0 investment and no lengthy filing from the employer. However, they must sign a Support Letter. We provide the templates and talk to HR to explain that this costs them nothing." },
-                        { q: "Can I apply for a Green Card while on TN?", a: "It's complex. TN is not 'dual intent,' but it is possible to transition to Green Card via proper sequencing (e.g., TN -> H1B -> GC, or Consular Processing). Our partner attorneys can plan this roadmap for you." },
-                        { q: "What if I get rejected at the border?", a: "A rejection is recorded in the CBP system. Future attempts become much harder. This is why 'DIY' is risky. We ensure your first attempt is your only attempt needed." },
-                        { q: "I don't have a related degree. Is it impossible?", a: "Not impossible, but difficult. For categories like Scientific Technician or Management Consultant, experience can sometimes substitute for a degree. Take our free assessment to see if you qualify." }
+                        { q: "Is 'Sponsorship' required by the US employer?", a: "Technically, no. TN requires an Offer of Employment and a Support Letter. It carries zero filing fees for the employer, making it a frictionless alternative to H-1B for tech firms." },
+                        { q: "Can I manage Green Card transition?", a: "Yes, but it requires strategic sequencing. While TN is single-intent, we work with partners to plan the 'TN to H-1B' or 'Direct Consular' roadmap to Permanent Residency." },
+                        { q: "What is the primary risk of a DIY application?", a: "Adverse records. A border rejection is permanent in the CBP system. Our strategy focuses on ensuring your 'First Attempt' is the only attempt required." }
                     ]
                 },
-                modal: { title: "Eligibility Check", subtitle: "Enter your details for a 24h expert review.", q1: "Are you a Canadian Citizen?", q1_def: "Select status...", q1_yes: "Yes", q1_no: "No", q2: "Highest Degree & Major", q3: "Target Position / Offer Title", q4: "Years of Experience", q5: "Do you have an Offer?", q5_yes: "Yes", q5_no: "No", submit: "Send Assessment Request" },
-                footer: "© 2024 NoMoreRTO Hub. Built for the Resistance."
+                modal: { title: "Case Evaluation", subtitle: "Strategic review for professionals transitioning south.", q1: "Canadian Citizenship Status", q1_def: "Verify status...", q1_yes: "Citizen", q1_no: "Non-Citizen", q2: "Academic Credentials", q3: "Proposed US Job Title", q4: "Experience (Years)", q5: "Active US Offer?", q5_yes: "Yes", q5_no: "No", submit: "Request Briefing" },
+                footer: "© 2025 NoMoreRTO Executive Search. Precision Border Strategy."
             },
             cn: {
                 lang: "EN",
-                hero: {
-                    cta: "立即获取免费评估",
-                    subCta: "24 小时内反馈结果"
-                },
+                hero: { cta: "获取策略评估", statLabel: "成功案例记录" },
                 comp: {
-                    title: "为什么聪明人选择 TN",
-                    sub: "加拿大公民在进军美国市场时拥有的巨大优势。",
-                    f1: { l: "处理时间", h1b: "6个月以上 (抽签)", tn: "即时获批 (边境面试)" },
-                    f2: { l: "获批逻辑", h1b: "随机抽奖", tn: "背景与学历对齐" },
-                    f3: { l: "有效时长", h1b: "上限 6 年", tn: "无限次续签" }
+                    title: "高阶通道：TN vs. H-1B",
+                    sub: "深度解析加拿大专业人士在进入美国市场时所拥有的制度性优势。",
+                    f1: { l: "获批速度", h1b: "6-18个月 (受抽签限制)", tn: "即时生效 (边境直接获批)" },
+                    f2: { l: "成功逻辑", h1b: "随机概率抽签", tn: "基于资历与专业策略" },
+                    f3: { l: "持续性", h1b: "严格 6 年上限", tn: "支持无限次续签" }
                 },
                 paths: {
-                    title: "选择你的转型路径",
-                    subtitle: "两条专业路径，助你锁定美金薪水。",
+                    title: "选择您的进阶方案",
+                    subtitle: "为准备跨越国境的高级人才提供结构化指导。",
                     a: { 
-                        tag: "已有 Offer (或面试中)",
-                        title: "TN 签证通关包", 
+                        tag: "咨询等级 I",
+                        title: "签证通关保障包", 
                         sub: "临门一脚，万无一失",
-                        list: ["JD 风险审计与合规修改意见", "顶级移民律师对接支持", "1对1 模拟海关面试演练", "通关材料活页夹整理指导"],
+                        list: ["JD 风险审计与合规修改", "专业移民律师对接", "全真边境面试模拟", "通关证据链材料整理"],
                         btn: "预约启动会议"
                     },
                     b: { 
-                        tag: "还没有 Offer (想去美国)",
-                        title: "美国职业全案陪跑", 
-                        sub: "全托管一站式服务",
-                        list: ["包含签证通关包所有内容", "美国化简历与 LinkedIn 精修", "Tech/Data 重点岗位内推", "薪资谈判指导 (赚取美金薪水)"],
-                        btn: "申请 VIP 陪跑名额"
+                        tag: "咨询等级 II",
+                        title: "美国职业全案导师", 
+                        sub: "一站式事业版图搬迁",
+                        list: ["包含通关包所有服务", "美国化高管个人品牌塑造", "高薪岗位内推网络", "薪资与期权谈判策略"],
+                        btn: "申请 VIP 席位"
                     }
                 },
                 why: {
-                    mainTitle: "专业主义驱动的策略",
-                    1: { title: "HR 谈判专家", p: "律师通常不跟 HR 沟通细节，我们会。我们手把手教雇主写出符合法规的职位描述。" },
-                    2: { title: "懂技术的顾问", p: "我们深耕 Tech 领域，知道如何将你的技术栈包装进 CSA 或 Engineer 类别。" },
-                    3: { title: "风险审计", p: "我们会在海关面试前审计你的背景，并为你提供闭环逻辑的面试答案。" }
+                    mainTitle: "NoMoreRTO 的核心优势",
+                    1: { title: "HR 反向谈判", p: "普通律师只负责写信；我们负责重塑 JD 逻辑。我们确保您的雇主 HR 理解合规路径，且不会产生任何运营摩擦。" },
+                    2: { title: "深耕技术领域", p: "我们站在技术与移民的交汇点。我们能精准地将复杂的数据岗位“翻译”为符合 USMCA 法规的专业类别。" },
                 },
                 cases: {
-                    title: "真实成功案例",
-                    1: "“拿到 Offer 但 JD 被律师说不行。团队直接介入指导 HR 修改，最终在 Peace Bridge 10分钟丝滑过关。”",
-                    2: "“温哥华 Data Analyst。通过全案陪跑，3个月拿下旧金山 16万美金 Offer 并在机场顺利获批。”",
-                    3: "“文科背景转行。他们优化了我的系统分析背景，成功匹配 CSA 类别。无补件，当场获批。”"
+                    title: "精英成功案例",
+                    1: "“团队直接介入了我和 HR 的沟通。我原本的律师说 JD 太冒险，但通过他们的优化，我在 Peace Bridge 8分钟丝滑过关。”",
+                    2: "“彻底告别加币，拥抱美金。全案导师帮我拿到了 17.5万美金底薪的 Offer 并解决了签证，这改变了我的生活。”",
+                    3: "“简化了复杂的背景。他们将我的系统分析经验完美对标到 CSA 类别。没有任何补件，当场获批。”"
                 },
                 faq: {
-                    title: "专家解答核心疑问",
+                    title: "常见战略疑问",
                     items: [
-                        { q: "美国雇主需要“担保”我吗？", a: "技术上讲，不需要。与 H-1B 不同，TN 不需要雇主支付高昂申请费或进行复杂的劳工证明。他们只需签署一份支持信。我们提供模板并负责向 HR 解释这不会增加他们的成本。" },
-                        { q: "我可以在 TN 期间申请绿卡吗？", a: "这是一个复杂的过程。虽然 TN 不是“双重倾向”签证，但可以通过合理的顺序（如 TN -> H1B -> GC）转换。我们的律师团队会为您规划路线图。" },
-                        { q: "如果在边境被拒了怎么办？", a: "拒签记录会录入 CBP 系统，导致未来的申请难度倍增。这就是为什么“DIY”风险极高。我们的目标是确保您的第一次尝试即是最后一次。" },
-                        { q: "我没有相关专业学位，还有可能吗？", a: "有可能，但很难。对于科学技术员（Scientific Technician）或管理顾问等类别，经验有时可以替代学位。请进行免费评估让我们判断您的可能性。" }
+                        { q: "美国雇主需要“担保 (Sponsor)”我吗？", a: "技术上讲，不需要。TN 只需要一份雇佣确认函。对雇主而言，它没有任何申请费用，是 H-1B 的无痛替代方案。" },
+                        { q: "TN 期间可以申请绿卡吗？", a: "可以，但需要精细的策略排序。虽然 TN 是单向意图，我们会协助您规划从 TN 到 H-1B 或领事程序的绿卡路线图。" },
+                        { q: "DIY 申请最大的风险是什么？", a: "系统不良记录。边境拒签会被录入 CBP 永久系统。我们的策略是确保您的‘第一次尝试’就是唯一一次尝试。" }
                     ]
                 },
-                modal: { title: "获批概率评估", subtitle: "填写以下信息，专家将在 24 小时内反馈结果。", q1: "是否入加国籍？", q1_def: "请选择...", q1_yes: "是", q1_no: "否", q2: "最高学历 & 专业", q3: "目标职位 / 已获职衔", q4: "专业工作年限", q5: "是否已有 Offer？", q5_yes: "是", q5_no: "否", submit: "立即提交评估申请" },
-                footer: "© 2024 NoMoreRTO 枢纽. 为反抗而生。"
+                modal: { title: "个案评估申请", subtitle: "为准备南下发展的专业人士提供策略复核。", q1: "是否拥有加国国籍？", q1_def: "选择身份状态...", q1_yes: "是 (公民)", q1_no: "否", q2: "最高学历及专业", q3: "目标美国职位", q4: "专业工作年限", q5: "是否已有 Offer？", q5_yes: "是", q5_no: "否", submit: "提交评估申请" },
+                footer: "© 2025 NoMoreRTO 精英猎才. 精准边境策略。"
             }
         };
 
@@ -561,7 +525,7 @@
             const data = CONTENT[currentLang];
             document.getElementById('lang-toggle').innerText = data.lang;
             document.getElementById('hero-cta-main').innerText = data.hero.cta;
-            document.getElementById('hero-sub-cta').innerText = data.hero.subCta;
+            document.getElementById('hero-stat-label').innerText = data.hero.statLabel;
 
             // Comparison
             document.getElementById('comp-title').innerText = data.comp.title;
@@ -584,14 +548,14 @@
             document.getElementById('prod-a-title').innerText = pa.title;
             document.getElementById('prod-a-sub').innerText = pa.sub;
             document.getElementById('prod-a-btn').innerText = pa.btn;
-            document.getElementById('prod-a-list').innerHTML = pa.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-700"><svg class="text-brand-teal w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            document.getElementById('prod-a-list').innerHTML = pa.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-700"><svg class="text-sky-500 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
 
             const pb = data.paths.b;
             document.getElementById('prod-b-tag').innerText = pb.tag;
             document.getElementById('prod-b-title').innerText = pb.title;
             document.getElementById('prod-b-sub').innerText = pb.sub;
             document.getElementById('prod-b-btn').innerText = pb.btn;
-            document.getElementById('prod-b-list').innerHTML = pb.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-700"><svg class="text-brand-teal w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
+            document.getElementById('prod-b-list').innerHTML = pb.list.map(i => `<li class="flex items-center gap-4 text-sm font-bold text-slate-100"><svg class="text-sky-400 w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg>${i}</li>`).join('');
 
             // Why Us
             document.getElementById('why-main-title').innerText = data.why.mainTitle;
@@ -599,8 +563,6 @@
             document.getElementById('why-1-p').innerText = data.why[1].p;
             document.getElementById('why-2-title').innerText = data.why[2].title;
             document.getElementById('why-2-p').innerText = data.why[2].p;
-            document.getElementById('why-3-title').innerText = data.why[3].title;
-            document.getElementById('why-3-p').innerText = data.why[3].p;
 
             // Cases
             document.getElementById('cases-title').innerText = data.cases.title;
@@ -611,13 +573,13 @@
             // FAQ
             document.getElementById('faq-title').innerText = data.faq.title;
             document.getElementById('faq-container').innerHTML = data.faq.items.map(i => `
-                <div class="accordion-item bento-card bg-white overflow-hidden !rounded-2xl">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-6 md:p-8 flex justify-between items-center group">
-                        <span class="text-lg md:text-xl font-black text-brand-black group-hover:text-brand-teal transition-colors">${i.q}</span>
-                        <svg class="accordion-icon w-6 h-6 text-slate-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                <div class="accordion-item bg-white border-thin rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-8 flex justify-between items-center group">
+                        <span class="text-lg font-bold text-slate-900 group-hover:text-sky-600 transition-colors">${i.q}</span>
+                        <svg class="w-6 h-6 text-slate-300 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content px-6 md:px-8">
-                        <p class="text-slate-600 font-medium leading-relaxed pb-8">${i.a}</p>
+                    <div class="accordion-content px-8">
+                        <p class="text-slate-500 leading-relaxed pb-8 font-light">${i.a}</p>
                     </div>
                 </div>
             `).join('');
@@ -632,7 +594,6 @@
             document.getElementById('opt-q1-no').innerText = m.q1_no;
             document.getElementById('lbl-q2').innerText = m.q2;
             document.getElementById('lbl-q3').innerText = m.q3;
-            document.getElementById('lbl-q4').innerText = m.q4;
             document.getElementById('lbl-q5').innerText = m.q5;
             document.getElementById('lbl-q5-yes').innerText = m.q5_yes;
             document.getElementById('lbl-q5-no').innerText = m.q5_no;
@@ -650,5 +611,10 @@
 
         render();
     </script>
+    <style>
+        .accordion-item .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .accordion-item.active .accordion-content { max-height: 400px; }
+        .accordion-item.active svg { transform: rotate(180deg); }
+    </style>
 </body>
 </html>
